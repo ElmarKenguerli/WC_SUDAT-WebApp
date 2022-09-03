@@ -2,7 +2,9 @@ import React, { useReducer, useState } from 'react';
 //import React from "react";
 import '../App.css';
 import useCollapse from 'react-collapsed';
-
+//mui components
+import Input from '@mui/material/Input';
+import TextField from '@mui/material/TextField';
 
 function Collapsible() {
     const [formData, setFormData] = useReducer(formReducer, {});
@@ -94,7 +96,7 @@ function Form() {
                 <fieldset>
                 <label>
                     <p>Full Name</p>
-                    <input name="FullName" onChange={handleChange}/>
+                    <TextField required color="secondary" focused size="small" name = "fullName" variant="filled" onChange={handleChange} />
                 </label>
                 </fieldset>
 
@@ -190,6 +192,14 @@ function Form() {
                 </label>
                 </fieldset>
 
+                <h2> Substance Use Screening </h2>
+
+                <fieldset>
+                <label>
+                    <p>In Police Holding or Prison or Conflict with the Law in the past 12 months</p>
+                    
+                </label>
+                </fieldset>
                 
                    <button className="btn-square" type="submit">Submit</button> 
                 
