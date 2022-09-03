@@ -1,5 +1,4 @@
 import React, { useReducer, useState } from 'react';
-import React from "react";
 import '../App.css';
 import useCollapse from 'react-collapsed';
 import Checkbox from '@mui/material/Checkbox';
