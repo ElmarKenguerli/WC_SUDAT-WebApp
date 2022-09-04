@@ -187,7 +187,7 @@ function Form() {
                 <fieldset>
                 
                 <label>
-                    {"Client Name:\t"} 
+                    <b>{"Client Name:\t"} </b>
                     <TextField required color="secondary" focused sx={{ width: 300 }} size="small" name = "Client Name" variant="filled" onChange={setFormData} />
                 </label>
                 
@@ -196,18 +196,18 @@ function Form() {
                 <fieldset>
                   <label>
                     
-                    {"Place of Interview:\t"} 
+                  <b>{"Place of Interview:\t"}</b> 
                     <TextField required color="secondary" focused sx={{ width: 300 }} size="small" name = "Place of Interview" variant="filled" onChange={setFormData} />
                     </label>
                     </fieldset>
                     
                 <fieldset>
                 <label>
-                    Interviewer Name: {interviewerName}
+                <b>Interviewer Name:</b> {interviewerName}
                   </label>
                   </fieldset>
                   <fieldset>
-                  <label>Date of Interview: {getCurrentDate()}</label>
+                  <label><b>Date of Interview:</b> {getCurrentDate()}</label>
                   </fieldset>
                     <Collapsible/>
                 </fieldset>

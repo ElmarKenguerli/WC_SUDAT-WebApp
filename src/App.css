@@ -1,19 +1,21 @@
 .App {
   text-align: left;
-  background-color: #323a53;
+  background-color: #435796;
   color:black;
 }
 
 .wrapper{
   padding: 35px;
-  background-color: #323a53;
+  background-color: #2ea7bd;
 }
 
 .wrapper fieldset {
   margin: 30px;
   font-size: 25px;
-  background-color: #467486;
+  background-color: #4b96b4;
   padding: 10px;
+  border-radius: 20px;
+
 }
 
 .title {
@@ -45,4 +47,8 @@
 
   width: 900px;
   height: 95px;
+}
+
+p{
+  font-weight: bold;
 }
