@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Slider from '@mui/material/Slider';
-import { GetValue } from "../Components/Screening";
+import { GetValue } from "./Screening";
 
 export class SliderQuestion extends Component {
 
@@ -9,15 +9,14 @@ export class SliderQuestion extends Component {
     super(props);
     this.state = {attribute : 0};
   }
-
-
-
   
   render() {
       
-    const handleChange = (value) => {
-        console.log(value)
-      }
+    const handleChange = (event, value) => {
+      this.setState({value: event.target.value}); 
+      GetValue(value, this.num);
+      console.log(value);
+    }
 
     const marks = [
         {
@@ -56,7 +55,7 @@ export class SliderQuestion extends Component {
                 min={0}
                 max={4}
                 color="secondary" 
-                onChange={handleChange(this.Value)}            
+                onChange={handleChange}            
             />
         </div>
     )
