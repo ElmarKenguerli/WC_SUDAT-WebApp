@@ -3,6 +3,7 @@ import Slider from '@mui/material/Slider';
 import { GetValue } from "./Screening";
 
 export class SliderQuestion extends Component {
+  num;
 
   constructor(props){
     

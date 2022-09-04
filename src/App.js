@@ -7,23 +7,29 @@ import React from "react";
 import VerticalLinearStepper from './Components/Stepper'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Assessment from "./Pages/Assessment"; 
+import Login from "./Pages/Login";
+//import Screening from "./Components/Screening"; 
 import LandingPage from "./Pages/LandingPage";
+//import Home from "./Pages/Dummy";
 
 
 function App() {
   return (
+    
     <Router>
     {/* <nav>
       <Link to="/"> Home </Link>
       <Link to="/Assessment"> About </Link>
     </nav> */}
     <Routes>
-      <Route path="/" element={<LandingPage/>} />
-      <Route path="/Assessment" element={<Assessment/>} />
+      <Route exact path="/" element={<Login/>} />
+      <Route path="/LandingPage/" element ={<LandingPage/>}/>
+      <Route path="/Assessment" element={<Assessment/>} /> 
+      
     </Routes>
 
   </Router>
-);
+  )
 };
 
 

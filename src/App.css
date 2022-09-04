@@ -18,6 +18,8 @@
 
 }
 
+#classes
+
 .title {
   font-size: 35px;
   padding: 10px;
@@ -47,6 +49,13 @@
 
   width: 900px;
   height: 95px;
+}
+
+.loginHeader{
+  font-size: 50px;
+  text-align: center;
+  font-weight: bold;
+  
 }
 
 p{

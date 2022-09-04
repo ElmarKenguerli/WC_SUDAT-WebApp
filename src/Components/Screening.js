@@ -36,11 +36,6 @@ function getCurrentDate(separator='-'){
 const interviewerName = "Danny Guttmann";
 let val = 0;
 
-// const GetValue = (value) => {
-//   val = value;
-//   console.log(value);
-// }
-
 
 // function ShowFollowUpScreeningQuestions() {
 //   return (
@@ -355,23 +350,32 @@ function Form() {
                   </fieldset>
 
                   <fieldset>
-                    <SliderQuestion question={"2. Use any marijuana (weed, oil, wax, or hash by smoking, vaping, dabbing, or in food) or “synthetic marijuana” (like “K2,” “Spice”)?"}/>
+                    <SliderQuestion 
+                      question={"2. Use any marijuana (weed, oil, wax, or hash by smoking, vaping, dabbing, or in food) or “synthetic marijuana” (like “K2,” “Spice”)?"}/>
                     <Collapsible/>
                   </fieldset>
 
                   <fieldset>
-                    <SliderQuestion question={"3. Use anything else to get high (like other illegal drugs, prescription or over-the-counter medications, and things that you sniff, huff, vape, or inject)?"}/>
+                    <SliderQuestion 
+                      question={"3. Use anything else to get high (like other illegal drugs, prescription or over-the-counter medications, and things that you sniff, huff, vape, or inject)?"}/>
                     <Collapsible/>
                   </fieldset>
 
                   <fieldset>
-                    <SliderQuestion question={"4. Use any tobacco or nicotine products (for example, cigarettes, e-cigarettes, hookahs or smokeless tobacco)?"}/>
+                    <SliderQuestion 
+                      question={"4. Use any tobacco or nicotine products (for example, cigarettes, e-cigarettes, hookahs or smokeless tobacco)?"}/>
+                    <Collapsible/>
+                  </fieldset>
+
+                  <fieldset>
+                    <p>5. Have you ever ridden in a CAR driven by someone (including yourself) who was “high” or had been using alcohol or drugs?</p>
+                    <BooleanQuestion/>
                     <Collapsible/>
                   </fieldset>
 
                 </fieldset>
                   
-  
+                  <FollowUpQuestions/>
                    <button className="btn-square" type="submit">Submit</button> 
                 
                 
