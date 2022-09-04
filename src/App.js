@@ -25,7 +25,7 @@ function App() {
         <li class="list-group-item list-group-item-primary">Change Readiness and Treatment Eagerness</li>
         <li class="list-group-item list-group-item-primary">Results</li>
   </ul>*/}
-        <div><VerticalLinearStepper/></div>
+        <div style={{margin: 30}}><VerticalLinearStepper/></div>
         
             <div className="row">
             
