@@ -1,7 +1,7 @@
 import './App.css';
 import Assessment from "./Pages/Assessment";
 import React from "react";
-
+import { BrowserRouter } from 'react-router-dom';
 //MUI COMPONENTS
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -69,6 +69,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
+
 function App() {
   //navigate
   
@@ -125,12 +126,16 @@ function App() {
         <List>
           {['Assessment'].map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton onClick={<Assessment/>}>
+
+              <ListItemButton  >
+          
                 <ListItemIcon>
                   {<PostAddTwoToneIcon/>}
                 </ListItemIcon>
+                
                 <ListItemText primary={text} />
               </ListItemButton>
+
             </ListItem>
           ))}
         </List>
@@ -158,6 +163,8 @@ function App() {
     
   );
 };
+
+
 
 
 export default App;
