@@ -16,4 +16,4 @@ export class BooleanQuestion extends Component {
     )
   }
 }
-export default booleanQuestion
+export default BooleanQuestion

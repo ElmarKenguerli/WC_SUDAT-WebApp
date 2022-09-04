@@ -27,17 +27,17 @@ function ShowFollowUpScreeningQuestions() {
   return (
      <div name="screening">
       <fieldset>
-        <BooleanQuestion question="6. Do you ever use alcohol or drugs to RELAX, feel better about yourself, or fit in"/>
+        <BooleanQuestion question={"6. Do you ever use alcohol or drugs to RELAX, feel better about yourself, or fit in"}/>
         <Collapsible/>
       </fieldset>
 
     <fieldset>
-      <BooleanQuestion question="7. Do you ever use alcohol or drugs while you are by yourself, or ALONE?"/>
+      <BooleanQuestion question={"7. Do you ever use alcohol or drugs while you are by yourself, or ALONE?"}/>
       <Collapsible/>
     </fieldset>
 
     <fieldset>
-      <BooleanQuestion question="8. Do you ever FORGET things you did while using alcohol or drugs?"/>
+      <BooleanQuestion question={"8. Do you ever FORGET things you did while using alcohol or drugs?"}/>
       <Collapsible/>
     </fieldset>
    </div>
@@ -228,7 +228,7 @@ function Form() {
                 <label>
                     <p>Sex</p>
                     
-                    <Select name="Sex" onChange={handleData}>
+                    <Select name="Sex" style={{ width: 300 }} variant="filled" onChange={handleData}>
                       <MenuItem value={""}>--Please Select an Option--</MenuItem>
                       <MenuItem value={"Female"}>Female</MenuItem>
                       <MenuItem value={"Male"}>Male</MenuItem>
@@ -289,16 +289,18 @@ function Form() {
                     </select>
                     */
                     }
-                    <Autocomplete
-                      disablePortal
-                      name="SelectHousing"
-                      color="secondary"
-                      size= "normal"
-                      onChange={handleData}
-                      options={housingOptions}
-                      sx={{ width: 300 }}
-                      renderInput={(params) => <TextField {...params} />}
-                    />
+                    <Select name="Housing" style={{ width: 300 }} variant="filled" onChange={handleData}>
+                      <MenuItem value={""}>--Please Select an Option--</MenuItem>
+                      <MenuItem value={"Rent or Own current House or Apartment"}>Rent or Own current House or Apartment</MenuItem>
+                      <MenuItem value={"Living with Relatives or Friends"}>Living with Relatives or Friends</MenuItem>
+                      <MenuItem value={"Renting a Room or Shared Space"}>Renting a Room or Shared Space</MenuItem>
+                      <MenuItem value={"Group Home"}>Group Home</MenuItem>
+                      <MenuItem value={"Shelter"}>Shelter</MenuItem>
+                      <MenuItem value={"Transitional Shelter"}>Transitional Shelter</MenuItem>
+                      <MenuItem value={"Outdoors, Homeless or Streets"}>Outdoors, Homeless or Streets</MenuItem>
+                      <MenuItem value={"Other (Moving from Place to Place)"}>Other (Moving from Place to Place)</MenuItem>
+                    </Select>
+                    <FormHelperText>Select the Most Applicable</FormHelperText>
                     
                     <Collapsible/>
 
@@ -316,13 +318,18 @@ function Form() {
                 <fieldset>
                 <label>
                     <p>In Police Holding or Prison or Conflict with the Law in the past 12 months</p>
-                    <select name="Conflict" sx={{ width: 300 }} onChange={handleData}>
-                      <option value="">--Please Select an Option--</option>
-                      <option value="Police Holding">Police Holding</option>
-                      <option value="Prison">Prison</option>
-                      <option value="Conflict with the Law">Conflict with the Law</option>
-                      <option value="Prefer not to Answer">Prefer not to Answer </option>
-                    </select>
+
+                    <Select name="Conflict" style={{ width: 300 }} variant="filled" onChange={handleData}>
+                      <MenuItem value={""}>--Please Select an Option--</MenuItem>
+                      <MenuItem value={"Police Holding"}>Police Holding</MenuItem>
+                      <MenuItem value={"Prison"}>Prison</MenuItem>
+                      <MenuItem value={"Conflict with the Law"}>Conflict with the Law</MenuItem>
+                      <MenuItem value={"Prefer not to Answer"}>Prefer not to Answer</MenuItem>
+
+                    </Select>
+                    <FormHelperText>Select the Most Applicable</FormHelperText>
+
+                    <Collapsible/>
                 </label>
                 </fieldset>
 
