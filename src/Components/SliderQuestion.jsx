@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Slider from '@mui/material/Slider';
-import { GetValue } from "../Pages/Screening";
+import { GetValue } from "../Components/Screening";
 
 export class SliderQuestion extends Component {
 

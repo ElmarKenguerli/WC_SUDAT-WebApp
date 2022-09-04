@@ -1,28 +1,15 @@
 import React from 'react'
 import '../App.css'
-import PropTypes from 'prop-types'
-import Questionaire from '../Components/Questionaire'
-import VerticalLinearStepper from '../Components/Stepper'
 
-const Assessment = props => {
+import Screening from '../Components/Screening'
+import VerticalLinearStepper from '../Components/Stepper'
+function Assessment() {
   return (
     <>
     <div className="row">
         <div className="leftnav col-md-2">
-        {/* <ul class="list-group">
-        <li class="list-group-item">Substance Use Assessment</li>
-
-
-        <li class="list-group-item list-group-item-primary">Introduction</li>
-        <li class="list-group-item list-group-item-primary">Client Details</li>
-        <li class="list-group-item list-group-item-primary">Demographics</li>
-        <li class="list-group-item list-group-item-primary">Substance Use Screening</li>
-        <li class="list-group-item list-group-item-primary">Assessment of Risk Factors</li>
-        <li class="list-group-item list-group-item-primary">Assessment of Protective Factors</li>
-        <li class="list-group-item list-group-item-primary">Change Readiness and Treatment Eagerness</li>
-        <li class="list-group-item list-group-item-primary">Results</li>
-        </ul> */}
-        <VerticalLinearStepper/>
+        <div style={{position: 'fixed',margin: 25}}><VerticalLinearStepper/></div>
+        
             <div className="row">
             
             </div>
@@ -33,9 +20,8 @@ const Assessment = props => {
         </div>
     </div>
 </>
-  )
-}
+  );
+};
 
-Assessment.propTypes = {}
 
-export default Assessment
+export default Assessment;

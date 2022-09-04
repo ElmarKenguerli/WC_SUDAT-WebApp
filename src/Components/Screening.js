@@ -5,8 +5,8 @@ import useCollapse from 'react-collapsed';
 //mui components
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import SliderQuestion  from "../Components/SliderQuestion";
-import BooleanQuestion  from "../Components/BooleanQuestion";
+import SliderQuestion  from "./SliderQuestion";
+import BooleanQuestion  from "./BooleanQuestion";
 
 import { Select, FormHelperText, MenuItem } from '@material-ui/core';
 

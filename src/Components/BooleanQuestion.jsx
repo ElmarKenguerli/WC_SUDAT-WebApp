@@ -1,8 +1,6 @@
 import React, { Component, useState } from 'react'
 import {Radio, FormControl, RadioGroup, FormControlLabel } from '@material-ui/core';
 import {render} from 'react-dom';
-
-
     
 export default function BooleanQuestion() {
     
