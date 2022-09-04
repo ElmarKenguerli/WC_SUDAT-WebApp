@@ -1,12 +1,24 @@
 import React, { Component } from 'react'
 import Slider from '@mui/material/Slider';
+import { GetValue } from "../Pages/Screening";
 
 export class SliderQuestion extends Component {
+
   constructor(props){
-    super(props);
-  }
-  render() {
     
+    super(props);
+    this.state = {attribute : 0};
+  }
+
+
+
+  
+  render() {
+      
+    const handleChange = (value) => {
+        console.log(value)
+      }
+
     const marks = [
         {
           value: 0,
@@ -29,22 +41,23 @@ export class SliderQuestion extends Component {
           label: 'Daily/Almost Daily',
         },
       ];
+      
     return (
         <div>
             <p>{this.props.question}</p>
             <Slider
-                        
-                defaultValue={0}
                 style={{ width: 550 ,marginLeft:50}}
+
+                defaultValue = {0}
                 
                 step={1}
                 valueLabelDisplay="auto"
                 marks={marks}
                 min={0}
                 max={4}
-                color="secondary"             
+                color="secondary" 
+                onChange={handleChange(this.Value)}            
             />
-        
         </div>
     )
   }

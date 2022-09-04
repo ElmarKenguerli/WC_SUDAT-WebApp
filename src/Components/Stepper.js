@@ -28,7 +28,7 @@ const steps = [
     label: 'Assessment of Protective Factors',
   },
   {
-    label: 'Change Readiness and Treatment Eagerness',
+    label: 'Change Readiness',
   },
   {
     label: 'Results'
@@ -44,6 +44,7 @@ export default function VerticalLinearStepper() {
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
+   
   };
 
   const handleReset = () => {
@@ -65,6 +66,27 @@ export default function VerticalLinearStepper() {
               {step.label}
             </StepLabel>
             
+            <StepContent>
+              <Box sx={{ mb: 2 }}>
+                <div>
+                  <Button
+                    variant="contained"
+                    onClick={handleNext}
+                    sx={{ mt: 1, mr: 1 }}
+                  >
+                    {index === steps.length - 1 ? 'Finish' : 'Continue'}
+                  </Button>
+                  <Button
+                    disabled={index === 0}
+                    onClick={handleBack}
+                    sx={{ mt: 1, mr: 1 }}
+                  >
+                    Back
+                  </Button>
+                </div>
+              </Box>
+            </StepContent>
+
           </Step>
         ))}
       </Stepper>

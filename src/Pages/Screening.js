@@ -3,13 +3,14 @@ import React, { useReducer, useState } from 'react';
 import '../App.css';
 import useCollapse from 'react-collapsed';
 //mui components
-import Slider from '@mui/material/Slider';
+import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
 import SliderQuestion  from "../Components/SliderQuestion";
 import BooleanQuestion  from "../Components/BooleanQuestion";
 
 import { Select, FormHelperText, MenuItem } from '@material-ui/core';
+
+let greaterThanZero = false;
 
 function getCurrentDate(separator='-'){
   let newDate = new Date();
@@ -20,26 +21,55 @@ function getCurrentDate(separator='-'){
   return `${date}${separator}${month<10?`0${month}`:`${month}`}${separator}${year}`;
 }
 
+const interviewerName = "Danny Guttmann";
+let val = 0;
 
-const interviewerName = "Danny Guttmann"; 
+const GetValue = (value) => {
+  val = value;
+  console.log(value);
+}
+
 
 function ShowFollowUpScreeningQuestions() {
   return (
+
      <div name="screening">
       <fieldset>
-        <BooleanQuestion question={"6. Do you ever use alcohol or drugs to RELAX, feel better about yourself, or fit in"}/>
+        <p>5. Have you ever ridden in a CAR driven by someone (including yourself) who was “high” or had been using alcohol or drugs?</p>
+        <BooleanQuestion/>
         <Collapsible/>
       </fieldset>
 
     <fieldset>
-      <BooleanQuestion question={"7. Do you ever use alcohol or drugs while you are by yourself, or ALONE?"}/>
+      <p>6. Do you ever use alcohol or drugs to RELAX, feel better about yourself, or fit in </p>
+      <BooleanQuestion/>
       <Collapsible/>
     </fieldset>
 
     <fieldset>
-      <BooleanQuestion question={"8. Do you ever FORGET things you did while using alcohol or drugs?"}/>
+      <p>7. Do you ever use alcohol or drugs while you are by yourself, or ALONE?</p>
+      <BooleanQuestion />
       <Collapsible/>
     </fieldset>
+
+    <fieldset>
+      <p>8. Do you ever FORGET things you did while using alcohol or drugs?</p>
+      <BooleanQuestion />
+      <Collapsible/>
+    </fieldset>
+
+    <fieldset>
+      <p>9. Do your FAMILY or FRIENDS ever tell you that you should cut down on your drinking or drug use?</p>
+      <BooleanQuestion />
+      <Collapsible/>
+    </fieldset>
+
+    <fieldset>
+      <p>10. Have you ever gotten into TROUBLE while you were using alcohol or drugs</p>
+      <BooleanQuestion />
+      <Collapsible/>
+    </fieldset>
+
    </div>
   );
 }
@@ -94,45 +124,6 @@ function Form() {
     }, 3000)
   }
 
-  const marks = [
-    {
-      value: 0,
-      label: 'Never',
-    },
-    {
-      value: 1,
-      label: 'Once or Twice',
-    },
-    {
-      value: 2,
-      label: 'Monthly',
-    },
-    {
-      value: 3,
-      label: 'Weekly',
-    },
-    {
-      value: 4,
-      label: 'Daily/Almost Daily',
-    },
-  ];
-  
-  const sexOptions = [
-    { label: 'Male'},
-    { label: 'Female' },
-    { label: 'Intersex'}
-  ]
-
-  const housingOptions = [
-    { label: 'Rent or Own current House or Apartment '},
-    { label: 'Living with Relatives or Friends ' },
-    { label: 'Renting a Room or Shared Space'},
-    { label: 'Group Home' },
-    { label: 'Shelter'},
-    { label: 'Transitional Shelter ' },
-    { label: 'Outdoors, Homeless or Streets '},
-    { label: 'Other (Moving from Place to Place' }
-  ]
 
   
   const handleData = event => {
@@ -145,20 +136,32 @@ function Form() {
   return(
   
     <div className="wrapper">
-      <h1>Part 1 of 2</h1>
-      <h2>SCREENING</h2>
+      <h1>SCREENING</h1>
+      <Box sx={{
+        p: 2,
+        border: '2px solid lightgray',
+        margin: 5
+        
+      }}>
+      
+      
       
       <h3 style={{textAlign: "justify"}}> 
         Hi, nice to meet you. The following questions are about your experience with using alcohol, tobacco products and other substances across your lifetime and in the past three months. These substances can be smoked, swallowed, snorted, inhaled or injected. Some of the substances listed may be prescribed by a doctor (like amphetamines, sedatives, pain medications). We also want to know more about your mental and emotional health. Lastly, we will be asking you questions about your family history and personal life experiences as it pertains to SUDs. This information will help us to assist you by providing any services and/or treatment that you might need. While we are interested in knowing more about you, please be assured that information provided will be treated as strictly confidential.
       </h3>
+      
+      <br/>
+
       <label>
         <input 
           type="checkbox"
           value={hasAcceptedTsAndCs}
           onChange = {handleChange} 
         />
-         Please accept the Ts {"&"} Cs
+           Do you accept having read and agreed to the above, as well as for your answers to be viewed by the professional conducting the assessment? Ts {"&"} Cs apply
       </label>
+      
+      </Box>
       <br/>
 
 
@@ -275,20 +278,7 @@ function Form() {
                 <fieldset>
                 <label>
                     <p>Current Housing Situation:</p>
-                    {/*
-                    <select name="Housing" sx={{ width: 300 }} onChange={handleData}>
-                      <option value="">--Please Select an Option--</option>
-                      <option value="Rent or Own current House or Apartment ">Rent or Own current House or Apartment </option>
-                      <option value="Living with Relatives or Friends">Living with Relatives or Friends</option>
-                      <option value="Renting a Room or Shared Space">Renting a Room or Shared Space</option>
-                      <option value="Group Home">Group Home </option>
-                      <option value="Shelter">Shelter </option>
-                      <option value="Transitional Shelter">Transitional Shelter</option>
-                      <option value="Outdoors, Homeless or Streets">Outdoors, Homeless or Streets</option>
-                      <option value="Other (Moving from Place to Place)">Other (Moving from Place to Place)</option>
-                    </select>
-                    */
-                    }
+                    
                     <Select name="Housing" style={{ width: 300 }} variant="filled" onChange={handleData}>
                       <MenuItem value={""}>--Please Select an Option--</MenuItem>
                       <MenuItem value={"Rent or Own current House or Apartment"}>Rent or Own current House or Apartment</MenuItem>
@@ -345,7 +335,10 @@ function Form() {
                   </label>
 
                   <fieldset>
-                    <SliderQuestion question={"1. Drink more than a few sips of beer, wine, or any drink containing alcohol?"}/>
+                    <SliderQuestion 
+                      question={"1. Drink more than a few sips of beer, wine, or any drink containing alcohol?"}
+                    />
+                      
                     <Collapsible/>
                   </fieldset>
 
@@ -364,12 +357,8 @@ function Form() {
                     <Collapsible/>
                   </fieldset>
 
-                  <fieldset>
-                    <BooleanQuestion question="5. Have you ever ridden in a CAR driven by someone (including yourself) who was “high” or had been using alcohol or drugs?"/>
-                    <Collapsible/>
-                  </fieldset>
-
-                 
+                  
+                    
                   <ShowFollowUpScreeningQuestions/>
                 </fieldset>
                   
