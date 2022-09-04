@@ -10,9 +10,10 @@
 }
 
 .wrapper fieldset {
-  margin: 20px;
+  margin: 30px;
   font-size: 25px;
   background-color: #467486;
+  padding: 10px;
 }
 
 .title {
@@ -36,11 +37,12 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin: 10px;
+  margin: 20px;
+  
 }
 
 .commentBox{
 
-  width: 400px;
-  height: 80px;
+  width: 900px;
+  height: 95px;
 }
