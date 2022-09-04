@@ -7,10 +7,22 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import SliderQuestion  from "./SliderQuestion";
 import BooleanQuestion  from "./BooleanQuestion";
+import FollowUpQuestions from './FollowUpQuestions';
 
 import { Select, FormHelperText, MenuItem } from '@material-ui/core';
 
-let greaterThanZero = false;
+export const GetValue = (value, num) => {
+  val = value;
+  //vals[num-1] = val;
+
+  console.log(`I am here ${val}`);
+  
+  if (value === 1)
+  {
+    console.log("I am here");
+    FollowUpQuestions();
+  }
+}
 
 function getCurrentDate(separator='-'){
   let newDate = new Date();
@@ -24,57 +36,57 @@ function getCurrentDate(separator='-'){
 const interviewerName = "Danny Guttmann";
 let val = 0;
 
-const GetValue = (value) => {
-  val = value;
-  console.log(value);
-}
+// const GetValue = (value) => {
+//   val = value;
+//   console.log(value);
+// }
 
 
-function ShowFollowUpScreeningQuestions() {
-  return (
+// function ShowFollowUpScreeningQuestions() {
+//   return (
 
-     <div name="screening">
-      <fieldset>
-        <p>5. Have you ever ridden in a CAR driven by someone (including yourself) who was “high” or had been using alcohol or drugs?</p>
-        <BooleanQuestion/>
-        <Collapsible/>
-      </fieldset>
+//      <div name="screening">
+//       <fieldset>
+//         <p>5. Have you ever ridden in a CAR driven by someone (including yourself) who was “high” or had been using alcohol or drugs?</p>
+//         <BooleanQuestion/>
+//         <Collapsible/>
+//       </fieldset>
 
-    <fieldset>
-      <p>6. Do you ever use alcohol or drugs to RELAX, feel better about yourself, or fit in </p>
-      <BooleanQuestion/>
-      <Collapsible/>
-    </fieldset>
+//     <fieldset>
+//       <p>6. Do you ever use alcohol or drugs to RELAX, feel better about yourself, or fit in </p>
+//       <BooleanQuestion/>
+//       <Collapsible/>
+//     </fieldset>
 
-    <fieldset>
-      <p>7. Do you ever use alcohol or drugs while you are by yourself, or ALONE?</p>
-      <BooleanQuestion />
-      <Collapsible/>
-    </fieldset>
+//     <fieldset>
+//       <p>7. Do you ever use alcohol or drugs while you are by yourself, or ALONE?</p>
+//       <BooleanQuestion />
+//       <Collapsible/>
+//     </fieldset>
 
-    <fieldset>
-      <p>8. Do you ever FORGET things you did while using alcohol or drugs?</p>
-      <BooleanQuestion />
-      <Collapsible/>
-    </fieldset>
+//     <fieldset>
+//       <p>8. Do you ever FORGET things you did while using alcohol or drugs?</p>
+//       <BooleanQuestion />
+//       <Collapsible/>
+//     </fieldset>
 
-    <fieldset>
-      <p>9. Do your FAMILY or FRIENDS ever tell you that you should cut down on your drinking or drug use?</p>
-      <BooleanQuestion />
-      <Collapsible/>
-    </fieldset>
+//     <fieldset>
+//       <p>9. Do your FAMILY or FRIENDS ever tell you that you should cut down on your drinking or drug use?</p>
+//       <BooleanQuestion />
+//       <Collapsible/>
+//     </fieldset>
 
-    <fieldset>
-      <p>10. Have you ever gotten into TROUBLE while you were using alcohol or drugs</p>
-      <BooleanQuestion />
-      <Collapsible/>
-    </fieldset>
+//     <fieldset>
+//       <p>10. Have you ever gotten into TROUBLE while you were using alcohol or drugs</p>
+//       <BooleanQuestion />
+//       <Collapsible/>
+//     </fieldset>
 
-   </div>
-  );
-}
+//    </div>
+//   );
+// }
 
-function Collapsible() {
+export function Collapsible() {
     const [formData, setFormData] = useReducer(formReducer, {});
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
     return (
@@ -357,9 +369,6 @@ function Form() {
                     <Collapsible/>
                   </fieldset>
 
-                  
-                    
-                  <ShowFollowUpScreeningQuestions/>
                 </fieldset>
                   
   
