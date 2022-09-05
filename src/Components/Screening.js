@@ -2,13 +2,14 @@ import React, { useReducer, useState } from 'react';
 //import React from "react";
 import '../App.css';
 import useCollapse from 'react-collapsed';
+import Countries from '../Components/Countries';
 //mui components
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import SliderQuestion  from "./SliderQuestion";
 import BooleanQuestion  from "./BooleanQuestion";
 import FollowUpQuestions from './FollowUpQuestions';
-
+import Stack from '@mui/material/Stack';
 import { Select, FormHelperText, MenuItem } from '@material-ui/core';
 
 export const GetValue = (value, num) => {
@@ -278,10 +279,12 @@ function Form() {
                 <label>
                     <p>Age</p>
                     <TextField 
-                      required type="number" 
+                      required  
                       sx={{ width: 300 }} 
                       color="secondary" 
                       focused size="small" 
+                      label = "Birthday"
+                      type ="date"
                       name = "Age" 
                       variant="filled" 
                       onChange={handleNumbers}
@@ -294,7 +297,8 @@ function Form() {
                 <fieldset>
                 <label>
                     <p>Country of Origin</p>
-                    <TextField required color="secondary" sx={{ width: 300 }} focused size="small" name = "Country" variant="filled" onChange={handleData} />
+                    <Countries />
+                    {/* {<TextField required color="secondary" sx={{ width: 300 }} focused size="small" name = "Country" variant="filled" onChange={handleData} />} */}
                     <Collapsible/>
                 </label>
                 </fieldset>

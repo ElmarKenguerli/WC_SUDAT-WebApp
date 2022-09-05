@@ -5,9 +5,9 @@ import "react-table-6/react-table.css";
 class DataGrid extends Component {  
   render() {  
      const data = [{  
-        name: 'Ayaan', surname: "Kanji",
-        time: '15:26',  link: "View"  
-        },{  
+         name: 'Ayaan', surname: "Kanji",
+         time: '15:26',  link: "View"  
+         },{  
          name: 'Ahana', surname: "De Sousa", 
          time: '12:56',  link: "View" 
          },{  
