@@ -135,7 +135,6 @@ export default function PersistentDrawerLeft() {
         <DrawerHeader />
         
         <Typography paragraph>
-          Click below to Start Assessment
         </Typography>
       </Main>
     </Box>
