@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 //import MaterialUIDrawer from '../Components/MuiDrawer'
 import {useNavigate} from "react-router-dom";
 import MuiDrawer from '../Components/MuiDrawer'
@@ -12,11 +12,27 @@ import Col from 'react-bootstrap/Col';
 import {Box} from '@mui/material';
 import DataGrid from "../Components/DataGrid"
 
-const LandingPage = () => {
-let navigate = useNavigate();
+let nameOfUser = "";
+
+export const setUsernameCaption = (uname) => {
+  nameOfUser = uname;
+}
+
+export const LandingPage = () => {
+
+  const [username, setUsername] = useState('');
+
+  let navigate = useNavigate();
+  
   return (
     <div>
         <MuiDrawer/>
+        <div>
+          <label>
+            <b>Username: </b> 
+            {nameOfUser}
+          </label>
+        </div>
         <Box textAlign="center" >
           <Button 
           size="large" 

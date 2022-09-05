@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
 import '../App.css';
+import {setUsernameCaption} from "./LandingPage";
 
 // design
 import {
@@ -14,11 +15,6 @@ import {
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import Container from '@material-ui/core/Container';
-
-
-
-        
-    
 
 const Login = () => {
     // form state
@@ -100,6 +96,7 @@ const Login = () => {
         variant="contained"
         size = "large"
         onClick={() => {
+          setUsernameCaption(email);
           navigate("./LandingPage");
         }}
         >
