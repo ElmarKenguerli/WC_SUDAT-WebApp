@@ -156,7 +156,7 @@ function Form() {
       <h1>SCREENING</h1>
       <Box sx={{
         p: 2,
-        border: '2px solid lightgray',
+        border: '2px solid black',
         margin: 5
         
       }}>

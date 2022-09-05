@@ -1,18 +1,17 @@
 .App {
   text-align: left;
-  background-color: #435796;
   color:black;
 }
 
 .wrapper{
   padding: 35px;
-  background-color: #2ea7bd;
+  background-color: #b5f0fabe;
 }
 
 .wrapper fieldset {
   margin: 30px;
   font-size: 25px;
-  background-color: #4b96b4;
+  background-color: #abe2f7fd;
   padding: 10px;
   border-radius: 20px;
 
