@@ -34,7 +34,7 @@ const Login = () => {
             <Box sx= {{width: '100%' , padding:"20px", bgcolor: '#00bcf5', border:"2px solid black"}}>
             <div className='loginHeader'>
                 <label> 
-                    WC-SUDAT Assessment Tool
+                    Substance Use Disorder Assessment Tool
                 </label>
                 
             </div>
