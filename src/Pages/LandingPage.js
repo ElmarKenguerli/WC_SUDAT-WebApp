@@ -38,10 +38,13 @@ let navigate = useNavigate();
           New Assessment 
           </Button>
           
-          <DataGrid/>
+          
         </Box>
-
         
+        <Box textAlign="center" width="1000" margin="80px" >
+          <DataGrid/>
+
+        </Box>
 
 
           {/* <button
