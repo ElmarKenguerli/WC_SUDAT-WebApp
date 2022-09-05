@@ -131,8 +131,18 @@ function Form() {
     }, 3000)
   }
 
+  const [age, setAge] = useState('');
 
+  const handleNumbers = event => {
+    val = event.target.value;
+
+    if (val < 0)
+      setAge(0)
+    else
+      setAge(val);
+  };
   
+  //
   const handleData = event => {
     setFormData({
       name: event.target.name,
@@ -267,7 +277,16 @@ function Form() {
                 <fieldset>
                 <label>
                     <p>Age</p>
-                    <TextField required type="number" sx={{ width: 300 }} color="secondary" focused size="small" name = "Age" variant="filled" onChange={handleData} />
+                    <TextField 
+                      required type="number" 
+                      sx={{ width: 300 }} 
+                      color="secondary" 
+                      focused size="small" 
+                      name = "Age" 
+                      variant="filled" 
+                      onChange={handleNumbers}
+                      value={age} 
+                    />
                     <Collapsible/>
                 </label>
                 </fieldset>
