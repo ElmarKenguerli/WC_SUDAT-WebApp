@@ -21,6 +21,8 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+    
     let navigate = useNavigate();
     
     return (
@@ -62,8 +64,11 @@ const Login = () => {
                     className="form-control"
                     label="Email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => {setEmail(e.target.value); setErrorMessage("");}}
                 />
+                <label>
+                    {errorMessage}
+                </label>    
             </div>
 
             <div className="form-group">
@@ -96,8 +101,16 @@ const Login = () => {
         variant="contained"
         size = "large"
         onClick={() => {
-          setUsernameCaption(email);
-          navigate("./LandingPage");
+          if (email !== "")
+          {
+            setUsernameCaption(email);
+            navigate("./LandingPage");
+          }
+          else
+          {
+            setErrorMessage("No username provided!")
+          }
+          
         }}
         >
         {" "}
