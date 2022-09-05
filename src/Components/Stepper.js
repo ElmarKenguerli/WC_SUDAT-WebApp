@@ -22,10 +22,10 @@ const steps = [
     label: 'Substance Use Screening',
   },
   {
-    label: 'Assessment of Risk Factors',
+    label: 'Risk Factors',
   },
   {
-    label: 'Assessment of Protective Factors',
+    label: 'Protective Factors',
   },
   {
     label: 'Change Readiness',

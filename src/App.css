@@ -62,3 +62,11 @@ p{
   font-weight: bold;
 }
 
+
+.center {
+  line-height: 200px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+}

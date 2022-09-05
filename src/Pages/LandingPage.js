@@ -6,12 +6,33 @@ import StyledTableCell from '../Components/StyledTable';
 import { IconButton } from '@mui/material';
 import PostAddTwoToneIcon from '@mui/icons-material/PostAddTwoTone';
 import Button from '@material-ui/core/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const LandingPage = () => {
 let navigate = useNavigate();
   return (
     <div>
-        <MuiDrawer/>
+        <MuiDrawer/><Button 
+        size="large" 
+        className='.center'
+        style={
+          { 
+            width: 300, 
+            height: 100, 
+            fontSize: 25, 
+            border: "2px solid dodgerblue", 
+            margin:0, 
+            color: "dodgerblue" }}  
+        startIcon={<PostAddTwoToneIcon/>}  
+        onClick={() => {
+          navigate("/Assessment");
+        }}>
+        {" "}
+        New Form
+        
+        </Button>
           {/* <button
         onClick={() => {
           navigate("/Assessment");
@@ -20,14 +41,9 @@ let navigate = useNavigate();
         {" "}
         Go to form
       </button> */}
-      <Button size="large" style={{ width: 300, height: 100, fontSize: 25, border: "2px solid dodgerblue", margin:20, color: "dodgerblue" }}  startIcon={<PostAddTwoToneIcon/>}  onClick={() => {
-          navigate("/Assessment");
-        }}>
-        {" "}
-        New Form
-        
-        </Button>
+
       {/* <StyledTableCell/> */}
+     
       </div>
   )
 }

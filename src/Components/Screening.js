@@ -165,14 +165,12 @@ function Form() {
           value={hasAcceptedTsAndCs}
           onChange = {handleChange} 
         />
-           Do you accept having read and agreed to the above, as well as for your answers to be viewed by the professional conducting the assessment? Ts {"&"} Cs apply
+           I have read the above to the client being screened, and have obtained his/her consent to proceed with the screening process.
       </label>
       
       </Box>
       <br/>
 
-
-       
       {submitting &&
         <div>
         Submitting Form...
@@ -197,27 +195,43 @@ function Form() {
                 <fieldset>
                 
                 <label>
-                    <b>{"Client Name:\t"} </b>
-                    <TextField required color="secondary" focused sx={{ width: 300 }} size="small" name = "Client Name" variant="filled" onChange={setFormData} />
+                <h3> Client Name:</h3>
+                    <TextField 
+                      required color="secondary" 
+                      focused sx={{ width: 300 }} 
+                      size="big" 
+                      name = "Client Name" 
+                      variant="filled" 
+                      onChange={setFormData}
+                    />
                 </label>
                 
                 </fieldset>
 
                 <fieldset>
+                 
                   <label>
-                    
-                  <b>{"Place of Interview:\t"}</b> 
-                    <TextField required color="secondary" focused sx={{ width: 300 }} size="small" name = "Place of Interview" variant="filled" onChange={setFormData} />
+                     <h3>Place of Interview:</h3>
+                    <TextField 
+                      required color="secondary" 
+                      focused sx={{ width: 300 }} 
+                      size="small" 
+                      name = "Place of Interview" 
+                      variant="filled" 
+                      onChange={setFormData} 
+                    />
                     </label>
                     </fieldset>
                     
                 <fieldset>
+                <h3>Interviewer Name:</h3> {interviewerName}
                 <label>
-                <b>Interviewer Name:</b> {interviewerName}
+               
                   </label>
                   </fieldset>
                   <fieldset>
-                  <label><b>Date of Interview:</b> {getCurrentDate()}</label>
+                  <label>
+                    <h3>Date of Interview:</h3> {getCurrentDate()}</label>
                   </fieldset>
                     <Collapsible/>
                 </fieldset>
