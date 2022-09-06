@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
 import '../App.css';
-import {setUsernameCaption} from "./LandingPage";
+//import {setUsernameCaption} from "./LandingPage";
+import {setUsernameCaption} from "../Components/MuiDrawer";
 
 // design
 import {
@@ -103,6 +104,7 @@ const Login = () => {
         onClick={() => {
           if (email !== "")
           {
+            //setUsernameCaption(email);
             setUsernameCaption(email);
             navigate("./LandingPage");
           }

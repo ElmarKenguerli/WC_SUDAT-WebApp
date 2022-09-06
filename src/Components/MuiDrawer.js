@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react'
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -19,6 +19,11 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
+let nameOfUser = "";
+
+export const setUsernameCaption = (uname) => {
+  nameOfUser = uname;
+}
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -67,6 +72,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft() {
+  const [username, setUsername] = useState('');
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -93,8 +99,12 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            WC-SUDAT
+            WC-SUDAT  
           </Typography>
+          <Typography variant="h6" style={{position: "absolute", right: "150px", border : "2px groove black", padding: "7px"}} noWrap component="div">
+          Logged in: {nameOfUser}  
+          </Typography>
+          
         </Toolbar>
       </AppBar>
       <Drawer

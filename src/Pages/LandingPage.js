@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-//import MaterialUIDrawer from '../Components/MuiDrawer'
+
 import {useNavigate} from "react-router-dom";
 import MuiDrawer from '../Components/MuiDrawer'
 import StyledTableCell from '../Components/StyledTable';
@@ -7,8 +7,6 @@ import { IconButton } from '@mui/material';
 import PostAddTwoToneIcon from '@mui/icons-material/PostAddTwoTone';
 import Button from '@material-ui/core/Button';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import {Box} from '@mui/material';
 import DataGrid from "../Components/DataGrid"
 
@@ -27,12 +25,14 @@ export const LandingPage = () => {
   return (
     <div>
         <MuiDrawer/>
-        <div>
+
+        {/* <div>
           <label>
             <b>Username: </b> 
             {nameOfUser}
           </label>
-        </div>
+        </div> */}
+
         <Box textAlign="center" >
           <Button 
           size="large" 
@@ -61,18 +61,6 @@ export const LandingPage = () => {
           <DataGrid/>
 
         </Box>
-
-
-          {/* <button
-        onClick={() => {
-          navigate("/Assessment");
-        }}
-      >
-        {" "}
-        Go to form
-      </button> */}
-
-      {/* <StyledTableCell/> */}
      
       </div>
   )
