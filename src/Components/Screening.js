@@ -162,13 +162,14 @@ function Form() {
 
   return(
   
-    <div className="wrapper">
+    <div className="wrapper" >
       <h1>SCREENING</h1>
       <Box sx={{
         p: 2,
-        border: '2px solid black',
-        margin: 5
-        
+        border: "1px black solid",
+        margin: 5,
+        backgroundColor:"#eff4f7fd",
+        borderRadius: "20px"
       }}>
       
       

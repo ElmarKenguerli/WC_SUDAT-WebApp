@@ -5,16 +5,17 @@
 
 .wrapper{
   padding: 35px;
-  background-color: #b5f0fabe;
+  background-color: #bdd5dabe;
 }
 
 .wrapper fieldset {
   margin: 30px;
   font-size: 25px;
-  background-color: #abe2f7fd;
+  background-color: #eff4f7fd;
   padding: 10px;
+  
   border-radius: 20px;
-
+  
 }
 
 #classes
