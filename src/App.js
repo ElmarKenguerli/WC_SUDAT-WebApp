@@ -1,10 +1,7 @@
 import './App.css';
-//import Header from "./components/Header";
+
 import React from "react";
-//import Signup from "./Pages/Signup";
-//import Login from "./Pages/Login";
-//import { BrowserRouter as Router, Route} from "react-router-dom";
-import VerticalLinearStepper from './Components/Stepper'
+
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Assessment from "./Pages/Assessment"; 
 import Login from "./Pages/Login";

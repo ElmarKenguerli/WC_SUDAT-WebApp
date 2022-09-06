@@ -13,25 +13,18 @@ import DataGrid from "../Components/DataGrid"
 let nameOfUser = "";
 
 export const setUsernameCaption = (uname) => {
-  nameOfUser = uname;
+  this.nameOfUser = uname;
 }
 
 export const LandingPage = () => {
 
-  const [username, setUsername] = useState('');
+  //const [username, setUsername] = useState('');
 
   let navigate = useNavigate();
   
   return (
     <div>
         <MuiDrawer/>
-
-        {/* <div>
-          <label>
-            <b>Username: </b> 
-            {nameOfUser}
-          </label>
-        </div> */}
 
         <Box textAlign="center" >
           <Button 

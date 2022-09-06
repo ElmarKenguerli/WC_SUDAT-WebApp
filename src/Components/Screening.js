@@ -12,6 +12,13 @@ import FollowUpQuestions from './FollowUpQuestions';
 import Stack from '@mui/material/Stack';
 import { Select, FormHelperText, MenuItem } from '@material-ui/core';
 
+let gender = "";
+
+export const setGender = (chosenGender) => {
+  gender = chosenGender;
+}
+
+
 export const GetValue = (value, num) => {
   val = value;
   //vals[num-1] = val;
@@ -149,6 +156,8 @@ function Form() {
       name: event.target.name,
       value: event.target.value,
     });
+    // setGender(event.target.value);
+    //console.log(gender);
   }
 
   return(
@@ -196,7 +205,7 @@ function Form() {
       }
 
           <div className =".input-container">
-            <form onSubmit={handleSubmit}>
+            {/* <form onSubmit={handleSubmit}>
 
                 <fieldset disabled={!hasAcceptedTsAndCs}>
                 <label>
@@ -213,7 +222,7 @@ function Form() {
                       size="big" 
                       name = "Client Name" 
                       variant="filled" 
-                      onChange={setFormData}
+                      onChange={handleData}
                     />
                 </label>
                 
@@ -229,7 +238,7 @@ function Form() {
                       size="small" 
                       name = "Place of Interview" 
                       variant="filled" 
-                      onChange={setFormData} 
+                      onChange={handleData} 
                     />
                     </label>
                     </fieldset>
@@ -248,11 +257,61 @@ function Form() {
                 </fieldset>
 
                
-            </form>
+            </form> */}
         </div>
 
         <div className =".input-container">
             <form onSubmit={handleSubmit}>
+
+            
+              <fieldset disabled={!hasAcceptedTsAndCs}>
+                  <label>
+                      <p>Interview Details</p>   
+                  </label>
+                  
+                  <fieldset>
+                  
+                  <label>
+                  <h3> Client Name:</h3>
+                      <TextField 
+                        required color="secondary" 
+                        focused sx={{ width: 300 }} 
+                        size="big" 
+                        name = "Client Name" 
+                        variant="filled" 
+                        onChange={handleData}
+                      />
+                  </label>
+                  
+                  </fieldset>
+
+                  <fieldset>
+                  
+                    <label>
+                      <h3>Place of Interview:</h3>
+                      <TextField 
+                        required color="secondary" 
+                        focused sx={{ width: 300 }} 
+                        size="small" 
+                        name = "Place of Interview" 
+                        variant="filled" 
+                        onChange={handleData} 
+                      />
+                      </label>
+                      </fieldset>
+                      
+                  <fieldset>
+                  <h3>Interviewer Name:</h3> {interviewerName}
+                  <label>
+                
+                    </label>
+                    </fieldset>
+                    <fieldset>
+                    <label>
+                      <h3>Date of Interview:</h3> {getCurrentDate()}</label>
+                    </fieldset>
+                      <Collapsible/> 
+                  </fieldset>
 
                 <fieldset disabled={!hasAcceptedTsAndCs}>
                 <label>
@@ -260,47 +319,49 @@ function Form() {
                 </label>
                 
                 <fieldset>
-                <label>
-                    <p>Sex</p>
-                    
-                    <Select name="Sex" style={{ width: 300 }} variant="filled" onChange={handleData}>
-                      <MenuItem value={""}>--Please Select an Option--</MenuItem>
-                      <MenuItem value={"Female"}>Female</MenuItem>
-                      <MenuItem value={"Male"}>Male</MenuItem>
-                      <MenuItem value={"Intersex"}>Intersex</MenuItem>
-                    </Select>
-                    <FormHelperText>Select your sex</FormHelperText>
-                    
-                    <Collapsible/>
-                </label>
+                  <label>
+                      <p>Gender</p>
+                      
+                      <Select name="Sex" style={{ width: 300 }} variant="filled" onChange={handleData}>
+                        <MenuItem value={""}>--Please Select an Option--</MenuItem>
+                        <MenuItem value={"Female"}>Female</MenuItem>
+                        <MenuItem value={"Male"}>Male</MenuItem>
+                        <MenuItem value={"Other"}>Other</MenuItem>
+                      </Select>
+                      <FormHelperText>Select your sex</FormHelperText>
+                      
+                      <Collapsible/>
+                  </label>
                 </fieldset>
+
+                
                 
                 <fieldset>
-                <label>
-                    <p>Age</p>
-                    <TextField 
-                      required  
-                      sx={{ width: 300 }} 
-                      color="secondary" 
-                      focused size="small" 
-                      label = "Birthday"
-                      type ="date"
-                      name = "Age" 
-                      variant="filled" 
-                      onChange={handleNumbers}
-                      value={age} 
-                    />
-                    <Collapsible/>
-                </label>
+                  <label>
+                      <p>Age</p>
+                      <TextField 
+                        required  
+                        sx={{ width: 300 }} 
+                        color="secondary" 
+                        focused size="small" 
+                        label = "Birthday"
+                        type ="date"
+                        name = "Age" 
+                        variant="filled" 
+                        onChange={handleData}
+                        value={age} 
+                      />
+                      <Collapsible/>
+                  </label>
                 </fieldset>
 
                 <fieldset>
-                <label>
+                  <label>
                     <p>Country of Origin</p>
                     <Countries />
                     {/* {<TextField required color="secondary" sx={{ width: 300 }} focused size="small" name = "Country" variant="filled" onChange={handleData} />} */}
                     <Collapsible/>
-                </label>
+                  </label>
                 </fieldset>
 
                 <fieldset>
@@ -312,18 +373,18 @@ function Form() {
                 </fieldset>
 
                 <fieldset>
-                <label>
+                  <label>
                     <p>Primary Language</p>
-                    <TextField required color="secondary" sx={{ width: 300 }} focused size="small" name = "lang" variant="filled" onChange={handleData} />
+                    <TextField required color="secondary" sx={{ width: 300 }} focused size="small" name = "Language" variant="filled" onChange={handleData} />
                     <Collapsible/>
-                </label>
+                  </label>
                 </fieldset>
 
                 <fieldset>
-                <label>
+                  <label>
                     <p>Current Housing Situation:</p>
                     
-                    <Select name="Housing" style={{ width: 300 }} variant="filled" onChange={handleData}>
+                    <Select name="Housing Situation" style={{ width: 300 }} variant="filled" onChange={handleData}>
                       <MenuItem value={""}>--Please Select an Option--</MenuItem>
                       <MenuItem value={"Rent or Own current House or Apartment"}>Rent or Own current House or Apartment</MenuItem>
                       <MenuItem value={"Living with Relatives or Friends"}>Living with Relatives or Friends</MenuItem>
@@ -338,22 +399,22 @@ function Form() {
                     
                     <Collapsible/>
 
-                </label>
+                  </label>
                 </fieldset>
 
                 <fieldset>
-                <label>
+                  <label>
                     <p>Highest Level of Education</p>
-                    <TextField required color="secondary" focused sx={{ width: 300 }} size="small" name = "education" variant="filled" onChange={handleData} />
+                    <TextField required color="secondary" focused sx={{ width: 300 }} size="small" name = "Education" variant="filled" onChange={handleData} />
                     <Collapsible/>
-                </label>
+                  </label>
                 </fieldset>
 
                 <fieldset>
                 <label>
                     <p>In Police Holding or Prison or Conflict with the Law in the past 12 months</p>
 
-                    <Select name="Conflict" style={{ width: 300 }} variant="filled" onChange={handleData}>
+                    <Select name="Recent Conflict" style={{ width: 300 }} variant="filled" onChange={handleData}>
                       <MenuItem value={""}>--Please Select an Option--</MenuItem>
                       <MenuItem value={"Police Holding"}>Police Holding</MenuItem>
                       <MenuItem value={"Prison"}>Prison</MenuItem>
@@ -417,6 +478,16 @@ function Form() {
                 
                 
             </form>
+
+            <div>
+              <br></br>
+              <h3>Summary: </h3>
+              <ul>
+                {Object.entries(formData).map(([name, value]) => (<li key={name}><strong>{name}</strong>:{value.toString()}</li>))}
+
+              </ul>
+            </div>
+            
         </div>
     </div>
   )
