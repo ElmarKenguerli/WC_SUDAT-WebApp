@@ -1,9 +1,11 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 import {useNavigate} from "react-router-dom";
 import MuiDrawer from '../Components/MuiDrawer'
-import StyledTableCell from '../Components/StyledTable';
-import { IconButton } from '@mui/material';
+//Firebase imports
+import {collection, query, orderBy, onSnapshot} from "firebase/firestore"
+import {db} from '../database/firebase'
+
 import PostAddTwoToneIcon from '@mui/icons-material/PostAddTwoTone';
 import Button from '@material-ui/core/Button';
 import Container from 'react-bootstrap/Container';
@@ -18,7 +20,19 @@ export const setUsernameCaption = (uname) => {
 
 export const LandingPage = () => {
 
-  //const [username, setUsername] = useState('');
+  const [users, setUsers] = useState([])
+
+  /* function to get all tasks from firestore - fills 'users' array with data from Users Collection */ 
+    useEffect(() => {
+      const taskColRef = query(collection(db, 'Users'), orderBy('userName', 'desc'))
+      onSnapshot(taskColRef, (snapshot) => {
+        setUsers(snapshot.docs.map(doc => ({
+          id: doc.id,
+          data: doc.data()
+        })))
+      })
+    },[])
+
 
   let navigate = useNavigate();
   
@@ -53,8 +67,21 @@ export const LandingPage = () => {
         <Box textAlign="center" width="1000" margin="80px" >
           <DataGrid/>
 
+          
+        
         </Box>
-     
+
+        <Box  margin="80px" >
+           <p><br></br>List of Users: </p>
+          {/* Display users */}         
+          {users.map((user) => ( <p>{user.data.userName}</p> ))}
+          
+        
+        </Box>
+         
+
+          
+
       </div>
   )
 }

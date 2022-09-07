@@ -5,26 +5,13 @@ import '../App.css';
 import {setUsernameCaption} from "../Components/MuiDrawer";
 import AddUser from "../database/AddUser"
 // design
-import {
-    InputAdornment,
-    IconButton,
-    OutlinedInput,
-    InputLabel,
-    Box,
-    Button
-} from '@mui/material';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import {Box} from '@mui/material';
+
 
 
 const Login = () => {
-    // form state
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
     
-    let navigate = useNavigate();
+    
     
     return (
     
@@ -51,7 +38,7 @@ const Login = () => {
             </label>
         </div>
 
-        
+
         {AddUser()}
         
         </div>
