@@ -427,20 +427,26 @@ function Form() {
                   </fieldset>
 
                   <fieldset>
-                    <SliderQuestion 
-                      question={"2. Use any marijuana (weed, oil, wax, or hash by smoking, vaping, dabbing, or in food) or “synthetic marijuana” (like “K2,” “Spice”)?"}/>
+                    <p>2. Use any marijuana (weed, oil, wax, or hash by smoking, vaping, dabbing, or in food) or “synthetic marijuana” (like “K2,” “Spice”)?</p>
+                    <Slider style={{ width: 550 ,marginLeft:50}} defaultValue = {0} step={1} valueLabelDisplay="auto" marks={marks} min={0} max={4} color="secondary"  name = "Q2" onChange={handleData}
+                    />
+                    
                     <Collapsible/>
                   </fieldset>
 
                   <fieldset>
-                    <SliderQuestion 
-                      question={"3. Use anything else to get high (like other illegal drugs, prescription or over-the-counter medications, and things that you sniff, huff, vape, or inject)?"}/>
+                    <p>3. Use anything else to get high (like other illegal drugs, prescription or over-the-counter medications, and things that you sniff, huff, vape, or inject)?</p>
+                    <Slider style={{ width: 550 ,marginLeft:50}} defaultValue = {0} step={1} valueLabelDisplay="auto" marks={marks} min={0} max={4} color="secondary"  name = "Q3" onChange={handleData}
+                    />
+                   
                     <Collapsible/>
                   </fieldset>
 
                   <fieldset>
-                    <SliderQuestion 
-                      question={"4. Use any tobacco or nicotine products (for example, cigarettes, e-cigarettes, hookahs or smokeless tobacco)?"}/>
+                    <p>4. Use any tobacco or nicotine products (for example, cigarettes, e-cigarettes, hookahs or smokeless tobacco)?</p>
+                    <Slider style={{ width: 550 ,marginLeft:50}} defaultValue = {0} step={1} valueLabelDisplay="auto" marks={marks} min={0} max={4} color="secondary"  name = "Q4" onChange={handleData}
+                    />
+                   
                     <Collapsible/>
                   </fieldset>
 
