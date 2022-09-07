@@ -90,7 +90,7 @@ export function AddUser(){
 
           </div>
         </Box>
-          <div className="text-center mt-4">
+          <div align="right" style={{marginTop:5}}>
 
             <Button
                 variant="contained"
@@ -99,7 +99,7 @@ export function AddUser(){
                 if (userName !== "")
                 {
                 //setUsernameCaption(email);
-                onclick = (handleSubmit);
+                //onclick = (handleSubmit);
                 navigate("./LandingPage");
                 }
                 else
@@ -108,21 +108,22 @@ export function AddUser(){
                 }
 
                 }}
+                
                 >
                 {" "}
                 Log-in
             </Button>
-
-            
-
-          </div>
-          <Button
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <Button
                 variant="contained"
                 size = "large"
                 onClick={() =>navigate("./Signup")}
                 >
                 Register
             </Button>
+
+          </div>
+          
       </div>
       
     )
