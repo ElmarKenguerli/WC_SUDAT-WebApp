@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import '../App.css';
 //import {setUsernameCaption} from "./LandingPage";
 import {setUsernameCaption} from "../Components/MuiDrawer";
-
+import AddUser from "../database/AddUser"
 // design
 import {
     InputAdornment,
@@ -50,76 +50,10 @@ const Login = () => {
                 Login
             </label>
         </div>
-        <Box sx = {{padding:10,border: "1px solid black"}}>
 
         
-
-            <div className="form-group">
-                <InputLabel>Username/Email</InputLabel>
-                <OutlinedInput 
-                    
-                    sx={{ height:75, fontSize: "30px" }}  
-                    fullWidth
-                    size="normal" 
-                    variant="outlined"
-                    className="form-control"
-                    label="Email"
-                    value={email}
-                    onChange={(e) => {setEmail(e.target.value); setErrorMessage("");}}
-                />
-                <label>
-                    {errorMessage}
-                </label>    
-            </div>
-
-            <div className="form-group">
-                <br></br>
-                
-                    <InputLabel>Password</InputLabel>
-                    <OutlinedInput   
-                        sx={{ height:75, fontSize: "30px"  }}  
-                        
-                        fullWidth
-                        size = "normal"
-                        label="Password"
-                        type={showPassword ? "text" : "password"}
-                        value={password}
-                        onChange={(e)=> setPassword(e.target.value)}
-                        endAdornment={
-                            <InputAdornment>
-                                <IconButton edge="end" onClick={() => setShowPassword(!showPassword)}>
-                                    {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon/>}
-                                </IconButton>
-                            </InputAdornment>
-                        }
-                    />
-            
-            </div>
-        </Box>
-        <div className="text-center mt-4">
+        {AddUser()}
         
-        <Button
-        variant="contained"
-        size = "large"
-        onClick={() => {
-          if (email !== "")
-          {
-            //setUsernameCaption(email);
-            setUsernameCaption(email);
-            navigate("./LandingPage");
-          }
-          else
-          {
-            setErrorMessage("No username provided!")
-          }
-          
-        }}
-        >
-        {" "}
-        Log-in
-        </Button>
-        
-        </div>
         </div>
     </header>
   )
