@@ -113,7 +113,16 @@ export function AddUser(){
                 Log-in
             </Button>
 
+            
+
           </div>
+          <Button
+                variant="contained"
+                size = "large"
+                onClick={() =>navigate("./Signup")}
+                >
+                Register
+            </Button>
       </div>
       
     )
