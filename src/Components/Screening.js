@@ -11,7 +11,7 @@ import BooleanQuestion  from "./BooleanQuestion";
 import FollowUpQuestions from './FollowUpQuestions';
 import Stack from '@mui/material/Stack';
 import { Select, FormHelperText, MenuItem } from '@material-ui/core';
-
+import Slider from '@mui/material/Slider';
 let gender = "";
 
 export const setGender = (chosenGender) => {
@@ -110,6 +110,28 @@ export function Collapsible() {
         );
 }
 
+const marks = [
+  {
+    value: 0,
+    label: 'Never',
+  },
+  {
+    value: 1,
+    label: 'Once or Twice',
+  },
+  {
+    value: 2,
+    label: 'Monthly',
+  },
+  {
+    value: 3,
+    label: 'Weekly',
+  },
+  {
+    value: 4,
+    label: 'Daily/Almost Daily',
+  },
+];
 
 const formReducer = (state, event) => {
  return {
@@ -206,59 +228,7 @@ function Form() {
       }
 
           <div className =".input-container">
-            {/* <form onSubmit={handleSubmit}>
-
-                <fieldset disabled={!hasAcceptedTsAndCs}>
-                <label>
-                    <p>Interview Details</p>   
-                </label>
-                
-                <fieldset>
-                
-                <label>
-                <h3> Client Name:</h3>
-                    <TextField 
-                      required color="secondary" 
-                      focused sx={{ width: 300 }} 
-                      size="big" 
-                      name = "Client Name" 
-                      variant="filled" 
-                      onChange={handleData}
-                    />
-                </label>
-                
-                </fieldset>
-
-                <fieldset>
-                 
-                  <label>
-                     <h3>Place of Interview:</h3>
-                    <TextField 
-                      required color="secondary" 
-                      focused sx={{ width: 300 }} 
-                      size="small" 
-                      name = "Place of Interview" 
-                      variant="filled" 
-                      onChange={handleData} 
-                    />
-                    </label>
-                    </fieldset>
-                    
-                <fieldset>
-                <h3>Interviewer Name:</h3> {interviewerName}
-                <label>
-               
-                  </label>
-                  </fieldset>
-                  <fieldset>
-                  <label>
-                    <h3>Date of Interview:</h3> {getCurrentDate()}</label>
-                  </fieldset>
-                    <Collapsible/>
-                </fieldset>
-
-               
-            </form> */}
+            
         </div>
 
         <div className =".input-container">
@@ -339,7 +309,7 @@ function Form() {
                 
                 <fieldset>
                   <label>
-                      <p>Age</p>
+                      <p>Date Of Birth</p>
                       <TextField 
                         required  
                         sx={{ width: 300 }} 
@@ -359,7 +329,7 @@ function Form() {
                 <fieldset>
                   <label>
                     <p>Country of Origin</p>
-                    <Countries />
+                    <Countries onChange={handleData} />
                     {/* {<TextField required color="secondary" sx={{ width: 300 }} focused size="small" name = "Country" variant="filled" onChange={handleData} />} */}
                     <Collapsible/>
                   </label>
@@ -406,7 +376,15 @@ function Form() {
                 <fieldset>
                   <label>
                     <p>Highest Level of Education</p>
-                    <TextField required color="secondary" focused sx={{ width: 300 }} size="small" name = "Education" variant="filled" onChange={handleData} />
+                    <Select name="Education" style={{ width: 300 }} variant="filled" onChange={handleData}>
+                      <MenuItem value={""}>--Please Select an Option--</MenuItem>
+                      <MenuItem value={"None"}>None</MenuItem>
+                      <MenuItem value={"Primary"}>Primary</MenuItem>
+                      <MenuItem value={"High-School"}>High-School</MenuItem>
+                      <MenuItem value={"College/University"}>College/University</MenuItem>
+
+                    </Select>
+                    <FormHelperText>Select the Most Applicable</FormHelperText>
                     <Collapsible/>
                   </label>
                 </fieldset>
@@ -441,8 +419,8 @@ function Form() {
                   </label>
 
                   <fieldset>
-                    <SliderQuestion 
-                      question={"1. Drink more than a few sips of beer, wine, or any drink containing alcohol?"}
+                    <p>1. Drink more than a few sips of beer, wine, or any drink containing alcohol?</p>
+                    <Slider style={{ width: 550 ,marginLeft:50}} defaultValue = {0} step={1} valueLabelDisplay="auto" marks={marks} min={0} max={4} color="secondary"  name = "Q1" onChange={handleData}
                     />
                       
                     <Collapsible/>

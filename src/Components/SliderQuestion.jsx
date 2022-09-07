@@ -17,6 +17,7 @@ export class SliderQuestion extends Component {
       this.setState({value: event.target.value}); 
       GetValue(value, this.num);
       console.log(value);
+      
     }
 
     const marks = [
