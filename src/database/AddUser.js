@@ -35,7 +35,7 @@ export function AddUser(){
           isAdmin: false,
           loggedIn: true
         })
-        
+        console.log("Submitting")
       } catch (err) {
         alert(err)
       }

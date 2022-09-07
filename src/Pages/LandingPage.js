@@ -24,13 +24,14 @@ export const LandingPage = () => {
 
   /* function to get all tasks from firestore - fills 'users' array with data from Users Collection */ 
     useEffect(() => {
-      const taskColRef = query(collection(db, 'Users'), orderBy('userName', 'desc'))
-      onSnapshot(taskColRef, (snapshot) => {
-        setUsers(snapshot.docs.map(doc => ({
+      const q = query(collection(db, 'Users'))
+      onSnapshot(q, (querySnapshot) => {
+        setUsers(querySnapshot.docs.map(doc => ({
           id: doc.id,
           data: doc.data()
         })))
       })
+      console.log("Reading data");
     },[])
 
 
