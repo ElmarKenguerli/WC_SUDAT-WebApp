@@ -2,6 +2,10 @@ import React, {useState, useEffect} from 'react'
 
 import {useNavigate} from "react-router-dom";
 import MuiDrawer from '../Components/MuiDrawer'
+
+import AllPagesPDFViewer from "../Components/reportPDF";
+import pdfFile from "../Assets/reportTest.pdf";
+
 //Firebase imports
 import {collection, query, orderBy, onSnapshot} from "firebase/firestore"
 import {db} from '../database/firebase'
@@ -67,11 +71,16 @@ export const LandingPage = () => {
         
         <Box textAlign="center" width="1000" margin="80px" >
           <DataGrid/>
+          
+          {/* <h4>All Pages</h4>
+          <div >
+            <AllPagesPDFViewer pdf={pdfFile} />
+          </div> */}
 
           
         
         </Box>
-
+          
         <Box  margin="80px" >
            <p><br></br>List of Users: </p>
           {/* Display users */}         
