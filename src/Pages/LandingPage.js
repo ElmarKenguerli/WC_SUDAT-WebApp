@@ -1,10 +1,7 @@
 import React, {useState, useEffect} from 'react'
-
 import {useNavigate} from "react-router-dom";
 import MuiDrawer from '../Components/MuiDrawer'
-
-import AllPagesPDFViewer from "../Components/reportPDF";
-import pdfFile from "../Assets/reportTest.pdf";
+import PDF from "../Assets/reportTest.pdf";
 
 //Firebase imports
 import {collection, query, orderBy, onSnapshot} from "firebase/firestore"
@@ -12,17 +9,13 @@ import {db} from '../database/firebase'
 
 import PostAddTwoToneIcon from '@mui/icons-material/PostAddTwoTone';
 import Button from '@material-ui/core/Button';
-import Container from 'react-bootstrap/Container';
 import {Box} from '@mui/material';
 import DataGrid from "../Components/DataGrid"
 
-let nameOfUser = "";
-
-export const setUsernameCaption = (uname) => {
-  this.nameOfUser = uname;
-}
 
 export const LandingPage = () => {
+
+
 
   const [users, setUsers] = useState([])
 
@@ -71,11 +64,15 @@ export const LandingPage = () => {
         
         <Box textAlign="center" width="1000" margin="80px" >
           <DataGrid/>
-          
-          {/* <h4>All Pages</h4>
-          <div >
-            <AllPagesPDFViewer pdf={pdfFile} />
-          </div> */}
+          <br></br>
+          <h4>View Report Below</h4>
+
+          <embed
+            src={PDF}
+            type="application/pdf"
+            height={800}
+            width={500}
+          />
 
           
         
