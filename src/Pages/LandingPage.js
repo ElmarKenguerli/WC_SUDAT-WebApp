@@ -66,7 +66,8 @@ export const LandingPage = () => {
           <DataGrid/>
           <br></br>
           <h4>View Report Below</h4>
-
+          
+          {/* Embedd pdf on page */}
           <embed
             src={PDF}
             type="application/pdf"

@@ -8,7 +8,7 @@ import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 //import Screening from "./Components/Screening"; 
 import LandingPage from "./Pages/LandingPage";
-//import Home from "./Pages/Dummy";
+
 
 
 function App() {

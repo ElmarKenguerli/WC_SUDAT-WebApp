@@ -6,11 +6,16 @@ import Countries from '../Components/Countries';
 //mui components
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import SliderQuestion  from "./SliderQuestion";
+//import SliderQuestion  from "./SliderQuestion";
 import BooleanQuestion  from "./BooleanQuestion";
 import FollowUpQuestions from './FollowUpQuestions';
-import Stack from '@mui/material/Stack';
-import { Select, FormHelperText, MenuItem } from '@material-ui/core';
+
+import {
+  DatePicker,MuiPickersUtilsProvider
+} from '@material-ui/pickers';
+import DateMomentUtils from '@date-io/moment';
+
+import { Select, FormHelperText, MenuItem,Radio, RadioGroup, FormControlLabel } from '@material-ui/core';
 import Slider from '@mui/material/Slider';
 let gender = "";
 
@@ -144,7 +149,7 @@ function Form() {
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false);
   const [hasAcceptedTsAndCs, setHasAcceptedTsAndCs] = useState(false);
-
+  const [valueDate, setValueDate] = React.useState(null);
   // Method called when un/checking check box
   const handleChange = (event) => {
     setHasAcceptedTsAndCs(current => !current);
@@ -178,6 +183,15 @@ function Form() {
       name: event.target.name,
       value: event.target.value,
     });
+    // setGender(event.target.value);
+    //console.log(gender);
+  }
+  function handleDateData(datevalue) {
+    setFormData({
+      name: "Date of Birth",
+      value: datevalue,
+    });
+    setValueDate(datevalue);
     // setGender(event.target.value);
     //console.log(gender);
   }
@@ -310,7 +324,7 @@ function Form() {
                 <fieldset>
                   <label>
                       <p>Date Of Birth</p>
-                      <TextField 
+                      {/* <TextField 
                         required  
                         sx={{ width: 300 }} 
                         color="secondary" 
@@ -321,7 +335,11 @@ function Form() {
                         variant="filled" 
                         onChange={handleData}
                         value={age} 
-                      />
+                      /> */}
+                      <MuiPickersUtilsProvider utils={DateMomentUtils}>
+                      <DatePicker value={valueDate} name="Date of Birth" onChange={(newValue) => {handleDateData(newValue);}} />
+
+                      </MuiPickersUtilsProvider>
                       <Collapsible/>
                   </label>
                 </fieldset>
@@ -452,7 +470,10 @@ function Form() {
 
                   <fieldset>
                     <p>5. Have you ever ridden in a CAR driven by someone (including yourself) who was “high” or had been using alcohol or drugs?</p>
-                    <BooleanQuestion/>
+                    <RadioGroup row name = "Q5" onChange={handleData}>
+                      <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
+                      <FormControlLabel value="No" control={<Radio />} label="No" />
+                    </RadioGroup>
                     <Collapsible/>
                   </fieldset>
 
