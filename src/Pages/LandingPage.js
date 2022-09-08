@@ -77,14 +77,7 @@ export const LandingPage = () => {
           
         
         </Box>
-          
-        <Box  margin="80px" >
-           <p><br></br>List of Users: </p>
-          {/* Display users */}         
-          {/* {users.map((user) => ( <p>{user.data.userName}</p> ))} */}
-          
-        
-        </Box>
+
          
 
           
