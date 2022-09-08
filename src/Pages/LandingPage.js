@@ -71,7 +71,7 @@ export const LandingPage = () => {
             src={PDF}
             type="application/pdf"
             height={800}
-            width={500}
+            width={700}
           />
 
           
