@@ -324,18 +324,7 @@ function Form() {
                 <fieldset>
                   <label>
                       <p>Date Of Birth</p>
-                      {/* <TextField 
-                        required  
-                        sx={{ width: 300 }} 
-                        color="secondary" 
-                        focused size="small" 
-                        label = "Birthday"
-                        type ="date"
-                        name = "Age" 
-                        variant="filled" 
-                        onChange={handleData}
-                        value={age} 
-                      /> */}
+                      
                       <MuiPickersUtilsProvider utils={DateMomentUtils}>
                       <DatePicker value={valueDate} name="Date of Birth" onChange={(newValue) => {handleDateData(newValue);}} />
 
