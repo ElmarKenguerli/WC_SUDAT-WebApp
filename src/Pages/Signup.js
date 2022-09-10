@@ -108,24 +108,43 @@ const Signup = () => {
     }
 
     /* function to get all tasks from firestore in realtime */
-    useEffect(() => {
-    const q = query(collection(db, 'Users'), where('username', "==", {uName}))
-        onSnapshot(q, (querySnapshot) => {
-        setUsers(querySnapshot.docs.map(doc => ({
-            id: doc.id,
-            data: doc.data()
-        })))
-        })
-    },[])
+    // useEffect(() => {
+    // const q = query(collection(db, 'Users'), where('username', "==", username))
+    //     onSnapshot(q, (querySnapshot) => {
+    //     setUsers(querySnapshot.docs.map(doc => ({
+    //         id: doc.id,
+    //         data: doc.data()
+    //     })))
+        
+    //     })
+    // },[])
 
-    function getUsers() {
-        uName = username;
+    //testing purposes
+    function printUsersinConsole() {
+        
         console.log(`Username: ${username}`);
         console.log(users.length);
         for (let i = 0; i < users.length; ++i)
         {
             console.log(users[i].data);
         }
+    }
+
+    function getUsers() {
+        
+        
+        console.log(`User search: ${username}`);
+        const q = query(collection(db, 'Users'), where('username', "==", username))
+        
+        onSnapshot(q, (querySnapshot) => {
+        setUsers(querySnapshot.docs.map(doc => ({
+            id: doc.id,
+            data: doc.data()
+        })))
+        
+        })
+        
+        
     }
 
     function isComplete()
@@ -469,6 +488,12 @@ const Signup = () => {
                     <Button 
                         variant="contained" 
                         onClick={getUsers}
+                    >
+                        Get Users
+                    </Button>
+                    <Button 
+                        variant="contained" 
+                        onClick={printUsersinConsole}
                     >
                         Print Users
                     </Button>
