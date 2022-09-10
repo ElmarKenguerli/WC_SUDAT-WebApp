@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer, useState, useEffect } from 'react';
 //import React from "react";
 import '../App.css';
 import useCollapse from 'react-collapsed';
@@ -50,6 +50,50 @@ const interviewerName = "Danny Guttmann";
 let val = 0;
 
 
+// function ShowFollowUpScreeningQuestions() {
+//   return (
+
+//      <div name="screening">
+//       <fieldset>
+//         <p>5. Have you ever ridden in a CAR driven by someone (including yourself) who was “high” or had been using alcohol or drugs?</p>
+//         <BooleanQuestion/>
+//         <Collapsible/>
+//       </fieldset>
+
+//     <fieldset>
+//       <p>6. Do you ever use alcohol or drugs to RELAX, feel better about yourself, or fit in </p>
+//       <BooleanQuestion/>
+//       <Collapsible/>
+//     </fieldset>
+
+//     <fieldset>
+//       <p>7. Do you ever use alcohol or drugs while you are by yourself, or ALONE?</p>
+//       <BooleanQuestion />
+//       <Collapsible/>
+//     </fieldset>
+
+//     <fieldset>
+//       <p>8. Do you ever FORGET things you did while using alcohol or drugs?</p>
+//       <BooleanQuestion />
+//       <Collapsible/>
+//     </fieldset>
+
+//     <fieldset>
+//       <p>9. Do your FAMILY or FRIENDS ever tell you that you should cut down on your drinking or drug use?</p>
+//       <BooleanQuestion />
+//       <Collapsible/>
+//     </fieldset>
+
+//     <fieldset>
+//       <p>10. Have you ever gotten into TROUBLE while you were using alcohol or drugs</p>
+//       <BooleanQuestion />
+//       <Collapsible/>
+//     </fieldset>
+
+//    </div>
+//   );
+// }
+
 export function Collapsible() {
     const [formData, setFormData] = useReducer(formReducer, {});
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
@@ -71,7 +115,7 @@ export function Collapsible() {
         );
 }
 
-const marks = [
+const neverToDaily = [
   {
     value: 0,
     label: 'Never',
@@ -101,19 +145,48 @@ const formReducer = (state, event) => {
  }
 }
 
-function Form(props) {
+function Form() {
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false);
   const [hasAcceptedTsAndCs, setHasAcceptedTsAndCs] = useState(false);
   const [valueDate, setValueDate] = React.useState(null);
-  const[answers,updateAnswers] = useState([]);
+
+  const [q1, setQ1] = useState(0);
+  const [q2, setQ2] = useState(0);
+  const [q3, setQ3] = useState(0);
+  const [q4, setQ4] = useState(0);
+
+  const [greaterThanZero, setGreaterThanZero] = useState(false);
+
+  let ans = [0, 0, 0, 0];
+
   // Method called when un/checking check box
   const handleChange = (event) => {
     setHasAcceptedTsAndCs(current => !current);
   }
 
-  const updateForm = (newAnswer) =>{
-    updateAnswers(state => [newAnswer, ...state])
+  useEffect(() => {
+    let great = false;
+
+    if (isGreaterThanZero()) {
+      great = true;  
+    }
+
+    setGreaterThanZero(great);
+  });
+
+  function isGreaterThanZero() {
+    ans[0] = q1;
+    ans[1] = q2;
+    ans[2] = q3;
+    ans[3] = q4;
+    
+    return (
+      ans[0] > 0 ||
+      ans[1] > 0 ||
+      ans[2] > 0 ||
+      ans[3] > 0
+    );
   }
 
   //Show submitting message while submitting
@@ -127,16 +200,8 @@ function Form(props) {
     }, 3000)
   }
 
-  const [age, setAge] = useState('');
+ 
 
-  const handleNumbers = event => {
-    val = event.target.value;
-
-    if (val < 0)
-      setAge(0)
-    else
-      setAge(val);
-  };
   
   //
   const handleData = event => {
@@ -153,8 +218,7 @@ function Form(props) {
       value: datevalue,
     });
     setValueDate(datevalue);
-    // setGender(event.target.value);
-    //console.log(gender);
+    
   }
 
   return(
@@ -388,7 +452,7 @@ function Form(props) {
 
                   <fieldset>
                     <p>1. Drink more than a few sips of beer, wine, or any drink containing alcohol?</p>
-                    <Slider style={{ width: 550 ,marginLeft:50}} defaultValue = {0} step={1} valueLabelDisplay="auto" marks={marks} min={0} max={4} color="secondary"  name = "Q1" onChange={handleData}
+                    <Slider style={{ width: 550 ,marginLeft:50}} defaultValue = {0} step={1} valueLabelDisplay="auto" marks={neverToDaily} min={0} max={4} color="secondary"  name = "Q1" value={q1} onChange={(e) => {setQ1(e.target.value);}}
                     />
                       
                     <Collapsible/>
@@ -396,7 +460,7 @@ function Form(props) {
 
                   <fieldset>
                     <p>2. Use any marijuana (weed, oil, wax, or hash by smoking, vaping, dabbing, or in food) or “synthetic marijuana” (like “K2,” “Spice”)?</p>
-                    <Slider style={{ width: 550 ,marginLeft:50}} defaultValue = {0} step={1} valueLabelDisplay="auto" marks={marks} min={0} max={4} color="secondary"  name = "Q2" onChange={handleData}
+                    <Slider style={{ width: 550 ,marginLeft:50}} defaultValue = {0} step={1} valueLabelDisplay="auto" marks={neverToDaily} min={0} max={4} color="secondary"  name = "Q2" value={q2} onChange={(e) => {setQ2(e.target.value);}}
                     />
                     
                     <Collapsible/>
@@ -404,7 +468,7 @@ function Form(props) {
 
                   <fieldset>
                     <p>3. Use anything else to get high (like other illegal drugs, prescription or over-the-counter medications, and things that you sniff, huff, vape, or inject)?</p>
-                    <Slider style={{ width: 550 ,marginLeft:50}} defaultValue = {0} step={1} valueLabelDisplay="auto" marks={marks} min={0} max={4} color="secondary"  name = "Q3" onChange={handleData}
+                    <Slider style={{ width: 550 ,marginLeft:50}} defaultValue = {0} step={1} valueLabelDisplay="auto" marks={neverToDaily} min={0} max={4} color="secondary"  name = "Q3" value={q3} onChange={(e) => {setQ3(e.target.value);}}
                     />
                    
                     <Collapsible/>
@@ -412,33 +476,26 @@ function Form(props) {
 
                   <fieldset>
                     <p>4. Use any tobacco or nicotine products (for example, cigarettes, e-cigarettes, hookahs or smokeless tobacco)?</p>
-                    <Slider style={{ width: 550 ,marginLeft:50}} defaultValue = {0} step={1} valueLabelDisplay="auto" marks={marks} min={0} max={4} color="secondary"  name = "Q4" onChange={handleData}
+                    <Slider style={{ width: 550 ,marginLeft:50}} defaultValue = {0} step={1} valueLabelDisplay="auto" marks={neverToDaily} min={0} max={4} color="secondary"  name = "Q4" value={q4} onChange={(e) => {setQ4(e.target.value);}}
                     />
                    
                     <Collapsible/>
                   </fieldset>
 
                   <fieldset>
-                    {/* <p>5. Have you ever ridden in a CAR driven by someone (including yourself) who was “high” or had been using alcohol or drugs?</p>
+                    <p>5. Have you ever ridden in a CAR driven by someone (including yourself) who was “high” or had been using alcohol or drugs?</p>
                     <RadioGroup row name = "Q5" onChange={handleData}>
                       <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                       <FormControlLabel value="No" control={<Radio />} label="No" />
-                    </RadioGroup> */}
-                    <BooleanQuestion
-                    question = "Have you ever ridden in a CAR driven by someone (including yourself) who was “high” or had been using alcohol or drugs?"
-                    number = "5"
-                    form = {answers}
-                    updateForm = {updateForm}
-                    />
+                    </RadioGroup>
                     <Collapsible/>
                   </fieldset>
 
                 </fieldset>
                   
-                  <FollowUpQuestions
-                  answers = {answers}
-                  updateForm = {updateForm}/>
-                   <button className="btn-square" type="submit">Submit</button> 
+                {greaterThanZero && <FollowUpQuestions updateForm = {handleData} />}
+
+              <button className="btn-square" type="submit">Submit</button> 
                 
                 
             </form>
@@ -450,9 +507,6 @@ function Form(props) {
                 {Object.entries(formData).map(([name, value]) => (<li key={name}><strong>{name}</strong>:{value.toString()}</li>))}
 
               </ul>
-              <box>
-                {answers}
-              </box>
             </div>
             
         </div>

@@ -8,7 +8,7 @@ export default function BooleanQuestion(props) {
 
     const selectionChangeHandler = (event) => {
       setSelected(event.target.value);
-      props.updateForm(props.number + ": " + (event.target.value)+"\n");
+      props.updateForm(event);
     };
   
     return (
@@ -16,13 +16,17 @@ export default function BooleanQuestion(props) {
         <p>{props.question}</p>
         <RadioGroup 
         row value={selected} onChange={selectionChangeHandler}>
-          <FormControlLabel value="Yes" control={<Radio 
-          onChange={(event) => setSelected(event.target.value)}/>} label="Yes" />
+          <FormControlLabel value="Yes" 
+          control={<Radio onChange={(event) => setSelected(event.target.value)}/>}  
+          label="Yes"
+          name = {props.number}
+          />
           <FormControlLabel 
-          value="No" control={<Radio
-          onChange={(event) => setSelected(event.target.value)}
-           />} 
-           label="No" />
+          value="No" 
+          control={<Radio onChange={(event) => setSelected(event.target.value)}/>} 
+          label="No"
+          name = {props.number}
+          />
           
         </RadioGroup>
       </FormControl>

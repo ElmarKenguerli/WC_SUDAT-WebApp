@@ -6,7 +6,7 @@ import VerticalLinearStepper from '../Components/Stepper'
 function Assessment() {
 
 
-  update
+
 
   return (
     <>
