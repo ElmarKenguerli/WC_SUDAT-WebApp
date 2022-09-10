@@ -156,6 +156,24 @@ function Form() {
   const [q3, setQ3] = useState(0);
   const [q4, setQ4] = useState(0);
 
+  const [q5, setQ5] = useState(false);
+  const [q6, setQ6] = useState(false);
+  const [q7, setQ7] = useState(false);
+  const [q8, setQ8] = useState(false);
+  const [q9, setQ9] = useState(false);
+  const [q10, setQ10] = useState(false);
+
+  const [clientName, setClientName] = useState("");
+  const [placeOfInterview, setPlaceOfInterview] = useState("");
+  const [gender, setGender] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [countryOfOrigin, setCountryOfOrigin] = useState("");
+  const [placeOfResidence, setPlaceOfResidence] = useState("");
+  const [primaryLanguage, setPrimaryLanguage] = useState("");
+  const [housing, setHousing] = useState("");
+  const [education, setEducation] = useState("");
+  const [crime, setCrime] = useState("");
+
   const [greaterThanZero, setGreaterThanZero] = useState(false);
 
   let ans = [0, 0, 0, 0];
@@ -504,7 +522,11 @@ function Form() {
               <br></br>
               <h3>Summary: </h3>
               <ul>
-                {Object.entries(formData).map(([name, value]) => (<li key={name}><strong>{name}</strong>:{value.toString()}</li>))}
+                {q1}
+                {q2}
+                {q3}
+                {q4}
+                {/* {Object.entries(formData).map(([name, value]) => (<li key={name}><strong>{name}</strong>:{value.toString()}</li>))} */}
 
               </ul>
             </div>
