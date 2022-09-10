@@ -2,39 +2,58 @@ import React from 'react'
 import BooleanQuestion from '../Components/BooleanQuestion'
 import { Collapsible } from './Screening'
 
-const FollowUpQuestions = () => {
+const FollowUpQuestions = (props) => {
   return (
     <div name="screening">
 
         <fieldset>
 
          <fieldset>
-            <p>6. Do you ever use alcohol or drugs to RELAX, feel better about yourself, or fit in</p>
-            <BooleanQuestion/>
+            <BooleanQuestion
+             question = "6. Do you ever use alcohol or drugs to RELAX, feel better about yourself, or fit in"
+             number = "6"
+             form = {props.answers}
+             updateForm = {props.updateForm}
+              />
          <Collapsible/>
          </fieldset>
 
          <fieldset>
-             <p>7. Do you ever use alcohol or drugs while you are by yourself, or ALONE?</p>
-             <BooleanQuestion />
+             <BooleanQuestion
+             question = "7. Do you ever use alcohol or drugs while you are by yourself, or ALONE?"
+             number = "7"
+              form = {props.answers}
+              updateForm = {props.updateForm}
+              />
              <Collapsible/>
          </fieldset>
 
          <fieldset>
-             <p>8. Do you ever FORGET things you did while using alcohol or drugs?</p>
-             <BooleanQuestion/>
+             <BooleanQuestion
+             question = "8. Do you ever FORGET things you did while using alcohol or drugs? "
+             number = "8 "
+            form = {props.answers}
+            updateForm = {props.updateForm}
+            />
          <Collapsible/>
          </fieldset>
 
          <fieldset>
-            <p>9. Do your FAMILY or FRIENDS ever tell you that you should cut down on your drinking or drug use?</p>
-             <BooleanQuestion/>
+             <BooleanQuestion
+             question = "9. Do your FAMILY or FRIENDS ever tell you that you should cut down on your drinking or drug use?"
+             number ="9"
+             form = {props.answers}
+             updateForm = {props.updateForm}/>
+
              <Collapsible/>
          </fieldset>
 
          <fieldset>
-            <p>10. Have you ever gotten into TROUBLE while you were using alcohol or drugs</p>
-             <BooleanQuestion/>
+             <BooleanQuestion
+             question = "10. Have you ever gotten into TROUBLE while you were using alcohol or drugs" 
+             number = "10"
+             form = {props.answers}
+             updateForm = {props.updateForm}/>
              <Collapsible/>
          </fieldset>
          </fieldset>

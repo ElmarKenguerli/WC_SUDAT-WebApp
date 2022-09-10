@@ -101,14 +101,19 @@ const formReducer = (state, event) => {
  }
 }
 
-function Form() {
+function Form(props) {
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false);
   const [hasAcceptedTsAndCs, setHasAcceptedTsAndCs] = useState(false);
   const [valueDate, setValueDate] = React.useState(null);
+  const[answers,updateAnswers] = useState([]);
   // Method called when un/checking check box
   const handleChange = (event) => {
     setHasAcceptedTsAndCs(current => !current);
+  }
+
+  const updateForm = (newAnswer) =>{
+    updateAnswers(state => [newAnswer, ...state])
   }
 
   //Show submitting message while submitting
@@ -414,17 +419,25 @@ function Form() {
                   </fieldset>
 
                   <fieldset>
-                    <p>5. Have you ever ridden in a CAR driven by someone (including yourself) who was “high” or had been using alcohol or drugs?</p>
+                    {/* <p>5. Have you ever ridden in a CAR driven by someone (including yourself) who was “high” or had been using alcohol or drugs?</p>
                     <RadioGroup row name = "Q5" onChange={handleData}>
                       <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                       <FormControlLabel value="No" control={<Radio />} label="No" />
-                    </RadioGroup>
+                    </RadioGroup> */}
+                    <BooleanQuestion
+                    question = "Have you ever ridden in a CAR driven by someone (including yourself) who was “high” or had been using alcohol or drugs?"
+                    number = "5"
+                    form = {answers}
+                    updateForm = {updateForm}
+                    />
                     <Collapsible/>
                   </fieldset>
 
                 </fieldset>
                   
-                  <FollowUpQuestions/>
+                  <FollowUpQuestions
+                  answers = {answers}
+                  updateForm = {updateForm}/>
                    <button className="btn-square" type="submit">Submit</button> 
                 
                 
@@ -437,6 +450,9 @@ function Form() {
                 {Object.entries(formData).map(([name, value]) => (<li key={name}><strong>{name}</strong>:{value.toString()}</li>))}
 
               </ul>
+              <box>
+                {answers}
+              </box>
             </div>
             
         </div>

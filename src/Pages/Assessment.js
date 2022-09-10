@@ -4,6 +4,10 @@ import '../App.css'
 import Screening from '../Components/Screening'
 import VerticalLinearStepper from '../Components/Stepper'
 function Assessment() {
+
+
+  update
+
   return (
     <>
     <div className="row">
@@ -15,7 +19,9 @@ function Assessment() {
             </div>
         </div>
         <div className="col-md-10">
-            <><Screening/></>
+            <><Screening
+
+            /></>
         
         </div>
     </div>
