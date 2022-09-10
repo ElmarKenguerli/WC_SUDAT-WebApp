@@ -485,12 +485,17 @@ const Signup = () => {
                     >
                         Submit
                     </Button>
+
+                    {/* adds spacing nect to buttons*/}
+                    &nbsp;&nbsp;&nbsp;&nbsp; 
+                    
                     <Button 
                         variant="contained" 
                         onClick={getUsers}
                     >
                         Get Users
                     </Button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
                     <Button 
                         variant="contained" 
                         onClick={printUsersinConsole}
