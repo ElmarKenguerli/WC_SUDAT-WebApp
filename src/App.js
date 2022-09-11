@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Assessment from "./Pages/Assessment"; 
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
-//import Screening from "./Components/Screening"; 
+import ReportPage from "./Pages/ReportPage"; 
 import LandingPage from "./Pages/LandingPage";
 
 
@@ -24,6 +24,7 @@ function App() {
       <Route path="/LandingPage/" element ={<LandingPage/>}/>
       <Route path="/Assessment" element={<Assessment/>} /> 
       <Route path="/Signup/" element={<Signup/>} />
+      <Route path="/ReportPage/" element={<ReportPage/>} />
 
     </Routes>
 

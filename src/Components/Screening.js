@@ -9,15 +9,15 @@ import TextField from '@mui/material/TextField';
 //import SliderQuestion  from "./SliderQuestion";
 import BooleanQuestion  from "./BooleanQuestion";
 import FollowUpQuestions from './FollowUpQuestions';
-
+import {useNavigate} from "react-router-dom";
 import {
   DatePicker,MuiPickersUtilsProvider
 } from '@material-ui/pickers';
 import DateMomentUtils from '@date-io/moment';
-
 import { Select, FormHelperText, MenuItem,Radio, RadioGroup, FormControlLabel } from '@material-ui/core';
 import Slider from '@mui/material/Slider';
 let gender = "";
+
 
 export const setGender = (chosenGender) => {
   gender = chosenGender;
@@ -146,6 +146,7 @@ const formReducer = (state, event) => {
 }
 
 function Form() {
+  let navigate = useNavigate();
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false);
   const [hasAcceptedTsAndCs, setHasAcceptedTsAndCs] = useState(false);
@@ -189,6 +190,7 @@ function Form() {
     if (isGreaterThanZero()) {
       great = true;  
     }
+  
 
     setGreaterThanZero(great);
   });
@@ -216,6 +218,8 @@ function Form() {
     setTimeout(() => {
       setSubmitting(false);
     }, 3000)
+
+    navigate("/ReportPage")
   }
 
  
