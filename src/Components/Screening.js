@@ -50,50 +50,6 @@ const interviewerName = "Danny Guttmann";
 let val = 0;
 
 
-// function ShowFollowUpScreeningQuestions() {
-//   return (
-
-//      <div name="screening">
-//       <fieldset>
-//         <p>5. Have you ever ridden in a CAR driven by someone (including yourself) who was “high” or had been using alcohol or drugs?</p>
-//         <BooleanQuestion/>
-//         <Collapsible/>
-//       </fieldset>
-
-//     <fieldset>
-//       <p>6. Do you ever use alcohol or drugs to RELAX, feel better about yourself, or fit in </p>
-//       <BooleanQuestion/>
-//       <Collapsible/>
-//     </fieldset>
-
-//     <fieldset>
-//       <p>7. Do you ever use alcohol or drugs while you are by yourself, or ALONE?</p>
-//       <BooleanQuestion />
-//       <Collapsible/>
-//     </fieldset>
-
-//     <fieldset>
-//       <p>8. Do you ever FORGET things you did while using alcohol or drugs?</p>
-//       <BooleanQuestion />
-//       <Collapsible/>
-//     </fieldset>
-
-//     <fieldset>
-//       <p>9. Do your FAMILY or FRIENDS ever tell you that you should cut down on your drinking or drug use?</p>
-//       <BooleanQuestion />
-//       <Collapsible/>
-//     </fieldset>
-
-//     <fieldset>
-//       <p>10. Have you ever gotten into TROUBLE while you were using alcohol or drugs</p>
-//       <BooleanQuestion />
-//       <Collapsible/>
-//     </fieldset>
-
-//    </div>
-//   );
-// }
-
 export function Collapsible() {
     const [formData, setFormData] = useReducer(formReducer, {});
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
@@ -145,7 +101,7 @@ const formReducer = (state, event) => {
  }
 }
 
-function Form() {
+function Form(props) {
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false);
   const [hasAcceptedTsAndCs, setHasAcceptedTsAndCs] = useState(false);
@@ -221,14 +177,11 @@ function Form() {
  
 
   
-  //
   const handleData = event => {
-    setFormData({
-      name: event.target.name,
+       setFormData({
+     name: event.target.name,
       value: event.target.value,
-    });
-    // setGender(event.target.value);
-    //console.log(gender);
+      })
   }
   function handleDateData(datevalue) {
     setFormData({
@@ -263,7 +216,7 @@ function Form() {
         <input 
           type="checkbox"
           value={hasAcceptedTsAndCs}
-          onChange = {handleChange} 
+          onChange = {e => {props.stepperForwardFunction(props.stepperState); handleChange(e)}}
         />
            I have read the above to the client being screened, and have obtained his/her consent to proceed with the screening process.
       </label>
@@ -443,7 +396,7 @@ function Form() {
                 <label>
                     <p>In Police Holding or Prison or Conflict with the Law in the past 12 months</p>
 
-                    <Select name="Recent Conflict" style={{ width: 300 }} variant="filled" onChange={handleData}>
+                    <Select name="Recent Conflict" style={{ width: 300 }} variant="filled"  onChange = {e => {props.stepperForwardFunction(props.stepperState); handleChange(e)}}>
                       <MenuItem value={""}>--Please Select an Option--</MenuItem>
                       <MenuItem value={"Police Holding"}>Police Holding</MenuItem>
                       <MenuItem value={"Prison"}>Prison</MenuItem>
@@ -502,7 +455,7 @@ function Form() {
 
                   <fieldset>
                     <p>5. Have you ever ridden in a CAR driven by someone (including yourself) who was “high” or had been using alcohol or drugs?</p>
-                    <RadioGroup row name = "Q5" onChange={handleData}>
+                    <RadioGroup row name = "Q5" onChange = {e => {props.stepperForwardFunction(props.stepperState); handleData(e)}}>
                       <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                       <FormControlLabel value="No" control={<Radio />} label="No" />
                     </RadioGroup>
@@ -511,7 +464,10 @@ function Form() {
 
                 </fieldset>
                   
-                {greaterThanZero && <FollowUpQuestions updateForm = {handleData} />}
+                {greaterThanZero && <FollowUpQuestions updateForm = {handleData}
+                stepperForward = {props.stepperForwardFunction}
+                stepperState = {props.stepperState}
+                />}
 
               <button className="btn-square" type="submit">Submit</button> 
                 

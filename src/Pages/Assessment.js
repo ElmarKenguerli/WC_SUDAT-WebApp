@@ -1,33 +1,31 @@
 import React from 'react'
 import '../App.css'
-
+import { useReducer } from 'react'
 import Screening from '../Components/Screening'
 import VerticalLinearStepper from '../Components/Stepper'
 function Assessment() {
 
-
+  // const [formData, setFormData] = useReducer(formReducer, {});
+  
+  // const handleData = event => {
+  //   setFormData({
+  //     name: event.target.name,
+  //     value: event.target.value,
+  //   });
+  
+  // const formReducer = (state, event) => {
+  //   return {
+  //     ...state,
+  //     [event.name]: event.value
+  //   }
+  //  }
 
 
   return (
     <>
-    <div className="row">
-        <div className="leftnav col-md-2">
-        <div style={{position: 'fixed',margin: 25}}><VerticalLinearStepper/></div>
-        
-            <div className="row">
-            
-            </div>
-        </div>
-        <div className="col-md-10">
-            <><Screening
-
-            /></>
-        
-        </div>
-    </div>
+    <VerticalLinearStepper/>
 </>
   );
 };
-
 
 export default Assessment;

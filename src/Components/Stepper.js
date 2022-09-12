@@ -4,6 +4,7 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import StepContent from '@mui/material/StepContent';
+import Form from './Screening';
 
 import Typography from '@mui/material/Typography';
 
@@ -51,33 +52,55 @@ export default function VerticalLinearStepper() {
   };
 
   return (
+
+         <>
+        <div className="row">
+             <div className="leftnav col-md-2">
+             <div style={{position: 'fixed',margin: 25}}>
+    
     <Box sx={{ maxWidth: 400 }}>
-      <Stepper activeStep={activeStep} orientation="vertical">
-        {steps.map((step, index) => (
-          <Step key={step.label}>
-            <StepLabel
-              optional={
-                index === 2 ? (
-                  <Typography variant="caption">Last step</Typography>
-                ) : null
-              }
-            >
-        
+    <Stepper activeStep={activeStep} orientation="vertical">
+      {steps.map((step, index) => (
+        <Step key={step.label}>
+          <StepLabel
+            optional={
+              index === 2 ? (
+                <Typography variant="caption">Last step</Typography>
+              ) : null
+            }
+          >
+      
 
-              {step.label}
-            </StepLabel>
+            {step.label}
+          </StepLabel>
+          
+          <StepContent>
+            <Box sx={{ mb: 2 }}>
+              <div>
+                
+              </div>
+            </Box>
+          </StepContent>
+
+        </Step>
+      ))}
+    </Stepper>
+  </Box>
+    
+    </div>
             
-            <StepContent>
-              <Box sx={{ mb: 2 }}>
-                <div>
-                  
-                </div>
-              </Box>
-            </StepContent>
-
-          </Step>
-        ))}
-      </Stepper>
-    </Box>
+                <div className="row">
+                
+                 </div>
+             </div>
+             <div className="col-md-10">
+                 <><Form
+                 stepperState = {activeStep}
+                 stepperForwardFunction = {handleNext}
+                 /></>
+            
+             </div>
+         </div>
+     </>
   );
 }

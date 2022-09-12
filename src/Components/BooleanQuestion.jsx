@@ -7,17 +7,22 @@ export default function BooleanQuestion(props) {
     const [selected, setSelected] = useState('');
 
     const selectionChangeHandler = (event) => {
+      // {if(props.stepperUpdate){
+      //   props.stepperForwardFunction(props.stepperState)
+      // }};
       setSelected(event.target.value);
       props.updateForm(event);
     };
   
+  
     return (
+     
       <FormControl>
         <p>{props.question}</p>
         <RadioGroup 
         row value={selected} onChange={selectionChangeHandler}>
           <FormControlLabel value="Yes" 
-          control={<Radio onChange={(event) => setSelected(event.target.value)}/>}  
+          control={<Radio onChange={(event) => setSelected(event.target.value)}/>} 
           label="Yes"
           name = {props.number}
           />
@@ -30,5 +35,6 @@ export default function BooleanQuestion(props) {
           
         </RadioGroup>
       </FormControl>
+    
     );
 }
