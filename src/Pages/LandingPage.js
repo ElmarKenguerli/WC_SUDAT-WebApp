@@ -47,9 +47,9 @@ export const LandingPage = () => {
               width: 300, 
               height: 100, 
               fontSize: 25, 
-              border: "2px solid dodgerblue", 
+              border: "2px solid #467a85", 
               margin:0, 
-              color: "dodgerblue" 
+              color: "#467a85" 
               }}  
           startIcon={<PostAddTwoToneIcon style={{ fontSize: "80px" }}/>}  
           onClick={() => {

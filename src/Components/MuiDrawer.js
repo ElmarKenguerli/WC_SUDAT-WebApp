@@ -19,12 +19,25 @@ import ListItemText from '@mui/material/ListItemText';
 import PostAddTwoToneIcon from '@mui/icons-material/PostAddTwoTone';
 import ExitToAppTwoToneIcon from '@mui/icons-material/ExitToAppTwoTone';
 import {Link} from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
 let nameOfUser = "";
 
 export const setUsernameCaption = (uname) => {
   nameOfUser = uname;
 }
 const drawerWidth = 240;
+
+const useStyles = makeStyles({
+  list: {
+    width: 250
+  },
+  fullList: {
+    width: "auto"
+  },
+  paper: {
+    background: "red"
+  }
+});
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -72,7 +85,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft() {
-  
+  const classes = useStyles();
   const [username, setUsername] = useState('');
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -88,8 +101,8 @@ export default function PersistentDrawerLeft() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
+      <AppBar position="fixed" open={open} >
+        <Toolbar >
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -109,7 +122,10 @@ export default function PersistentDrawerLeft() {
         </Toolbar>
       </AppBar>
       <Drawer
+        
+        
         sx={{
+          
           width: drawerWidth,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
@@ -121,31 +137,32 @@ export default function PersistentDrawerLeft() {
         anchor="left"
         open={open}
       >
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <List>
-          <Link to="/Assessment" >
-            <ListItem button>
-              <ListItemIcon>
-                <PostAddTwoToneIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Start Assessment"} />
-            </ListItem>
-          </Link>
-          <Link to="/" >
-            <ListItem button>
-              <ListItemIcon>
-                <ExitToAppTwoToneIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Log Out"} />
-            </ListItem>
-          </Link>
-        </List>
-        <Divider />
+        
+          <DrawerHeader>
+            <IconButton onClick={handleDrawerClose}>
+              {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            </IconButton>
+          </DrawerHeader>
+          <Divider />
+          <List>
+            <Link to="/Assessment" >
+              <ListItem button>
+                <ListItemIcon>
+                  <PostAddTwoToneIcon />
+                </ListItemIcon>
+                <ListItemText primary={"Start Assessment"} />
+              </ListItem>
+            </Link>
+            <Link to="/" >
+              <ListItem button>
+                <ListItemIcon>
+                  <ExitToAppTwoToneIcon />
+                </ListItemIcon>
+                <ListItemText primary={"Log Out"} />
+              </ListItem>
+            </Link>
+          </List>
+          <Divider />
         
       </Drawer>
       <Main open={open}>
