@@ -20,10 +20,10 @@ function App() {
       <Link to="/Assessment"> About </Link>
     </nav> */}
     <Routes>
-      <Route exact path="/" element={<Login/>} />
+      { <Route exact path="/" element={<Login/>} />}
       <Route path="/LandingPage/" element ={<LandingPage/>}/>
       <Route path="/Assessment" element={<Assessment/>} /> 
-      <Route path="/Signup/" element={<Signup/>} />
+      {<Route path="/Signup/" element={<Signup/>} />}
       <Route path="/ReportPage/" element={<ReportPage/>} />
 
     </Routes>

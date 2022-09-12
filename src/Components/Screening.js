@@ -133,6 +133,7 @@ function Form(props) {
   const [greaterThanZero, setGreaterThanZero] = useState(false);
 
   let ans = [0, 0, 0, 0];
+  let navigate = useNavigate();
 
   // Method called when un/checking check box
   const handleChange = (event) => {
@@ -174,7 +175,7 @@ function Form(props) {
       setSubmitting(false);
     }, 3000)
 
-    navigate("/ReportPage")
+     navigate("/ReportPage")
   }
 
  
