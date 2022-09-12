@@ -9,15 +9,15 @@ import TextField from '@mui/material/TextField';
 //import SliderQuestion  from "./SliderQuestion";
 import BooleanQuestion  from "./BooleanQuestion";
 import FollowUpQuestions from './FollowUpQuestions';
-
+import {useNavigate} from "react-router-dom";
 import {
   DatePicker,MuiPickersUtilsProvider
 } from '@material-ui/pickers';
 import DateMomentUtils from '@date-io/moment';
-
 import { Select, FormHelperText, MenuItem,Radio, RadioGroup, FormControlLabel } from '@material-ui/core';
 import Slider from '@mui/material/Slider';
 let gender = "";
+
 
 export const setGender = (chosenGender) => {
   gender = chosenGender;
@@ -145,6 +145,7 @@ function Form(props) {
     if (isGreaterThanZero()) {
       great = true;  
     }
+  
 
     setGreaterThanZero(great);
   });
@@ -172,6 +173,8 @@ function Form(props) {
     setTimeout(() => {
       setSubmitting(false);
     }, 3000)
+
+    navigate("/ReportPage")
   }
 
  

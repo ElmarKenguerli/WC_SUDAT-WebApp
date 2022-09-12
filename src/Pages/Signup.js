@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {db} from '../database/firebase'
 import {collection, addDoc, Timestamp, query, orderBy, onSnapshot, where} from 'firebase/firestore'
+import { CToast, CToastHeader, CToastBody } from '@coreui/react'
 
 // design
 import {
@@ -13,6 +14,7 @@ import {
     Button,
     Box,
     FormHelperText,
+    selectClasses,
 } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
@@ -40,6 +42,8 @@ const Signup = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+
+    const [tempUsername, setTempUsername] = useState("");
     
     const [errorLastname, setErrorLastname] = useState("");
     const [errorFirstname, setErrorFirstname] = useState("");
@@ -53,7 +57,31 @@ const Signup = () => {
 
     const [openAddModal, setOpenAddModel] = useState(false);
     const [users, setUsers] = useState([]);
+
+    const [accountCreated, setAccountCreated] = useState(false);
     
+    const accountCreatedToast = (props) => {
+        return(
+            <CToast autohide={false} visible={true}>
+                <CToastHeader closeButton>
+                    <svg
+                    className="rounded me-2"
+                    width="20"
+                    height="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="xMidYMid slice"
+                    focusable="false"
+                    role="img"
+                    >
+                    <rect width="100%" height="100%" fill="#007aff"></rect>
+                    </svg>
+                    <strong className="me-auto">CoreUI for React.js</strong>
+                    <small>7 min ago</small>
+                    </CToastHeader>
+                <CToastBody>Hello, world! This is a toast message.</CToastBody>
+            </CToast>
+    )};
+
     let navigate = useNavigate();
 
     // password validation
@@ -80,11 +108,39 @@ const Signup = () => {
     }
 
     const handleUserName = () => {
-        setUsername(generateUsername());
+
+        console.log("In handleUserName");
+        
+        let un = generateUsername();
+        let count = 1;
+        
+        console.log(`un=${un}`);
+        usernameExists(un);
+
+        //console.log(`users.length=${users.length}`);
+
+        while(users.length > 0 && count < 10) 
+        {   
+            un = username + String(count);
+            console.log(`un + String(count)=${un + String(count)}`);
+            usernameExists(un + String(count));
+
+            console.log(`username=${username}`);
+            console.log(`count=${count}`);
+            console.log(`users.length=${users.length}`);
+
+            count++;
+        }
+        
+        
+        setUsername(un);
     }
 
     /* function to add new user to firestore */
     const handleSubmit = async (e) => {
+        if (users.length == 0)
+        {
+        
         e.preventDefault()
         try {
         await addDoc(collection(db, 'Users'), {
@@ -101,31 +157,58 @@ const Signup = () => {
             loggedIn: true
         })
         console.log("Submitting")
-        navigate("/");
+        setAccountCreated(true);
+        //navigate("/");
         } catch (err) {
         alert(err)
         }
     }
+    else
+    {
+        console.log("Username already exists!")
+    }
+    }
 
     /* function to get all tasks from firestore in realtime */
-    useEffect(() => {
-    const q = query(collection(db, 'Users'), where('username', "==", {uName}))
+    // useEffect(() => {
+    // const q = query(collection(db, 'Users'), where('username', "==", username))
+    //     onSnapshot(q, (querySnapshot) => {
+    //     setUsers(querySnapshot.docs.map(doc => ({
+    //         id: doc.id,
+    //         data: doc.data()
+    //     })))
+        
+    //     })
+    // },[])
+
+    //testing purposes
+    function printUsersinConsole() {
+        
+        // console.log(`Username: ${username}`);
+        // console.log(users.length);
+        // for (let i = 0; i < users.length; ++i)
+        // {
+        //     console.log(users[i].data);
+        // }
+        console.log(`users.length in usernameExists=${users.length}`);
+    }
+
+    function usernameExists(nme) {
+        console.log(`nme=${nme}`);
+        const q = query(collection(db, 'Users'), where('username', "==", nme));
+        
         onSnapshot(q, (querySnapshot) => {
         setUsers(querySnapshot.docs.map(doc => ({
             id: doc.id,
             data: doc.data()
-        })))
-        })
-    },[])
+        })));
 
-    function getUsers() {
-        uName = username;
-        console.log(`Username: ${username}`);
-        console.log(users.length);
-        for (let i = 0; i < users.length; ++i)
-        {
-            console.log(users[i].data);
-        }
+        if (users.length > 0 && !(username === ""))
+            setErrorUsername("Username already exists!")
+        
+    })
+        
+        
     }
 
     function isComplete()
@@ -219,7 +302,7 @@ const Signup = () => {
                             label="Title"
                             value={title}
                             onChange={(e) => {
-                                    setTitle(e.target.value); 
+                                    setTitle(e.target.value);
                                 }
                             }
                         />
@@ -236,11 +319,11 @@ const Signup = () => {
                             label="Lastname"
                             value={lastname}
                             onChange={(e) => {
-                                    setLastname(e.target.value); 
+                                    setLastname(e.target.value)
                                     setErrorLastname(""); 
-                                    handleUserName();
                                 }
                             }
+                            // onBlur={ handleUserName }
                         />
                         <label>
                             {errorLastname}
@@ -255,11 +338,11 @@ const Signup = () => {
                             label="Firstname"
                             value={firstname}
                             onChange={(e) => {
-                                        setFirstname(e.target.value); 
-                                        setErrorFirstname(""); 
-                                        handleUserName();
-                                    }
+                                setFirstname(e.target.value)
+                                setErrorFirstname(""); 
                             }
+                        }
+                        // onBlur={ handleUserName }
                         />
                         <label>
                             {errorFirstname}
@@ -327,7 +410,10 @@ const Signup = () => {
                             className="form-control"
                             label="Qualification"
                             value={qualification}
-                            onChange={(e) => {setQualification(e.target.value); setErrorQualification("");}}
+                            onChange={(e) => {
+                                setQualification(e.target.value); 
+                                setErrorQualification("");
+                            }}
                         />
                         <label>
                             {errorQualification}
@@ -341,7 +427,18 @@ const Signup = () => {
                             className="form-control"
                             label="Username"
                             value={username}
-                            onChange={(e) => {setUsername(e.target.value); setErrorUsername("");}}
+                            onChange={(e) => {
+                                setUsername(e.target.value);
+
+                                usernameExists(username);
+                                
+                                let errorMessage = "";
+                                
+                                if (users.length > 0)
+                                    errorMessage = "The username already exists!";
+
+                                setErrorUsername(errorMessage);
+                            }}
                         />
                         <label>
                             {errorUsername}
@@ -447,7 +544,8 @@ const Signup = () => {
                 </Box>
                 <div className="text-center mt-4">
                     <Button 
-                        variant="contained" 
+                        variant="contained"
+                        
                         onClick={handleSubmit}
                         disabled={
                             !title ||
@@ -461,18 +559,32 @@ const Signup = () => {
                             !password || 
                             !confirmPassword || 
                             password !== confirmPassword || 
-                            !hasLowerChar || !hasSixChar || !hasUpperChar || !hasNumber
+                            !hasLowerChar || !hasSixChar || !hasUpperChar || !hasNumber ||
+                            users.length > 0
                         }
                     >
                         Submit
                     </Button>
+
+                    {/* adds spacing nect to buttons*/}
+                    &nbsp;&nbsp;&nbsp;&nbsp; 
+                    
                     <Button 
                         variant="contained" 
-                        onClick={getUsers}
+                        // onClick={getUsers}
+                    >
+                        Get Users
+                    </Button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <Button 
+                        variant="contained" 
+                        onClick={printUsersinConsole}
                     >
                         Print Users
                     </Button>
                 </div>
+
+                {accountCreated && <accountCreatedToast/>}
             </div>
     </header>
   )
