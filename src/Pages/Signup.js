@@ -275,7 +275,7 @@ const Signup = () => {
 
     return (
         <header>
-        <Box sx= {{width: '100%' , padding:"20px", bgcolor: '#00bcf5', border:"2px solid black"}}>
+        <Box sx= {{width: '100%' , padding:"20px", bgcolor: '#82d4e4be', border:"2px solid #82d4e4be"}}>
             <div className='loginHeader'>
                 <label> 
                     Western Cape Substance Use Disorder Assessment Tool
@@ -288,12 +288,12 @@ const Signup = () => {
         <br></br>
 
             <div className='container mt-5 mb-5 col-10 col-sm-8 col-md-6 col-lg-5'>
-                <div className='text-center mb-5 alert alert-primary'>
+                <div className='text-center mb-5 alert alert-secondary'>
                     <label htmlFor="" className="h2"> 
                         Signup
                     </label>
                 </div>
-                <Box sx = {{padding:10,border: "1px solid black"}}>
+                <Box sx = {{padding:10,border: "1px solid grey"}}>
                 <div className="form-group">
                         <TextField 
                             size="small" 
@@ -545,7 +545,7 @@ const Signup = () => {
                 <div className="text-center mt-4">
                     <Button 
                         variant="contained"
-                        
+                        sx={{bgcolor :"#82d4e4be" , color : "black", border: "2px solid #82d4e4be"}}
                         onClick={handleSubmit}
                         disabled={
                             !title ||
@@ -571,12 +571,14 @@ const Signup = () => {
                     
                     <Button 
                         variant="contained" 
+                        sx={{bgcolor :"#82d4e4be" , color : "black", border: "2px solid #82d4e4be"}}
                         // onClick={getUsers}
                     >
                         Get Users
                     </Button>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <Button 
+                        sx={{bgcolor :"#82d4e4be" , color : "black", border: "2px solid #82d4e4be"}}
                         variant="contained" 
                         onClick={printUsersinConsole}
                     >

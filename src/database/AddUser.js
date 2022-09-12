@@ -43,7 +43,7 @@ export function AddUser(){
 
     return (
       <div>
-        <Box sx = {{padding:10,border: "1px solid black"}}>
+        <Box sx = {{padding:10,border: "1px solid grey"}}>
 
         
 
@@ -95,6 +95,7 @@ export function AddUser(){
             <Button
                 variant="contained"
                 size = "large"
+                sx={{bgcolor :"#82d4e4be" , color : "black", border: "2px solid #82d4e4be"}}
                 onClick={() => {
                 if (userName !== "")
                 {
@@ -117,6 +118,7 @@ export function AddUser(){
             <Button
                 variant="contained"
                 size = "large"
+                sx={{bgcolor :"#82d4e4be" , color : "black", border: "2px solid #82d4e4be"}}
                 onClick={() =>navigate("./Signup")}
                 >
                 Register

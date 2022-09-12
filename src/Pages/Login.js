@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import {useNavigate} from "react-router-dom";
 import '../App.css';
-//import {setUsernameCaption} from "./LandingPage";
-import {setUsernameCaption} from "../Components/MuiDrawer";
 import AddUser from "../database/AddUser"
 // design
 import {Box} from '@mui/material';
@@ -17,7 +14,7 @@ const Login = () => {
     
     <header >
          
-            <Box sx= {{width: '100%' , padding:"20px", bgcolor: '#00bcf5', border:"2px solid black"}}>
+            <Box sx= {{width: '100%' , padding:"20px", bgcolor: '#82d4e4be', border:"2px solid #82d4e4be"}}>
             <div className='loginHeader'>
                 <label> 
                     Western Cape Substance Use Disorder Assessment Tool
@@ -31,9 +28,9 @@ const Login = () => {
 
         <div className='container mt-5 mb-5 col-10 col-sm-8 col-md-6 col-lg-5'>
 
-        <div className='text-center mb-5 alert alert-primary'>
+        <div className='text-center mb-5 alert alert-secondary'>
             
-            <label htmlFor="" className="h2"> 
+            <label htmlFor="" className="h2" > 
                 Login
             </label>
         </div>
