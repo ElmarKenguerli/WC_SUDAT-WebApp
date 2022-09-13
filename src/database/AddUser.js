@@ -4,7 +4,9 @@ import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
 import '../App.css';
 //import {setUsernameCaption} from "./LandingPage";
-import {setUsernameCaption} from "../Components/MuiDrawer";
+import {signInWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
+import {auth} from './firebase'
+import {useAuthValue} from './AuthContext'
 
 // design
 import {
@@ -20,11 +22,24 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 export function AddUser(){
   let navigate = useNavigate();
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('') 
+  const [error, setError] = useState('')
+  const {setTimeActive} = useAuthValue()
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [userName, setUserName] = useState('')
 
+  // Login function
+  const login = e => {
+    e.preventDefault()
+    signInWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      navigate("/LandingPage")
+    })
+    .catch(err => setError(err.message))
+  }
+  
   /* function to add new user to firestore */
   const handleSubmit = async (e) => {
       e.preventDefault()
@@ -46,10 +61,10 @@ export function AddUser(){
         <Box bgcolor = "White" sx = {{padding:10,border: "1px solid grey", borderRadius: "10px" }}>
 
         
-
-          <div className="form-group">
-
-              <InputLabel>Username/Email</InputLabel>
+            
+            
+          <form onSubmit={login} name='login_form'>
+              <InputLabel>Email</InputLabel>
               <OutlinedInput 
                   
                   sx={{ height:75, fontSize: "30px" }}  
@@ -58,15 +73,15 @@ export function AddUser(){
                   variant="outlined"
                   className="form-control"
                   label="Email"
-                  value={userName}
-                  onChange={(e) => {setUserName(e.target.value); setErrorMessage("");}}
+                  value={email}
+                  onChange={(e) => {setEmail(e.target.value); setErrorMessage("");}}
               />
-              <label>
-                  {errorMessage}
-              </label>    
-          </div>
+                <label>
+                    {errorMessage}
+                </label>    
+            
 
-          <div className="form-group">
+          
               <br></br>
           
               <InputLabel>Password</InputLabel>
@@ -87,44 +102,47 @@ export function AddUser(){
                       </InputAdornment>
                   }
               />
+              <br></br><br></br>
+              <div align="right" style={{marginTop:5}}>
 
-          </div>
+                  <Button
+                    variant="contained"
+                    size = "large"
+                    sx={{bgcolor :"darkblue" , color : "White", border: "2px solid #82d4e4be"}}
+                    type = 'submit'
+                    // onClick={
+                    //   () => {
+                    // if (email !== "")
+                    // {
+                    
+                    // login()
+                    // }
+                    // else
+                    // {
+                    // setErrorMessage("No username provided!")
+                    // }
+
+                    // }}
+                    
+                    >
+                    {" "}
+                    Log-in
+                </Button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <Button
+                    variant="contained"
+                    size = "large"
+                    sx={{bgcolor :"darkblue" , color : "White", border: "2px solid #82d4e4be"}}
+                    onClick={() =>navigate("./Register")}
+                    >
+                    Register
+                </Button>
+
+              </div>
+          </form>
+          
         </Box>
-          <div align="right" style={{marginTop:5}}>
-
-            <Button
-                variant="contained"
-                size = "large"
-                sx={{bgcolor :"darkblue" , color : "White", border: "2px solid #82d4e4be"}}
-                onClick={() => {
-                if (userName !== "")
-                {
-                //setUsernameCaption(email);
-                //onclick = (handleSubmit);
-                navigate("./LandingPage");
-                }
-                else
-                {
-                setErrorMessage("No username provided!")
-                }
-
-                }}
-                
-                >
-                {" "}
-                Log-in
-            </Button>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <Button
-                variant="contained"
-                size = "large"
-                sx={{bgcolor :"darkblue" , color : "White", border: "2px solid #82d4e4be"}}
-                onClick={() =>navigate("./Signup")}
-                >
-                Register
-            </Button>
-
-          </div>
+          
           
       </div>
       

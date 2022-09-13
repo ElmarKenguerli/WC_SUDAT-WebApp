@@ -282,7 +282,7 @@ const Signup = () => {
                 </label>
                 
             </div>
-            </Box>
+        </Box>
         
         <br></br>
         <br></br>
