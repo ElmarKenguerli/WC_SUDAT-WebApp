@@ -14,7 +14,7 @@ const Login = () => {
     
     <header >
          
-            <Box sx= {{width: '100%' , padding:"20px", bgcolor: '#82d4e4be', border:"2px solid #82d4e4be"}}>
+            <Box margin= "8px"  sx= {{  padding:"20px", bgcolor: 'darkblue', color: "white", border:"1px solid #82d4e4be", borderRadius: "20px"}}>
             <div className='loginHeader'>
                 <label> 
                     Western Cape Substance Use Disorder Assessment Tool

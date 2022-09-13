@@ -275,7 +275,7 @@ const Signup = () => {
 
     return (
         <header>
-        <Box sx= {{width: '100%' , padding:"20px", bgcolor: '#82d4e4be', border:"2px solid #82d4e4be"}}>
+        <Box margin= "8px"  sx= {{  padding:"20px", bgcolor: 'darkblue', color: "white", border:"1px solid #82d4e4be", borderRadius: "20px"}}>
             <div className='loginHeader'>
                 <label> 
                     Western Cape Substance Use Disorder Assessment Tool
@@ -571,14 +571,14 @@ const Signup = () => {
                     
                     <Button 
                         variant="contained" 
-                        sx={{bgcolor :"#82d4e4be" , color : "black", border: "2px solid #82d4e4be"}}
+                        sx={{bgcolor :"darkblue" , color : "white", border: "2px solid #82d4e4be"}}
                         // onClick={getUsers}
                     >
                         Get Users
                     </Button>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <Button 
-                        sx={{bgcolor :"#82d4e4be" , color : "black", border: "2px solid #82d4e4be"}}
+                        sx={{bgcolor :"darkblue" , color : "white", border: "2px solid #82d4e4be"}}
                         variant="contained" 
                         onClick={printUsersinConsole}
                     >
