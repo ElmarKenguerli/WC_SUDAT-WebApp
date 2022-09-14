@@ -10,13 +10,17 @@ import BooleanQuestion  from "./BooleanQuestion";
 import FollowUpQuestions from './FollowUpQuestions';
 import SliderQuestion  from "./SliderQuestion";
 
-//mui components
+//import mui components
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { DatePicker,MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateMomentUtils from '@date-io/moment';
 import { Select, FormHelperText, MenuItem,Radio, RadioGroup, FormControlLabel } from '@material-ui/core';
 import Slider from '@mui/material/Slider';
+
+//import Firebase components
+import {db} from '../database/firebase'
+import {collection, addDoc, Timestamp, query, orderBy, onSnapshot, where} from 'firebase/firestore'
 
 let gender = "";
 
@@ -131,6 +135,58 @@ function Form(props) {
   let ans = [0, 0, 0, 0];
   let navigate = useNavigate();
 
+  const submitResponses = async (e) => {
+    e.preventDefault()
+    try {
+      
+      if (greaterThanZero)
+        await addDoc(collection(db, 'Responses'), {
+          clientName: clientName,
+          placeOfInterview: placeOfInterview,
+          gender: gender,
+          dateOfBirth: dateOfBirth,
+          countryOfOrigin: countryOfOrigin,
+          placeOfResidence: placeOfResidence,
+          primaryLanguage: primaryLanguage,
+          housing: housing,
+          education: education,
+          crime: crime,
+          q1: q1,
+          q2: q2,
+          q3: q3,
+          q4: q4,
+          q5: q5,
+          q6: q6,
+          q7: q7,
+          q8: q8,
+          q9: q9,
+          q10: q10
+        })
+      else
+        await addDoc(collection(db, 'Responses'), {
+          clientName: clientName,
+          placeOfInterview: placeOfInterview,
+          gender: gender,
+          dateOfBirth: dateOfBirth,
+          countryOfOrigin: countryOfOrigin,
+          placeOfResidence: placeOfResidence,
+          primaryLanguage: primaryLanguage,
+          housing: housing,
+          education: education,
+          crime: crime,
+          q1: q1,
+          q2: q2,
+          q3: q3,
+          q4: q4,
+          q5: q5
+        });
+    console.log("Submitting")
+    //navigate("/");
+    } catch (err) {
+      alert(err)
+    }
+  }
+
   // Method called when un/checking check box
   const handleChange = (event) => {
     setHasAcceptedTsAndCs(current => !current);
@@ -239,8 +295,12 @@ function Form(props) {
                   focused sx={{ width: 300 }} 
                   size="big" 
                   name = "Client Name" 
-                  variant="filled" 
-                  onChange={handleData}
+                  variant="filled"
+                  value={clientName}
+                  onChange={(e) => {
+                    setClientName(e.target.value);
+                    handleData(e);
+                  }}
                 />
               </label>
             </fieldset>
@@ -253,7 +313,11 @@ function Form(props) {
                   size="small" 
                   name = "Place of Interview" 
                   variant="filled" 
-                  onChange={handleData} 
+                  value={placeOfInterview}
+                  onChange={(e) => {
+                    setPlaceOfInterview(e.target.value);
+                    handleData(e);
+                  }} 
                 />
               </label>
             </fieldset> 
@@ -277,7 +341,16 @@ function Form(props) {
             <fieldset>
               <label>
                 <p>Gender</p>
-                  <Select name="Sex" style={{ width: 300 }} variant="filled" onChange={handleData}>
+                  <Select 
+                    name="Sex" 
+                    style={{ width: 300 }} 
+                    variant="filled"
+                    value={gender}
+                    onChange={(e) => {
+                      setGender(e.target.value);
+                      handleData(e);
+                    }}
+                  >
                     <MenuItem value={""}>--Please Select an Option--</MenuItem>
                     <MenuItem value={"Female"}>Female</MenuItem>
                     <MenuItem value={"Male"}>Male</MenuItem>
@@ -291,7 +364,7 @@ function Form(props) {
               <label>
                   <p>Date Of Birth</p>
                   <MuiPickersUtilsProvider utils={DateMomentUtils}>
-                    <DatePicker value={valueDate} name="Date of Birth" onChange={(newValue) => {handleDateData(newValue);}} />
+                    <DatePicker value={dateOfBirth} name="Date of Birth" onChange={(newValue) => {handleDateData(newValue);}} />
                   </MuiPickersUtilsProvider>
                   <Collapsible/>
               </label>
@@ -299,29 +372,64 @@ function Form(props) {
             <fieldset>
               <label>
                 <p>Country of Origin</p>
-                <Countries onChange={handleData} />
-                {/* {<TextField required color="secondary" sx={{ width: 300 }} focused size="small" name = "Country" variant="filled" onChange={handleData} />} */}
+                <Countries 
+                value={countryOfOrigin}
+                  onChange={(e) => {
+                    setCountryOfOrigin(e.target.value);
+                    handleData(e);
+                  }} />
                 <Collapsible/>
               </label>
             </fieldset>
             <fieldset>
               <label>
                   <p>Community or Place of Residence:</p>
-                  <TextField required color="secondary" sx={{ width: 300 }} focused size="small" name = "Residence" variant="filled" onChange={handleData} />
+                  <TextField 
+                    required color="secondary" 
+                    sx={{ width: 300 }} 
+                    focused size="small" 
+                    name = "Residence" 
+                    variant="filled" 
+                    value={placeOfResidence}
+                    onChange={(e) => {
+                      setPlaceOfResidence(e.target.value);
+                      handleData(e);
+                    }} 
+                  />
                   <Collapsible/>
               </label>
             </fieldset>
             <fieldset>
               <label>
                 <p>Primary Language</p>
-                <TextField required color="secondary" sx={{ width: 300 }} focused size="small" name = "Language" variant="filled" onChange={handleData} />
+                <TextField 
+                  required color="secondary" 
+                  sx={{ width: 300 }} 
+                  focused size="small" 
+                  name = "Language" 
+                  variant="filled" 
+                  value={primaryLanguage}
+                  onChange={(e) => {
+                    setPrimaryLanguage(e.target.value);
+                    handleData(e);
+                  }} 
+                />
                 <Collapsible/>
               </label>
             </fieldset>
             <fieldset>
               <label>
                 <p>Current Housing Situation:</p>
-                <Select name="Housing Situation" style={{ width: 300 }} variant="filled" onChange={handleData}>
+                <Select 
+                  name="Housing Situation" 
+                  style={{ width: 300 }} 
+                  variant="filled" 
+                  value={housing}
+                  onChange={(e) => {
+                    setHousing(e.target.value);
+                    handleData(e);
+                  }}
+                >
                   <MenuItem value={""}>--Please Select an Option--</MenuItem>
                   <MenuItem value={"Rent or Own current House or Apartment"}>Rent or Own current House or Apartment</MenuItem>
                   <MenuItem value={"Living with Relatives or Friends"}>Living with Relatives or Friends</MenuItem>
@@ -339,7 +447,16 @@ function Form(props) {
               <fieldset>
                 <label>
                   <p>Highest Level of Education</p>
-                  <Select name="Education" style={{ width: 300 }} variant="filled" onChange={handleData}>
+                  <Select 
+                    name="Education" 
+                    style={{ width: 300 }} 
+                    variant="filled" 
+                    value={education}
+                    onChange={(e) => {
+                      setEducation(e.target.value);
+                      handleData(e);
+                    }}
+                  >
                     <MenuItem value={""}>--Please Select an Option--</MenuItem>
                     <MenuItem value={"None"}>None</MenuItem>
                     <MenuItem value={"Primary"}>Primary</MenuItem>
@@ -353,7 +470,16 @@ function Form(props) {
               <fieldset>
                 <label>
                     <p>In Police Holding or Prison or Conflict with the Law in the past 12 months</p>
-                    <Select name="Recent Conflict" style={{ width: 300 }} variant="filled"  onChange = {e => {props.stepperForwardFunction(props.stepperState); handleChange(e)}}>
+                    <Select 
+                      name="Recent Conflict" 
+                      style={{ width: 300 }} 
+                      variant="filled"  
+                      value={crime}
+                      onChange={(e) => {
+                        setCrime(e.target.value);
+                        handleData(e);
+                      }}
+                    >
                       <MenuItem value={""}>--Please Select an Option--</MenuItem>
                       <MenuItem value={"Police Holding"}>Police Holding</MenuItem>
                       <MenuItem value={"Prison"}>Prison</MenuItem>
@@ -372,31 +498,94 @@ function Form(props) {
                 </label>
                 <fieldset>
                   <p>1. Drink more than a few sips of beer, wine, or any drink containing alcohol?</p>
-                  <Slider style={{ width: 550 ,marginLeft:50}} defaultValue = {0} step={1} valueLabelDisplay="auto" marks={neverToDaily} min={0} max={4} color="secondary"  name = "Q1" value={q1} onChange={(e) => {setQ1(e.target.value);}}
+                  <Slider 
+                    style={{ width: 550 ,marginLeft:50}} 
+                    defaultValue = {0} 
+                    step={1} 
+                    valueLabelDisplay="auto" 
+                    marks={neverToDaily} 
+                    min={0} 
+                    max={4} 
+                    color="secondary"  
+                    name = "Q1" 
+                    value={q1}
+                    onChange={(e) => {
+                      setQ1(e.target.value);
+                      handleData(e);
+                    }}
                   />
                   <Collapsible/>
                 </fieldset>
                 <fieldset>
                   <p>2. Use any marijuana (weed, oil, wax, or hash by smoking, vaping, dabbing, or in food) or “synthetic marijuana” (like “K2,” “Spice”)?</p>
-                  <Slider style={{ width: 550 ,marginLeft:50}} defaultValue = {0} step={1} valueLabelDisplay="auto" marks={neverToDaily} min={0} max={4} color="secondary"  name = "Q2" value={q2} onChange={(e) => {setQ2(e.target.value);}}
+                  <Slider 
+                    style={{ width: 550 ,marginLeft:50}} 
+                    defaultValue = {0} 
+                    step={1} 
+                    valueLabelDisplay="auto" 
+                    marks={neverToDaily} 
+                    min={0} 
+                    max={4} 
+                    color="secondary"  
+                    name = "Q2" 
+                    value={q2}
+                    onChange={(e) => {
+                      setQ2(e.target.value);
+                      handleData(e);
+                    }}
                   />
                   <Collapsible/>
                 </fieldset>
                 <fieldset>
                   <p>3. Use anything else to get high (like other illegal drugs, prescription or over-the-counter medications, and things that you sniff, huff, vape, or inject)?</p>
-                  <Slider style={{ width: 550 ,marginLeft:50}} defaultValue = {0} step={1} valueLabelDisplay="auto" marks={neverToDaily} min={0} max={4} color="secondary"  name = "Q3" value={q3} onChange={(e) => {setQ3(e.target.value);}}
+                  <Slider 
+                    style={{ width: 550 ,marginLeft:50}} 
+                    defaultValue = {0} 
+                    step={1} 
+                    valueLabelDisplay="auto" 
+                    marks={neverToDaily} 
+                    min={0} 
+                    max={4} 
+                    color="secondary"  
+                    name = "Q3" 
+                    value={q3}
+                    onChange={(e) => {
+                      setQ3(e.target.value);
+                      handleData(e);
+                    }}
                   />
                   <Collapsible/>
                 </fieldset>
                 <fieldset>
                   <p>4. Use any tobacco or nicotine products (for example, cigarettes, e-cigarettes, hookahs or smokeless tobacco)?</p>
-                  <Slider style={{ width: 550 ,marginLeft:50}} defaultValue = {0} step={1} valueLabelDisplay="auto" marks={neverToDaily} min={0} max={4} color="secondary"  name = "Q4" value={q4} onChange={(e) => {setQ4(e.target.value);}}
+                  <Slider 
+                    style={{ width: 550 ,marginLeft:50}} 
+                    defaultValue = {0} 
+                    step={1} 
+                    valueLabelDisplay="auto" 
+                    marks={neverToDaily} 
+                    min={0} 
+                    max={4} 
+                    color="secondary"  
+                    name = "Q4" 
+                    value={q4}
+                    onChange={(e) => {
+                      setQ4(e.target.value);
+                      handleData(e);
+                    }}
                   />
                   <Collapsible/>
                 </fieldset>
                 <fieldset>
                   <p>5. Have you ever ridden in a CAR driven by someone (including yourself) who was “high” or had been using alcohol or drugs?</p>
-                  <RadioGroup row name = "Q5" onChange = {e => {props.stepperForwardFunction(props.stepperState); handleData(e)}}>
+                  <RadioGroup 
+                    row name = "Q5" 
+                    value={q5}
+                    onChange={(e) => {
+                      setQ5(e.target.value);
+                      handleData(e);
+                    }}
+                  >
                     <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                     <FormControlLabel value="No" control={<Radio />} label="No" />
                   </RadioGroup>
