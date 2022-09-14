@@ -1,21 +1,23 @@
+//import React components;
 import React, { useReducer, useState, useEffect } from 'react';
-//import React from "react";
+import {useNavigate} from "react-router-dom";
+
+//import Pages and Components
 import '../App.css';
 import useCollapse from 'react-collapsed';
 import Countries from '../Components/Countries';
+import BooleanQuestion  from "./BooleanQuestion";
+import FollowUpQuestions from './FollowUpQuestions';
+import SliderQuestion  from "./SliderQuestion";
+
 //mui components
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-//import SliderQuestion  from "./SliderQuestion";
-import BooleanQuestion  from "./BooleanQuestion";
-import FollowUpQuestions from './FollowUpQuestions';
-import {useNavigate} from "react-router-dom";
-import {
-  DatePicker,MuiPickersUtilsProvider
-} from '@material-ui/pickers';
+import { DatePicker,MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateMomentUtils from '@date-io/moment';
 import { Select, FormHelperText, MenuItem,Radio, RadioGroup, FormControlLabel } from '@material-ui/core';
 import Slider from '@mui/material/Slider';
+
 let gender = "";
 
 export const setGender = (chosenGender) => {

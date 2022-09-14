@@ -35,23 +35,23 @@ export const LandingPage = () => {
         <MuiDrawer/>
         <Box textAlign="center" >
           <Button 
-          size="large" 
-          className='.center'
-          style={
-            { 
-              width: 300, 
-              height: 100, 
-              fontSize: 25, 
-              border: "2px solid #467a85", 
-              margin:10, 
-              color: "#467a85" 
-              }}  
-          startIcon={<PostAddTwoToneIcon style={{ fontSize: "80px" }}/>}  
-          onClick={() => {
-            navigate("/Assessment");
-          }}>
-          {" "}
-          New Assessment 
+            size="large" 
+            className='.center'
+            style={
+              { 
+                width: 300, 
+                height: 100, 
+                fontSize: 25, 
+                border: "2px solid #467a85", 
+                margin:10, 
+                color: "#467a85" 
+                }}  
+            startIcon={<PostAddTwoToneIcon style={{ fontSize: "80px" }}/>}  
+            onClick={() => {
+              navigate("/Assessment");
+            }}>
+            {" "}
+            New Assessment 
           </Button> 
         </Box>
         <Box textAlign="center" width="1000" margin="80px" >

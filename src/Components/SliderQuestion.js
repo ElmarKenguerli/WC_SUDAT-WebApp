@@ -1,5 +1,5 @@
 import Slider from '@mui/material/Slider';
-import {useState} from 'react';
+import React, {useState} from 'react';
 
 function SliderQuestion(props){
 const[marks,setMarks] = useState([
@@ -31,25 +31,27 @@ const[marks,setMarks] = useState([
       console.log(questionAnswer);
     // const[marks,setQuestionID] = useState(0);
     return (
+      <div>
+        <p>{question}</p>
+        <Slider 
+            defaultValue={0}
+            style={{ width: 550 ,marginLeft:50}}
+            step={1}
+            valueLabelDisplay="auto"
+            marks={marks}
+            min={0}
+            max={4}
+            color="secondary"
+            onChange={(event) => setQuestionAnswer(event.target.value)}    
+        />
         <div>
-            <p>{question}</p>
-            <Slider
-                 
-                defaultValue={0}
-                style={{ width: 550 ,marginLeft:50}}
-                step={1}
-                valueLabelDisplay="auto"
-                marks={marks}
-                min={0}
-                max={4}
-                color="secondary"
-                onChange={(event) => setQuestionAnswer(event.target.value)}
-                  
-            />
-            <div><box><label>{questionAnswer}</label></box></div>
-            
-        
+          <box>
+            <label>
+              {questionAnswer}
+            </label>
+          </box>
         </div>
+      </div>
     );
 };
 
