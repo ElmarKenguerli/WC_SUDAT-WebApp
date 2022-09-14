@@ -118,17 +118,24 @@ function Form(props) {
   const [q8, setQ8] = useState(false);
   const [q9, setQ9] = useState(false);
   const [q10, setQ10] = useState(false);
+  const [q11, setQ11] = useState(false);
+  const [q12, setQ12] = useState(false);
+  const [q13, setQ13] = useState(false);
 
   const [clientName, setClientName] = useState("");
   const [placeOfInterview, setPlaceOfInterview] = useState("");
   const [gender, setGender] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState();
   const [countryOfOrigin, setCountryOfOrigin] = useState("");
   const [placeOfResidence, setPlaceOfResidence] = useState("");
   const [primaryLanguage, setPrimaryLanguage] = useState("");
   const [housing, setHousing] = useState("");
   const [education, setEducation] = useState("");
   const [crime, setCrime] = useState("");
+
+  function setQ6value(val){
+    setQ6(val);
+  }
 
   const [greaterThanZero, setGreaterThanZero] = useState(false);
 
@@ -364,7 +371,14 @@ function Form(props) {
               <label>
                   <p>Date Of Birth</p>
                   <MuiPickersUtilsProvider utils={DateMomentUtils}>
-                    <DatePicker value={dateOfBirth} name="Date of Birth" onChange={(newValue) => {handleDateData(newValue);}} />
+                    <DatePicker 
+                      value={dateOfBirth} 
+                      name="Date of Birth" 
+                      onChange={(newValue) => {
+                        setDateOfBirth(newValue);
+                        handleDateData(newValue);
+                      }} 
+                    />
                   </MuiPickersUtilsProvider>
                   <Collapsible/>
               </label>
@@ -597,6 +611,22 @@ function Form(props) {
                 updateForm = {handleData}
                 stepperForward = {props.stepperForwardFunction}
                 stepperState = {props.stepperState}
+                q6={q6}
+                setQ6 = {setQ6value}
+                q7={q7}
+                setQ7 = {setQ7}
+                q8={q8}
+                setQ8 = {setQ8}
+                q9={q9}
+                setQ9 = {setQ9}
+                q10={q10}
+                setQ10 = {setQ10}
+                q11={q11}
+                setQ11 = {setQ11}
+                q12={q12}
+                setQ12 = {setQ12}
+                q13={q13}
+                setQ13 = {setQ13}
               />}
             <button className="btn-square" type="submit">Submit</button> 
           </form>
@@ -604,10 +634,31 @@ function Form(props) {
             <br></br>
             <h3>Summary: </h3>
             <ul>
-              {q1}
-              {q2}
-              {q3}
-              {q4}
+              {`q1: ${q1}`}
+              <br/>
+              {`q2: ${q2}`}
+              <br/>
+              {`q3: ${q3}`}
+              <br/>
+              {`q4: ${q4}`}
+              <br/>
+              {`q5: ${q5}`}
+              <br/>
+              {`q6: ${q6}`}
+              <br/>
+              {`q7: ${q7}`}
+              <br/>
+              {`q8: ${q8}`}
+              <br/>
+              {`q9: ${q9}`}
+              <br/>
+              {`q10: ${q10}`}
+              <br/>
+              {`q11: ${q11}`}
+              <br/>
+              {`q12: ${q12}`}
+              <br/>
+              {`q13: ${q13}`}
               {/* {Object.entries(formData).map(([name, value]) => (<li key={name}><strong>{name}</strong>:{value.toString()}</li>))} */}
             </ul>
           </div>
