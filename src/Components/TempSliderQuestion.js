@@ -3,28 +3,28 @@ import {useState} from 'react';
 import React from 'react';
 // import Slider from '@mui/material/Slider';
 
-function SliderQuestion(props){
+function TempSliderQuestion(props){
 const[marks,setMarks] = useState([
      
         {
           value: 0,
-          label: 'Never',
+          label: 'Strongly Disagree',
         },
         {
           value: 1,
-          label: 'Once or Twice',
+          label: 'Disagree',
         },
         {
           value: 2,
-          label: 'Monthly',
+          label: 'Undecided/Unsure',
         },
         {
           value: 3,
-          label: 'Weekly',
+          label: 'Agree',
         },
         {
           value: 4,
-          label: 'Daily/Almost Daily',
+          label: 'Strongly Agree',
         },
       ]);
 
@@ -38,7 +38,7 @@ const[marks,setMarks] = useState([
             <p>{question}</p>
             <Slider
                  
-                defaultValue={0}
+                defaultValue={2}
                 style={{ width: 550 ,marginLeft:50}}
                 step={1}
                 valueLabelDisplay="auto"
@@ -56,4 +56,4 @@ const[marks,setMarks] = useState([
     );
 };
 
-export default SliderQuestion;
+export default TempSliderQuestion;

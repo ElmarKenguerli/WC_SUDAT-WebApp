@@ -13,7 +13,7 @@ const steps = [
     label: 'Introduction',
   },
   {
-    label: 'Client Details',
+    label: 'Interview Details',
   },
   {
     label: 'Demographics',

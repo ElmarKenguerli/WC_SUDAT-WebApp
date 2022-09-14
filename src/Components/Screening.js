@@ -4,9 +4,10 @@ import '../App.css';
 import useCollapse from 'react-collapsed';
 import Countries from '../Components/Countries';
 //mui components
+import SixSliderQuestion from './SixSliderQuestion';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-//import SliderQuestion  from "./SliderQuestion";
+import SliderQuestion  from "./SliderQuestion";
 import BooleanQuestion  from "./BooleanQuestion";
 import FollowUpQuestions from './FollowUpQuestions';
 import {useNavigate} from "react-router-dom";
@@ -280,7 +281,7 @@ function Form(props) {
                         size="small" 
                         name = "Place of Interview" 
                         variant="filled" 
-                        onChange={handleData} 
+                        onChange = {e => {props.stepperForwardFunction(props.stepperState); handleChange(e)}}
                       />
                       </label>
                       </fieldset>
@@ -459,7 +460,7 @@ function Form(props) {
 
                   <fieldset>
                     <p>5. Have you ever ridden in a CAR driven by someone (including yourself) who was “high” or had been using alcohol or drugs?</p>
-                    <RadioGroup row name = "Q5" onChange = {e => {props.stepperForwardFunction(props.stepperState); handleData(e)}}>
+                    <RadioGroup row name = "Q5" onChange = {e => {handleData(e)}}>
                       <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                       <FormControlLabel value="No" control={<Radio />} label="No" />
                     </RadioGroup>

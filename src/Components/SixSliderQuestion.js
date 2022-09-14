@@ -1,31 +1,34 @@
+import React, {useState} from 'react';
+import BooleanQuestion from './BooleanQuestion';
 import Slider from '@mui/material/Slider';
-import {useState} from 'react';
-import React from 'react';
-// import Slider from '@mui/material/Slider';
 
-function SliderQuestion(props){
+function SixSliderQuestion(props){
 const[marks,setMarks] = useState([
      
         {
           value: 0,
-          label: 'Never',
+          label: 'Strongly Disagree',
         },
         {
           value: 1,
-          label: 'Once or Twice',
+          label: 'Disagree',
         },
         {
           value: 2,
-          label: 'Monthly',
+          label: 'Somewhat Disagree',
         },
         {
           value: 3,
-          label: 'Weekly',
+          label:'Slightly Agree',
         },
         {
           value: 4,
-          label: 'Daily/Almost Daily',
+          label: 'Agree',
         },
+        {
+            value: 5,
+            label: 'Strongly',
+          }
       ]);
 
       const[questionNumber,setQuestionID] = useState(0);
@@ -35,6 +38,10 @@ const[marks,setMarks] = useState([
     // const[marks,setQuestionID] = useState(0);
     return (
         <div>
+            
+            <BooleanQuestion
+            question = {props.booleanQuestion}
+            />
             <p>{question}</p>
             <Slider
                  
@@ -56,4 +63,4 @@ const[marks,setMarks] = useState([
     );
 };
 
-export default SliderQuestion;
+export default SixSliderQuestion;
