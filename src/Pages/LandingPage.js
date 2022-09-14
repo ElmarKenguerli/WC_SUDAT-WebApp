@@ -48,7 +48,7 @@ export const LandingPage = () => {
               height: 100, 
               fontSize: 25, 
               border: "2px solid #467a85", 
-              margin:0, 
+              margin:10, 
               color: "#467a85" 
               }}  
           startIcon={<PostAddTwoToneIcon style={{ fontSize: "80px" }}/>}  

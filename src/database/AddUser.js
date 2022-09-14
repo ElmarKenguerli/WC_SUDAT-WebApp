@@ -64,6 +64,7 @@ export function AddUser(){
             
             
           <form onSubmit={login} name='login_form'>
+            <div className="form-group">
               <InputLabel>Email</InputLabel>
               <OutlinedInput 
                   
@@ -79,7 +80,7 @@ export function AddUser(){
                 <label>
                     {errorMessage}
                 </label>    
-            
+            </div>
 
           
               <br></br>
