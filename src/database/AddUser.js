@@ -59,15 +59,10 @@ export function AddUser(){
     return (
       <div >
         <Box bgcolor = "White" sx = {{padding:10,border: "1px solid grey", borderRadius: "10px" }}>
-
-        
-            
-            
           <form onSubmit={login} name='login_form'>
             <div className="form-group">
               <InputLabel>Email</InputLabel>
-              <OutlinedInput 
-                  
+              <OutlinedInput   
                   sx={{ height:75, fontSize: "30px" }}  
                   fullWidth
                   size="normal" 
@@ -81,14 +76,10 @@ export function AddUser(){
                     {errorMessage}
                 </label>    
             </div>
-
-          
-              <br></br>
-          
-              <InputLabel>Password</InputLabel>
+            <br></br>
+            <InputLabel>Password</InputLabel>
               <OutlinedInput   
                   sx={{ height:75, fontSize: "30px"  }}  
-                  
                   fullWidth
                   size = "normal"
                   label="Password"
@@ -105,7 +96,6 @@ export function AddUser(){
               />
               <br></br><br></br>
               <div align="right" style={{marginTop:5}}>
-
                   <Button
                     variant="contained"
                     size = "large"
@@ -138,15 +128,10 @@ export function AddUser(){
                     >
                     Register
                 </Button>
-
               </div>
           </form>
-          
-        </Box>
-          
-          
+        </Box>   
       </div>
-      
     )
               
 }

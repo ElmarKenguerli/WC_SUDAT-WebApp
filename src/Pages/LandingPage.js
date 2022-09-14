@@ -12,10 +12,7 @@ import Button from '@material-ui/core/Button';
 import {Box} from '@mui/material';
 import DataGrid from "../Components/DataGrid"
 
-
 export const LandingPage = () => {
-
-
 
   const [users, setUsers] = useState([])
 
@@ -31,13 +28,11 @@ export const LandingPage = () => {
       console.log("Reading data");
     },[])
 
-
   let navigate = useNavigate();
   
   return (
     <div>
         <MuiDrawer/>
-
         <Box textAlign="center" >
           <Button 
           size="large" 
@@ -57,11 +52,8 @@ export const LandingPage = () => {
           }}>
           {" "}
           New Assessment 
-          </Button>
-          
-          
+          </Button> 
         </Box>
-        
         <Box textAlign="center" width="1000" margin="80px" >
           <DataGrid/>
           <br></br>
@@ -74,15 +66,7 @@ export const LandingPage = () => {
             height={800}
             width={700}
           /> */}
-
-          
-        
         </Box>
-
-         
-
-          
-
       </div>
   )
 }

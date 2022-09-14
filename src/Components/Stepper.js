@@ -52,55 +52,47 @@ export default function VerticalLinearStepper() {
   };
 
   return (
-
-         <>
-        <div className="row">
-             <div className="leftnav col-md-2">
-             <div style={{position: 'fixed',margin: 25}}>
-    
-    <Box sx={{ maxWidth: 400 }}>
-    <Stepper activeStep={activeStep} orientation="vertical">
-      {steps.map((step, index) => (
-        <Step key={step.label}>
-          <StepLabel
-            optional={
-              index === 2 ? (
-                <Typography variant="caption">Last step</Typography>
-              ) : null
-            }
-          >
-      
-
-            {step.label}
-          </StepLabel>
-          
-          <StepContent>
-            <Box sx={{ mb: 2 }}>
-              <div>
-                
-              </div>
+    <>
+      <div className="row">
+        <div className="leftnav col-md-2">
+          <div style={{position: 'fixed',margin: 25}}>
+            <Box sx={{ maxWidth: 400 }}>
+              <Stepper activeStep={activeStep} orientation="vertical">
+                {steps.map((step, index) => (
+                <Step key={step.label}>
+                  <StepLabel
+                    optional={
+                      index === 2 ? (
+                        <Typography variant="caption">Last step</Typography>
+                      ) : null
+                    }
+                  >
+                    {step.label}
+                  </StepLabel>
+                  <StepContent>
+                    <Box sx={{ mb: 2 }}>
+                      <div>
+                      </div>
+                    </Box>
+                  </StepContent>
+                </Step>
+                ))}
+              </Stepper>
             </Box>
-          </StepContent>
+          </div>
+          <div className="row">
 
-        </Step>
-      ))}
-    </Stepper>
-  </Box>
-    
-    </div>
-            
-                <div className="row">
-                
-                 </div>
-             </div>
-             <div className="col-md-10">
-                 <><Form
-                 stepperState = {activeStep}
-                 stepperForwardFunction = {handleNext}
-                 /></>
-            
-             </div>
-         </div>
-     </>
+          </div>
+        </div>
+        <div className="col-md-10">
+          <>
+            <Form
+                stepperState = {activeStep}
+                stepperForwardFunction = {handleNext}
+            />
+          </>
+        </div>
+      </div>
+    </>
   );
 }

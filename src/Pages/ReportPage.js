@@ -6,8 +6,6 @@ import MuiDrawer from '../Components/MuiDrawer'
 import HomeIcon from '@mui/icons-material/Home';
 import {useNavigate} from "react-router-dom";
 
-
-
 function ReportPage() {
     let navigate = useNavigate();
 
@@ -15,7 +13,6 @@ function ReportPage() {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
-
 
     return (
         <>
@@ -32,9 +29,7 @@ function ReportPage() {
             height={800}
             width={800}
             />
-
         </Box>
-
         <Box textAlign="center" width="1000" margin="80px" >
             <Button 
             size="normal" 
@@ -59,6 +54,5 @@ function ReportPage() {
         </>
     );
 };
-
 
 export default ReportPage;
