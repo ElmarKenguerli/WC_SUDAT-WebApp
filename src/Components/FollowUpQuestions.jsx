@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import BooleanQuestion from '../Components/BooleanQuestion'
 import { Collapsible } from './Screening'
 import SliderQuestion from './SliderQuestion'

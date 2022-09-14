@@ -34,6 +34,7 @@
   align-items: left;
   justify-content: flex-start;
   color: rgb(0, 0, 0);
+  font-family: 'Helvetica';
   
 }
 
@@ -70,3 +71,10 @@ p{
   left: 50%;
   text-align: center;
 }
+
+
+
+ #img{
+  float: right;    
+  margin: 0 28px 0 0 ;
+ }

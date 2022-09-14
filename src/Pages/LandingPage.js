@@ -12,10 +12,7 @@ import Button from '@material-ui/core/Button';
 import {Box} from '@mui/material';
 import DataGrid from "../Components/DataGrid"
 
-
 export const LandingPage = () => {
-
-
 
   const [users, setUsers] = useState([])
 
@@ -31,37 +28,32 @@ export const LandingPage = () => {
       console.log("Reading data");
     },[])
 
-
   let navigate = useNavigate();
   
   return (
     <div>
         <MuiDrawer/>
-
         <Box textAlign="center" >
           <Button 
-          size="large" 
-          className='.center'
-          style={
-            { 
-              width: 300, 
-              height: 100, 
-              fontSize: 25, 
-              border: "2px solid #467a85", 
-              margin:0, 
-              color: "#467a85" 
-              }}  
-          startIcon={<PostAddTwoToneIcon style={{ fontSize: "80px" }}/>}  
-          onClick={() => {
-            navigate("/Assessment");
-          }}>
-          {" "}
-          New Assessment 
-          </Button>
-          
-          
+            size="large" 
+            className='.center'
+            style={
+              { 
+                width: 300, 
+                height: 100, 
+                fontSize: 25, 
+                border: "2px solid #467a85", 
+                margin:10, 
+                color: "#467a85" 
+                }}  
+            startIcon={<PostAddTwoToneIcon style={{ fontSize: "80px" }}/>}  
+            onClick={() => {
+              navigate("/Assessment");
+            }}>
+            {" "}
+            New Assessment 
+          </Button> 
         </Box>
-        
         <Box textAlign="center" width="1000" margin="80px" >
           <DataGrid/>
           <br></br>
@@ -74,15 +66,7 @@ export const LandingPage = () => {
             height={800}
             width={700}
           /> */}
-
-          
-        
         </Box>
-
-         
-
-          
-
       </div>
   )
 }

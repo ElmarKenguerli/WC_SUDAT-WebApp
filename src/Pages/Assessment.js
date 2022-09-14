@@ -3,6 +3,7 @@ import '../App.css'
 import { useReducer } from 'react'
 import Screening from '../Components/Screening'
 import VerticalLinearStepper from '../Components/Stepper'
+
 function Assessment() {
 
   // const [formData, setFormData] = useReducer(formReducer, {});
@@ -19,8 +20,6 @@ function Assessment() {
   //     [event.name]: event.value
   //   }
   //  }
-
-
   return (
     <>
     <VerticalLinearStepper/>

@@ -1,9 +1,18 @@
+//React imports
 import React, { useState, useEffect } from 'react';
+import {useNavigate} from "react-router-dom";
+
+//Import Pages and Components
+import '../App.css';
+import AddUser from "../database/AddUser"
+import { setUsernameCaption } from '../Components/MuiDrawer';
+
+//firebase imports
 import {db} from '../database/firebase'
 import {collection, addDoc, Timestamp, query, orderBy, onSnapshot, where} from 'firebase/firestore'
 import { CToast, CToastHeader, CToastBody } from '@coreui/react'
 
-// design
+// mui imports
 import {
     TextField,
     InputAdornment,
@@ -18,19 +27,13 @@ import {
 } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-
-import {useNavigate} from "react-router-dom";
-import '../App.css';
-import AddUser from "../database/AddUser"
-import { setUsernameCaption } from '../Components/MuiDrawer';
 import { gridColumnsMetaSelector } from '@mui/x-data-grid';
 
-
-
-
 const Signup = () => {
-    // form state
-
+    
+    /***
+     * Declare state hooks and asign default values
+     ***/
     const [title, setTitle] = useState("");
     const [lastname, setLastname] = useState("");
     const [firstname, setFirstname] = useState("");
@@ -132,7 +135,6 @@ const Signup = () => {
             count++;
         }
         
-        
         setUsername(un);
     }
 
@@ -198,17 +200,14 @@ const Signup = () => {
         const q = query(collection(db, 'Users'), where('username', "==", nme));
         
         onSnapshot(q, (querySnapshot) => {
-        setUsers(querySnapshot.docs.map(doc => ({
-            id: doc.id,
-            data: doc.data()
-        })));
+            setUsers(querySnapshot.docs.map(doc => ({
+                id: doc.id,
+                data: doc.data()
+            })));
 
-        if (users.length > 0 && !(username === ""))
-            setErrorUsername("Username already exists!")
-        
-    })
-        
-        
+            if (users.length > 0 && !(username === ""))
+                setErrorUsername("Username already exists!");
+        })
     }
 
     function isComplete()
@@ -275,18 +274,15 @@ const Signup = () => {
 
     return (
         <header>
-        <Box sx= {{width: '100%' , padding:"20px", bgcolor: '#82d4e4be', border:"2px solid #82d4e4be"}}>
+        <Box margin= "8px"  sx= {{  padding:"20px", bgcolor: 'darkblue', color: "white", border:"1px solid #82d4e4be", borderRadius: "20px"}}>
             <div className='loginHeader'>
                 <label> 
                     Western Cape Substance Use Disorder Assessment Tool
-                </label>
-                
+                </label> 
             </div>
-            </Box>
-        
+        </Box>
         <br></br>
         <br></br>
-
             <div className='container mt-5 mb-5 col-10 col-sm-8 col-md-6 col-lg-5'>
                 <div className='text-center mb-5 alert alert-secondary'>
                     <label htmlFor="" className="h2"> 
@@ -294,7 +290,7 @@ const Signup = () => {
                     </label>
                 </div>
                 <Box sx = {{padding:10,border: "1px solid grey"}}>
-                <div className="form-group">
+                    <div className="form-group">
                         <TextField 
                             size="small" 
                             variant="outlined"
@@ -306,12 +302,11 @@ const Signup = () => {
                                 }
                             }
                         />
-                        <label>
-                            
+                        <label>    
                         </label>
                     </div>
                     <br></br>  
-                <div className="form-group">
+                    <div className="form-group">
                         <TextField 
                             size="small" 
                             variant="outlined"
@@ -511,11 +506,8 @@ const Signup = () => {
                             </div>
                         </div>)}
                     </div>
-                    
                     <br></br>
-
                     <div className="form-group">
-
                         <TextField 
                             size="small" 
                             type="password"
@@ -525,7 +517,6 @@ const Signup = () => {
                             value={confirmPassword}
                             onChange={(e) => {setConfirmPassword(e.target.value);}}
                         />
-
                         {password && confirmPassword && (
                             <FormHelperText className="ml-1 mt-1">
                                 {password === confirmPassword ? (
@@ -539,7 +530,6 @@ const Signup = () => {
                                 )}
                             </FormHelperText>
                         )}
-                        
                     </div>
                 </Box>
                 <div className="text-center mt-4">
@@ -568,24 +558,23 @@ const Signup = () => {
 
                     {/* adds spacing nect to buttons*/}
                     &nbsp;&nbsp;&nbsp;&nbsp; 
-                    
+    
                     <Button 
                         variant="contained" 
-                        sx={{bgcolor :"#82d4e4be" , color : "black", border: "2px solid #82d4e4be"}}
+                        sx={{bgcolor :"darkblue" , color : "white", border: "2px solid #82d4e4be"}}
                         // onClick={getUsers}
                     >
                         Get Users
                     </Button>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <Button 
-                        sx={{bgcolor :"#82d4e4be" , color : "black", border: "2px solid #82d4e4be"}}
+                        sx={{bgcolor :"darkblue" , color : "white", border: "2px solid #82d4e4be"}}
                         variant="contained" 
                         onClick={printUsersinConsole}
                     >
                         Print Users
                     </Button>
                 </div>
-
                 {accountCreated && <accountCreatedToast/>}
             </div>
     </header>

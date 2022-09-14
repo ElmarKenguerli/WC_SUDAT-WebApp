@@ -20,6 +20,9 @@ import PostAddTwoToneIcon from '@mui/icons-material/PostAddTwoTone';
 import ExitToAppTwoToneIcon from '@mui/icons-material/ExitToAppTwoTone';
 import {Link} from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import { useAuthValue } from "../database/AuthContext"
+import '../App.css';
+
 let nameOfUser = "";
 
 export const setUsernameCaption = (uname) => {
@@ -85,6 +88,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft() {
+  const {currentUser} = useAuthValue()
+  
   const classes = useStyles();
   const [username, setUsername] = useState('');
   const theme = useTheme();
@@ -112,11 +117,17 @@ export default function PersistentDrawerLeft() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            WC-SUDAT  
-          </Typography>
-          <Typography variant="h6" style={{position: "absolute", right: "150px", border : "2px groove black", padding: "7px"}} noWrap component="div">
-          Logged in: {nameOfUser}  
+          <div className="header-content-inner">
+            <img src="logo.png" width= "250" height= "100" id="img" />
+              
+          </div>
+          <div className="header-content-inner">
+          &nbsp;&nbsp;&nbsp;
+            <h1>WC-SUDAT</h1>
+              
+          </div>
+          <Typography variant="h6" style={{position: "absolute", right: "15px", border : "2px groove black", padding: "7px"}} noWrap component="div">
+          Logged in: {currentUser.email}  
           </Typography>
           
         </Toolbar>
