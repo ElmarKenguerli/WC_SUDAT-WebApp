@@ -169,12 +169,10 @@ const mockedData = [
   ];
   
 
-const Countries = () => {
+const Countries = (props) => {
   const [countryData, setCountryData] = useState([]);
 
-
-  const getCountryData = async () => {
-    
+  const getCountryData = async () => {    
     setCountryData(
       mockedData.filter(function(mockedData) {
         return mockedData;
