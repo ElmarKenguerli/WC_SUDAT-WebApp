@@ -160,14 +160,13 @@ function Form(props) {
   });
 
   function isGreaterThanZero() {
-    // ans[0] = q1;
-    // ans[1] = q2;
-    // ans[2] = q3;
-    // ans[3] = q4;
+    ans[0] = formData["Q1"];
+    ans[1] = formData["Q2"]
+    ans[2] = formData["Q3"]
+    ans[3] = formData["Q4"]
+    // if (ans[0] >= 1 || ans[1] >= 1 || ans[2] >= 1 || ans[3] >= 1)
+      {return true}
     
-    return (
-      true
-    );
   }
 
   //Show submitting message while submitting
@@ -192,6 +191,17 @@ function Form(props) {
         value: event.target.value,
       })
   }
+
+  const handleExtraData = event => {
+    console.log(`Name: ${event.target.name}`)
+    console.log(`Value: ${event.target.value}`)
+    
+    setFormData({
+        name: event.target.name,
+        value: event.target.value,
+      })
+  }
+
   function handleDateData(datevalue) {
     setFormData({
       name: "Date of Birth",
@@ -224,7 +234,7 @@ function Form(props) {
         </label>
       </Box>
       <br/>
-      {submitting &&
+      {/* {submitting &&
         <div>
           Submitting Form...
           <ul>
@@ -233,7 +243,7 @@ function Form(props) {
             ))}
           </ul>
         </div>
-      }
+      } */}
       <div className =".input-container">    
     </div>
     <div className =".input-container">
@@ -269,15 +279,12 @@ function Form(props) {
                 name = "Place of Interview" 
                 variant="filled" 
                 //value={placeOfInterview}
-                onChange={(e) => {
-                  //setPlaceOfInterview(e.target.value);
-                  handleData(e);
-                }} 
+                onChange={(e) => { handleData(e);  }} 
               />
             </label>
           </fieldset> 
           <fieldset>
-            <h3>Interviewer:</h3> {currentUser.email}
+            <h3>Interviewer:</h3> {"currentUser.email"}
             <label>
             </label>
           </fieldset>
@@ -335,9 +342,9 @@ function Form(props) {
             <label>
               <p>Country of Origin</p>
               <Countries
-                formData = {formData}
+                
                 name="Country"
-                value={formData["Country"]}
+                value={"countryData"}
                 onChange={(e) => { handleData(e); }} />
               <Collapsible/>
             </label>
@@ -534,25 +541,10 @@ function Form(props) {
             </fieldset>               
             {greaterThanZero && 
             <FollowUpQuestions 
-              updateForm = {handleData}
+              updateForm = {handleExtraData}
               stepperForward = {props.stepperForwardFunction}
               stepperState = {props.stepperState}
-              // q6={q6}
-              // setQ6 = {setQ6value}
-              // q7={q7}
-              // setQ7 = {setQ7}
-              // q8={q8}
-              // setQ8 = {setQ8}
-              // q9={q9}
-              // setQ9 = {setQ9}
-              // q10={q10}
-              // setQ10 = {setQ10}
-              // q11={q11}
-              // setQ11 = {setQ11}
-              // q12={q12}
-              // setQ12 = {setQ12}
-              // q13={q13}
-              // setQ13 = {setQ13}
+              
             />}
           <button className="btn-square" type="submit">Submit</button> 
         </form>
@@ -560,34 +552,7 @@ function Form(props) {
           <br></br>
           <h3>Summary: </h3>
           <ul>
-            {/* {formData} */}
-            {/* {`q1: ${q1}`}
-            <br/>
-            {`q2: ${q2}`}
-            <br/>
-            {`q3: ${q3}`}
-            <br/>
-            {`q4: ${q4}`}
-            <br/>
-            {`q5: ${q5}`}
-            <br/>
-            {`q6: ${q6}`}
-            <br/>
-            {`q7: ${q7}`}
-            <br/>
-            {`q8: ${q8}`}
-            <br/>
-            {`q9: ${q9}`}
-            <br/>
-            {`q10: ${q10}`}
-            <br/>
-            {`q11: ${q11}`}
-            <br/>
-            {`q12: ${q12}`}
-            <br/>
-            {`q13: ${q13}`}
-            <br/>
-            {`Date of Birth: ${dateOfBirth}`} */}
+           
             { Object.entries(formData).map(([name, value]) => (<li key={name}><strong>{name}</strong>:{value.toString()}</li>))}
           </ul>
         </div>
