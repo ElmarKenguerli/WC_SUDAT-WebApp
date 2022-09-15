@@ -13,7 +13,6 @@ import ReportPage from "./Pages/ReportPage";
 import LandingPage from "./Pages/LandingPage";
 import Register from "./Pages/Register";
 
-
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const [timeActive, setTimeActive] = useState(false)
@@ -33,14 +32,12 @@ function App() {
     </nav> */}
     <AuthProvider value={{currentUser, timeActive, setTimeActive}}>
       <Routes>
-        
           <Route exact path="/" element={<Login/>} />
           <Route path="/LandingPage/" element ={<LandingPage/>}/>
           <Route path="/Assessment" element={<Assessment/>} /> 
           <Route path="/Signup/" element={<Signup/>} />
           <Route path="/ReportPage/" element={<ReportPage/>} />
-          <Route path="/Register/" element={<Register/>} />
-          
+          <Route path="/Register/" element={<Register/>} /> 
       </Routes>
   </AuthProvider>
   </Router>

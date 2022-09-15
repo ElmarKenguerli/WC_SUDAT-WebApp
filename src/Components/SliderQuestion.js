@@ -4,7 +4,7 @@ import React from 'react';
 // import Slider from '@mui/material/Slider';
 
 function SliderQuestion(props){
-const[marks,setMarks] = useState([
+  const[marks,setMarks] = useState([
      
         {
           value: 0,

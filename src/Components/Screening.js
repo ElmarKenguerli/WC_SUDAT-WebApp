@@ -6,17 +6,14 @@ import {useNavigate} from "react-router-dom";
 import '../App.css';
 import useCollapse from 'react-collapsed';
 import Countries from '../Components/Countries';
-//mui components
 import SixSliderQuestion from './SixSliderQuestion';
 import SliderQuestion  from "./SliderQuestion";
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
 import BooleanQuestion  from "./BooleanQuestion";
 import FollowUpQuestions from './FollowUpQuestions';
 
 //import mui components
-
-
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 import { DatePicker,MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateMomentUtils from '@date-io/moment';
 import { Select, FormHelperText, MenuItem,Radio, RadioGroup, FormControlLabel } from '@material-ui/core';
@@ -25,6 +22,7 @@ import Slider from '@mui/material/Slider';
 //import Firebase components
 import {db} from '../database/firebase'
 import {collection, addDoc, Timestamp, query, orderBy, onSnapshot, where} from 'firebase/firestore'
+import { useAuthValue } from "../database/AuthContext"
 
 let gender = "";
 
@@ -98,6 +96,34 @@ const neverToDaily = [
   },
 ];
 
+const[DisagreetoAgree] = 
+  [  
+    {
+      value: 0,
+      label: 'Strongly Disagree',
+    },
+    {
+      value: 1,
+      label: 'Disagree',
+    },
+    {
+      value: 2,
+      label: 'Somewhat Disagree',
+    },
+    {
+      value: 3,
+      label:'Slightly Agree',
+    },
+    {
+      value: 4,
+      label: 'Agree',
+    },
+    {
+      value: 5,
+      label: 'Strongly Agree',
+    }
+  ];
+
 const formReducer = (state, event) => {
  return {
    ...state,
@@ -106,97 +132,17 @@ const formReducer = (state, event) => {
 }
 
 function Form(props) {
+  const {currentUser} = useAuthValue()
+  
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false);
   const [hasAcceptedTsAndCs, setHasAcceptedTsAndCs] = useState(false);
   const [valueDate, setValueDate] = React.useState(null);
-
-  // const [q1, setQ1] = useState(0);
-  // const [q2, setQ2] = useState(0);
-  // const [q3, setQ3] = useState(0);
-  // const [q4, setQ4] = useState(0);
-
-  // const [q5, setQ5] = useState(false);
-  // const [q6, setQ6] = useState(false);
-  // const [q7, setQ7] = useState(false);
-  // const [q8, setQ8] = useState(false);
-  // const [q9, setQ9] = useState(false);
-  // const [q10, setQ10] = useState(false);
-  // const [q11, setQ11] = useState(false);
-  // const [q12, setQ12] = useState(false);
-  // const [q13, setQ13] = useState(false);
-
-  // const [clientName, setClientName] = useState("");
-  // const [placeOfInterview, setPlaceOfInterview] = useState("");
-  // const [gender, setGender] = useState("");
-  // const [dateOfBirth, setDateOfBirth] = useState();
-  // const [countryOfOrigin, setCountryOfOrigin] = useState("");
-  // const [placeOfResidence, setPlaceOfResidence] = useState("");
-  // const [primaryLanguage, setPrimaryLanguage] = useState("");
-  // const [housing, setHousing] = useState("");
-  // const [education, setEducation] = useState("");
-  // const [crime, setCrime] = useState("");
-
-  // function setQ6value(val){
-  //   setQ6(val);
-  // }
-
   const [greaterThanZero, setGreaterThanZero] = useState(true);
 
   let ans = [0, 0, 0, 0];
   let navigate = useNavigate();
 
-  const submitResponses = async (e) => {
-    // e.preventDefault()
-    // try {
-      
-    //   if (greaterThanZero)
-    //     await addDoc(collection(db, 'Responses'), {
-    //       // clientName: clientName,
-    //       // placeOfInterview: placeOfInterview,
-    //       // gender: gender,
-    //       // dateOfBirth: dateOfBirth,
-    //       // countryOfOrigin: countryOfOrigin,
-    //       // placeOfResidence: placeOfResidence,
-    //       // primaryLanguage: primaryLanguage,
-    //       // housing: housing,
-    //       // education: education,
-    //       // crime: crime,
-    //       // q1: q1,
-    //       // q2: q2,
-    //       // q3: q3,
-    //       // q4: q4,
-    //       // q5: q5,
-    //       // q6: q6,
-    //       // q7: q7,
-    //       // q8: q8,
-    //       // q9: q9,
-    //       // q10: q10
-    //     })
-    //   else
-    //     await addDoc(collection(db, 'Responses'), {
-    //       // clientName: clientName,
-    //       // placeOfInterview: placeOfInterview,
-    //       // gender: gender,
-    //       // dateOfBirth: dateOfBirth,
-    //       // countryOfOrigin: countryOfOrigin,
-    //       // placeOfResidence: placeOfResidence,
-    //       // primaryLanguage: primaryLanguage,
-    //       // housing: housing,
-    //       // education: education,
-    //       // crime: crime,
-    //       // q1: q1,
-    //       // q2: q2,
-    //       // q3: q3,
-    //       // q4: q4,
-    //       // q5: q5
-    //     });
-    // console.log("Submitting")
-    // //navigate("/");
-    // } catch (err) {
-    //   alert(err)
-    // }
-  }
 
   // Method called when un/checking check box
   const handleChange = (event) => {
@@ -331,7 +277,7 @@ function Form(props) {
             </label>
           </fieldset> 
           <fieldset>
-            <h3>Interviewer Name:</h3> {interviewerName}
+            <h3>Interviewer:</h3> {currentUser.email}
             <label>
             </label>
           </fieldset>
@@ -392,10 +338,7 @@ function Form(props) {
                 formData = {formData}
                 name="Country"
                 value={formData["Country"]}
-                onChange={(e) => {
-                  //setCountryOfOrigin(e.target.value);
-                  handleData(e);
-                }} />
+                onChange={(e) => { handleData(e); }} />
               <Collapsible/>
             </label>
           </fieldset>
@@ -409,10 +352,7 @@ function Form(props) {
                   name = "Residence" 
                   variant="filled" 
                   value={formData["Residence"]}
-                  onChange={(e) => {
-                    //setPlaceOfResidence(e.target.value);
-                    handleData(e);
-                  }} 
+                  onChange={(e) => {handleData(e); }} 
                 />
                 <Collapsible/>
             </label>
@@ -493,10 +433,7 @@ function Form(props) {
                     style={{ width: 300 }} 
                     variant="filled"  
                     value={formData["Recent Conflict"]}
-                    onChange={(e) => {
-                      //setCrime(e.target.value);
-                      handleData(e);
-                    }}
+                    onChange={(e) => {handleData(e);}}
                   >
                     <MenuItem value={""}>--Please Select an Option--</MenuItem>
                     <MenuItem value={"Police Holding"}>Police Holding</MenuItem>
@@ -515,47 +452,52 @@ function Form(props) {
                 <h3>During the PAST 3 MONTHS, how often did the client do the following:</h3>
               </label>
               <fieldset>
-                <SliderQuestion
-                  name = "Q1"
-                  question = "1. Drink more than a few sips of beer, wine, or any drink containing alcohol?"
-                  form = {formData}
-                  updateForm = {handleData}
-                  stepperUpdate = {false}
-                  stepperForward = {props.stepperForward}
-                  stepperState = {props.stepperState} 
-                  />
+                <p>1. Drink more than a few sips of beer, wine, or any drink containing alcohol?</p>
+                <Slider 
+                    defaultValue={0}
+                    style={{ width: 550, marginLeft:50 }}
+                    step={1}
+                    valueLabelDisplay="auto"
+                    name = "Q1"
+                    marks={neverToDaily}
+                    min={0}
+                    max={4}
+                    color="secondary"
+                    onChange={(e) => handleData(e)}    
+                />
                 <Collapsible/>
               </fieldset>
               <fieldset>
-              <SliderQuestion
-                name = "Q2"
-                question = "2.Use any marijuana (weed, oil, wax, or hash by smoking, vaping, dabbing, or in food) or “synthetic marijuana” (like “K2,” “Spice”)?"
-                form = {formData}
-                updateForm = {handleData}
-                stepperUpdate = {false}
-                stepperForward = {props.stepperForward}
-                stepperState = {props.stepperState} 
+                <p> 2.Use any marijuana (weed, oil, wax, or hash by smoking, vaping, dabbing, or in food) or “synthetic marijuana” (like “K2,” “Spice”)?</p>
+                <Slider 
+                  defaultValue={0}
+                  style={{ width: 550 ,marginLeft:50}}
+                  step={1}
+                  valueLabelDisplay="auto"
+                  name = "Q2"
+                  marks={neverToDaily}
+                  min={0}
+                  max={4}
+                  color="secondary"
+                  onChange={(e) => handleData(e)}    
                 />
                 <Collapsible/>
               </fieldset>
               <fieldset>
                 <p>3. Use anything else to get high (like other illegal drugs, prescription or over-the-counter medications, and things that you sniff, huff, vape, or inject)?</p>
-                <SliderQuestion 
-                  style={{ width: 550 ,marginLeft:50}} 
-                  defaultValue = {0} 
-                  step={1} 
-                  valueLabelDisplay="auto" 
-                  marks={neverToDaily} 
-                  min={0} 
-                  max={4} 
-                  color="secondary"  
-                  name = "Q3" 
-                  //value={q3}
-                  onChange={(e) => {
-                    //setQ3(e.target.value);
-                    handleData(e);
-                  }}
+                <Slider 
+                  defaultValue={0}
+                  style={{ width: 550 ,marginLeft:50}}
+                  step={1}
+                  valueLabelDisplay="auto"
+                  name = "Q3"
+                  marks={neverToDaily}
+                  min={0}
+                  max={4}
+                  color="secondary"
+                  onChange={(e) => handleData(e)}    
                 />
+                
                 <Collapsible/>
               </fieldset>
               <fieldset>
@@ -570,11 +512,7 @@ function Form(props) {
                   max={4} 
                   color="secondary"  
                   name = "Q4" 
-                  //value={q4}
-                  onChange={(e) => {
-                    //setQ4(e.target.value);
-                    handleData(e);
-                  }}
+                  onChange={(e) => {handleData(e); }}
                 />
                 <Collapsible/>
               </fieldset>

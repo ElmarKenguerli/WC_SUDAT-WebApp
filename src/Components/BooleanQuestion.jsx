@@ -10,6 +10,7 @@ export default function BooleanQuestion(props) {
       // {if(props.stepperUpdate){
       //   props.stepperForwardFunction(props.stepperState)
       // }};
+      console.log(event.target.value)
       setSelected(event.target.value);
       props.updateForm(event);
     };

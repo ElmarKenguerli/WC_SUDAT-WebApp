@@ -5,47 +5,45 @@ import SliderQuestion from './SliderQuestion'
 import TrippleQuestion from './TrippleQuestion'
 import SixSliderQuestion from './SixSliderQuestion'
 import TempSliderQuestion from './TempSliderQuestion'
-
+import {Radio, FormControl, RadioGroup, FormControlLabel } from '@material-ui/core';
 const FollowUpQuestions = (props) => {
   return (
     <>
     <div className="screening">
 
         <fieldset>
+         <fieldset>         
 
-         <fieldset>
             <BooleanQuestion
-             name = "Q6"
-             question = "6. Do you ever use alcohol or drugs to RELAX, feel better about yourself, or fit in"
-             number = "6"
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {false}
-              />
-         <Collapsible/>
+                name = "Q6"
+                question = "6. Do you ever use alcohol or drugs to RELAX, feel better about yourself, or fit in"
+                number = "6"
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {false}
+            />
+            <Collapsible/>
          </fieldset>
-
          <fieldset>
              <BooleanQuestion
-              name = "Q7"
-              question = "7. Do you ever use alcohol or drugs while you are by yourself, or ALONE?"
-              number = "Q7"
-              form = {props.answers}
-              updateForm = {props.updateForm}
-              stepperUpdate = {false}
-              />
+                name = "Q7"
+                question = "7. Do you ever use alcohol or drugs while you are by yourself, or ALONE?"
+                number = "Q7"
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {false}
+            />
              <Collapsible/>
          </fieldset>
 
          <fieldset>
-             <BooleanQuestion
-             name = "Q8"
-
-             question = "8. Do you ever FORGET things you did while using alcohol or drugs? "
-             number = "Q8 "
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {false}
+            <BooleanQuestion
+                name = "Q8"
+                question = "8. Do you ever FORGET things you did while using alcohol or drugs? "
+                number = "Q8 "
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {false}
             />
          <Collapsible/>
          </fieldset>
@@ -58,7 +56,6 @@ const FollowUpQuestions = (props) => {
              form = {props.answers}
              updateForm = {props.updateForm}
              stepperUpdate = {false}/>
-
              <Collapsible/>
          </fieldset>
 
