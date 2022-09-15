@@ -9,7 +9,7 @@ import TempSliderQuestion from './TempSliderQuestion'
 const FollowUpQuestions = (props) => {
   return (
     <>
-    <div name="screening">
+    <div className="screening">
 
         <fieldset>
 

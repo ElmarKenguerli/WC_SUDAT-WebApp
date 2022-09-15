@@ -48,20 +48,7 @@ const[marks,setMarks] = useState([
             onChange={(event) => setQuestionAnswer(event.target.value)}    
         />
         <div>
-            <p>{question}</p>
-            <Slider
-                 
-                defaultValue={0}
-                style={{ width: 550 ,marginLeft:50}}
-                step={1}
-                valueLabelDisplay="auto"
-                marks={marks}
-                min={0}
-                max={4}
-                color="secondary"
-                onChange={(event) => setQuestionAnswer(event.target.value)}
-                  
-            />
+            
             {/* <div><box><label>{questionAnswer}</label></box></div> */}
             
         

@@ -33,11 +33,16 @@ export function AddUser(){
   // Login function
   const login = e => {
     e.preventDefault()
-    signInWithEmailAndPassword(auth, email, password)
+    
+     signInWithEmailAndPassword(auth, email, password)
     .then(() => {
       navigate("/LandingPage")
     })
     .catch(err => setError(err.message))
+    
+    
+
+   
   }
   
   /* function to add new user to firestore */
@@ -62,7 +67,8 @@ export function AddUser(){
           <form onSubmit={login} name='login_form'>
             <div className="form-group">
               <InputLabel>Email</InputLabel>
-              <OutlinedInput   
+              <OutlinedInput  
+                  required 
                   sx={{ height:75, fontSize: "30px" }}  
                   fullWidth
                   size="normal" 
@@ -72,13 +78,12 @@ export function AddUser(){
                   value={email}
                   onChange={(e) => {setEmail(e.target.value); setErrorMessage("");}}
               />
-                <label>
-                    {errorMessage}
-                </label>    
+                   
             </div>
             <br></br>
             <InputLabel>Password</InputLabel>
-              <OutlinedInput   
+              <OutlinedInput  
+                  required 
                   sx={{ height:75, fontSize: "30px"  }}  
                   fullWidth
                   size = "normal"
@@ -96,7 +101,9 @@ export function AddUser(){
               />
               <br></br><br></br>
               <div align="right" style={{marginTop:5}}>
+                  
                   <Button
+                    
                     variant="contained"
                     size = "large"
                     sx={{bgcolor :"darkblue" , color : "White", border: "2px solid #82d4e4be"}}
@@ -119,6 +126,7 @@ export function AddUser(){
                     {" "}
                     Log-in
                 </Button>
+                
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <Button
                     variant="contained"
