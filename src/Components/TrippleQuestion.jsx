@@ -21,20 +21,20 @@ export default function TrippleQuestion(props) {
         <p>{props.question}</p>
         <RadioGroup 
         row value={selected} onChange={selectionChangeHandler}>
-          <FormControlLabel value="Yes" 
+          <FormControlLabel value="None" 
           control={<Radio onChange={(event) => setSelected(event.target.value)}/>} 
           label= {props.label1}
-          name = {props.number}
+          name = {props.name}
           />
           <FormControlLabel 
-          value="No" 
+          value="Some what" 
           control={<Radio onChange={(event) => setSelected(event.target.value)}/>} 
           label={props.label2}
-          name = {props.number}
+          name = {props.name}
           />
           
           <FormControlLabel 
-          value="No" 
+          value=" A lot" 
           control={<Radio onChange={(event) => setSelected(event.target.value)}/>} 
           label={props.label3}
           name = {props.number}

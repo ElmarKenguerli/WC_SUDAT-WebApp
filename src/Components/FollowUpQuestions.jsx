@@ -84,7 +84,7 @@ const FollowUpQuestions = (props) => {
     <fieldset>
              <BooleanQuestion
              name = "Q11"
-             question = "In the past few weeks, have you wished you were dead? " 
+             question = "11. In the past few weeks, have you wished you were dead? " 
              number = "Q11"
              form = {props.answers}
              updateForm = {props.updateForm}
@@ -97,7 +97,7 @@ const FollowUpQuestions = (props) => {
              <Collapsible/>
              <BooleanQuestion
              name = "Q12"
-             question = "In the past few weeks, have you felt that you or  your family would be better off you were dead? " 
+             question = "12. In the past few weeks, have you felt that you or  your family would be better off you were dead? " 
              number = "Q12"
              form = {props.answers}
              updateForm = {props.updateForm}
@@ -111,7 +111,7 @@ const FollowUpQuestions = (props) => {
       
              <BooleanQuestion
              name = "Q13"
-             question = "In the past week, have you been having thoughts about killing yourself? " 
+             question = "13. In the past week, have you been having thoughts about killing yourself? " 
              number = "Q13"
              form = {props.answers}
              updateForm = {props.updateForm}
@@ -125,7 +125,7 @@ const FollowUpQuestions = (props) => {
             {/* TO DO: Only show if 13 answered yes */}
             <BooleanQuestion
              name = "Q13.1"
-             question = "Do you have a plan for taking your own life?" 
+             question = "13.1 Do you have a plan for taking your own life?" 
              number = "Q13.1"
              form = {props.answers}
              updateForm = {props.updateForm}
@@ -139,7 +139,7 @@ const FollowUpQuestions = (props) => {
             <Collapsible/>
             <BooleanQuestion
              name = "Q13.2"
-             question = "Do you have the means of taking your life?" 
+             question = "13.2 Do you have the means of taking your life?" 
              number = "Q13.2"
              form = {props.answers}
              updateForm = {props.updateForm}
@@ -150,7 +150,7 @@ const FollowUpQuestions = (props) => {
             <Collapsible/>
             <BooleanQuestion
              name = "Q14"
-             question = "In the past few weeks have you noticed a significant increase in your substance use?" 
+             question = "14. In the past few weeks have you noticed a significant increase in your substance use?" 
              number = "Q14"
              form = {props.answers}
              updateForm = {props.updateForm}
@@ -162,7 +162,7 @@ const FollowUpQuestions = (props) => {
         {/* TO DO: Only show if 14 answered yes */}
             <BooleanQuestion
              name = "Q14.1"
-             question = "Did you find yourself in potentially harmful situations?" 
+             question = "14.1 Did you find yourself in potentially harmful situations?" 
              number = "Q14.1"
              form = {props.answers}
              updateForm = {props.updateForm}
@@ -173,7 +173,7 @@ const FollowUpQuestions = (props) => {
              <Collapsible/>
             <BooleanQuestion
              name = "Q14.2"
-             question = "Did you find yourself engaging in potentially harmful behavior?" 
+             question = "14.2 Did you find yourself engaging in potentially harmful behavior?" 
              number = "Q14.2"
              form = {props.answers}
              updateForm = {props.updateForm}
@@ -185,7 +185,7 @@ const FollowUpQuestions = (props) => {
             <Collapsible/>
              <BooleanQuestion
              name = "Q15"
-             question = "Have you ever tried to kill yourself?" 
+             question = "15. Have you ever tried to kill yourself?" 
              number = "Q15"
              form = {props.answers}
              updateForm = {props.updateForm}
@@ -198,7 +198,7 @@ const FollowUpQuestions = (props) => {
              <Collapsible/>
              <BooleanQuestion
              name = "Q15.1"
-             question = "How?" 
+             question = "15.1 How?" 
              number = "Q15.1"
              form = {props.answers}
              updateForm = {props.updateForm}
@@ -211,7 +211,7 @@ const FollowUpQuestions = (props) => {
              <Collapsible/>
              <BooleanQuestion
              name = "Q15.2"
-             question = "When?" 
+             question = "15.2 When?" 
              number = "Q15.2"
              form = {props.answers}
              updateForm = {props.updateForm}
@@ -224,7 +224,7 @@ const FollowUpQuestions = (props) => {
              <Collapsible/>
              <BooleanQuestion
              name = "Q15.3"
-             question = "Where?" 
+             question = "15.3 Where?" 
              number = "Q15.3"
              form = {props.answers}
              updateForm = {props.updateForm}
@@ -237,7 +237,7 @@ const FollowUpQuestions = (props) => {
              <Collapsible/>
              <BooleanQuestion
              name = "Q16"
-             question = "Did you find yourself engaging in potentially harmful behavior?" 
+             question = "16. Did you find yourself engaging in potentially harmful behavior?" 
              number = "Q16"
              form = {props.answers}
              updateForm = {props.updateForm}
@@ -246,9 +246,14 @@ const FollowUpQuestions = (props) => {
              stepperState = {props.stepperState}
              />
             <Collapsible/>
-            <SliderQuestion
+            <BooleanQuestion
             name = "Q17"
-            question = "Would you say that you able to take care of yourself?"
+            question = "17. Would you say that you able to take care of yourself?"
+            form = {props.answers}
+            updateForm = {props.updateForm}
+            stepperUpdate = {true}
+            stepperForward = {props.stepperForward}
+            stepperState = {props.stepperState}
             />
 
              
@@ -259,7 +264,7 @@ const FollowUpQuestions = (props) => {
             <fieldset>
             <BooleanQuestion
              name = "Q18"
-             question = "Have you ever in your lifetime experienced anything that has been especially horrific, frightening or traumatic ?" 
+             question = "18. Have you ever in your lifetime experienced anything that has been especially horrific, frightening or traumatic ?" 
              number = "Q18"
              form = {props.answers}
              updateForm = {props.updateForm}
@@ -272,9 +277,9 @@ const FollowUpQuestions = (props) => {
              <Collapsible/>
 
              <BooleanQuestion
-             name = "Q18"
-             question = "Have you ever in your lifetime experienced anything that has been especially horrific, frightening or traumatic ?" 
-             number = "Q18"
+             name = "Q19"
+             question = "19. Have you ever in your lifetime experienced anything that has been especially horrific, frightening or traumatic ?" 
+             number = "Q19"
              form = {props.answers}
              updateForm = {props.updateForm}
              stepperUpdate = {false}
@@ -529,7 +534,7 @@ const FollowUpQuestions = (props) => {
 
                 <TrippleQuestion
                name = "Q30"
-               question = "During the past week have you taken part in social, religious or recreational activities(sprts,meetings,religious meetings & parties" 
+               question = "During the past week have you taken part in social, religious or recreational activities(sports,meetings,religious meetings & parties" 
                number = "Q30"
                form = {props.answers}
                updateForm = {props.updateForm}
@@ -544,7 +549,7 @@ const FollowUpQuestions = (props) => {
                 <Collapsible/>
 
         
-    `   </fieldset>
+       </fieldset>
         </div>
 
          
@@ -555,7 +560,10 @@ const FollowUpQuestions = (props) => {
             name = "Q31"
             number = "Q31"
             booleanQuestion = "Does your family have a history of substance abuse?"
+            booleanQuestionNumber = "Q31a"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above?"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
             <Collapsible>
@@ -563,7 +571,10 @@ const FollowUpQuestions = (props) => {
             name = "Q32"
             number = "Q32"
             booleanQuestion = "Would you say that your parents have favourable attitudes towards substance use or abuse?"
+            booleanQuestionNumber = "Q32a"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
             
@@ -572,15 +583,21 @@ const FollowUpQuestions = (props) => {
             name = "Q33"
             number = "Q33"
             booleanQuestion = "Would you say that growing up your parents monitored your behaviour poorly?"
+            booleanQuestionNumber = "Q33a"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above?"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
             <Collapsible>
             <SixSliderQuestion
             name = "Q34"
             number = "Q34"
+            booleanQuestionNumber = "Q34a"
             booleanQuestion = " Do your parents have a history of substance use?"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above?"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
             
@@ -588,16 +605,22 @@ const FollowUpQuestions = (props) => {
             <SixSliderQuestion
             name = "Q35"
             number = "Q35"
+            booleanQuestionNumber = "Q35a"
             booleanQuestion = "Did you ever feel rejected by your family for your sexual orientation or gender identity?"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above?"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
             <Collapsible>
             <SixSliderQuestion
+            booleanQuestionNumber = "Q36a"
             name = "Q36"
             number = "Q36"
             booleanQuestion = "Did you ever associate with substance using peers?"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above?"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
             
@@ -605,16 +628,22 @@ const FollowUpQuestions = (props) => {
             <SixSliderQuestion
             name = "Q37"
             number = "Q37"
+            booleanQuestionNumber = "Q37a"
             booleanQuestion = " Growing up did you ever feel a lack of school connectedness? (Belief held by learners that adults and peers in the school care about their learning as well as about them as individuals)"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above?"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
             <Collapsible>
             <SixSliderQuestion
             name = "Q38"
             number = "Q38"
+            booleanQuestionNumber = "Q38a"
             booleanQuestion = " Would you describe your overall academic achievement as low?"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above?"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
             
@@ -622,16 +651,22 @@ const FollowUpQuestions = (props) => {
             <SixSliderQuestion
             name = "Q39"
             number = "Q39"
+            booleanQuestionNumber = "Q39a"
             booleanQuestion = " Did you ever drop out of school, leave or stay away from school for extended periods of time?"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above?"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
             <Collapsible>
             <SixSliderQuestion
             name = "Q40"
             number = "Q40"
+            booleanQuestionNumber = "Q40a"
             booleanQuestion = " Is your community characterised by low sense of belonging where it feels like people don’t care about others?"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
             
@@ -639,16 +674,22 @@ const FollowUpQuestions = (props) => {
             <SixSliderQuestion
             name = "Q41"
             number = "Q41"
+            booleanQuestionNumber = "Q41a"
             booleanQuestion = "Would you say that drugs & alcohol are freely available and easy to get in your community?"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above?"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
             <Collapsible>
             <SixSliderQuestion
             name = "Q43"
             number = "Q43"
+            booleanQuestionNumber = "Q43a"
             booleanQuestion = "Would you say that your community is marked by high levels of violence, poverty and unemployment?"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above?"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
             
@@ -656,8 +697,11 @@ const FollowUpQuestions = (props) => {
             <SixSliderQuestion
             name = "Q44"
             number = "Q44"
+            booleanQuestionNumber = "Q44a"
             booleanQuestion = "Would you say that your community have norms and laws that are favourable toward drug use, firearms, and crime?"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above?"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
             <Collapsible/>
@@ -668,72 +712,98 @@ const FollowUpQuestions = (props) => {
         <SixSliderQuestion
             name = "Q45"
             number = "Q45"
+            booleanQuestionNumber = "Q45a"
             booleanQuestion = "Growing up did you feel that your parent/s or family were involved with you showing an interest in your well-being?"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above?"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>
         <SixSliderQuestion
             name = "Q46"
             number = "Q46"
+            booleanQuestionNumber = "Q46a"
             booleanQuestion = " Growing up did you feel that to your parent/s and family supported healthy attitudes, behaviors, and a positive living environment?"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above?"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>
         <SixSliderQuestion
             name = "Q47"
             number = "Q47"
+            booleanQuestionNumber = "Q47a"
             booleanQuestion = " Growing up did you feel that your parent/s showed disapproval for substance use?"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above?"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>
         <SixSliderQuestion
             name = "Q48"
             number = "Q48"
+            booleanQuestionNumber = "Q48a"
             booleanQuestion = "Growing up did you feel that your parent/s helped you to build trusting relationships with others to talk about sensitive issues such as sexual and mental health, substance use, and safety from bullying"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above?"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>
         <SixSliderQuestion
             name = "Q49"
             number = "Q49"
+            booleanQuestionNumber = "Q49a"
             booleanQuestion = " Growing up did you feel that your parent/s used effective monitoring practices to help you make healthy decisions and avoid risky behaviors? (For example, unprotected sex, underage drinking and smoking)"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above?"
-            
+            form = {props.answers}
+            updateForm = {props.updateForm}
             />
         <Collapsible/>
         <SixSliderQuestion
             name = "Q50"
             number = "Q50"
+            booleanQuestionNumber = "Q50a"
             booleanQuestion = "Would you say that your community have norms and laws that are favourable toward drug use, firearms, and crime?"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above?"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>
         <SixSliderQuestion
             name = "Q51"
             number = "Q51"
+            booleanQuestionNumber = "Q51a"
             booleanQuestion = " Do you mostly associate with positive peers and friends?"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above?"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>
         <SixSliderQuestion
             name = "Q52"
             number = "Q52"
+            booleanQuestionNumber = "Q52a"
             booleanQuestion = " Growing up did you feel a strong sense of school connectedness? (Belief held by students that adults and peers in the school care about their learning as well as about them as individuals)"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above?"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>
         <SixSliderQuestion
             name = "Q53"
             number = "Q53"
+            booleanQuestionNumber = "Q53a"
             booleanQuestion = "Would you describe your overall academic achievement as good? "
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above?"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>
@@ -752,6 +822,8 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             name = "Q53"
             number = "Q53"
             question = " I really want to make changes in my use of drugs/alcohol."
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>
@@ -760,6 +832,8 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             name = "Q54"
             number = "Q54"
             question = " Sometimes I wonder if I am an addict."
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>
@@ -767,6 +841,8 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             name = "Q55"
             number = "Q55"
             question = "If I don't change my drug/alcohol use soon, my problems are going to get worse."
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>
@@ -774,7 +850,8 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             name = "Q56"
             number = "Q56"
             question = " I have already started making some changes in the use my use of drugs/alcohol."
-            
+            form = {props.answers}
+            updateForm = {props.updateForm}
             />
         <Collapsible/>
  
@@ -782,6 +859,8 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             name = "Q57"
             number = "Q57"
             question = "I was using drugs/alcohol too much at one time, but I have managed to change that."
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>
@@ -789,6 +868,8 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             name = "Q58"
             number = "Q58"
             question = "Sometimes I wonder if my drug/alcohol use is hurting people."
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>
@@ -796,6 +877,8 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             name = "Q59"
             number = "Q59"
             question = "I have a drug/alchohol problem"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>
@@ -804,13 +887,16 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             name = "Q60"
             number = "Q60"
             question = "I'm not just thinking about chnaging my alcohol/drug use, I'm already doing something about it."
-            
+            form = {props.answers}
+            updateForm = {props.updateForm}
             />
         <Collapsible/>
         <TempSliderQuestion
             name = "Q61"
             number = "Q61"
             question = "I have already changed my drug/alcohol use, and I am looking for ways to keeps from slipping back into my old pattern."
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>
@@ -818,6 +904,8 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             name = "Q62"
             number = "Q62"
             question = "I have serious problems with drugs/alcohol."
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>
@@ -826,6 +914,8 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             name = "Q63"
             number = "Q63"
             question = "Sometimes I wonder if I am in control of my drug/alcohol use."
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>
@@ -833,6 +923,8 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             name = "Q64"
             number = "Q64"
             question = "My drug/alcohol use is causing a lot of harm."
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>
@@ -840,6 +932,8 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             name = "Q65"
             number = "Q65"
             question = "I am actively doing things now to cut down or stop my use of drugs/alcohol."
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>
@@ -848,35 +942,44 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             name = "Q66"
             number = "Q66"
             question = "I want help to keep from going back to the drug/alcohol problems I had before."
-            
-            />
-        <Collapsible/>
-        <TempSliderQuestion
-            name = "Q66"
-            number = "Q66"
-            question = "I know that I have a drug/alcohol problem"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>
         <TempSliderQuestion
             name = "Q67"
             number = "Q67"
-            question = "I am a drug/alcohol addict."
+            question = "I know that I have a drug/alcohol problem"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
+            />
+        <Collapsible/>
+        <TempSliderQuestion
+            name = "Q68"
+            number = "Q68"
+            question = "I am a drug/alcohol addict."
+            form = {props.answers}
+            updateForm = {props.updateForm}
             />
         <Collapsible/>
  
         <TempSliderQuestion
-            name = "Q66"
-            number = "Q66"
+            name = "Q69"
+            number = "Q69"
             question = "I am working hard to change my drug/alcohol use."
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>
         <TempSliderQuestion
-            name = "Q66"
-            number = "Q66"
+            name = "Q70"
+            number = "Q70"
             question = "If I made some changes in my drug/alcohol use, and I want some help to keep from going back to the way I used to be before"
+            form = {props.answers}
+            updateForm = {props.updateForm}
             
             />
         <Collapsible/>

@@ -24,13 +24,13 @@ export default function BooleanQuestion(props) {
           <FormControlLabel value="Yes" 
           control={<Radio onChange={(event) => setSelected(event.target.value)}/>} 
           label="Yes"
-          name = {props.number}
+          name = {props.name}
           />
           <FormControlLabel 
           value="No" 
           control={<Radio onChange={(event) => setSelected(event.target.value)}/>} 
           label="No"
-          name = {props.number}
+          name = {props.name}
           />
           
         </RadioGroup>

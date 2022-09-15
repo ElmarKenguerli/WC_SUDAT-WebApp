@@ -35,12 +35,19 @@ const[marks,setMarks] = useState([
       const[question,setQuestion] = useState(props.question);
       const[questionAnswer,setQuestionAnswer] = useState(0);
       console.log(questionAnswer);
+      const selectionChangeHandler = (event) => {
+        setQuestionAnswer(event.target.value);
+        props.updateForm(event);
+      };
     // const[marks,setQuestionID] = useState(0);
     return (
         <div>
             
             <BooleanQuestion
             question = {props.booleanQuestion}
+            form = {props.form}
+            updateForm = {props.updateForm}
+            name ={props.booleanQuestionNumber}
             />
             <p>{question}</p>
             <Slider
@@ -53,7 +60,8 @@ const[marks,setMarks] = useState([
                 min={0}
                 max={4}
                 color="secondary"
-                onChange={(event) => setQuestionAnswer(event.target.value)}
+                onChange={selectionChangeHandler}
+                name = {props.name}
                   
             />
             {/* <div><box><label>{questionAnswer}</label></box></div> */}

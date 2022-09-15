@@ -33,6 +33,10 @@ const[marks,setMarks] = useState([
       const[questionAnswer,setQuestionAnswer] = useState(0);
       console.log(questionAnswer);
     // const[marks,setQuestionID] = useState(0);
+    const selectionChangeHandler = (event) => {
+      setQuestionAnswer(event.target.value);
+      props.updateForm(event);
+    };
     return (
         <div>
             <p>{question}</p>
@@ -46,7 +50,8 @@ const[marks,setMarks] = useState([
                 min={0}
                 max={4}
                 color="secondary"
-                onChange={(event) => setQuestionAnswer(event.target.value)}
+                onChange={selectionChangeHandler}
+                name = {props.name}
                   
             />
             {/* <div><box><label>{questionAnswer}</label></box></div> */}
