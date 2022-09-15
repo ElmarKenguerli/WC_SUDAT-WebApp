@@ -3,7 +3,7 @@ import { Select, MenuItem } from "@material-ui/core";
 
 
 const CountriesDropdown = props => {
-  const [country, setCountry] = useState("SOUTH AFRICA");
+  const [country, setCountry] = useState("");
   
 
   const onChange = event => {
