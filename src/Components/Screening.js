@@ -60,15 +60,15 @@ export function Collapsible() {
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
     return (
       <div className="collapsible">
-          <div className="header" {...getToggleProps()}>
-              {isExpanded ? '-' : '+'}
+        <div className="header" {...getToggleProps()}>
+            {isExpanded ? '-' : '+'}
+        </div>
+        <div {...getCollapseProps()}>
+          <div className="content">
+            <p>Type comment below</p>
+            <textarea  className="commentBox" name="Extra-Comment" onChange={setFormData}/>
           </div>
-          <div {...getCollapseProps()}>
-              <div className="content">
-                  <p>Type comment below</p>
-                  <textarea  className="commentBox" name="Extra-Comment" onChange={setFormData}/>
-              </div>
-          </div>
+        </div>
       </div>
     );
 }
@@ -138,11 +138,10 @@ function Form(props) {
   const [submitting, setSubmitting] = useState(false);
   const [hasAcceptedTsAndCs, setHasAcceptedTsAndCs] = useState(false);
   const [valueDate, setValueDate] = React.useState(null);
-  const [greaterThanZero, setGreaterThanZero] = useState(true);
+  const [greaterThanZero, setGreaterThanZero] = useState(false);
 
   let ans = [0, 0, 0, 0];
   let navigate = useNavigate();
-
 
   // Method called when un/checking check box
   const handleChange = (event) => {
@@ -150,23 +149,28 @@ function Form(props) {
   }
 
   useEffect(() => {
-    let great = false;
+    let val = false;
+    let fd = formData;
+    let vals = ["Q1", "Q2", "Q3", "Q4"];
+    let sum = 0;
 
-    if (isGreaterThanZero()) {
-      great = true;  
-    }
-  
-    setGreaterThanZero(great);
+    for (let i=0; i<4; ++i)
+      if (fd[vals[i]])
+        sum += fd[vals[i]];
+    
+    if (sum > 0)
+      val = true;
+
+    setGreaterThanZero(val);
   });
 
-  function isGreaterThanZero() {
-    ans[0] = formData["Q1"];
-    ans[1] = formData["Q2"]
-    ans[2] = formData["Q3"]
-    ans[3] = formData["Q4"]
-    // if (ans[0] >= 1 || ans[1] >= 1 || ans[2] >= 1 || ans[3] >= 1)
-      {return true}
-    
+  function isGreaterThanZero(l) {
+    let ans1 = formData["Q1"];
+    let ans2 = formData["Q2"]
+    let ans3 = formData["Q3"]
+    let ans4 = formData["Q4"]
+   
+    setGreaterThanZero(ans1 >= 1 || ans2 >= 1 || ans3 >= 1 || ans4 >= 1)
   }
 
   //Show submitting message while submitting
@@ -284,7 +288,7 @@ function Form(props) {
             </label>
           </fieldset> 
           <fieldset>
-            <h3>Interviewer:</h3> {"currentUser.email"}
+            <h3>Interviewer:</h3> {currentUser.email}
             <label>
             </label>
           </fieldset>
@@ -527,9 +531,7 @@ function Form(props) {
                 <p>5. Have you ever ridden in a CAR driven by someone (including yourself) who was “high” or had been using alcohol or drugs?</p>
                 <RadioGroup 
                   row name = "Q5" 
-                  //value={q5}
                   onChange={(e) => {
-                    //setQ5(e.target.value);
                     handleData(e);
                   }}
                 >
@@ -544,7 +546,6 @@ function Form(props) {
               updateForm = {handleExtraData}
               stepperForward = {props.stepperForwardFunction}
               stepperState = {props.stepperState}
-              
             />}
           <button className="btn-square" type="submit">Submit</button> 
         </form>
@@ -552,7 +553,6 @@ function Form(props) {
           <br></br>
           <h3>Summary: </h3>
           <ul>
-           
             { Object.entries(formData).map(([name, value]) => (<li key={name}><strong>{name}</strong>:{value.toString()}</li>))}
           </ul>
         </div>
