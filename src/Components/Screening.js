@@ -66,7 +66,7 @@ export function Collapsible() {
         <div {...getCollapseProps()}>
           <div className="content">
             <p>Type comment below</p>
-            <textarea  className="commentBox" name="Extra-Comment" onChange={setFormData}/>
+            <textarea  className="commentBox" name="Extra-Comment" onBlur={setFormData}/>
           </div>
         </div>
       </div>
@@ -232,7 +232,7 @@ function Form(props) {
           <input 
             type="checkbox"
             value={hasAcceptedTsAndCs}
-            onChange = {e => {props.stepperForwardFunction(props.stepperState); handleChange(e)}}
+            onBlur = {e => {props.stepperForwardFunction(props.stepperState); handleChange(e)}}
           />
             I have read the above to the client being screened, and have obtained his/her consent to proceed with the screening process.
         </label>
@@ -266,7 +266,7 @@ function Form(props) {
                 name = "Client Name" 
                 variant="filled"
                 //value={clientName}
-                onChange={(e) => {
+                onBlur={(e) => {
                   //setClientName(e.target.value);
                   handleData(e);
                 }}
@@ -283,12 +283,12 @@ function Form(props) {
                 name = "Place of Interview" 
                 variant="filled" 
                 //value={placeOfInterview}
-                onChange={(e) => { handleData(e);  }} 
+                onBlur={(e) => { handleData(e);  }} 
               />
             </label>
           </fieldset> 
           <fieldset>
-            <h3>Interviewer:</h3> {currentUser.email}
+            <h3>Interviewer:</h3> {"currentUser.email"}
             <label>
             </label>
           </fieldset>
@@ -312,7 +312,7 @@ function Form(props) {
                   style={{ width: 300 }} 
                   variant="filled"
                   //value={gender}
-                  onChange={(e) => {
+                  onBlur={(e) => {
                     //setGender(e.target.value);
                     handleData(e);
                   }}
@@ -333,7 +333,7 @@ function Form(props) {
                   <DatePicker 
                     //value={dateOfBirth} 
                     name="Date of Birth" 
-                    onChange={(newValue) => {
+                    onBlur={(newValue) => {
                       //setDateOfBirth(newValue);
                       handleDateData(newValue);
                     }} 
@@ -349,7 +349,7 @@ function Form(props) {
                 
                 name="Country"
                 value={"countryData"}
-                onChange={(e) => { handleData(e); }} />
+                onBlur={(e) => { handleData(e); }} />
               <Collapsible/>
             </label>
           </fieldset>
@@ -363,7 +363,7 @@ function Form(props) {
                   name = "Residence" 
                   variant="filled" 
                   value={formData["Residence"]}
-                  onChange={(e) => {handleData(e); }} 
+                  onBlur={(e) => {handleData(e); }} 
                 />
                 <Collapsible/>
             </label>
@@ -378,7 +378,7 @@ function Form(props) {
                 name = "Language" 
                 variant="filled" 
                 value={formData["Langauge"]}
-                onChange={(e) => {
+                onBlur={(e) => {
                   //setPrimaryLanguage(e.target.value);
                   handleData(e);
                 }} 
@@ -394,7 +394,7 @@ function Form(props) {
                 style={{ width: 300 }} 
                 variant="filled" 
                 value={formData["Housing Situation"]}
-                onChange={(e) => {
+                onBlur={(e) => {
                   //setHousing(e.target.value);
                   handleData(e);
                 }}
@@ -421,7 +421,7 @@ function Form(props) {
                   style={{ width: 300 }} 
                   variant="filled" 
                   value={formData["Education"]}
-                  onChange={(e) => {
+                  onBlur={(e) => {
                     //setEducation(e.target.value);
                     handleData(e);
                   }}
@@ -444,7 +444,7 @@ function Form(props) {
                     style={{ width: 300 }} 
                     variant="filled"  
                     value={formData["Recent Conflict"]}
-                    onChange={(e) => {handleData(e);}}
+                    onBlur={(e) => {handleData(e);}}
                   >
                     <MenuItem value={""}>--Please Select an Option--</MenuItem>
                     <MenuItem value={"Police Holding"}>Police Holding</MenuItem>

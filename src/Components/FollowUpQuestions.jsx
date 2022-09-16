@@ -10,282 +10,227 @@ const FollowUpQuestions = (props) => {
   return (
     <>
     <div className="screening">
-
         <fieldset>
-         <fieldset>         
-
+            <fieldset>         
             <BooleanQuestion
                 name = "Q6"
                 question = "6. Do you ever use alcohol or drugs to RELAX, feel better about yourself, or fit in"
-                
                 form = {props.answers}
                 updateForm = {props.updateForm}
                 stepperUpdate = {false}
             />
-            <Collapsible/>
+            
          </fieldset>
          <fieldset>
              <BooleanQuestion
                 name = "Q7"
                 question = "7. Do you ever use alcohol or drugs while you are by yourself, or ALONE?"
-                
                 form = {props.answers}
                 updateForm = {props.updateForm}
                 stepperUpdate = {false}
             />
-             <Collapsible/>
+            
          </fieldset>
-
          <fieldset>
             <BooleanQuestion
                 name = "Q8"
                 question = "8. Do you ever FORGET things you did while using alcohol or drugs? "
-                
                 form = {props.answers}
                 updateForm = {props.updateForm}
                 stepperUpdate = {false}
             />
-         <Collapsible/>
+            
          </fieldset>
-
          <fieldset>
-             <BooleanQuestion
-             name = "Q9"
-             question = "9. Do your FAMILY or FRIENDS ever tell you that you should cut down on your drinking or drug use?"
+            <BooleanQuestion
+                name = "Q9"
+                question = "9. Do your FAMILY or FRIENDS ever tell you that you should cut down on your drinking or drug use?"
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {false}
+            />
              
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {false}/>
-             <Collapsible/>
-         </fieldset>
-
-         <fieldset>
-             <BooleanQuestion
-             name = "Q10"
-             question = "10. Have you ever gotten into TROUBLE while you were using alcohol or drugs" 
-             
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {true}
-             stepperForward = {props.stepperForward}
-             stepperState = {props.stepperState}
-
-             
-             />
-             <Collapsible/>
-         </fieldset>
-         </fieldset>
+            </fieldset>
+            <fieldset>
+                <BooleanQuestion
+                    name = "Q10"
+                    question = "10. Have you ever gotten into TROUBLE while you were using alcohol or drugs" 
+                    form = {props.answers}
+                    updateForm = {props.updateForm}
+                    stepperUpdate = {true}
+                    stepperForward = {props.stepperForward}
+                    stepperState = {props.stepperState}
+                />
+                
+            </fieldset>
+        </fieldset>
     </div>
     <h2> Risk Factors </h2>
     <div name = 'Risk Factors'>
-    <fieldset>
+        <fieldset>
+            <fieldset>
+                <BooleanQuestion
+                    name = "Q11"
+                    question = "11. In the past few weeks, have you wished you were dead? " 
+                    form = {props.answers}
+                    updateForm = {props.updateForm}
+                    stepperUpdate = {false}
+                    stepperForward = {props.stepperForward}
+                    stepperState = {props.stepperState}
+                    />
+            </fieldset>
              <BooleanQuestion
-             name = "Q11"
-             question = "11. In the past few weeks, have you wished you were dead? " 
-             
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {false}
-             stepperForward = {props.stepperForward}
-             stepperState = {props.stepperState}
-
-             
+                name = "Q12"
+                question = "12. In the past few weeks, have you felt that you or  your family would be better off you were dead? " 
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {false}
+                stepperForward = {props.stepperForward}
+                stepperState = {props.stepperState}
              />
-             <Collapsible/>
+             
              <BooleanQuestion
-             name = "Q12"
-             question = "12. In the past few weeks, have you felt that you or  your family would be better off you were dead? " 
+                name = "Q13"
+                question = "13. In the past week, have you been having thoughts about killing yourself? " 
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {false}
+                stepperForward = {props.stepperForward}
+                stepperState = {props.stepperState} 
+            />
              
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {false}
-             stepperForward = {props.stepperForward}
-             stepperState = {props.stepperState}
-
-             
-             />
-             <Collapsible/>
-      
-             <BooleanQuestion
-             name = "Q13"
-             question = "13. In the past week, have you been having thoughts about killing yourself? " 
-             
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {false}
-             stepperForward = {props.stepperForward}
-             stepperState = {props.stepperState}
-
-             
-             />
-             <Collapsible/>
             {/* TO DO: Only show if 13 answered yes */}
             <BooleanQuestion
-             name = "Q13.1"
-             question = "13.1 Do you have a plan for taking your own life?" 
-             
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {false}
-             stepperForward = {props.stepperForward}
-             stepperState = {props.stepperState}
-
-             
-             />
+                name = "Q13.1"
+                question = "13.1 Do you have a plan for taking your own life?" 
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {false}
+                stepperForward = {props.stepperForward}
+                stepperState = {props.stepperState}
+            />
             {/* TO DO: Only show if 13 answered yes */}
-            <Collapsible/>
+            
             <BooleanQuestion
-             name = "Q13.2"
-             question = "13.2 Do you have the means of taking your life?" 
-             
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {false}
-             stepperForward = {props.stepperForward}
-             stepperState = {props.stepperState}
-             />
-            <Collapsible/>
+                name = "Q13.2"
+                question = "13.2 Do you have the means of taking your life?"                 
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {false}
+                stepperForward = {props.stepperForward}
+                stepperState = {props.stepperState}
+                />
             <BooleanQuestion
-             name = "Q14"
-             question = "14. In the past few weeks have you noticed a significant increase in your substance use?" 
-             
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {false}
-             stepperForward = {props.stepperForward}
-             stepperState = {props.stepperState}
-             />
-             <Collapsible/>
+                name = "Q14"
+                question = "14. In the past few weeks have you noticed a significant increase in your substance use?" 
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {false}
+                stepperForward = {props.stepperForward}
+                stepperState = {props.stepperState}
+            />
         {/* TO DO: Only show if 14 answered yes */}
             <BooleanQuestion
-             name = "Q14.1"
-             question = "14.1 Did you find yourself in potentially harmful situations?" 
-             
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {false}
-             stepperForward = {props.stepperForward}
-             stepperState = {props.stepperState}
-             />
-             <Collapsible/>
-            <BooleanQuestion
-             name = "Q14.2"
-             question = "14.2 Did you find yourself engaging in potentially harmful behavior?" 
-             
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {false}
-             stepperForward = {props.stepperForward}
-             stepperState = {props.stepperState}
-             />
-
-            <Collapsible/>
-             <BooleanQuestion
-             name = "Q15"
-             question = "15. Have you ever tried to kill yourself?" 
-             
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {false}
-             stepperForward = {props.stepperForward}
-             stepperState = {props.stepperState}
-             />
-
-
-             <Collapsible/>
-             <BooleanQuestion
-             name = "Q15.1"
-             question = "15.1 How?" 
-             
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {false}
-             stepperForward = {props.stepperForward}
-             stepperState = {props.stepperState}
-             />
-
-
-             <Collapsible/>
-             <BooleanQuestion
-             name = "Q15.2"
-             question = "15.2 When?" 
-             
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {false}
-             stepperForward = {props.stepperForward}
-             stepperState = {props.stepperState}
-             />
-
-
-             <Collapsible/>
-             <BooleanQuestion
-             name = "Q15.3"
-             question = "15.3 Where?" 
-             
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {false}
-             stepperForward = {props.stepperForward}
-             stepperState = {props.stepperState}
-             />
-
-
-             <Collapsible/>
-             <BooleanQuestion
-             name = "Q16"
-             question = "16. Did you find yourself engaging in potentially harmful behavior?" 
-             
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {true}
-             stepperForward = {props.stepperForward}
-             stepperState = {props.stepperState}
-             />
-            <Collapsible/>
-            <BooleanQuestion
-            name = "Q17"
-            question = "17. Would you say that you able to take care of yourself?"
-            form = {props.answers}
-            updateForm = {props.updateForm}
-            stepperUpdate = {true}
-            stepperForward = {props.stepperForward}
-            stepperState = {props.stepperState}
+                name = "Q14.1"
+                question = "14.1 Did you find yourself in potentially harmful situations?" 
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {false}
+                stepperForward = {props.stepperForward}
+                stepperState = {props.stepperState}
             />
-
+            
+            <BooleanQuestion
+                name = "Q14.2"
+                question = "14.2 Did you find yourself engaging in potentially harmful behavior?" 
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {false}
+                stepperForward = {props.stepperForward}
+                stepperState = {props.stepperState}
+            />
+            <BooleanQuestion
+                name = "Q15"
+                question = "15. Have you ever tried to kill yourself?" 
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {false}
+                stepperForward = {props.stepperForward}
+                stepperState = {props.stepperState}
+            />
              
-           
+             <BooleanQuestion
+                name = "Q15.1"
+                question = "15.1 How?" 
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {false}
+                stepperForward = {props.stepperForward}
+                stepperState = {props.stepperState}
+             />
+             
+             <BooleanQuestion
+                name = "Q15.2"
+                question = "15.2 When?" 
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {false}
+                stepperForward = {props.stepperForward}
+                stepperState = {props.stepperState}
+            />
+            
+            <BooleanQuestion
+                name = "Q15.3"
+                question = "15.3 Where?" 
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {false}
+                stepperForward = {props.stepperForward}
+                stepperState = {props.stepperState}
+            />
+            
+            <BooleanQuestion
+                name = "Q16"
+                question = "16. Did you find yourself engaging in potentially harmful behavior?" 
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {true}
+                stepperForward = {props.stepperForward}
+                stepperState = {props.stepperState}
+            />
+            
+            <BooleanQuestion
+                name = "Q17"
+                question = "17. Would you say that you able to take care of yourself?"
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {true}
+                stepperForward = {props.stepperForward}
+                stepperState = {props.stepperState}
+            /> 
          </fieldset>
          <h2> Trauma </h2>
          <div name = "Trauma">
             <fieldset>
             <BooleanQuestion
-             name = "Q18"
-             question = "18. Have you ever in your lifetime experienced anything that has been especially horrific, frightening or traumatic ?" 
-             
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {false}
-             stepperForward = {props.stepperForward}
-             stepperState = {props.stepperState}
+                name = "Q18"
+                question = "18. Have you ever in your lifetime experienced anything that has been especially horrific, frightening or traumatic ?" 
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {false}
+                stepperForward = {props.stepperForward}
+                stepperState = {props.stepperState}
              />
-
-
-             <Collapsible/>
-
+             
              <BooleanQuestion
-             name = "Q19"
-             question = "19. Have you ever in your lifetime experienced anything that has been especially horrific, frightening or traumatic ?" 
-             
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {false}
-             stepperForward = {props.stepperForward}
-             stepperState = {props.stepperState}
+                name = "Q19"
+                question = "19. Have you ever in your lifetime experienced anything that has been especially horrific, frightening or traumatic ?" 
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {false}
+                stepperForward = {props.stepperForward}
+                stepperState = {props.stepperState}
              />
-
-
-             <Collapsible/>
              <BooleanQuestion
              name = "Q18.1"
              question = "Did you find yourself engaging in potentially harmful behavior?" 
@@ -296,48 +241,33 @@ const FollowUpQuestions = (props) => {
              stepperForward = {props.stepperForward}
              stepperState = {props.stepperState}
              />
-
-
-             <Collapsible/>
              <BooleanQuestion
-             name = "Q18.1"
-             question = "In the past 30 days you had nightmares about it or thought about it when you did not want to"
-             
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {false}
-             stepperForward = {props.stepperForward}
-             stepperState = {props.stepperState}
+                name = "Q18.1"
+                question = "In the past 30 days you had nightmares about it or thought about it when you did not want to"
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {false}
+                stepperForward = {props.stepperForward}
+                stepperState = {props.stepperState}
              />
-
-
-             <Collapsible/>
              <BooleanQuestion
-             name = "Q18.2"
-             question = "In the past 30 days you tried not to think about it or went out of your way to avoid situations that remind you of your experience" 
-             
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {false}
-             stepperForward = {props.stepperForward}
-             stepperState = {props.stepperState}
+                name = "Q18.2"
+                question = "In the past 30 days you tried not to think about it or went out of your way to avoid situations that remind you of your experience" 
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {false}
+                stepperForward = {props.stepperForward}
+                stepperState = {props.stepperState}
              />
-
-
-             <Collapsible/>
              <BooleanQuestion
-             name = "Q18.3"
-             question = " In the past 30 days you were constantly on guard, watchful or easily startled" 
-             
-             form = {props.answers}
-             updateForm = {props.updateForm}
-             stepperUpdate = {false}
-             stepperForward = {props.stepperForward}
-             stepperState = {props.stepperState}
+                name = "Q18.3"
+                question = " In the past 30 days you were constantly on guard, watchful or easily startled" 
+                form = {props.answers}
+                updateForm = {props.updateForm}
+                stepperUpdate = {false}
+                stepperForward = {props.stepperForward}
+                stepperState = {props.stepperState}
              />
-
-
-             <Collapsible/>
             </fieldset>
          </div>
 
@@ -346,117 +276,95 @@ const FollowUpQuestions = (props) => {
          <div className='screening'>
             <fieldset>
                 <TrippleQuestion
-               name = "Q19"
-               question = "I like who I am" 
-               
-               form = {props.answers}
-               updateForm = {props.updateForm}
-               stepperUpdate = {false}
-               stepperForward = {props.stepperForward}
-               stepperState = {props.stepperState}
-               label1 = "Descibes me "
-               label2 = "Some what describes me"
-               label3 = "Does not describe me"
-
+                    name = "Q19"
+                    question = "I like who I am" 
+                    form = {props.answers}
+                    updateForm = {props.updateForm}
+                    stepperUpdate = {false}
+                    stepperForward = {props.stepperForward}
+                    stepperState = {props.stepperState}
+                    label1 = "Descibes me "
+                    label2 = "Some what describes me"
+                    label3 = "Does not describe me"
                 />
-                <Collapsible/>
                 <TrippleQuestion
-               name = "Q20"
-               question = "I am not an easy person to get along with" 
-               
-               form = {props.answers}
-               updateForm = {props.updateForm}
-               stepperUpdate = {false}
-               stepperForward = {props.stepperForward}
-               stepperState = {props.stepperState}
-               label1 = "Descibes me "
-               label2 = "Some what describes me"
-               label3 = "Does not describe me"
-
+                    name = "Q20"
+                    question = "I am not an easy person to get along with" 
+                    form = {props.answers}
+                    updateForm = {props.updateForm}
+                    stepperUpdate = {false}
+                    stepperForward = {props.stepperForward}
+                    stepperState = {props.stepperState}
+                    label1 = "Descibes me "
+                    label2 = "Some what describes me"
+                    label3 = "Does not describe me"
                 />
-                <Collapsible/>
                 <TrippleQuestion
-               name = "Q21"
-               question = "I give up too easily" 
-               
-               form = {props.answers}
-               updateForm = {props.updateForm}
-               stepperUpdate = {false}
-               stepperForward = {props.stepperForward}
-               stepperState = {props.stepperState}
-               label1 = "Descibes me "
-               label2 = "Some what describes me"
-               label3 = "Does not describe me"
-
+                    name = "Q21"
+                    question = "I give up too easily" 
+                    form = {props.answers}
+                    updateForm = {props.updateForm}
+                    stepperUpdate = {false}
+                    stepperForward = {props.stepperForward}
+                    stepperState = {props.stepperState}
+                    label1 = "Descibes me "
+                    label2 = "Some what describes me"
+                    label3 = "Does not describe me"
                 />
-                <Collapsible/>
                 <TrippleQuestion
-               name = "Q22"
-               question = "I have difficulty concentrating" 
-               
-               form = {props.answers}
-               updateForm = {props.updateForm}
-               stepperUpdate = {false}
-               stepperForward = {props.stepperForward}
-               stepperState = {props.stepperState}
-               label1 = "Descibes me "
-               label2 = "Some what describes me"
-               label3 = "Does not describe me"
-
+                    name = "Q22"
+                    question = "I have difficulty concentrating" 
+                    form = {props.answers}
+                    updateForm = {props.updateForm}
+                    stepperUpdate = {false}
+                    stepperForward = {props.stepperForward}
+                    stepperState = {props.stepperState}
+                    label1 = "Descibes me "
+                    label2 = "Some what describes me"
+                    label3 = "Does not describe me"
                 />
-                <Collapsible/>
                 <TrippleQuestion
-               name = "Q23"
-               question = "I am happy with my family relationships" 
-               
-               form = {props.answers}
-               updateForm = {props.updateForm}
-               stepperUpdate = {false}
-               stepperForward = {props.stepperForward}
-               stepperState = {props.stepperState}
-               label1 = "Descibes me "
-               label2 = "Some what describes me"
-               label3 = "Does not describe me"
-
+                    name = "Q23"
+                    question = "I am happy with my family relationships" 
+                    form = {props.answers}
+                    updateForm = {props.updateForm}
+                    stepperUpdate = {false}
+                    stepperForward = {props.stepperForward}
+                    stepperState = {props.stepperState}
+                    label1 = "Descibes me "
+                    label2 = "Some what describes me"
+                    label3 = "Does not describe me"
                 />
-                <Collapsible/>
                 <TrippleQuestion
-               name = "Q24"
-               question = "I am comfortable around others" 
-               
-               form = {props.answers}
-               updateForm = {props.updateForm}
-               stepperUpdate = {false}
-               stepperForward = {props.stepperForward}
-               stepperState = {props.stepperState}
-               label1 = "Descibes me "
-               label2 = "Some what describes me"
-               label3 = "Does not describe me"
-
+                    name = "Q24"
+                    question = "I am comfortable around others" 
+                    form = {props.answers}
+                    updateForm = {props.updateForm}
+                    stepperUpdate = {false}
+                    stepperForward = {props.stepperForward}
+                    stepperState = {props.stepperState}
+                    label1 = "Descibes me "
+                    label2 = "Some what describes me"
+                    label3 = "Does not describe me"
                 />
-                <Collapsible/>
                 </fieldset>
                 <fieldset>For the following statements answer NONE, SOME WHAT or A LOT</fieldset>
                 <fieldset>
                 <TrippleQuestion
-               name = "Q25"
-               question = "During the past week how much have you had trouble with sleeping" 
-               
-               form = {props.answers}
-               updateForm = {props.updateForm}
-               stepperUpdate = {false}
-               stepperForward = {props.stepperForward}
-               stepperState = {props.stepperState}
-               label1 = "None"
-               label2 = "Some what"
-               label3 = "A lot"
-
+                    name = "Q25"
+                    question = "During the past week how much have you had trouble with sleeping" 
+                    form = {props.answers}
+                    updateForm = {props.updateForm}
+                    stepperUpdate = {false}
+                    stepperForward = {props.stepperForward}
+                    stepperState = {props.stepperState}
+                    label1 = "None"
+                    label2 = "Some what"
+                    label3 = "A lot"
                 />
-                <Collapsible/>
                 <TrippleQuestion
                name = "Q26"
                question = "During the last week have you felt yourself getting tired easily? " 
-               
                form = {props.answers}
                updateForm = {props.updateForm}
                stepperUpdate = {false}
@@ -481,7 +389,7 @@ const FollowUpQuestions = (props) => {
                label3 = "A lot"
 
                 />
-                <Collapsible/>
+                
                 <TrippleQuestion
                name = "Q27"
                question = "During the past week have you felt sad or depressed" 
@@ -496,7 +404,7 @@ const FollowUpQuestions = (props) => {
                label3 = "A lot"
 
                 />
-                <Collapsible/>
+                
             
             <TrippleQuestion
                name = "Q28"
@@ -512,7 +420,7 @@ const FollowUpQuestions = (props) => {
                label3 = "A lot"
 
                 />
-                <Collapsible/>
+                
                 <TrippleQuestion
                name = "Q29"
                question = "During the past week have you socialised with others(talk with or visit friends/relatives)" 
@@ -527,7 +435,7 @@ const FollowUpQuestions = (props) => {
                label3 = "A lot"
 
                 />
-                <Collapsible/>
+                
 
                 <TrippleQuestion
                name = "Q30"
@@ -543,7 +451,7 @@ const FollowUpQuestions = (props) => {
                label3 = "A lot"
 
                 />
-                <Collapsible/>
+                
 
         
        </fieldset>
@@ -701,7 +609,7 @@ const FollowUpQuestions = (props) => {
             updateForm = {props.updateForm}
             
             />
-            <Collapsible/>
+            
         </fieldset>
         <h2>Protective Factors</h2>
         <div classname = "screening">
@@ -716,7 +624,7 @@ const FollowUpQuestions = (props) => {
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
         <SixSliderQuestion
             name = "Q46"
             
@@ -727,7 +635,7 @@ const FollowUpQuestions = (props) => {
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
         <SixSliderQuestion
             name = "Q47"
             
@@ -738,7 +646,7 @@ const FollowUpQuestions = (props) => {
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
         <SixSliderQuestion
             name = "Q48"
             
@@ -749,7 +657,7 @@ const FollowUpQuestions = (props) => {
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
         <SixSliderQuestion
             name = "Q49"
             
@@ -759,7 +667,7 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             />
-        <Collapsible/>
+        
         <SixSliderQuestion
             name = "Q50"
             
@@ -770,7 +678,7 @@ const FollowUpQuestions = (props) => {
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
         <SixSliderQuestion
             name = "Q51"
             
@@ -781,7 +689,7 @@ const FollowUpQuestions = (props) => {
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
         <SixSliderQuestion
             name = "Q52"
             
@@ -792,7 +700,7 @@ const FollowUpQuestions = (props) => {
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
         <SixSliderQuestion
             name = "Q53"
             
@@ -803,7 +711,7 @@ const FollowUpQuestions = (props) => {
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
 
         </fieldset>
 
@@ -823,7 +731,7 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
 
         <TempSliderQuestion
             name = "Q54"
@@ -833,7 +741,7 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
         <TempSliderQuestion
             name = "Q55"
             
@@ -842,7 +750,7 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
         <TempSliderQuestion
             name = "Q56"
             
@@ -850,7 +758,7 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             form = {props.answers}
             updateForm = {props.updateForm}
             />
-        <Collapsible/>
+        
  
         <TempSliderQuestion
             name = "Q57"
@@ -860,7 +768,7 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
         <TempSliderQuestion
             name = "Q58"
            
@@ -869,7 +777,7 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
         <TempSliderQuestion
             name = "Q59"
             
@@ -878,16 +786,16 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
 
         <TempSliderQuestion
             name = "Q60"
             
-            question = "I'm not just thinking about chnaging my alcohol/drug use, I'm already doing something about it."
+            question = "I'm not just thinking about changing my alcohol/drug use, I'm already doing something about it."
             form = {props.answers}
             updateForm = {props.updateForm}
             />
-        <Collapsible/>
+        
         <TempSliderQuestion
             name = "Q61"
             
@@ -896,7 +804,7 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
         <TempSliderQuestion
             name = "Q62"
             
@@ -905,7 +813,7 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
  
         <TempSliderQuestion
             name = "Q63"
@@ -915,7 +823,7 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
         <TempSliderQuestion
             name = "Q64"
             
@@ -924,7 +832,7 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
         <TempSliderQuestion
             name = "Q65"
             
@@ -933,7 +841,7 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
  
         <TempSliderQuestion
             name = "Q66"
@@ -943,7 +851,7 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
         <TempSliderQuestion
             name = "Q67"
             
@@ -952,34 +860,30 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
         <TempSliderQuestion
             name = "Q68"
-            
             question = "I am a drug/alcohol addict."
             form = {props.answers}
             updateForm = {props.updateForm}
             />
-        <Collapsible/>
+        
  
         <TempSliderQuestion
             name = "Q69"
-           
             question = "I am working hard to change my drug/alcohol use."
             form = {props.answers}
             updateForm = {props.updateForm}
-            
             />
-        <Collapsible/>
+        
         <TempSliderQuestion
             name = "Q70"
-            
             question = "If I made some changes in my drug/alcohol use, and I want some help to keep from going back to the way I used to be before"
             form = {props.answers}
             updateForm = {props.updateForm}
             
             />
-        <Collapsible/>
+        
 
         </fieldset>
         </div>
@@ -989,4 +893,4 @@ describes a way that you might (or might not) feel about your substance/alcohol 
   )
 }
 
-export default FollowUpQuestions
+export default React.memo(FollowUpQuestions);

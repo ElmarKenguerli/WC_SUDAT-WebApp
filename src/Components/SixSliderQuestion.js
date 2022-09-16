@@ -35,7 +35,7 @@ function SixSliderQuestion(props){
     const[question,setQuestion] = useState(props.question);
     const[questionAnswer,setQuestionAnswer] = useState(0);
     //console.log(questionAnswer);
-    const selectionChangeHandler = (event) => {
+    const selectionBlurHandler = (event) => {
       setQuestionAnswer(event.target.value);
       props.updateForm(event);
     };
@@ -58,9 +58,10 @@ function SixSliderQuestion(props){
             min={0}
             max={4}
             color="secondary"
-            onChange={selectionChangeHandler}
+            onChange={selectionBlurHandler}
             name = {props.name}
         />
+        
         {/* <div><box><label>{questionAnswer}</label></box></div> */}
       </div>
     );

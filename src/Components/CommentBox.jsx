@@ -6,28 +6,24 @@ const formReducer = (state, event) => {
       ...state,
       [event.target.name]: event.target.value
     }
-   }
+}
 
-const CommentBox = () => {
+const CommentBox = (props) => {
   const [formData, setFormData] = useReducer(formReducer, {});
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
   return (
       <div className="collapsible">
-          <div className="header" {...getToggleProps()}>
-              {isExpanded ? '-' : '+'}
-              
-          </div>
+        <div className="header" {...getToggleProps()}>
+            {isExpanded ? '-' : '+'}
+        </div>
           <div {...getCollapseProps()}>
-              <div className="content">
-                  
-                  <p>Type comment below</p>
-                  <textarea  className="commentBox" name="Extra-Comment" onChange={setFormData}/>
-                  
-              </div>
+            <div className="content">
+                <p>Type comment below</p>
+                <textarea  className="commentBox" name={props.name} onBlur={props.updateForm}/>
+            </div>
           </div>
       </div>
       );
-  
 }
 
-export default CommentBox
+export default React.memo(CommentBox);
