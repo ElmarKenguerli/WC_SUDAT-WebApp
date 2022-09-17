@@ -55,11 +55,12 @@ export function AddUser(){
 
 
       if(data.isAdmin === true ){
-        {navigate("/LandingPage")}
+        {navigate("/AdminPage")}
+        
       }
       else
       {
-        {navigate("/AdminPage")}
+        {navigate("/LandingPage")}
       }
       
     })

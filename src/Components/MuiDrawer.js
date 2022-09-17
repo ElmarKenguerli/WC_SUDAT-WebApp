@@ -123,7 +123,7 @@ export default function PersistentDrawerLeft() {
           </div>
           <div className="header-content-inner">
           &nbsp;&nbsp;&nbsp;
-            <h1>WC-SUDAT Admin</h1>
+            <h1>WC-SUDAT </h1>
               
           </div>
           <Typography variant="h6" style={{position: "absolute", right: "15px", border : "2px groove black", padding: "7px"}} noWrap component="div">
