@@ -11,7 +11,7 @@ import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import ReportPage from "./Pages/ReportPage"; 
 import LandingPage from "./Pages/LandingPage";
-import AdminPage from "./Pages/LandingPage";
+import AdminPage from "./Pages/AdminPage";
 import Register from "./Pages/Register";
 
 function App() {

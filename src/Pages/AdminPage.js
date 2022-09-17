@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button';
 import {Box} from '@mui/material';
 import DataGrid from "../Components/DataGrid"
 
-export const LandingPage = () => {
+export const AdminPage = () => {
 
   const [users, setUsers] = useState([])
 
@@ -71,4 +71,4 @@ export const LandingPage = () => {
   )
 }
 
-export default LandingPage
+export default AdminPage

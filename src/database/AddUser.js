@@ -53,14 +53,14 @@ export function AddUser(){
         })
       })
 
-
+      console.log(data.isAdmin)
       if(data.isAdmin === true ){
-        {navigate("/AdminPage")}
+        {navigate("/LandingPage")}
         
       }
       else
       {
-        {navigate("/LandingPage")}
+        {navigate("/AdminPage")}
       }
       
     })
