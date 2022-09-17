@@ -1,5 +1,6 @@
 import {db} from './firebase'
-import {collection, addDoc, Timestamp} from 'firebase/firestore'
+import {collection, addDoc, query, onSnapshot, where} from 'firebase/firestore'
+
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
 import '../App.css';
@@ -25,10 +26,14 @@ export function AddUser(){
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('') 
   const [error, setError] = useState('')
-  const {setTimeActive} = useAuthValue()
+
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [userName, setUserName] = useState('')
+  
+  const [data, setData]= useState([])
+
+
 
   // Login function
   const login = e => {
@@ -36,11 +41,31 @@ export function AddUser(){
     
      signInWithEmailAndPassword(auth, email, password)
     .then(() => {
-      navigate("/LandingPage")
+      const ref = query(collection(db, "Users"));
+
+      const q = query(ref, where("email", "==", email));
+      
+      onSnapshot(q, (querySnapshot) => 
+      {
+        querySnapshot.docs.map((doc) => {
+          setData(doc.data())
+
+        })
+      })
+
+
+      if(data.isAdmin === true ){
+        {navigate("/LandingPage")}
+      }
+      else
+      {
+        {navigate("/AdminPage")}
+      }
+      
     })
     .catch(err => setError(err.message))
     
-    
+  
 
    
   }

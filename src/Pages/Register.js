@@ -4,6 +4,8 @@ import {useNavigate, Link} from 'react-router-dom'
 import {createUserWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
 import {useAuthValue} from '../database/AuthContext'
 import '../App.css';
+import {db} from '../database/firebase'
+import {collection, addDoc} from 'firebase/firestore'
 // design
 import {
     TextField,
@@ -60,11 +62,26 @@ function Register() {
                 navigate('/LandingPage')
             }).catch((err) => alert(err.message))
             
+        //Add user to collection as well
+        {addUserToCollection(e)}
+        
         }
         setEmail('')
         setPassword('')
         setConfirmPassword('')
     }
+    const addUserToCollection = async (e) => {
+        e.preventDefault()
+        try {
+          await addDoc(collection(db, 'Users'), {
+            email: email,
+            isAdmin: false
+          })
+          console.log("Submitting")
+        } catch (err) {
+          alert(err)
+        }
+      }
 
     return (
         <header>
