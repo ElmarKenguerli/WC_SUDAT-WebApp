@@ -312,7 +312,7 @@ function Form(props) {
                   style={{ width: 300 }} 
                   variant="filled"
                   //value={gender}
-                  onBlur={(e) => {
+                  onChange={(e) => {
                     //setGender(e.target.value);
                     handleData(e);
                   }}
@@ -331,9 +331,10 @@ function Form(props) {
                 <p>Date Of Birth</p>
                 <MuiPickersUtilsProvider utils={DateMomentUtils}>
                   <DatePicker 
-                    //value={dateOfBirth} 
+                    inputFormat="DD-MM-YYYY"
+                    value = {formData["Date of Birth"]}
                     name="Date of Birth" 
-                    onBlur={(newValue) => {
+                    onChange={(newValue) => {
                       //setDateOfBirth(newValue);
                       handleDateData(newValue);
                     }} 
@@ -349,7 +350,7 @@ function Form(props) {
                 
                 name="Country"
                 value={"countryData"}
-                onBlur={(e) => { handleData(e); }} />
+                onChange={(e) => { handleData(e); }} />
               <Collapsible/>
             </label>
           </fieldset>
@@ -394,7 +395,7 @@ function Form(props) {
                 style={{ width: 300 }} 
                 variant="filled" 
                 value={formData["Housing Situation"]}
-                onBlur={(e) => {
+                onChange={(e) => {
                   //setHousing(e.target.value);
                   handleData(e);
                 }}
@@ -421,7 +422,7 @@ function Form(props) {
                   style={{ width: 300 }} 
                   variant="filled" 
                   value={formData["Education"]}
-                  onBlur={(e) => {
+                  onChange={(e) => {
                     //setEducation(e.target.value);
                     handleData(e);
                   }}
@@ -444,7 +445,7 @@ function Form(props) {
                     style={{ width: 300 }} 
                     variant="filled"  
                     value={formData["Recent Conflict"]}
-                    onBlur={(e) => {handleData(e);}}
+                    onChange={(e) => {handleData(e);}}
                   >
                     <MenuItem value={""}>--Please Select an Option--</MenuItem>
                     <MenuItem value={"Police Holding"}>Police Holding</MenuItem>
