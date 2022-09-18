@@ -12,10 +12,15 @@ import BooleanQuestion from "./BooleanQuestion";
 import FollowUpQuestions from "./FollowUpQuestions";
 import { writeToDatabase, getFormDefaults } from "./WriteToDatabase";
 import LandingPage from "../Pages/LandingPage";
-
+//datepicker
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker'
 //import mui components
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateMomentUtils from "@date-io/moment";
 import {
@@ -382,9 +387,19 @@ function Form(props) {
               </label>
             </fieldset>
             <fieldset>
-              <label>
+              
                 <p>Date Of Birth</p>
-                <MuiPickersUtilsProvider utils={DateMomentUtils}>
+                <LocalizationProvider dateAdapter={AdapterMoment}>
+      
+                  <DesktopDatePicker
+                    
+                    inputFormat="MM/DD/YYYY"
+                    value={formData["DateOfBirth"]}
+                    onChange={(date) => { handleDateData(date);}}
+                    renderInput={(params) => <TextField color="secondary" variant="filled" {...params} />}
+                  />
+                </LocalizationProvider>
+                {/* <MuiPickersUtilsProvider utils={DateMomentUtils}>
                   <DatePicker
                     value={formData["DateOfBirth"]}
                     name="DateOfBirth"
@@ -392,9 +407,9 @@ function Form(props) {
                       handleDateData(date);
                     }}
                   />
-                </MuiPickersUtilsProvider>
+                </MuiPickersUtilsProvider> */}
                 <Collapsible />
-              </label>
+             
             </fieldset>
             <fieldset>
               <label>
