@@ -33,8 +33,6 @@ export function AddUser(){
   
   const [data, setData]= useState([])
 
-
-
   // Login function
   const login = e => {
     e.preventDefault()
@@ -54,13 +52,14 @@ export function AddUser(){
       })
 
       console.log(data.isAdmin)
-      if(data.isAdmin === true ){
-        {navigate("/LandingPage")}
-        
+      if(data.isAdmin == true )
+      {
+        {navigate("/AdminPage")}
+           
       }
       else
       {
-        {navigate("/AdminPage")}
+        {navigate("/LandingPage")}  
       }
       
     })
