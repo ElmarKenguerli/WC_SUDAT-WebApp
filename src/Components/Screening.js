@@ -235,10 +235,10 @@ function Form(props) {
 
   function handleDateData(datevalue) {
     setFormData({
-      name: "Date of Birth",
-      value: datevalue,
+      name: "DateOfBirth",
+      value: String(datevalue),
     });
-    setValueDate(datevalue);
+    //setValueDate(datevalue);
   }
 
   function handleCountry(country) {
