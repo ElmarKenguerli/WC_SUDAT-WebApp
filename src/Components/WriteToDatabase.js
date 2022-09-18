@@ -57,7 +57,7 @@ const writeToDatabase = async (e, formData, currentDate) => {
             commentHousingSituation: formData["commentHousingSituation"],
             commentEducation: formData["commentEducation"],
             commentRecentConflict: formData["commentRecentConflict"],
-            commentLangauge: formData["commentLanguage"],
+            commentLanguage: formData["commentLanguage"],
 
             commentQ1: formData["commentQ1"],
             commentQ2: formData["commentQ2"],

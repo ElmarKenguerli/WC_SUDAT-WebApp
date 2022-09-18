@@ -171,7 +171,7 @@ function Form(props) {
     let fd = formData;
     formData["email"] = getEmail();
     writeToDatabase(event, fd, getCurrentDate());
-    navigate("../LandingPage");
+    navigate("../ReportPage");
   };
 
   const getEmail = () => {
@@ -395,8 +395,9 @@ function Form(props) {
                     
                     inputFormat="MM/DD/YYYY"
                     value={formData["DateOfBirth"]}
+                    
                     onChange={(date) => { handleDateData(date);}}
-                    renderInput={(params) => <TextField color="secondary" variant="filled" {...params} />}
+                    renderInput={(params) => <TextField color="secondary" variant="filled" sx={{ width: 300 }} {...params} />}
                   />
                 </LocalizationProvider>
                 {/* <MuiPickersUtilsProvider utils={DateMomentUtils}>
