@@ -127,7 +127,7 @@ export default function PersistentDrawerLeft() {
               
           </div>
           <Typography variant="h6" style={{position: "absolute", right: "15px", border : "2px groove black", padding: "7px"}} noWrap component="div">
-          Logged in: {currentUser.email}  
+          Logged in: {"currentUser.email"}  
           </Typography>
           
         </Toolbar>
