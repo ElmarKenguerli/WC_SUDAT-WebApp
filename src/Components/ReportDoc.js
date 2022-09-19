@@ -37,7 +37,7 @@ import {
       <PDFViewer style={styles.viewer}>
         {/* Start of the document*/}
         <Document>
-            
+
           {/*render a single page*/}
           <Page size="A4" style={styles.page}>
 
@@ -50,6 +50,7 @@ import {
             <View style={styles.section}>
 
               <Text break > { `Interviewer: ${currentUser.email} `}</Text>
+              
             </View>
 
           </Page>

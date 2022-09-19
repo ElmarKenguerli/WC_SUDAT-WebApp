@@ -119,12 +119,12 @@ export default function PersistentDrawerLeft() {
           </IconButton>
           <div className="header-content-inner">
           
-            <img src="logo.png" width= "150" height= "100" id="img" />
+            <img src="logo.png" width= "140" height= "100" id="img" style={{margin:"10px"}}/>
               
           </div>
           <div className="header-content-inner">
-          &nbsp;&nbsp;&nbsp;
-            <h1>ADMIN</h1>
+          
+            <h1>&nbsp;&nbsp;&nbsp;ADMIN</h1>
               
           </div>
           <Typography variant="h6" style={{position: "absolute", right: "15px", border : "2px groove black", padding: "7px"}} noWrap component="div">

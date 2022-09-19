@@ -118,16 +118,16 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <div className="header-content-inner">
-            <img src="logo.png" width= "250" height= "100" id="img" />
+          <img src="logo.png" width= "140" height= "100" id="img" style={{margin:"10px"}}/>
               
           </div>
           <div className="header-content-inner">
-          &nbsp;&nbsp;&nbsp;
-            <h1>WC-SUDAT </h1>
+          
+            <h1>&nbsp;&nbsp;&nbsp;WC-SUDAT </h1>
               
           </div>
           <Typography variant="h6" style={{position: "absolute", right: "15px", border : "2px groove black", padding: "7px"}} noWrap component="div">
-          Logged in: {"currentUser.email"}  
+          Logged in: {currentUser.email}  
           </Typography>
           
         </Toolbar>
