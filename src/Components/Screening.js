@@ -332,6 +332,23 @@ function Form(props) {
             </fieldset>
             <fieldset>
               <label>
+                <h3> Client ID number:</h3>
+                <TextField
+                  required
+                  color="secondary"
+                  focused
+                  sx={{ width: 300 }}
+                  size="big"
+                  name="ClientID"
+                  variant="filled"
+                  onBlur={(e) => {
+                    handleData(e);
+                  }}
+                />
+              </label>
+            </fieldset>
+            <fieldset>
+              <label>
                 <h3>Place of Interview:</h3>
                 <TextField
                   required
