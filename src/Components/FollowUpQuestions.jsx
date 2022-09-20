@@ -7,52 +7,51 @@ import SixSliderQuestion from './SixSliderQuestion'
 import TempSliderQuestion from './TempSliderQuestion'
 import {Radio, FormControl, RadioGroup, FormControlLabel } from '@material-ui/core';
 const FollowUpQuestions = (props) => {
-  return (
-    <>
-    <div className="screening">
-        <fieldset>
-            <fieldset>         
-            <BooleanQuestion
+    return (
+        <>
+            <div className="screening">
+                <fieldset>
+                    <fieldset>
+                        <BooleanQuestion
                 name = "Q6"
                 question = "6. Do you ever use alcohol or drugs to RELAX, feel better about yourself, or fit in"
                 form = {props.answers}
                 updateForm = {props.updateForm}
                 stepperUpdate = {false}
-            />
+                        />
             
-         </fieldset>
-         <fieldset>
-             <BooleanQuestion
+                    </fieldset>
+                    <fieldset>
+                        <BooleanQuestion
                 name = "Q7"
                 question = "7. Do you ever use alcohol or drugs while you are by yourself, or ALONE?"
                 form = {props.answers}
                 updateForm = {props.updateForm}
                 stepperUpdate = {false}
-            />
-            
-         </fieldset>
-         <fieldset>
-            <BooleanQuestion
+                        />
+                    </fieldset>
+                    <fieldset>
+                        <BooleanQuestion
                 name = "Q8"
                 question = "8. Do you ever FORGET things you did while using alcohol or drugs? "
                 form = {props.answers}
                 updateForm = {props.updateForm}
                 stepperUpdate = {false}
-            />
+                        />
             
-         </fieldset>
-         <fieldset>
-            <BooleanQuestion
+                    </fieldset>
+                    <fieldset>
+                        <BooleanQuestion
                 name = "Q9"
                 question = "9. Do your FAMILY or FRIENDS ever tell you that you should cut down on your drinking or drug use?"
                 form = {props.answers}
                 updateForm = {props.updateForm}
                 stepperUpdate = {false}
-            />
+                        />
              
-            </fieldset>
-            <fieldset>
-                <BooleanQuestion
+                    </fieldset>
+                    <fieldset>
+                        <BooleanQuestion
                     name = "Q10"
                     question = "10. Have you ever gotten into TROUBLE while you were using alcohol or drugs" 
                     form = {props.answers}
@@ -60,16 +59,16 @@ const FollowUpQuestions = (props) => {
                     stepperUpdate = {true}
                     stepperForward = {props.stepperForward}
                     stepperState = {props.stepperState}
-                />
+                        />
                 
-            </fieldset>
-        </fieldset>
-    </div>
-    <h2> Risk Factors </h2>
+                    </fieldset>
+                </fieldset>
+            </div>
+            <h2> Risk Factors </h2>
     <div name = 'Risk Factors'>
-        <fieldset>
-            <fieldset>
-                <BooleanQuestion
+                <fieldset>
+                    <fieldset>
+                        <BooleanQuestion
                     name = "Q11"
                     question = "11. In the past few weeks, have you wished you were dead? " 
                     form = {props.answers}
@@ -77,10 +76,10 @@ const FollowUpQuestions = (props) => {
                     stepperUpdate = {false}
                     stepperForward = {props.stepperForward}
                     stepperState = {props.stepperState}
-                    />
-            </fieldset>
+                        />
+                    </fieldset>
             <fieldset>
-             <BooleanQuestion
+                    <BooleanQuestion
                 name = "Q12"
                 question = "12. In the past few weeks, have you felt that you or  your family would be better off you were dead? " 
                 form = {props.answers}
@@ -88,10 +87,10 @@ const FollowUpQuestions = (props) => {
                 stepperUpdate = {false}
                 stepperForward = {props.stepperForward}
                 stepperState = {props.stepperState}
-             />
+                    />
              </fieldset>
              <fieldset>
-             <BooleanQuestion
+                    <BooleanQuestion
                 name = "Q13"
                 question = "13. In the past week, have you been having thoughts about killing yourself? " 
                 form = {props.answers}
@@ -99,11 +98,11 @@ const FollowUpQuestions = (props) => {
                 stepperUpdate = {false}
                 stepperForward = {props.stepperForward}
                 stepperState = {props.stepperState} 
-            />
+                    />
              </fieldset>
-            {/* TO DO: Only show if 13 answered yes */}
+                    {/* TO DO: Only show if 13 answered yes */}
             <fieldset>
-            <BooleanQuestion
+                    <BooleanQuestion
                 name = "Q13.1"
                 question = "13.1 Do you have a plan for taking your own life?" 
                 form = {props.answers}
@@ -111,11 +110,11 @@ const FollowUpQuestions = (props) => {
                 stepperUpdate = {false}
                 stepperForward = {props.stepperForward}
                 stepperState = {props.stepperState}
-            />
-            {/* TO DO: Only show if 13 answered yes */}
+                    />
+                    {/* TO DO: Only show if 13 answered yes */}
             </fieldset>
             <fieldset>
-            <BooleanQuestion
+                    <BooleanQuestion
                 name = "Q13.2"
                 question = "13.2 Do you have the means of taking your life?"                 
                 form = {props.answers}
@@ -123,11 +122,11 @@ const FollowUpQuestions = (props) => {
                 stepperUpdate = {false}
                 stepperForward = {props.stepperForward}
                 stepperState = {props.stepperState}
-                />
+                    />
             </fieldset>
 
             <fieldset>
-            <BooleanQuestion
+                    <BooleanQuestion
                 name = "Q14"
                 question = "14. In the past few weeks have you noticed a significant increase in your substance use?" 
                 form = {props.answers}
@@ -135,12 +134,12 @@ const FollowUpQuestions = (props) => {
                 stepperUpdate = {false}
                 stepperForward = {props.stepperForward}
                 stepperState = {props.stepperState}
-            />
+                    />
             </fieldset>
 
             <fieldset>
-        {/* TO DO: Only show if 14 answered yes */}
-            <BooleanQuestion
+                    {/* TO DO: Only show if 14 answered yes */}
+                    <BooleanQuestion
                 name = "Q14.1"
                 question = "14.1 Did you find yourself in potentially harmful situations?" 
                 form = {props.answers}
@@ -148,10 +147,10 @@ const FollowUpQuestions = (props) => {
                 stepperUpdate = {false}
                 stepperForward = {props.stepperForward}
                 stepperState = {props.stepperState}
-            />
+                    />
             </fieldset>
             <fieldset>
-            <BooleanQuestion
+                    <BooleanQuestion
                 name = "Q14.2"
                 question = "14.2 Did you find yourself engaging in potentially harmful behavior?" 
                 form = {props.answers}
@@ -159,10 +158,10 @@ const FollowUpQuestions = (props) => {
                 stepperUpdate = {false}
                 stepperForward = {props.stepperForward}
                 stepperState = {props.stepperState}
-            />
+                    />
             </fieldset>
             <fieldset>
-            <BooleanQuestion
+                    <BooleanQuestion
                 name = "Q15"
                 question = "15. Have you ever tried to kill yourself?" 
                 form = {props.answers}
@@ -170,10 +169,10 @@ const FollowUpQuestions = (props) => {
                 stepperUpdate = {false}
                 stepperForward = {props.stepperForward}
                 stepperState = {props.stepperState}
-            />
+                    />
             </fieldset>
              <fieldset>
-             <BooleanQuestion
+                    <BooleanQuestion
                 name = "Q15.1"
                 question = "15.1 How?" 
                 form = {props.answers}
@@ -181,10 +180,10 @@ const FollowUpQuestions = (props) => {
                 stepperUpdate = {false}
                 stepperForward = {props.stepperForward}
                 stepperState = {props.stepperState}
-             />
+                    />
              </fieldset>
              <fieldset>
-             <BooleanQuestion
+                    <BooleanQuestion
                 name = "Q15.2"
                 question = "15.2 When?" 
                 form = {props.answers}
@@ -192,10 +191,10 @@ const FollowUpQuestions = (props) => {
                 stepperUpdate = {false}
                 stepperForward = {props.stepperForward}
                 stepperState = {props.stepperState}
-            />
+                    />
             </fieldset>
             <fieldset>
-            <BooleanQuestion
+                    <BooleanQuestion
                 name = "Q15.3"
                 question = "15.3 Where?" 
                 form = {props.answers}
@@ -203,11 +202,11 @@ const FollowUpQuestions = (props) => {
                 stepperUpdate = {false}
                 stepperForward = {props.stepperForward}
                 stepperState = {props.stepperState}
-            />
+                    />
             </fieldset>
 
             <fieldset>
-            <BooleanQuestion
+                    <BooleanQuestion
                 name = "Q16"
                 question = "16. Would you say that you able to take care of yourself?"
                 form = {props.answers}
@@ -215,13 +214,13 @@ const FollowUpQuestions = (props) => {
                 stepperUpdate = {true}
                 stepperForward = {props.stepperForward}
                 stepperState = {props.stepperState}
-            /> 
-         </fieldset>
-         <h2> Trauma </h2>
+                    />
+                </fieldset>
+                <h2> Trauma </h2>
          <div name = "Trauma">
             <fieldset>
-                <fieldset>
-            <BooleanQuestion
+                    <fieldset>
+                        <BooleanQuestion
                 name = "Q17"
                 question = "17. Have you ever in your lifetime experienced anything that has been especially horrific, frightening or traumatic ?" 
                 form = {props.answers}
@@ -229,11 +228,11 @@ const FollowUpQuestions = (props) => {
                 stepperUpdate = {false}
                 stepperForward = {props.stepperForward}
                 stepperState = {props.stepperState}
-             />
+                        />
              </fieldset>
-             
+
              <fieldset>
-             <BooleanQuestion
+                        <BooleanQuestion
                 name = "Q17"
                 question = "17 Have you ever in your lifetime experienced anything that has been especially horrific, frightening or traumatic ?" 
                 form = {props.answers}
@@ -241,10 +240,10 @@ const FollowUpQuestions = (props) => {
                 stepperUpdate = {false}
                 stepperForward = {props.stepperForward}
                 stepperState = {props.stepperState}
-             />
+                        />
              </fieldset>
              <fieldset>
-             <BooleanQuestion
+                        <BooleanQuestion
              name = "Q17.1"
              question ="17.1 In the past 30 days have you had nightmares about it or thought about it when you did not want to"  
              form = {props.answers}
@@ -252,10 +251,10 @@ const FollowUpQuestions = (props) => {
              stepperUpdate = {false}
              stepperForward = {props.stepperForward}
              stepperState = {props.stepperState}
-             />
+                        />
              </fieldset>
              <fieldset>
-             <BooleanQuestion
+                        <BooleanQuestion
                 name = "Q17.2"
                 question = "17.2 In the past 30 days tried not to think about it or went out of your way to avoid situations that remind you of your experience"
                 form = {props.answers}
@@ -263,11 +262,11 @@ const FollowUpQuestions = (props) => {
                 stepperUpdate = {false}
                 stepperForward = {props.stepperForward}
                 stepperState = {props.stepperState}
-             />
+                        />
              </fieldset>
 
              <fieldset>
-             <BooleanQuestion
+                        <BooleanQuestion
                 name = "Q17.3"
                 question = "17.3 In the past 30 days you were constantly on guard, watchful or easily startled " 
                 form = {props.answers}
@@ -275,10 +274,10 @@ const FollowUpQuestions = (props) => {
                 stepperUpdate = {false}
                 stepperForward = {props.stepperForward}
                 stepperState = {props.stepperState}
-             />
+                        />
              </fieldset>
              <fieldset>
-             <BooleanQuestion
+                        <BooleanQuestion
                 name = "Q17.4"
                 question = "In the past 30 days you felt numb or detached from others, activities, or your surroundings related to your experience" 
                 form = {props.answers}
@@ -286,17 +285,17 @@ const FollowUpQuestions = (props) => {
                 stepperUpdate = {false}
                 stepperForward = {props.stepperForward}
                 stepperState = {props.stepperState}
-             />
-             </fieldset>.
-            </fieldset>
-         </div>
+                        />
+             </fieldset>
+                    </fieldset>
+                </div>
 
-         <h2> Depression and Anxiety</h2>
-         <fieldset>For the following statements say whether they DESCRIBE YOU, SOMEWHAT DESCRIBE YOU or DO NOT DESCRIBE YOU</fieldset>
-         <div className='screening'>
-            <fieldset>
+                <h2> Depression and Anxiety</h2>
+                <fieldset>For the following statements say whether they DESCRIBE YOU, SOMEWHAT DESCRIBE YOU or DO NOT DESCRIBE YOU</fieldset>
+                <div className='screening'>
+                    <fieldset>
                 <fieldset>
-                <TrippleQuestion
+                        <TrippleQuestion
                     name = "Q18"
                     question = "18. I like who I am" 
                     form = {props.answers}
@@ -307,11 +306,11 @@ const FollowUpQuestions = (props) => {
                     label1 = "Descibes me "
                     label2 = "Some what describes me"
                     label3 = "Does not describe me"
-                />
+                        />
                 </fieldset>
 
                 <fieldset>
-                <TrippleQuestion
+                        <TrippleQuestion
                     name = "Q19"
                     question = "19. I am not an easy person to get along with" 
                     form = {props.answers}
@@ -322,10 +321,10 @@ const FollowUpQuestions = (props) => {
                     label1 = "Descibes me "
                     label2 = "Some what describes me"
                     label3 = "Does not describe me"
-                />
+                        />
                 </fieldset>
                 <fieldset>
-                <TrippleQuestion
+                        <TrippleQuestion
                     name = "Q20"
                     question = "20. I give up too easily" 
                     form = {props.answers}
@@ -336,10 +335,10 @@ const FollowUpQuestions = (props) => {
                     label1 = "Descibes me "
                     label2 = "Some what describes me"
                     label3 = "Does not describe me"
-                />
+                        />
                 </fieldset>
                 <fieldset>
-                <TrippleQuestion
+                        <TrippleQuestion
                     name = "Q21"
                     question = "21. I have difficulty concentrating" 
                     form = {props.answers}
@@ -350,11 +349,11 @@ const FollowUpQuestions = (props) => {
                     label1 = "Descibes me "
                     label2 = "Some what describes me"
                     label3 = "Does not describe me"
-                />
+                        />
                 </fieldset>
 
                 <fieldset>
-                <TrippleQuestion
+                        <TrippleQuestion
                     name = "Q22"
                     question = "22. I am happy with my family relationships" 
                     form = {props.answers}
@@ -365,11 +364,11 @@ const FollowUpQuestions = (props) => {
                     label1 = "Descibes me "
                     label2 = "Some what describes me"
                     label3 = "Does not describe me"
-                />
+                        />
                 </fieldset>
 
                 <fieldset>
-                <TrippleQuestion
+                        <TrippleQuestion
                     name = "Q23"
                     question = "23. I am comfortable being around others" 
                     form = {props.answers}
@@ -380,14 +379,14 @@ const FollowUpQuestions = (props) => {
                     label1 = "Descibes me "
                     label2 = "Some what describes me"
                     label3 = "Does not describe me"
-                />
+                        />
+                    </fieldset>
                 </fieldset>
-                </fieldset>
-                <fieldset>For the following statements answer NONE, SOME WHAT or A LOT</fieldset>
-                <fieldset>
+                    <fieldset>For the following statements answer NONE, SOME WHAT or A LOT</fieldset>
+                    <fieldset>
 
                 <fieldset>
-                <TrippleQuestion
+                        <TrippleQuestion
                     name = "Q24"
                     question = "24. During the past week how much have you had trouble with sleeping" 
                     form = {props.answers}
@@ -398,11 +397,11 @@ const FollowUpQuestions = (props) => {
                     label1 = "None"
                     label2 = "Some what"
                     label3 = "A lot"
-                />
+                        />
                 </fieldset>
 
                 <fieldset>
-                <TrippleQuestion
+                        <TrippleQuestion
                name = "Q25"
                question = "25. During the last week have you felt yourself getting tired easily? " 
                form = {props.answers}
@@ -414,11 +413,11 @@ const FollowUpQuestions = (props) => {
                label2 = "Some what"
                label3 = "A lot"
 
-                />
+                        />
                 </fieldset>
 
             <fieldset>
-            <TrippleQuestion
+                        <TrippleQuestion
                name = "Q26"
                question = "26. During the past week have you felt sad or depressed" 
                
@@ -431,11 +430,11 @@ const FollowUpQuestions = (props) => {
                label2 = "Some what"
                label3 = "A lot"
 
-                />
+                        />
                 </fieldset>
             
             <fieldset>
-            <TrippleQuestion
+                        <TrippleQuestion
                name = "Q27"
                question = "27. During the past week have you felt nervous or anxious" 
                
@@ -448,11 +447,11 @@ const FollowUpQuestions = (props) => {
                label2 = "Some what"
                label3 = "A lot"
 
-                />
+                        />
                 </fieldset>
                 
                 <fieldset>
-                <TrippleQuestion
+                        <TrippleQuestion
                name = "Q28"
                question = "28. During the past week have you socialised with others(talk with or visit friends/relatives)" 
                
@@ -465,11 +464,11 @@ const FollowUpQuestions = (props) => {
                label2 = "Some what"
                label3 = "A lot"
 
-                />
+                        />
                 </fieldset>
                 
                 <fieldset>
-                <TrippleQuestion
+                        <TrippleQuestion
                name = "Q29"
                question = "29. During the past week have you taken part in social, religious or recreational activities(sports,meetings,religious meetings & parties" 
               
@@ -482,20 +481,20 @@ const FollowUpQuestions = (props) => {
                label2 = "Some what"
                label3 = "A lot"
 
-                />
+                        />
                 </fieldset>
                 
 
         
-       </fieldset>
-        </div>
+                    </fieldset>
+                </div>
 
          
-         <h2>Family & Community Risk Factors</h2>
+                <h2>Family & Community Risk Factors</h2>
         <div classname = 'screening'>
         <fieldset>
-            <fieldset>
-            <SixSliderQuestion
+                    <fieldset>
+                        <SixSliderQuestion
             name = "Q30"
             
             booleanQuestion = "30. Does your family have a history of substance abuse?"
@@ -504,10 +503,10 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                        />
             </fieldset>
             <fieldset>
-            <SixSliderQuestion
+                            <SixSliderQuestion
             name = "Q31"
             
             booleanQuestion = "31. Would you say that your parents have favourable attitudes towards substance use or abuse?"
@@ -516,11 +515,11 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                            />
             </fieldset>
             
             <fieldset>
-            <SixSliderQuestion
+                        <SixSliderQuestion
             name = "Q32"
             
             booleanQuestion = "32. Would you say that growing up your parents monitored your behaviour poorly?"
@@ -529,11 +528,11 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                        />
             </fieldset>
 
             <fieldset>
-            <SixSliderQuestion
+                            <SixSliderQuestion
             name = "Q33"
             
             booleanQuestionNumber = "Q33a"
@@ -542,12 +541,12 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                            />
             
             </fieldset>
 
             <fieldset>
-            <SixSliderQuestion
+                        <SixSliderQuestion
             name = "Q34"
             
             booleanQuestionNumber = "Q34a"
@@ -556,11 +555,11 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                        />
             </fieldset>
 
             <fieldset>
-            <SixSliderQuestion
+                            <SixSliderQuestion
             booleanQuestionNumber = "Q35a"
             name = "Q35"
             
@@ -569,11 +568,11 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                            />
             </fieldset>
             
             <fieldset>
-            <SixSliderQuestion
+                        <SixSliderQuestion
             name = "Q36"
             
             booleanQuestionNumber = "Q36a"
@@ -582,11 +581,11 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                        />
             </fieldset>
 
             <fieldset>
-            <SixSliderQuestion
+                            <SixSliderQuestion
             name = "Q37"
             
             booleanQuestionNumber = "Q37a"
@@ -595,12 +594,12 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                            />
             
             </fieldset>
 
             <fieldset>
-            <SixSliderQuestion
+                        <SixSliderQuestion
             name = "Q38"
             
             booleanQuestionNumber = "Q38a"
@@ -609,11 +608,11 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                        />
             </fieldset>
 
             <fieldset>
-            <SixSliderQuestion
+                            <SixSliderQuestion
             name = "Q39"
             
             booleanQuestionNumber = "Q39a"
@@ -622,12 +621,12 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                            />
             
             </fieldset>
             
             <fieldset>
-            <SixSliderQuestion
+                        <SixSliderQuestion
             name = "Q40"
             
             booleanQuestionNumber = "Q40a"
@@ -636,11 +635,11 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                        />
             </fieldset>
 
             <fieldset>
-            <SixSliderQuestion
+                            <SixSliderQuestion
             name = "Q41"
             
             booleanQuestionNumber = "Q41a"
@@ -649,11 +648,11 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                            />
             </fieldset>
 
             <fieldset>
-            <SixSliderQuestion
+                        <SixSliderQuestion
             name = "Q42"
             
             booleanQuestionNumber = "Q42a"
@@ -662,15 +661,15 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
-            </fieldset>
+                        />
+                    </fieldset>
             
         </fieldset>
-        <h2>Protective Factors</h2>
+                    <h2>Protective Factors</h2>
         <div classname = "screening">
         <fieldset>
-            <fieldset>
-        <SixSliderQuestion
+                        <fieldset>
+                            <SixSliderQuestion
             name = "Q43"
             
             booleanQuestionNumber = "Q43a"
@@ -679,10 +678,10 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                            />
             </fieldset>
         <fieldset>
-        <SixSliderQuestion
+                            <SixSliderQuestion
             name = "Q44"
             
             booleanQuestionNumber = "Q44a"
@@ -691,10 +690,10 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                            />
             </fieldset>
         <fieldset>
-        <SixSliderQuestion
+                            <SixSliderQuestion
             name = "Q45"
             
             booleanQuestionNumber = "Q45a"
@@ -703,11 +702,11 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                            />
         </fieldset>
 
         <fieldset>
-        <SixSliderQuestion
+                            <SixSliderQuestion
             name = "Q46"
             
             booleanQuestionNumber = "Q46"
@@ -716,22 +715,22 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                            />
         </fieldset>
         
         <fieldset>
-        <SixSliderQuestion
+                            <SixSliderQuestion
             name = "Q47"
             booleanQuestionNumber = "Q47a"
             booleanQuestion = "47. Growing up did you feel that your parent/s used effective monitoring practices to help you make healthy decisions and avoid risky behaviors? (For example, unprotected sex, underage drinking and smoking)"
             question = "On a scale of 1 – 6 where 1 = I Strongly Disagree and 6 = I Strongly Agree, how would you rate your choice to use or abuse substances being influenced by the above?"
             form = {props.answers}
             updateForm = {props.updateForm}
-            />
+                            />
         </fieldset>
 
         <fieldset>
-        <SixSliderQuestion
+                            <SixSliderQuestion
             name = "Q48"
             
             booleanQuestionNumber = "Q48a"
@@ -740,10 +739,10 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                            />
         </fieldset>
         <fieldset>
-        <SixSliderQuestion
+                            <SixSliderQuestion
             name = "Q49"
             
             booleanQuestionNumber = "Q49a"
@@ -752,10 +751,10 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                            />
         </fieldset>
         <fieldset>
-        <SixSliderQuestion
+                            <SixSliderQuestion
             name = "Q50"
             
             booleanQuestionNumber = "Q50a"
@@ -764,11 +763,11 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                            />
         </fieldset>
         
         <fieldset>
-        <SixSliderQuestion
+                            <SixSliderQuestion
             name = "Q51"
             
             booleanQuestionNumber = "Q51a"
@@ -777,8 +776,8 @@ const FollowUpQuestions = (props) => {
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
-            </fieldset>
+                            />
+                        </fieldset>
             <fieldset>
             <SixSliderQuestion
             name = "Q52"
@@ -834,198 +833,198 @@ const FollowUpQuestions = (props) => {
         </fieldset>
 
 
-        </div>
-        </div>
-        <h2> Change Readiness and Treatment Eagerness</h2>
-        <fieldset> Please listen to the following statements carefully. Each one 
-describes a way that you might (or might not) feel about your substance/alcohol use. Say whether you STRRONGLY DISAGREE, DISAGREE, UNDECIDED, AGREE or STRONGLY AGREE</fieldset>   
+                    </div>
+                </div>
+                <h2> Change Readiness and Treatment Eagerness</h2>
+                <fieldset> Please listen to the following statements carefully. Each one
+                    describes a way that you might (or might not) feel about your substance/alcohol use. Say whether you STRRONGLY DISAGREE, DISAGREE, UNDECIDED, AGREE or STRONGLY AGREE</fieldset>
         <div className = 'screening'>
         <fieldset>
-            <fieldset>
-        <TempSliderQuestion
+                    <fieldset>
+                        <TempSliderQuestion
             name = "Q56"
             
             question = "56. I really want to make changes in my use of drugs/alcohol."
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                        />
         </fieldset>
 
         <fieldset>
-        <TempSliderQuestion
+                        <TempSliderQuestion
             name = "Q57"
             
             question = "57. Sometimes I wonder if I am an addict."
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                        />
         </fieldset>
 
         <fieldset>
-        <TempSliderQuestion
+                        <TempSliderQuestion
             name = "Q58"
             
             question = "58. If I don't change my drug/alcohol use soon, my problems are going to get worse."
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                        />
         </fieldset>
         
         <fieldset>
-        <TempSliderQuestion
+                        <TempSliderQuestion
             name = "Q59"
             
             question = "59. I have already started making some changes in the use my use of drugs/alcohol."
             form = {props.answers}
             updateForm = {props.updateForm}
-            />
+                        />
         </fieldset>
  
         <fieldset>
-        <TempSliderQuestion
+                        <TempSliderQuestion
             name = "Q60"
             
             question = "61. I was using drugs/alcohol too much at one time, but I have managed to change that."
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                        />
         </fieldset>
 
         <fieldset>
-        <TempSliderQuestion
+                        <TempSliderQuestion
             name = "Q62"
            
             question = "62. Sometimes I wonder if my drug/alcohol use is hurting people."
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                        />
         </fieldset>
         
         <fieldset>
-        <TempSliderQuestion
+                        <TempSliderQuestion
             name = "Q63"
             
             question = "63. I have a drug/alchohol problem"
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                        />
         </fieldset>
          
          <fieldset>
-        <TempSliderQuestion
+                        <TempSliderQuestion
             name = "Q64"
             
             question = "64. I'm not just thinking about changing my alcohol/drug use, I'm already doing something about it."
             form = {props.answers}
             updateForm = {props.updateForm}
-            />
+                        />
         </fieldset>
 
         <fieldset>
-        <TempSliderQuestion
+                        <TempSliderQuestion
             name = "Q65"
             
             question = "65. I have already changed my drug/alcohol use, and I am looking for ways to keeps from slipping back into my old pattern."
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                        />
         </fieldset>
         
         <fieldset>
-        <TempSliderQuestion
+                        <TempSliderQuestion
             name = "Q66"
             
             question = "66. I have serious problems with drugs/alcohol."
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                        />
         </fieldset>
         
         <fieldset>
-        <TempSliderQuestion
+                        <TempSliderQuestion
             name = "Q67"
             
             question = "67. Sometimes I wonder if I am in control of my drug/alcohol use."
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                        />
         </fieldset>
         
         <fieldset>
-        <TempSliderQuestion
+                        <TempSliderQuestion
             name = "Q68"
             
             question = "68. My drug/alcohol use is causing a lot of harm."
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                        />
             </fieldset>
         <fieldset>
-        <TempSliderQuestion
+                        <TempSliderQuestion
             name = "Q69"
             
             question = "69. I am actively doing things now to cut down or stop my use of drugs/alcohol."
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                        />
         </fieldset>
         
         <fieldset>
-        <TempSliderQuestion
+                        <TempSliderQuestion
             name = "Q70"
             
             question = "70. I want help to keep from going back to the drug/alcohol problems I had before."
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                        />
         </fieldset>
 
         <fieldset>
-        <TempSliderQuestion
+                        <TempSliderQuestion
             name = "Q71"
             
             question = "71. I know that I have a drug/alcohol problem"
             form = {props.answers}
             updateForm = {props.updateForm}
             
-            />
+                        />
             </fieldset>
 
             <fieldset>
-        <TempSliderQuestion
+                        <TempSliderQuestion
             name = "Q72"
             question = "72. There are times when I wonder if I use drugs/alcohol too much."
             form = {props.answers}
             updateForm = {props.updateForm}
-            />
+                        />
             </fieldset>
         <fieldset>
-        <TempSliderQuestion
+                        <TempSliderQuestion
             name = "Q73"
             question = "73. I am a drug/alcohol addict."
             form = {props.answers}
             updateForm = {props.updateForm}
-            />
+                        />
         </fieldset>
         <fieldset>
-        <TempSliderQuestion
+                        <TempSliderQuestion
             name = "Q74"
             question = "74. I am working hard to change my drug/alcohol use."
             form = {props.answers}
             updateForm = {props.updateForm}
-            />
+                        />
         </fieldset>
         <fieldset>
         <TempSliderQuestion
@@ -1037,12 +1036,12 @@ describes a way that you might (or might not) feel about your substance/alcohol 
             />
         </fieldset>
 
+                    </fieldset>
+                </div>
         </fieldset>
-        </div>
-        </fieldset>
-    </div>
-    </>
-  )
+            </div>
+        </>
+    )
 }
 
 export default React.memo(FollowUpQuestions);
