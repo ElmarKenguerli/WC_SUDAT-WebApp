@@ -1,5 +1,6 @@
 import {db} from './firebase'
-import {collection, addDoc, Timestamp} from 'firebase/firestore'
+import {collection, addDoc, query, getDocs, where} from 'firebase/firestore'
+
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
 import '../App.css';
@@ -25,22 +26,47 @@ export function AddUser(){
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('') 
   const [error, setError] = useState('')
-  const {setTimeActive} = useAuthValue()
+
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [userName, setUserName] = useState('')
+  
+  const [data, setData]= useState([])
 
   // Login function
   const login = e => {
     e.preventDefault()
     
      signInWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      navigate("/LandingPage")
+    .then(async () => {
+      
+      //Once authenticated: Check if user is admin.
+      const ref = query(collection(db, "Users"));
+      console.log(email)
+      const q = query(ref, where("email", "==", email));
+      
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        
+        //console.log(doc.id, " => ", doc.data());
+
+        if( doc.data().isAdmin == true )
+        {
+          {navigate("/AdminPage")}
+            
+        }
+        else
+        {
+          {navigate("/LandingPage")}  
+        }
+      });
+
+      
+      
     })
     .catch(err => setError(err.message))
     
-    
+  
 
    
   }
