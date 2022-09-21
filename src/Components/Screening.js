@@ -284,10 +284,7 @@ function Form(props) {
           <input
             type="checkbox"
             value={hasAcceptedTsAndCs}
-            onBlur={(e) => {
-              props.stepperForwardFunction(props.stepperState);
-              handleChange(e);
-            }}
+            onChange = {e => {props.stepperForwardFunction(props.stepperState); handleChange(e)}}
           />
           I have read the above to the client being screened, and have obtained
           his/her consent to proceed with the screening process.

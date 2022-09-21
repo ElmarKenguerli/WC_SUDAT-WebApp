@@ -2,6 +2,7 @@ import Slider from '@mui/material/Slider';
 import {useState} from 'react';
 import React from 'react';
 // import Slider from '@mui/material/Slider';
+import CommentBox from './CommentBox';
 
 function SliderQuestion(props){
   const[marks,setMarks] = useState([
@@ -52,6 +53,10 @@ function SliderQuestion(props){
             max={4}
             color="secondary"
             onChange={selectionChangeHandler}    
+        />
+        <CommentBox
+          name  = {`comment ${props.name}`}
+          updateForm = {props.updateForm}
         />
         <div>
         

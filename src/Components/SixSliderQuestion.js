@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import BooleanQuestion from './BooleanQuestion';
 import Slider from '@mui/material/Slider';
+import CommentBox from './CommentBox';
 
 function SixSliderQuestion(props){
   const[marks, setMarks] = useState
@@ -63,6 +64,10 @@ function SixSliderQuestion(props){
         />
         
         {/* <div><box><label>{questionAnswer}</label></box></div> */}
+        <CommentBox
+          name  = {`comment ${props.name}`}
+          updateForm = {props.updateForm}
+        />
       </div>
     );
 };

@@ -2,6 +2,7 @@ import Slider from '@mui/material/Slider';
 import {useState} from 'react';
 import React from 'react';
 // import Slider from '@mui/material/Slider';
+import CommentBox from './CommentBox';
 
 function TempSliderQuestion(props){
 const[marks,setMarks] = useState([
@@ -55,8 +56,10 @@ const[marks,setMarks] = useState([
             onChange={selectionChangeHandler}
             name = {props.name}
           />
-          
-          {/* <div><box><label>{questionAnswer}</label></box></div> */}
+          <CommentBox
+          name  = {`comment ${props.name}`}
+          updateForm = {props.updateForm}
+        />
       </div>
     );
 };
