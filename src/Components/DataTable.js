@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { DataGrid} from '@mui/x-data-grid';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { queryDatabase } from './QueryDatabase';
 import { queryDatabaseAdmin } from './QueryDatabaseAdmin';
 import { useAuthValue } from "../database/AuthContext";
@@ -85,6 +85,13 @@ function DataTable() {
         sx={{boxShadow: 2, border: 2,borderColor: 'primary.light', borderRadius: 2, borderShadow : 3, '& .col--header': {
           backgroundColor: '#6ec6ff',
         },}}
+        components={{ Toolbar: GridToolbar }}
+        componentsProps={{
+          toolbar: {
+            showQuickFilter: true,
+            quickFilterProps: { debounceMs: 500 },
+          },
+        }}
       />
     </div>
   );
