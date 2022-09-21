@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import {useNavigate} from "react-router-dom";
 import AdminMuiDrawer from '../Components/AdminMuiDrawer'
 
-
 //Firebase imports
 import {collection, query, orderBy, onSnapshot} from "firebase/firestore"
 import {db} from '../database/firebase'
@@ -11,6 +10,8 @@ import PostAddTwoToneIcon from '@mui/icons-material/PostAddTwoTone';
 import Button from '@material-ui/core/Button';
 import {Box} from '@mui/material';
 import DataGrid from "../Components/DataGrid"
+import StyledTable from "../Components/StyledTable"
+import DataTable from "../Components/DataTable"
 
 export const AdminPage = () => {
 
@@ -55,17 +56,12 @@ export const AdminPage = () => {
           </Button> 
         </Box>
         <Box textAlign="center" width="1000" margin="80px" >
-          <DataGrid/>
+          {/* <DataGrid/> */}
+          {/* <br></br>
+          <StyledTable/> */}
           <br></br>
-          {/* <h4>View Report Below</h4> */}
+          <DataTable/>
           
-          {/* Embedd pdf on page */}
-          {/* <embed
-            src={PDF}
-            type="application/pdf"
-            height={800}
-            width={700}
-          /> */}
         </Box>
       </div>
   )

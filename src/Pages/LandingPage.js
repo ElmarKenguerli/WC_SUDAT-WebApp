@@ -11,6 +11,7 @@ import PostAddTwoToneIcon from '@mui/icons-material/PostAddTwoTone';
 import Button from '@material-ui/core/Button';
 import {Box} from '@mui/material';
 import DataGrid from "../Components/DataGrid"
+import DataTable from "../Components/DataTable"
 
 export const LandingPage = () => {
 
@@ -55,7 +56,7 @@ export const LandingPage = () => {
           </Button> 
         </Box>
         <Box textAlign="center" width="1000" margin="80px" >
-          <DataGrid/>
+          <DataTable/>
           <br></br>
           {/* <h4>View Report Below</h4> */}
           

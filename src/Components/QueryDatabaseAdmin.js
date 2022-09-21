@@ -3,10 +3,10 @@ import { collection, addDoc, Timestamp, query, orderBy, onSnapshot, where } from
 import { useState } from 'react';
 
 
-const queryDatabase = (email) => {
+const queryDatabaseAdmin = (email) => {
     const [items, setItems] = useState([]);
 
-    const q = query(collection(db, 'Responses'), where('Interviewer', "==", email))
+    const q = query(collection(db, 'Responses'))
     onSnapshot(q, (querySnapshot) => {
         setItems(querySnapshot.docs.map(doc => ({
             id : doc.id,
@@ -22,4 +22,4 @@ const queryDatabase = (email) => {
     return items;
 }
 
-export { queryDatabase };
+export { queryDatabaseAdmin };
