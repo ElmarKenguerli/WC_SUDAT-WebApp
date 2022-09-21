@@ -15,6 +15,7 @@ const Login = () => {
             >
                 <div className='loginHeader'>
                     <label> 
+                        <img src="logo.png" width= "140" height= "100" id="img" style={{marginRight:"50px", float: "left"}}/>
                         Western Cape Substance Use Disorder Assessment Tool
                     </label>
                 </div>

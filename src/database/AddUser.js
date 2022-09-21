@@ -2,7 +2,7 @@ import {db} from './firebase'
 import {collection, addDoc, query, getDocs, where} from 'firebase/firestore'
 
 import React, { useState } from 'react';
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
 import '../App.css';
 //import {setUsernameCaption} from "./LandingPage";
 import {signInWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
@@ -126,7 +126,7 @@ export function AddUser(){
                   }
               />
               <br></br><br></br>
-              <div align="right" style={{marginTop:5}}>
+              <div align="center" style={{marginTop:5}}>
                   
                   <Button
                     
@@ -134,19 +134,6 @@ export function AddUser(){
                     size = "large"
                     sx={{bgcolor :"darkblue" , color : "White", border: "2px solid #82d4e4be"}}
                     type = 'submit'
-                    // onClick={
-                    //   () => {
-                    // if (email !== "")
-                    // {
-                    
-                    // login()
-                    // }
-                    // else
-                    // {
-                    // setErrorMessage("No username provided!")
-                    // }
-
-                    // }}
                     
                     >
                     {" "}
@@ -154,14 +141,13 @@ export function AddUser(){
                 </Button>
                 
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <Button
-                    variant="contained"
-                    size = "large"
-                    sx={{bgcolor :"darkblue" , color : "White", border: "2px solid #82d4e4be"}}
-                    onClick={() =>navigate("./Register")}
-                    >
-                    Register
-                </Button>
+                
+                <div className="text-center mt-4">
+                    <span >
+                        Don't have an account?  
+                        <Link to='/Register'>Register</Link>
+                    </span>
+                </div>
               </div>
           </form>
         </Box>   

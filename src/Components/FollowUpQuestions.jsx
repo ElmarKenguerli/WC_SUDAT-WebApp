@@ -5,7 +5,7 @@ import SliderQuestion from './SliderQuestion'
 import TrippleQuestion from './TrippleQuestion'
 import SixSliderQuestion from './SixSliderQuestion'
 import TempSliderQuestion from './TempSliderQuestion'
-import {Radio, FormControl, RadioGroup, FormControlLabel } from '@material-ui/core';
+import { Radio, FormControl, RadioGroup, FormControlLabel } from '@material-ui/core';
 const FollowUpQuestions = (props) => {
     return (
         <>

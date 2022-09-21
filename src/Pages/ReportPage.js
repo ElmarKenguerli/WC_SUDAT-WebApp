@@ -5,7 +5,7 @@ import {Box, Button} from '@mui/material';
 import MuiDrawer from '../Components/MuiDrawer'
 import HomeIcon from '@mui/icons-material/Home';
 import {useNavigate} from "react-router-dom";
-
+import ReportDoc from '../Components/ReportDoc'
 function ReportPage() {
     let navigate = useNavigate();
 
@@ -48,7 +48,11 @@ function ReportPage() {
                     {" "}
                     Home 
                 </Button>
-            </Box>   
+            </Box>  
+            
+            <Box textAlign="center" width="1000" margin="20px" >
+                <ReportDoc/>
+            </Box>
         </>
     );
 };
