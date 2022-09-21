@@ -34,6 +34,7 @@ export const AdminPage = () => {
   return (
     <div>
         <AdminMuiDrawer/>
+        <br></br>
         <Box textAlign="center" >
           <Button 
             size="large" 

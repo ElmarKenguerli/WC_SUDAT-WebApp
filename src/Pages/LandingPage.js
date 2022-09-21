@@ -34,6 +34,7 @@ export const LandingPage = () => {
   return (
     <div>
         <MuiDrawer/>
+        <br></br>
         <Box textAlign="center" >
           <Button 
             size="large" 
