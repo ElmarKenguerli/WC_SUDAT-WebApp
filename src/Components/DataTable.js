@@ -44,7 +44,7 @@ function DataTable() {
           size="small"
 
           onClick={() => {
-            console.log(`params.i ${params.i}`)
+            console.log(`params.id: ${params.id}`)
             navigate("/Assessment")
           }}
         >
@@ -63,7 +63,7 @@ function DataTable() {
           size="small"
 
           onClick={(e) => {
-            console.log(`params.i ${params.i}`)
+            console.log(`params.id: ${params.id}`)
             navigate("/ReportPage")
           }}
         >
@@ -75,7 +75,7 @@ function DataTable() {
 
 
   const columns = [
-    // { field: 'id', headerClassName: 'col--header', headerName: 'id', minWidth: 110, flex: 1 },
+    //{ field: 'id', headerClassName: 'col--header', headerName: 'id', minWidth: 110, flex: 1 },
     { field: 'ClientName', headerClassName: 'col--header', headerName: 'ClientName', minWidth: 150, flex: 1 },
     { field: 'ClientID', headerClassName: 'col--header', headerName: 'ClientID', minWidth: 150, flex: 1 },
     { field: 'DateOfInterview', headerClassName: 'col--header', headerName: 'DateOfInterview', minWidth: 150, flex: 1 },
