@@ -118,7 +118,7 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <div className="header-content-inner">
-          <img src="logo.png" width= "140" height= "100" id="img" style={{margin:"10px"}}/>
+          <img src="logo.jpg" width= "200" height= "auto" id="img" style={{margin:"10px"}}/>
               
           </div>
           <div className="header-content-inner">
