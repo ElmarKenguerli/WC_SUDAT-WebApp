@@ -28,7 +28,7 @@ const getFormDefaults = (clientID) => {
         for (let i = 0; i < 14; ++i)
             formData[commentFields[i]] = "";
 
-        for (let i = 0; i < 4; ++i)
+        for (let i = 0; i < fields.length; ++i)
             formData[fields[i]] = 0;
 
         formData["DateOfBirth"] = "";
