@@ -598,4 +598,4 @@ const sectionChangeReadiness =[{
     }
     ]
 
-export {sectionScreening,sectionRisks,sectionTrauma,sectionProtective, sectionChangeReadiness}
+export {sectionScreening,sectionRisks,sectionTrauma,sectionProtective,sectionDepression, sectionChangeReadiness,sectionFamily}

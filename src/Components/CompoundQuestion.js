@@ -67,7 +67,6 @@ function CompoundQuestion(props){
               setQname(props.name);
             }}/>} 
             label="No"
-            name = {props.name}
           />
         </RadioGroup>
         <div>

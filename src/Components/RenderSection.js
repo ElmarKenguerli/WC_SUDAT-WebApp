@@ -6,7 +6,7 @@ import SliderQuestion from "./SliderQuestion";
 import BooleanQuestion from "./BooleanQuestion";
 import CompoundQuestion from './CompoundQuestion';
 
-const Section = (props) => {
+const RenderSection = (props) => {
   if(props.show){
     let comp = props.sectionQuestions.map((q) => {
         switch (true) {
@@ -106,4 +106,4 @@ const Section = (props) => {
 
 };
 
-export default Section;
+export default RenderSection;
