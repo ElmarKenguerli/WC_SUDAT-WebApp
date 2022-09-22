@@ -10,10 +10,10 @@ import SixSliderQuestion from "./SixSliderQuestion";
 import SliderQuestion from "./SliderQuestion";
 import BooleanQuestion from "./BooleanQuestion";
 import FollowUpQuestions from "./FollowUpQuestions";
-import Section from "./Section";
+import Section from "./RenderSection";
 import { writeToDatabase, getFormDefaults } from "./WriteToDatabase";
 import LandingPage from "../Pages/LandingPage";
-import {sectionScreening,sectionRisks,sectionTrauma,sectionProtective, sectionChangeReadiness} from './QuestionData'
+import {sectionScreening,sectionRisks,sectionTrauma,sectionProtective,sectionFamily,sectionDepression, sectionChangeReadiness} from './QuestionData'
 
 //datepicker
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
@@ -710,6 +710,38 @@ function Form(props) {
             
             show = {true}
             sectionQuestions = {sectionTrauma}
+            form = {formData}
+            updateForm = {handleData}
+          />
+
+          <Section
+            
+            show = {true}
+            sectionQuestions = {sectionDepression}
+            form = {formData}
+            updateForm = {handleData}
+          />
+          
+          <Section
+            
+            show = {true}
+            sectionQuestions = {sectionFamily}
+            form = {formData}
+            updateForm = {handleData}
+          />
+
+          <Section
+            
+            show = {true}
+            sectionQuestions = {sectionProtective}
+            form = {formData}
+            updateForm = {handleData}
+          />
+
+          <Section
+            
+            show = {true}
+            sectionQuestions = {sectionChangeReadiness}
             form = {formData}
             updateForm = {handleData}
           />
