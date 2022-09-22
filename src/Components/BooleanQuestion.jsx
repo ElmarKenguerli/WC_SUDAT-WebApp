@@ -18,6 +18,7 @@ function BooleanQuestion(props) {
     };
   
     return (
+      <fieldset>
       <FormControl>
         <p>{props.question}</p>
         <RadioGroup row value={selected} onBlur={selectionBlurHandler}>
@@ -45,7 +46,7 @@ function BooleanQuestion(props) {
           updateForm = {props.updateForm}
         />
       </FormControl>
-    
+      </fieldset>
     );
 }
 export default React.memo(BooleanQuestion);
