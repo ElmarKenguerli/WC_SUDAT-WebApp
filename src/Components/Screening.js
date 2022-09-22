@@ -357,6 +357,7 @@ function Form(props) {
                 <h3> Client Name:</h3>
                 <TextField
                   required
+                  value = {formData["ClientName"]}
                   color="secondary"
                   focused
                   sx={{ width: 300 }}
@@ -376,6 +377,7 @@ function Form(props) {
                 <h3> Client ID number:</h3>
                 <TextField
                   required
+                  value = {formData["ClientID"]}
                   color="secondary"
                   focused
                   sx={{ width: 300 }}
@@ -393,6 +395,7 @@ function Form(props) {
                 <h3>Place of Interview:</h3>
                 <TextField
                   required
+                  value = {formData["PlaceOfInterview"]}
                   color="secondary"
                   focused
                   sx={{ width: 300 }}
@@ -427,6 +430,7 @@ function Form(props) {
                 <p>Gender</p>
                 <Select
                   required
+
                   name="Gender"
                   style={{ width: 300 }}
                   variant="filled"
@@ -509,7 +513,7 @@ function Form(props) {
                   sx={{ width: 300 }}
                   focused
                   size="small"
-                  name="Language"
+                  name="Langauge"
                   variant="filled"
                   value={formData["Langauge"]}
                   onBlur={(e) => {
@@ -528,7 +532,7 @@ function Form(props) {
                   name="HousingSituation"
                   style={{ width: 300 }}
                   variant="filled"
-                  value={formData["Housing Situation"]}
+                  value={formData["HousingSituation"]}
                   onChange={(e) => {
                     handleData(e);
                   }}
@@ -566,7 +570,7 @@ function Form(props) {
                   required
                   name="Education"
                   style={{ width: 300 }}
-                  variant="filled"
+                  variant="filled"                  
                   value={formData["Education"]}
                   onChange={(e) => {
                     //setEducation(e.target.value);
@@ -596,7 +600,7 @@ function Form(props) {
                   name="RecentConflict"
                   style={{ width: 300 }}
                   variant="filled"
-                  value={formData["Recent Conflict"]}
+                  value={formData["RecentConflict"]}
                   onChange={(e) => {
                     handleData(e);
                   }}
