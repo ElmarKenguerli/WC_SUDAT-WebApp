@@ -44,7 +44,7 @@ function DataTable() {
           size="small"
 
           onClick={() => {
-            console.log(params.id)
+            console.log(`params.i ${params.i}`)
             navigate("/Assessment")
           }}
         >
@@ -62,8 +62,8 @@ function DataTable() {
           sx={{ bgcolor: "#2196f3", color: "White", border: "2px solid #82d4e4be" }}
           size="small"
 
-          onClick={() => {
-            console.log(params.id)
+          onClick={(e) => {
+            console.log(`params.i ${params.i}`)
             navigate("/ReportPage")
           }}
         >

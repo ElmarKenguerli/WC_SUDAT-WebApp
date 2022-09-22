@@ -46,11 +46,9 @@ import {
 } from "firebase/firestore";
 import { useAuthValue } from "../database/AuthContext";
 
-let gender = "";
-
-export const setGender = (chosenGender) => {
-  gender = chosenGender;
-};
+// export const setGender = (chosenGender) => {
+//   gender = chosenGender;
+// };
 
 export const GetValue = (value, num) => {
   val = value;
@@ -159,12 +157,12 @@ const formReducer = (state, event) => {
 function Form(props) {
   const { currentUser } = useAuthValue();
 
-  const [formData, setFormData] = useReducer(formReducer, getFormDefaults());
+  const [formData, setFormData] = useReducer(formReducer, getFormDefaults(""));
   const [submitting, setSubmitting] = useState(false);
   const [hasAcceptedTsAndCs, setHasAcceptedTsAndCs] = useState(false);
   const [valueDate, setValueDate] = React.useState(null);
   const [greaterThanZero, setGreaterThanZero] = useState(false);
-
+  
   let navigate = useNavigate();
 
   const handleDatabase = (event) => {
@@ -638,7 +636,6 @@ function Form(props) {
                 color="secondary"
                 onChange={(e) => handleData(e)}
               />
-
               <Collapsible />
             </fieldset>
             <fieldset>
