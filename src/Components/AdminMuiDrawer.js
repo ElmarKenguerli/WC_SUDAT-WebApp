@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -18,7 +18,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import PostAddTwoToneIcon from '@mui/icons-material/PostAddTwoTone';
 import ExitToAppTwoToneIcon from '@mui/icons-material/ExitToAppTwoTone';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { useAuthValue } from "../database/AuthContext"
 import '../App.css';
@@ -88,8 +88,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft() {
-  const {currentUser} = useAuthValue()
-  
+  const { currentUser } = useAuthValue()
+
   const classes = useStyles();
   const [username, setUsername] = useState('');
   const theme = useTheme();
@@ -118,26 +118,19 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <div className="header-content-inner">
-          
-            <img src="logo.png" width= "140" height= "100" id="img" style={{margin:"10px"}}/>
-              
+            <img src="logo.png" width="140" height="100" id="img" style={{ margin: "10px" }} />
           </div>
           <div className="header-content-inner">
-          
             <h1>&nbsp;&nbsp;&nbsp;ADMIN</h1>
-              
           </div>
-          <Typography variant="h6" style={{position: "absolute", right: "15px", border : "2px groove black", padding: "7px"}} noWrap component="div">
-          Logged in: {currentUser.email}  
+          <Typography variant="h6" style={{ position: "absolute", right: "15px", border: "2px groove black", padding: "7px" }} noWrap component="div">
+            Logged in: {currentUser.email}
           </Typography>
-          
+
         </Toolbar>
       </AppBar>
       <Drawer
-        
-        
         sx={{
-          
           width: drawerWidth,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
@@ -149,37 +142,34 @@ export default function PersistentDrawerLeft() {
         anchor="left"
         open={open}
       >
-        
-          <DrawerHeader>
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-            </IconButton>
-          </DrawerHeader>
-          <Divider />
-          <List>
-            <Link to="/Assessment" >
-              <ListItem button>
-                <ListItemIcon>
-                  <PostAddTwoToneIcon />
-                </ListItemIcon>
-                <ListItemText primary={"Start Assessment"} />
-              </ListItem>
-            </Link>
-            <Link to="/" >
-              <ListItem button>
-                <ListItemIcon>
-                  <ExitToAppTwoToneIcon />
-                </ListItemIcon>
-                <ListItemText primary={"Log Out"} />
-              </ListItem>
-            </Link>
-          </List>
-          <Divider />
-        
+        <DrawerHeader>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          </IconButton>
+        </DrawerHeader>
+        <Divider />
+        <List>
+          <Link to="/Assessment" >
+            <ListItem button>
+              <ListItemIcon>
+                <PostAddTwoToneIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Start Assessment"} />
+            </ListItem>
+          </Link>
+          <Link to="/" >
+            <ListItem button>
+              <ListItemIcon>
+                <ExitToAppTwoToneIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Log Out"} />
+            </ListItem>
+          </Link>
+        </List>
+        <Divider />
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        
         <Typography paragraph>
         </Typography>
       </Main>
