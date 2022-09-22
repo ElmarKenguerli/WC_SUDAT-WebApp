@@ -45,7 +45,7 @@ function DataTable() {
 
           onClick={() => {
             console.log(`params.id: ${params.id}`)
-            navigate("/Assessment")
+            navigate("/Assessment",{state:{docID:params.id}})
           }}
         >
           Edit

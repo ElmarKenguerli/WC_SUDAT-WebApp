@@ -2,6 +2,7 @@
 import React, { useReducer, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 //import Pages and Components
 import "../App.css";
 import useCollapse from "react-collapsed";
@@ -38,14 +39,11 @@ import Slider from "@mui/material/Slider";
 
 //import Firebase components
 import { db } from "../database/firebase";
+
 import {
-  collection,
-  addDoc,
-  Timestamp,
-  query,
-  orderBy,
-  onSnapshot,
-  where,
+  getDoc,
+  doc,
+  
 } from "firebase/firestore";
 import { useAuthValue } from "../database/AuthContext";
 
@@ -56,10 +54,10 @@ import { useAuthValue } from "../database/AuthContext";
 export const GetValue = (value, num) => {
   val = value;
 
-  console.log(`I am here ${val}`);
+  //console.log(`I am here ${val}`);
 
   if (value === 1) {
-    console.log("I am here");
+    //console.log("I am here");
     FollowUpQuestions();
   }
 };
@@ -158,8 +156,54 @@ const formReducer = (state, event) => {
 
 function Form(props) {
   const { currentUser } = useAuthValue();
+  const [formData, setFormData] = useReducer(formReducer, []);
+  
 
-  const [formData, setFormData] = useReducer(formReducer, getFormDefaults(""));
+
+
+  const getForm = async() => {
+
+    const tempSnap = await getDoc(doc(db, 'Responses', props.docID))
+    
+    
+    if(tempSnap.exists)
+    {
+
+    let json = tempSnap.data()
+      //console.log("Document data:", json);
+      //console.log("Document keys:", Object.keys(json));
+
+      Object.keys(json).forEach((name) => {
+        setFormData({
+          name: name,
+          value: json[name]
+          
+        });
+      });
+    }
+    else{}
+  }       
+  if (props.docID === "")
+  {
+    //pass
+  }
+  else
+  {
+    getForm()
+  }
+  
+
+ 
+
+  // loop for each fieldset  
+  //     setFormData({
+    //       name: fieldname from snap
+    //       value: fieldvalue from snap
+        
+  //     })
+
+  
+
   const [submitting, setSubmitting] = useState(false);
   const [hasAcceptedTsAndCs, setHasAcceptedTsAndCs] = useState(false);
   const [valueDate, setValueDate] = React.useState(null);
@@ -223,7 +267,9 @@ function Form(props) {
     setFormData({
       name: event.target.name,
       value: event.target.value,
+      
     });
+
   };
 
   const handleExtraData = (event) => {
@@ -380,6 +426,7 @@ function Form(props) {
               <label>
                 <p>Gender</p>
                 <Select
+                  required
                   name="Gender"
                   style={{ width: 300 }}
                   variant="filled"
@@ -477,6 +524,7 @@ function Form(props) {
               <label>
                 <p>Current Housing Situation:</p>
                 <Select
+                  required
                   name="HousingSituation"
                   style={{ width: 300 }}
                   variant="filled"
@@ -515,6 +563,7 @@ function Form(props) {
               <label>
                 <p>Highest Level of Education</p>
                 <Select
+                  required
                   name="Education"
                   style={{ width: 300 }}
                   variant="filled"
@@ -543,6 +592,7 @@ function Form(props) {
                   past 12 months
                 </p>
                 <Select
+                  required
                   name="RecentConflict"
                   style={{ width: 300 }}
                   variant="filled"

@@ -35,9 +35,18 @@ const steps = [
   }
 ];
 
-export default function VerticalLinearStepper() {
+export default function VerticalLinearStepper(props) {
   const [activeStep, setActiveStep] = React.useState(0);
-
+  let docID = ""
+  if (props.docID === "")
+  {
+    //pass
+  }
+  else
+  {
+    docID = props.docID
+  }
+  
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -53,6 +62,7 @@ export default function VerticalLinearStepper() {
 
   return (
     <>
+    
       <div className="row">
         <div className="leftnav col-md-2">
           <div style={{position: 'fixed',margin: 25}}>
@@ -89,6 +99,7 @@ export default function VerticalLinearStepper() {
             <Form
                 stepperState = {activeStep}
                 stepperForwardFunction = {handleNext}
+                docID = {docID}
             />
           </>
         </div>
