@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import BooleanQuestion from "./BooleanQuestion";
 import SliderQuestion from "./SliderQuestion";
-import TrippleQuestion from "./CompoundQuestion";
+import TrippleQuestion from "./TrippleQuestion";
 import { questions } from "./QuestionData";
 import CompoundQuestion from "./CompoundQuestion";
 import Header from "./Header";
