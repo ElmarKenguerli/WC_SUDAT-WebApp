@@ -200,12 +200,10 @@ function Form(props) {
   });
 
   function isGreaterThanZero(l) {
-    let ans1 = formData["Q1"];
-    let ans2 = formData["Q2"];
-    let ans3 = formData["Q3"];
-    let ans4 = formData["Q4"];
 
-    setGreaterThanZero(ans1 >= 1 || ans2 >= 1 || ans3 >= 1 || ans4 >= 1);
+    let ans1 = formData["Q1"] + formData["Q2"] + formData["Q3"] + formData["Q4"] + formData["Q5"] +formData["Q6"] +formData["Q7"] + formData["Q8"]+formData["Q9"]+formData["Q10"];
+    console.log(ans1)
+    return Boolean(ans1>=2);
   }
 
   //Show submitting message while submitting
@@ -698,14 +696,15 @@ function Form(props) {
             form = {formData}
             updateForm = {handleData}
           />
-
+        
+          {isGreaterThanZero() &&(
           <Section
             
             show = {true}
             sectionQuestions = {sectionRisks}
             form = {formData}
             updateForm = {handleData}
-          />
+          />)}
 
         <Section
             
@@ -714,6 +713,7 @@ function Form(props) {
             form = {formData}
             updateForm = {handleData}
           />
+          
           
           <button className="btn-square" type="submit" onClick={handleDatabase}>
             Submit

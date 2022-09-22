@@ -1,6 +1,7 @@
 const sectionScreening = [
     {   type:"header",
         header: "Screening",
+        explanation:"During the PAST 3 MONTHS, how often did the client do the following:",
         show: true
     },
     {
