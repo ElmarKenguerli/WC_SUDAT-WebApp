@@ -13,6 +13,8 @@ import FollowUpQuestions from "./FollowUpQuestions";
 import Section from "./Section";
 import { writeToDatabase, getFormDefaults } from "./WriteToDatabase";
 import LandingPage from "../Pages/LandingPage";
+import {sectionScreening,sectionRisks,sectionTrauma,sectionProtective, sectionChangeReadiness} from './QuestionData'
+
 //datepicker
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
@@ -688,7 +690,31 @@ function Form(props) {
               stepperState={props.stepperState}
             />
           )} */}
-          <section></section>
+          {console.log("Here")}
+          <Section
+            
+            show = {true}
+            sectionQuestions = {sectionScreening}
+            form = {formData}
+            updateForm = {handleData}
+          />
+
+          <Section
+            
+            show = {true}
+            sectionQuestions = {sectionRisks}
+            form = {formData}
+            updateForm = {handleData}
+          />
+
+        <Section
+            
+            show = {true}
+            sectionQuestions = {sectionTrauma}
+            form = {formData}
+            updateForm = {handleData}
+          />
+          
           <button className="btn-square" type="submit" onClick={handleDatabase}>
             Submit
           </button>
