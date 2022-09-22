@@ -171,14 +171,14 @@ const sectionScreening = [
     },
     {
         name: "Q17c",
-        question: "In the past 30 days you were constantly on guard, watchful or easily startled.",
+        question: "Q17c. In the past 30 days you were constantly on guard, watchful or easily startled.",
         section: "Trauma",
         subsection: "If yes:",
         type: 0
     },
     {
         name: "Q17d",
-        question: "Q17c. In the past 30 days you felt numb or detached from others, activities, or your surroundings related to your experience.",
+        question: "Q17d. In the past 30 days you felt numb or detached from others, activities, or your surroundings related to your experience.",
         section: "Trauma",
         subsection: "If yes:",
         type: 0
