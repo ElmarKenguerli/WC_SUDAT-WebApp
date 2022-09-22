@@ -10,6 +10,7 @@ import SixSliderQuestion from "./SixSliderQuestion";
 import SliderQuestion from "./SliderQuestion";
 import BooleanQuestion from "./BooleanQuestion";
 import FollowUpQuestions from "./FollowUpQuestions";
+import Section from "./Section";
 import { writeToDatabase, getFormDefaults } from "./WriteToDatabase";
 import LandingPage from "../Pages/LandingPage";
 //datepicker
@@ -680,13 +681,14 @@ function Form(props) {
               <Collapsible />
             </fieldset>
           </fieldset>
-          {greaterThanZero && (
+          {/* {greaterThanZero && (
             <FollowUpQuestions
               updateForm={handleExtraData}
               stepperForward={props.stepperForwardFunction}
               stepperState={props.stepperState}
             />
-          )}
+          )} */}
+          <section></section>
           <button className="btn-square" type="submit" onClick={handleDatabase}>
             Submit
           </button>
