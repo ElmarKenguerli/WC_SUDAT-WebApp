@@ -13,7 +13,7 @@ import FollowUpQuestions from "./FollowUpQuestions";
 import Section from "./RenderSection";
 import { writeToDatabase, getFormDefaults } from "./WriteToDatabase";
 import LandingPage from "../Pages/LandingPage";
-import {sectionScreening,sectionRisks,sectionTrauma,sectionProtective,sectionFamily,sectionDepression, sectionChangeReadiness} from './QuestionData'
+import { sectionScreening, sectionRisks, sectionTrauma, sectionProtective, sectionFamily, sectionDepression, sectionChangeReadiness } from './QuestionData'
 
 //datepicker
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
@@ -70,9 +70,8 @@ function getCurrentDate(separator = "-") {
   let month = newDate.getMonth() + 1;
   let year = (newDate = newDate.getFullYear());
 
-  return `${date}${separator}${
-    month < 10 ? `0${month}` : `${month}`
-  }${separator}${year}`;
+  return `${date}${separator}${month < 10 ? `0${month}` : `${month}`
+    }${separator}${year}`;
 }
 
 const interviewerName = "Danny Guttmann";
@@ -165,7 +164,7 @@ function Form(props) {
   const [hasAcceptedTsAndCs, setHasAcceptedTsAndCs] = useState(false);
   const [valueDate, setValueDate] = React.useState(null);
   const [greaterThanZero, setGreaterThanZero] = useState(false);
-  
+
   let navigate = useNavigate();
 
   const handleDatabase = (event) => {
@@ -199,9 +198,9 @@ function Form(props) {
 
   function isGreaterThanZero(l) {
 
-    let ans1 = formData["Q1"] + formData["Q2"] + formData["Q3"] + formData["Q4"] + formData["Q5"] +formData["Q6"] +formData["Q7"] + formData["Q8"]+formData["Q9"]+formData["Q10"];
+    let ans1 = formData["Q1"] + formData["Q2"] + formData["Q3"] + formData["Q4"] + formData["Q5"] + formData["Q6"] + formData["Q7"] + formData["Q8"] + formData["Q9"] + formData["Q10"];
     console.log(ans1)
-    return Boolean(ans1>=2);
+    return Boolean(ans1 >= 2);
   }
 
   //Show submitting message while submitting
@@ -283,7 +282,7 @@ function Form(props) {
           <input
             type="checkbox"
             value={hasAcceptedTsAndCs}
-            onChange = {e => {props.stepperForwardFunction(props.stepperState); handleChange(e)}}
+            onChange={e => { props.stepperForwardFunction(props.stepperState); handleChange(e) }}
           />
           I have read the above to the client being screened, and have obtained
           his/her consent to proceed with the screening process.
@@ -400,20 +399,16 @@ function Form(props) {
               </label>
             </fieldset>
             <fieldset>
-              
-                <p>Date Of Birth</p>
-                <LocalizationProvider dateAdapter={AdapterMoment}>
-      
-                  <DesktopDatePicker
-                    
-                    inputFormat="MM/DD/YYYY"
-                    value={formData["DateOfBirth"]}
-                    
-                    onChange={(date) => { handleDateData(date);}}
-                    renderInput={(params) => <TextField color="secondary" variant="filled" sx={{ width: 300 }} {...params} />}
-                  />
-                </LocalizationProvider>
-                {/* <MuiPickersUtilsProvider utils={DateMomentUtils}>
+              <p>Date Of Birth</p>
+              <LocalizationProvider dateAdapter={AdapterMoment}>
+                <DesktopDatePicker
+                  inputFormat="MM/DD/YYYY"
+                  value={formData["DateOfBirth"]}
+                  onChange={(date) => { handleDateData(date); }}
+                  renderInput={(params) => <TextField color="secondary" variant="filled" sx={{ width: 300 }} {...params} />}
+                />
+              </LocalizationProvider>
+              {/* <MuiPickersUtilsProvider utils={DateMomentUtils}>
                   <DatePicker
                     value={formData["DateOfBirth"]}
                     name="DateOfBirth"
@@ -422,8 +417,8 @@ function Form(props) {
                     }}
                   />
                 </MuiPickersUtilsProvider> */}
-                <Collapsible />
-             
+              <Collapsible />
+
             </fieldset>
             <fieldset>
               <label>
@@ -579,7 +574,7 @@ function Form(props) {
                 following:
               </h3>
             </label>
-            <fieldset>
+            {/* <fieldset>
               <p>
                 1. Drink more than a few sips of beer, wine, or any drink
                 containing alcohol?
@@ -671,82 +666,68 @@ function Form(props) {
                 onChange={(e) => {
                   handleData(e);
                 }}
-              >
-                <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
+              > */}
+            {/* <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="No" control={<Radio />} label="No" />
               </RadioGroup>
               <Collapsible />
-            </fieldset>
-          </fieldset>
-          {/* {greaterThanZero && (
+            </fieldset>*/}
+          </fieldset> 
+            {/* {greaterThanZero && (
             <FollowUpQuestions
               updateForm={handleExtraData}
               stepperForward={props.stepperForwardFunction}
               stepperState={props.stepperState}
             />
           )} */}
-          {console.log("Here")}
-          <Section
-            
-            show = {true}
-            sectionQuestions = {sectionScreening}
-            form = {formData}
-            updateForm = {handleData}
-          />
-        
-          {isGreaterThanZero() &&(
-          <Section
-            
-            show = {true}
-            sectionQuestions = {sectionRisks}
-            form = {formData}
-            updateForm = {handleData}
-          />)}
+            {console.log("Here")}
+            <Section
+              show={true}
+              sectionQuestions={sectionScreening}
+              form={formData}
+              updateForm={handleData}
+            />
 
-        <Section
-            
-            show = {true}
-            sectionQuestions = {sectionTrauma}
-            form = {formData}
-            updateForm = {handleData}
-          />
-
-          <Section
-            
-            show = {true}
-            sectionQuestions = {sectionDepression}
-            form = {formData}
-            updateForm = {handleData}
-          />
-          
-          <Section
-            
-            show = {true}
-            sectionQuestions = {sectionFamily}
-            form = {formData}
-            updateForm = {handleData}
-          />
-
-          <Section
-            
-            show = {true}
-            sectionQuestions = {sectionProtective}
-            form = {formData}
-            updateForm = {handleData}
-          />
-
-          <Section
-            
-            show = {true}
-            sectionQuestions = {sectionChangeReadiness}
-            form = {formData}
-            updateForm = {handleData}
-          />
-          
-          
-          <button className="btn-square" type="submit" onClick={handleDatabase}>
-            Submit
-          </button>
+            {isGreaterThanZero() && (
+              <Section
+                show={true}
+                sectionQuestions={sectionRisks}
+                form={formData}
+                updateForm={handleData}
+              />)}
+            <Section
+              show={true}
+              sectionQuestions={sectionTrauma}
+              form={formData}
+              updateForm={handleData}
+            />
+            <Section
+              show={true}
+              sectionQuestions={sectionDepression}
+              form={formData}
+              updateForm={handleData}
+            />
+            <Section
+              show={true}
+              sectionQuestions={sectionFamily}
+              form={formData}
+              updateForm={handleData}
+            />
+            <Section
+              show={true}
+              sectionQuestions={sectionProtective}
+              form={formData}
+              updateForm={handleData}
+            />
+            <Section
+              show={true}
+              sectionQuestions={sectionChangeReadiness}
+              form={formData}
+              updateForm={handleData}
+            />
+            <button className="btn-square" type="submit" onClick={handleDatabase}>
+              Submit
+            </button>
         </form>
         <div>
           <br></br>

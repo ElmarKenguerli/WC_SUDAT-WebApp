@@ -2,20 +2,20 @@ import React, { useState } from "react";
 import BooleanQuestion from "./BooleanQuestion";
 import SliderQuestion from "./SliderQuestion";
 import TrippleQuestion from "./CompoundQuestion";
-import { questions } from "./questionData";
+import { questions } from "./QuestionData";
 import CompoundQuestion from "./CompoundQuestion";
 import Header from "./Header";
 
-const RenderQuestions = ({sectionQuestions},{formData},{updateForm}) => {
+const RenderQuestions = ({ sectionQuestions }, { formData }, { updateForm }) => {
   console.log("Hello")
 
   let comp = sectionQuestions.map((q) => {
     switch (true) {
       case q.type === "header":
         console.log("Hello this is header")
-        return (<Header header = {q.header}
-                        explanation = {q.explanation}
-                        />);
+        return (<Header header={q.header}
+          explanation={q.explanation}
+        />);
       case q.type == 0:
         console.log("In boolean");
         return (
