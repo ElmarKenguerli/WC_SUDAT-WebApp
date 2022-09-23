@@ -41,6 +41,9 @@ function ReportPage() {
                 /> */}
             </Box>
             <Box textAlign="center" width="1000" margin="80px" >
+                <Box textAlign="center" width="1000" margin="20px" >
+                    <ReportDoc formData = {formData}/>
+                </Box>
                 <Button 
                     size="normal" 
                     className='.right'
@@ -62,9 +65,7 @@ function ReportPage() {
                 </Button>
             </Box>  
             
-            <Box textAlign="center" width="1000" margin="20px" >
-                <ReportDoc formData = {formData}/>
-            </Box>
+            
         </>
     );
 };
