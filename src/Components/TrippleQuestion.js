@@ -57,7 +57,6 @@ export default function TrippleQuestion(props) {
                 label={labelset1["value2"]}
                 name={props.name}
               />
-
               <FormControlLabel
                 value=" A lot"
                 control={
@@ -99,7 +98,6 @@ export default function TrippleQuestion(props) {
                 label={labelset2["value2"]}
                 name={props.name}
               />
-
               <FormControlLabel
                 value=" A lot"
                 control={

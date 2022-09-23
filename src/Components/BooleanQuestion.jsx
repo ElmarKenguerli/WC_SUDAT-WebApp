@@ -48,7 +48,7 @@ function BooleanQuestion(props) {
           />
         </RadioGroup>
         <CommentBox
-          name  = {`comment ${Qname}`}
+          name  = {`comment${Qname}`}
           updateForm = {props.updateForm}
         />
       </FormControl>
