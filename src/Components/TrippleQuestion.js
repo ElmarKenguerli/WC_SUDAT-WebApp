@@ -64,8 +64,8 @@ export default function TrippleQuestion(props) {
                     onChange={(event) => setSelected(event.target.value)}
                   />
                 }
-                label={labelset1["value1"]}
-                name={props.number}
+                label={labelset1["value3"]}
+                name={props.name}
               />
             </RadioGroup>
           </FormControl>
@@ -105,8 +105,8 @@ export default function TrippleQuestion(props) {
                     onChange={(event) => setSelected(event.target.value)}
                   />
                 }
-                label={labelset2["value1"]}
-                name={props.number}
+                label={labelset2["value3"]}
+                name={props.name}
               />
             </RadioGroup>
           </FormControl>

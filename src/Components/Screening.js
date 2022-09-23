@@ -1,7 +1,7 @@
 //import React components;
 import React, { useReducer, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import AddCommentTwoToneIcon from '@mui/icons-material/AddCommentTwoTone';
 //import Pages and Components
 import "../App.css";
 import useCollapse from "react-collapsed";
@@ -80,7 +80,7 @@ export function Collapsible() {
   return (
     <div className="collapsible">
       <div className="header" {...getToggleProps()}>
-        {isExpanded ? "-" : "+"}
+        {isExpanded ? "-" : <AddCommentTwoToneIcon/>}
       </div>
       <div {...getCollapseProps()}>
         <div className="content">
@@ -155,7 +155,7 @@ const formReducer = (state, event) => {
 
 function Form(props) {
   const { currentUser } = useAuthValue();
-  const [formData, setFormData] = useReducer(formReducer, []);
+  const [formData, setFormData] = useReducer(formReducer, getFormDefaults());
   
 
 
