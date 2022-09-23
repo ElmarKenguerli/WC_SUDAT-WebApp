@@ -10,7 +10,7 @@ import SixSliderQuestion from "./SixSliderQuestion";
 import SliderQuestion from "./SliderQuestion";
 import BooleanQuestion from "./BooleanQuestion";
 import FollowUpQuestions from "./FollowUpQuestions";
-import Section from "./RenderSection";
+import RenderSection from "./RenderSection";
 import { writeToDatabase, getFormDefaults } from "./WriteToDatabase";
 import LandingPage from "../Pages/LandingPage";
 import { sectionScreening, sectionRisks, sectionTrauma, sectionProtective, sectionFamily, sectionDepression, sectionChangeReadiness } from './QuestionData'
@@ -167,6 +167,23 @@ function Form(props) {
 
   let navigate = useNavigate();
 
+  const showAssessment = () => {
+    //let ans1 = formData["Q1"] + formData["Q2"] + formData["Q3"] + formData["Q4"];
+
+    let count = 0;
+
+    for (let i=6; i<11; ++i){
+      if (formData["Q" + String(i)] === "Yes"){
+        count++;
+      }
+    } 
+
+    let show = (count >= 2);
+    console.log(show);
+    // console.log(ans1);
+    return show;
+  }
+
   const handleDatabase = (event) => {
     let fd = formData;
     formData["email"] = getEmail();
@@ -198,7 +215,7 @@ function Form(props) {
 
   function isGreaterThanZero(l) {
 
-    let ans1 = formData["Q1"] + formData["Q2"] + formData["Q3"] + formData["Q4"] + formData["Q5"] + formData["Q6"] + formData["Q7"] + formData["Q8"] + formData["Q9"] + formData["Q10"];
+    let ans1 = formData["Q1"] + formData["Q2"] + formData["Q3"] + formData["Q4"] + formData["Q5"] + formData["Q6"] + formData["Q7"] + formData["Q8"] + formData["Q9"];
     console.log(ans1)
     return Boolean(ans1 >= 2);
   }
@@ -566,14 +583,9 @@ function Form(props) {
               </label>
             </fieldset>
           </fieldset>
-          <h2> Substance Use Screening </h2>
+  
           <fieldset name="screening">
-            <label>
-              <h3>
-                During the PAST 3 MONTHS, how often did the client do the
-                following:
-              </h3>
-            </label>
+
             {/* <fieldset>
               <p>
                 1. Drink more than a few sips of beer, wine, or any drink
@@ -681,46 +693,45 @@ function Form(props) {
             />
           )} */}
             {console.log("Here")}
-            <Section
+            <RenderSection
               show={true}
               sectionQuestions={sectionScreening}
               form={formData}
               updateForm={handleData}
             />
 
-            {isGreaterThanZero() && (
-              <Section
-                show={true}
+              <RenderSection
+                show={showAssessment()}
                 sectionQuestions={sectionRisks}
                 form={formData}
                 updateForm={handleData}
-              />)}
-            <Section
-              show={true}
+              />
+            <RenderSection
+              show={showAssessment()}
               sectionQuestions={sectionTrauma}
               form={formData}
               updateForm={handleData}
             />
-            <Section
-              show={true}
+            <RenderSection
+              show={showAssessment()}
               sectionQuestions={sectionDepression}
               form={formData}
               updateForm={handleData}
             />
-            <Section
-              show={true}
+            <RenderSection
+              show={showAssessment()}
               sectionQuestions={sectionFamily}
               form={formData}
               updateForm={handleData}
             />
-            <Section
-              show={true}
+            <RenderSection
+              show={showAssessment()}
               sectionQuestions={sectionProtective}
               form={formData}
               updateForm={handleData}
             />
-            <Section
-              show={true}
+            <RenderSection
+              show={showAssessment()}
               sectionQuestions={sectionChangeReadiness}
               form={formData}
               updateForm={handleData}

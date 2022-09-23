@@ -6,6 +6,7 @@ import {
   FormControlLabel,
 } from "@material-ui/core";
 import { render } from "react-dom";
+import CommentBox from './CommentBox';
 
 export default function TrippleQuestion(props) {
   const [selected, setSelected] = useState("");
@@ -111,6 +112,7 @@ export default function TrippleQuestion(props) {
               />
             </RadioGroup>
           </FormControl>
+          <CommentBox name={`comment${props.name}`} updateForm={props.updateForm} />
         </fieldset>
       );
   }

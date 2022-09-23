@@ -1,14 +1,15 @@
 import React from "react";
-import RenderQuestions from "./RenderQuestions";
 import Header from "./Header";
 import TrippleQuestion from "./TrippleQuestion";
 import SliderQuestion from "./SliderQuestion";
 import BooleanQuestion from "./BooleanQuestion";
 import CompoundQuestion from './CompoundQuestion';
+import BooleanwithFollowUp from './BooleanwithFollowUp';
 
 const RenderSection = (props) => {
   if(props.show){
     let comp = props.sectionQuestions.map((q) => {
+      
         switch (true) {
           case q.type === "header":
             console.log("Hello this is header")
@@ -22,8 +23,9 @@ const RenderSection = (props) => {
                 name={q.name}
                 section={q.section}
                 question={q.question}
-                form={props.formData}
+                form={props.formD}
                 updateForm={props.updateForm}
+        
               />
             );
           case q.type == 1:
@@ -94,6 +96,26 @@ const RenderSection = (props) => {
                 type={q.type}
               />
             );
+            case q.type == 6:
+              console.log("Here");
+              return (
+                <BooleanwithFollowUp
+                  name={q.name}
+                  nameA = {q.nameA}
+                  question = {q.question}
+                  questionA = {q.questionA}
+                  nameB = {q.nameB}
+                  questionB = {q.questionB}
+                  nameC = {q.nameC}
+                  questionC = {q.questionC}
+                  nameD = {q.nameD}
+                  questionD = {q.questionD}
+                  section={q.section}
+                  form={props.form}
+                  updateForm={props.updateForm}
+                  type={q.type}
+                />
+              );
     
           default:
             console.log("Hello 2");

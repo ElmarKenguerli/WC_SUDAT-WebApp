@@ -25,10 +25,10 @@ const getFormDefaults = (clientID) => {
             "Q74"
         ]
 
-        for (let i = 0; i < 14; ++i)
+        for (let i = 0; i < commentFields.length; ++i)
             formData[commentFields[i]] = "";
 
-        for (let i = 0; i < 4; ++i)
+        for (let i = 0; i < fields.length; ++i)
             formData[fields[i]] = 0;
 
         formData["DateOfBirth"] = "";

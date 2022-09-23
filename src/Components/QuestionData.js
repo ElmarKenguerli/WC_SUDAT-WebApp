@@ -151,37 +151,17 @@ const sectionScreening = [
     {
         name: "Q17",
         question: "17. Have you ever in your lifetime experienced anything that has been especially horrific, frightening or traumatic?",
-        section: "Trauma",
-        subsection: "",
-        type: 0
-    },
-    {
-        name: "Q17a",
-        question: "17a. In the past 30 days you had nightmares about it or thought about it when you did not want to.",
-        section: "Trauma",
-        subsection: "If yes:",
-        type: 0
-    },
-    {
-        name: "Q17b",
-        question: "17b. In the past 30 days you tried not to think about it or went out of your way to avoid situations that remind you of your experience.",
-        section: "Trauma",
-        subsection: "If yes:",
-        type: 0
-    },
-    {
-        name: "Q17c",
-        question: "In the past 30 days you were constantly on guard, watchful or easily startled.",
-        section: "Trauma",
-        subsection: "If yes:",
-        type: 0
-    },
-    {
-        name: "Q17d",
-        question: "Q17c. In the past 30 days you felt numb or detached from others, activities, or your surroundings related to your experience.",
-        section: "Trauma",
-        subsection: "If yes:",
-        type: 0
+        type: 6,
+        nameA: "Q17a",
+        questionA: "17a. In the past 30 days you had nightmares about it or thought about it when you did not want to.",
+        nameB: "Q17b",
+        questionB: "Q17b. In the past 30 days you tried not to think about it or went out of your way to avoid situations that remind you of your experience.",
+        nameC: "Q17c",
+        questionC: "Q17c. In the past 30 days you were constantly on guard, watchful or easily startled.",
+        nameD: "Q17d",
+        questionD: "Q17d. In the past 30 days you felt numb or detached from others, activities, or your surroundings related to your experience.",
+        section: "Trauma"
+   
     }]
 
 const sectionDepression = [{ 
