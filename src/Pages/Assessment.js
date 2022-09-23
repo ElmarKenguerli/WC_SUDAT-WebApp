@@ -3,9 +3,19 @@ import '../App.css'
 import { useReducer } from 'react'
 import Screening from '../Components/Screening'
 import VerticalLinearStepper from '../Components/Stepper'
-
+import {useLocation} from 'react-router-dom';
 function Assessment() {
-
+  const location = useLocation();
+  let docID = ""
+  if (location.state == null)
+  {
+    docID = ""
+  }
+  else
+  {
+    docID = location.state.docID
+  }
+  
   // const [formData, setFormData] = useReducer(formReducer, {});
   
   // const handleData = event => {
@@ -21,9 +31,11 @@ function Assessment() {
   //   }
   //  }
   return (
+    
     <>
-    <VerticalLinearStepper/>
-</>
+      
+      <VerticalLinearStepper docID = {docID} />
+    </>
   );
 };
 

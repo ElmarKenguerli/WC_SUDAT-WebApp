@@ -53,9 +53,18 @@
 }
 
 .loginHeader{
+  padding: 30px;
   font-size: 50px;
   text-align: center;
   font-weight: bold;
+  font-family: Helvetica;
+}
+
+.loginBox{
+  padding: 30px;
+  font-size: 50px;
+  text-align: center;
+  font-weight: light;
   font-family: Helvetica;
 }
 

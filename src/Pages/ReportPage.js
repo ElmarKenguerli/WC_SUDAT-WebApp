@@ -21,12 +21,12 @@ function ReportPage() {
                 <br></br>
                 <h4>Assessment Report Below</h4>
                 {/* Embedd pdf on page */}
-                <embed
+                {/* <embed
                     src={PDF}
                     type="application/pdf"
                     height={800}
                     width={800}
-                />
+                /> */}
             </Box>
             <Box textAlign="center" width="1000" margin="80px" >
                 <Button 
