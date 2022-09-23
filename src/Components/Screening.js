@@ -231,7 +231,7 @@ function Form(props) {
     
     let fd = formData;
     formData["email"] = getEmail();
-    if(form.length < )
+    
     writeToDatabase(event, fd, getCurrentDate());
     navigate("../ReportPage", {state:{formData:formData}});
   };
