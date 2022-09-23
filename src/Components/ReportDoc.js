@@ -30,9 +30,9 @@ const styles = StyleSheet.create({
 });
 
 // Create Document Component
-function BasicDocument() {
+function ReportDoc(props) {
   const { currentUser } = useAuthValue();
-  
+  let formData = props.formData
   console.log({ currentUser })
   
   return (
@@ -45,11 +45,12 @@ function BasicDocument() {
             <Text style={styles.title}>Summary of Client Data</Text>
           </View>
           <View style={styles.section}>
-            <Text break > {`Interviewer: ${currentUser.email} `}</Text>
+            <Text > {`Interviewer: ${currentUser.email} `}</Text>
+            <Text > {`Client Name: ${formData["ClientName"]} `}</Text>
           </View>
         </Page>
       </Document>
     </PDFViewer>
   );
 }
-export default BasicDocument;
+export default ReportDoc;

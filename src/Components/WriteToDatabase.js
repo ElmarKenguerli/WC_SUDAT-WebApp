@@ -244,7 +244,7 @@ const writeToDatabase = async (e, formData, shouldContinue) => {
             HousingSituation: formData["HousingSituation"],
             Education: formData["Education"],
             RecentConflict: formData["RecentConflict"],
-            Langauge: formData["Language"],
+            Langauge: formData["Langauge"],
 
             Q1: formData["Q1"],
             Q2: formData["Q2"],

@@ -6,9 +6,21 @@ import MuiDrawer from '../Components/MuiDrawer'
 import HomeIcon from '@mui/icons-material/Home';
 import {useNavigate} from "react-router-dom";
 import ReportDoc from '../Components/ReportDoc'
+import {useLocation} from 'react-router-dom';
+
 function ReportPage() {
     let navigate = useNavigate();
-
+    const location = useLocation();
+    let formData = []
+    
+    if (location.state == null)
+    {
+        //docID = ""
+    }
+    else
+    {
+        formData = location.state.formData
+    }
     // Start at top of page
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -51,7 +63,7 @@ function ReportPage() {
             </Box>  
             
             <Box textAlign="center" width="1000" margin="20px" >
-                <ReportDoc/>
+                <ReportDoc formData = {formData}/>
             </Box>
         </>
     );
