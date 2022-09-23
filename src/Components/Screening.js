@@ -155,7 +155,7 @@ const formReducer = (state, event) => {
 
 function Form(props) {
   const { currentUser } = useAuthValue();
-  const [formData, setFormData] = useReducer(formReducer, getFormDefaults());
+  const [formData, setFormData] = useReducer(formReducer, getFormDefaults(""));
   
 
 

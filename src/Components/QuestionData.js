@@ -213,7 +213,7 @@ const sectionDepression = [{
     },
     {
         name: "Q24",
-        question: "Q24. Sleeping?",
+        question: "Q24. I have trouble sleeping?",
         section: "During the past week, how much trouble have you had with:",
         subsection: "",
         type: 3

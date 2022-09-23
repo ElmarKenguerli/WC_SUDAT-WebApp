@@ -62,18 +62,7 @@ const RenderSection = (props) => {
                 labelset="2"
               />
             );
-          case q.type == 3:
-            return (
-              <TrippleQuestion
-                name={q.name}
-                section={q.section}
-                question={q.question}
-                form={props.formData}
-                updateForm={props.updateForm}
-                labelset="2"
-              />
-            );
-    
+        
           case q.type == 4:
             return (
               <CompoundQuestion
