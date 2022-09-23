@@ -228,10 +228,12 @@ function Form(props) {
   }
 
   const handleDatabase = (event) => {
+    
     let fd = formData;
     formData["email"] = getEmail();
+    if(form.length < )
     writeToDatabase(event, fd, getCurrentDate());
-    navigate("../ReportPage");
+    navigate("../ReportPage", {state:{formData:formData}});
   };
 
   const getEmail = () => {
