@@ -25,13 +25,16 @@ const steps = [
     label: 'Risk Factors',
   },
   {
-    label: 'Protective Factors',
+    label: 'Trauma',
   },
   {
-    label: 'Change Readiness',
+    label: 'Family and Community Risk Factors',
   },
   {
-    label: 'Results'
+    label: 'Protective Factors'
+  },
+  {
+    label: 'Change Readiness'
   }
 ];
 
@@ -54,6 +57,10 @@ export default function VerticalLinearStepper(props) {
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
    
+  };
+
+  const goToStep = (step) => {
+    setActiveStep(step);
   };
 
   const handleReset = () => {
@@ -100,6 +107,7 @@ export default function VerticalLinearStepper(props) {
                 stepperState = {activeStep}
                 stepperForwardFunction = {handleNext}
                 docID = {docID}
+                goToStep = {goToStep}
             />
           </>
         </div>

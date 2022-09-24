@@ -2,6 +2,7 @@
 import React, { useReducer, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AddCommentTwoToneIcon from '@mui/icons-material/AddCommentTwoTone';
+
 //import Pages and Components
 import "../App.css";
 import useCollapse from "react-collapsed";
@@ -154,6 +155,8 @@ function Form(props) {
   const { currentUser } = useAuthValue();
   const [formData, setFormData] = useReducer(formReducer, getFormDefaults(""));
 
+  const dv = formData;
+
   const getForm = async () => {
     const tempSnap = await getDoc(doc(db, 'Responses', props.docID))
 
@@ -203,6 +206,59 @@ function Form(props) {
     }
    
     return (count >= 2);
+  }
+
+  function getSteps(){
+    let count = 0;
+    for (let i=1; i<70; ++i){
+      // console.log("In get steps");
+      if(formData["Q" + String(i)] === undefined){
+        break;
+      }
+      else if (formData["Q" + String(i)] === ""){
+      count = i;
+      break;
+      }
+      else{
+        count = i;
+      }
+    }
+    // console.log("The count is " + count);
+    let steps = 0;
+
+    if(count>0 && count<=10){
+    console.log('Over here');
+      props.goToStep(3);
+
+    }
+
+    else if(count>10 && count<=16){
+      props.goToStep(4)
+    }
+    else if(count>16 && count<=29){
+      props.goToStep(5)
+    }
+    else if(count>29 && count<=42){
+      props.goToStep(6)
+    }
+    else if(count>42 && count<=55){
+      props.goToStep(7)
+    }
+
+    else if(count>55 && count<=75){
+      props.goToStep(8)
+    }
+
+
+    // else if(16<=count <25){
+    //   props.goToStep(3)
+    // }
+
+    // else if(17<=count <28){
+    //   props.goToStep(4)
+    // }
+  
+    return steps;
   }
 
   const handleDatabase = (event) => {
@@ -263,6 +319,7 @@ function Form(props) {
 
     });
 
+    getSteps()
   };
 
   const handleExtraData = (event) => {
@@ -318,7 +375,7 @@ function Form(props) {
           <input
             type="checkbox"
             value={hasAcceptedTsAndCs}
-            onChange={e => { props.stepperForwardFunction(props.stepperState); handleChange(e) }}
+            onChange={e => { props.goToStep(0); handleChange(e) }}
           />
           I have read the above to the client being screened, and have obtained
           his/her consent to proceed with the screening process.
@@ -467,7 +524,7 @@ function Form(props) {
                 <Countries
                   name="Country"
                   value={formData["Country"]}
-                  updateForm={(e) => handleExtraData()}
+                  updateForm={(e) => handleExtraData(e)}
                   onChange={(e) => {
                     handleData(e);
                   }}
@@ -593,6 +650,7 @@ function Form(props) {
                   value={formData["RecentConflict"]}
                   onChange={(e) => {
                     handleData(e);
+                    props.goToStep(1);
                   }}
                 >
                   <MenuItem value={""}>--Please Select an Option--</MenuItem>
@@ -724,6 +782,7 @@ function Form(props) {
             sectionQuestions={sectionScreening}
             formData={formData}
             updateForm={(e) => handleData(e)}
+            defaultValues={dv}
           />
           <RenderSection
             show={showAssessment()}

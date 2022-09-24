@@ -33,19 +33,19 @@ const getFormDefaults = (clientID) => {
             if (i < 4)
                 formData[fields[i]] = 0;
             else if (i < 21)
-                formData[fields[i]] = "No";
+                formData[fields[i]] = "";
             else if (i < 26)
                 formData[fields[i]] = "Does Not Describe Me";
             else if (i < 33)
                 formData[fields[i]] = "None";
             else if (i < 58)
-                formData[fields[i]] = "No";
+                formData[fields[i]] = "";
             else if (i == 58)
                 formData[fields[i]] = "Does Not Describe Me";
             else if (i < 77)
                 formData[fields[i]] = 0;
             else
-                formData[fields[i]] = "No";
+                formData[fields[i]] = "";
 
         formData["DateOfBirth"] = "";
     }

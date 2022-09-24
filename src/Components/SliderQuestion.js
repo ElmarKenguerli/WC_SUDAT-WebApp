@@ -79,17 +79,17 @@ function SliderQuestion(props) {
         <fieldset>
           <p>{question}</p>
           <Slider
+            
             style={{ width: 700, marginLeft: 50 }}
             step={1}
+            defaultValues={props.defaultValues[props.name]}
             valueLabelDisplay="auto"
-            name={props.name}
-            //value={sliderValue}
-            defaultValue={props.formData[props.name]}
+            name={props.name}            
             marks={marks}
             min={0}
             max={4}
             color="secondary"
-            onChange={(e) => { selectionChangeHandler(e); }}
+            onChange={(e) => selectionChangeHandler}
           />
           <CommentBox
             name={`comment${props.name}`}

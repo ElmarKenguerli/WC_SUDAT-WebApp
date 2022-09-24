@@ -35,6 +35,7 @@ const RenderSection = (props) => {
                 formData={props.formData}
                 updateForm={props.updateForm}
                 type={q.type}
+                defaultValues={props.defaultValues}
               />
             );
     
@@ -78,7 +79,7 @@ const RenderSection = (props) => {
                 name={q.name}
                 section={q.section}
                 question={q.question}
-                form={props.formData}
+                formData={props.formData}
                 updateForm={props.updateForm}
                 type={q.type}
               />
@@ -97,7 +98,7 @@ const RenderSection = (props) => {
                   nameD = {q.nameD}
                   questionD = {q.questionD}
                   section={q.section}
-                  form={props.form}
+                  formData={props.formData}
                   updateForm={props.updateForm}
                   type={q.type}
                 />
