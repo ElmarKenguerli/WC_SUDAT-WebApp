@@ -76,11 +76,12 @@ function SliderQuestion(props) {
             step={1}
             valueLabelDisplay="auto"
             name={props.name}
+            value={props.formData[props.name]}
             marks={marks}
             min={0}
             max={4}
             color="secondary"
-            onChange={selectionChangeHandler}
+            onChange={(e) => selectionChangeHandler(e)}
           />
           <CommentBox
             name={`comment${props.name}`}
@@ -103,10 +104,11 @@ function SliderQuestion(props) {
             valueLabelDisplay="auto"
             name={props.name}
             marks={marks2}
+            value={props.formData[props.name]}
             min={0}
             max={5}
             color="secondary"
-            onChange={selectionChangeHandler}
+            onChange={(e) => selectionChangeHandler(e)}
           />
           <CommentBox
             name={`comment${props.name}`}

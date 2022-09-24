@@ -42,7 +42,7 @@ import { db } from "../database/firebase";
 import {
   getDoc,
   doc,
-  
+
 } from "firebase/firestore";
 import { useAuthValue } from "../database/AuthContext";
 
@@ -53,10 +53,7 @@ import { useAuthValue } from "../database/AuthContext";
 export const GetValue = (value, num) => {
   val = value;
 
-  //console.log(`I am here ${val}`);
-
   if (value === 1) {
-    //console.log("I am here");
     FollowUpQuestions();
   }
 };
@@ -80,7 +77,7 @@ export function Collapsible() {
   return (
     <div className="collapsible">
       <div className="header" {...getToggleProps()}>
-        {isExpanded ? "-" : <AddCommentTwoToneIcon/>}
+        {isExpanded ? "-" : <AddCommentTwoToneIcon />}
       </div>
       <div {...getCollapseProps()}>
         <div className="content">
@@ -156,53 +153,37 @@ const formReducer = (state, event) => {
 function Form(props) {
   const { currentUser } = useAuthValue();
   const [formData, setFormData] = useReducer(formReducer, getFormDefaults(""));
-  
 
-
-
-  const getForm = async() => {
-
+  const getForm = async () => {
     const tempSnap = await getDoc(doc(db, 'Responses', props.docID))
-    
-    
-    if(tempSnap.exists)
-    {
 
-    let json = tempSnap.data()
-      //console.log("Document data:", json);
-      //console.log("Document keys:", Object.keys(json));
+    if (tempSnap.exists) {
+
+      let json = tempSnap.data()
 
       Object.keys(json).forEach((name) => {
         setFormData({
           name: name,
           value: json[name]
-          
+
         });
       });
     }
-    else{}
-  }       
-  if (props.docID === "")
-  {
+    else { }
+  }
+  if (props.docID === "") {
     //pass
   }
-  else
-  {
+  else {
     getForm()
   }
-  
-
- 
 
   // loop for each fieldset  
   //     setFormData({
-    //       name: fieldname from snap
-    //       value: fieldvalue from snap
-        
+  //       name: fieldname from snap
+  //       value: fieldvalue from snap
+
   //     })
-
-  
-
   const [submitting, setSubmitting] = useState(false);
   const [hasAcceptedTsAndCs, setHasAcceptedTsAndCs] = useState(false);
   const [valueDate, setValueDate] = React.useState(null);
@@ -215,25 +196,22 @@ function Form(props) {
 
     let count = 0;
 
-    for (let i=6; i<11; ++i){
-      if (formData["Q" + String(i)] === "Yes"){
+    for (let i = 6; i < 11; ++i) {
+      if (formData["Q" + String(i)] === "Yes") {
         count++;
       }
-    } 
-
-    let show = (count >= 2);
-    console.log(show);
-    // console.log(ans1);
-    return show;
+    }
+   
+    return (count >= 2);
   }
 
   const handleDatabase = (event) => {
-    
+
     let fd = formData;
     formData["email"] = getEmail();
-    
+
     writeToDatabase(event, fd, getCurrentDate());
-    navigate("../ReportPage", {state:{formData:formData}});
+    navigate("../ReportPage", { state: { formData: formData } });
   };
 
   const getEmail = () => {
@@ -261,7 +239,6 @@ function Form(props) {
   function isGreaterThanZero(l) {
 
     let ans1 = formData["Q1"] + formData["Q2"] + formData["Q3"] + formData["Q4"] + formData["Q5"] + formData["Q6"] + formData["Q7"] + formData["Q8"] + formData["Q9"];
-    console.log(ans1)
     return Boolean(ans1 >= 2);
   }
 
@@ -279,21 +256,16 @@ function Form(props) {
   };
 
   const handleData = (event) => {
-    console.log(`Name: ${event.target.name}`);
-    console.log(`Value: ${event.target.value}`);
 
     setFormData({
       name: event.target.name,
       value: event.target.value,
-      
+
     });
 
   };
 
   const handleExtraData = (event) => {
-    console.log(`Name: ${event.target.name}`);
-    console.log(`Value: ${event.target.value}`);
-
     setFormData({
       name: event.target.name,
       value: event.target.value,
@@ -375,7 +347,7 @@ function Form(props) {
                 <h3> Client Name:</h3>
                 <TextField
                   required
-                  value = {formData["ClientName"]}
+                  value={formData["ClientName"]}
                   color="secondary"
                   focused
                   sx={{ width: 300 }}
@@ -395,7 +367,7 @@ function Form(props) {
                 <h3> Client ID number:</h3>
                 <TextField
                   required
-                  value = {formData["ClientID"]}
+                  value={formData["ClientID"]}
                   color="secondary"
                   focused
                   sx={{ width: 300 }}
@@ -413,7 +385,7 @@ function Form(props) {
                 <h3>Place of Interview:</h3>
                 <TextField
                   required
-                  value = {formData["PlaceOfInterview"]}
+                  value={formData["PlaceOfInterview"]}
                   color="secondary"
                   focused
                   sx={{ width: 300 }}
@@ -588,7 +560,7 @@ function Form(props) {
                   required
                   name="Education"
                   style={{ width: 300 }}
-                  variant="filled"                  
+                  variant="filled"
                   value={formData["Education"]}
                   onChange={(e) => {
                     //setEducation(e.target.value);
@@ -638,7 +610,7 @@ function Form(props) {
               </label>
             </fieldset>
           </fieldset>
-  
+
           <fieldset name="screening">
 
             {/* <fieldset>
@@ -739,61 +711,60 @@ function Form(props) {
               </RadioGroup>
               <Collapsible />
             </fieldset>*/}
-          </fieldset> 
-            {/* {greaterThanZero && (
+          </fieldset>
+          {/* {greaterThanZero && (
             <FollowUpQuestions
               updateForm={handleExtraData}
               stepperForward={props.stepperForwardFunction}
               stepperState={props.stepperState}
             />
           )} */}
-            {console.log("Here")}
-            <RenderSection
-              show={true}
-              sectionQuestions={sectionScreening}
-              form={formData}
-              updateForm={handleData}
-            />
+          <RenderSection
+            show={true}
+            sectionQuestions={sectionScreening}
+            formData={formData}
+            updateForm={(e) => handleData(e)}
+          />
 
-              <RenderSection
-                show={showAssessment()}
-                sectionQuestions={sectionRisks}
-                form={formData}
-                updateForm={handleData}
-              />
-            <RenderSection
-              show={showAssessment()}
-              sectionQuestions={sectionTrauma}
-              form={formData}
-              updateForm={handleData}
-            />
-            <RenderSection
-              show={showAssessment()}
-              sectionQuestions={sectionDepression}
-              form={formData}
-              updateForm={handleData}
-            />
-            <RenderSection
-              show={showAssessment()}
-              sectionQuestions={sectionFamily}
-              form={formData}
-              updateForm={handleData}
-            />
-            <RenderSection
-              show={showAssessment()}
-              sectionQuestions={sectionProtective}
-              form={formData}
-              updateForm={handleData}
-            />
-            <RenderSection
-              show={showAssessment()}
-              sectionQuestions={sectionChangeReadiness}
-              form={formData}
-              updateForm={handleData}
-            />
-            <button className="btn-square" type="submit" onClick={handleDatabase}>
-              Submit
-            </button>
+          <RenderSection
+            show={showAssessment()}
+            sectionQuestions={sectionRisks}
+            formData={formData}
+            updateForm={(e) => handleData(e)}
+          />
+          <RenderSection
+            show={showAssessment()}
+            sectionQuestions={sectionTrauma}
+            formData={formData}
+            updateForm={handleData}
+          />
+          <RenderSection
+            show={showAssessment()}
+            sectionQuestions={sectionDepression}
+            formData={formData}
+            updateForm={(e) => handleData(e)}
+          />
+          <RenderSection
+            show={showAssessment()}
+            sectionQuestions={sectionFamily}
+            formData={formData}
+            updateForm={(e) => handleData(e)}
+          />
+          <RenderSection
+            show={showAssessment()}
+            sectionQuestions={sectionProtective}
+            formData={formData}
+            updateForm={(e) => handleData(e)}
+          />
+          <RenderSection
+            show={showAssessment()}
+            sectionQuestions={sectionChangeReadiness}
+            formData={formData}
+            updateForm={(e) => handleData(e)}
+          />
+          <button className="btn-square" type="submit" onClick={handleDatabase}>
+            Submit
+          </button>
         </form>
         <div>
           <br></br>

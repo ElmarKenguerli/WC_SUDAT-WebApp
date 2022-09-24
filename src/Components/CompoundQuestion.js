@@ -87,10 +87,11 @@ function CompoundQuestion(props) {
             step={1}
             valueLabelDisplay="auto"
             marks={marks}
+            value={props.formData[props.name]}
             min={0}
             max={4}
             color="secondary"
-            onChange={selectionBlurHandler}
+            onChange={(e) => selectionBlurHandler(e)}
             name={`${props.name}a`}
           />
         </div>

@@ -12,18 +12,16 @@ const RenderSection = (props) => {
       
         switch (true) {
           case q.type === "header":
-            console.log("Hello this is header")
             return (<Header header = {q.header}
                             explanation = {q.explanation}
                             />);
           case q.type == 0:
-            console.log("In boolean");
             return (
               <BooleanQuestion
                 name={q.name}
                 section={q.section}
                 question={q.question}
-                form={props.formD}
+                formData={props.formData}
                 updateForm={props.updateForm}
         
               />
@@ -34,7 +32,7 @@ const RenderSection = (props) => {
                 name={q.name}
                 section={q.section}
                 question={q.question}
-                form={props.formData}
+                formData={props.formData}
                 updateForm={props.updateForm}
                 type={q.type}
               />
@@ -46,7 +44,7 @@ const RenderSection = (props) => {
                 name={q.name}
                 section={q.section}
                 question={q.question}
-                form={props.formData}
+                formData={props.formData}
                 updateForm={props.updateForm}
                 labelset="1"
               />
@@ -57,7 +55,7 @@ const RenderSection = (props) => {
                 name={q.name}
                 section={q.section}
                 question={q.question}
-                form={props.formData}
+                formData={props.formData}
                 updateForm={props.updateForm}
                 labelset="2"
               />
@@ -69,7 +67,7 @@ const RenderSection = (props) => {
                 name={q.name}
                 section={q.section}
                 question={q.question}
-                form={props.formData}
+                formData={props.formData}
                 updateForm={props.updateForm}
               />
             );
@@ -86,7 +84,6 @@ const RenderSection = (props) => {
               />
             );
             case q.type == 6:
-              console.log("Here");
               return (
                 <BooleanwithFollowUp
                   name={q.name}
@@ -105,10 +102,6 @@ const RenderSection = (props) => {
                   type={q.type}
                 />
               );
-    
-          default:
-            console.log("Hello 2");
-            return <h1>Hello</h1>;
         }
       });
       return(<><fieldset>{comp}</fieldset></>)
