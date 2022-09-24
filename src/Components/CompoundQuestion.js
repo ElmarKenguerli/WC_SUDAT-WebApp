@@ -51,12 +51,14 @@ function CompoundQuestion(props) {
     <fieldset>
       <FormControl>
         <p>{props.question}</p>
-        <RadioGroup row value={selected} onBlur={selectionBlurHandler}>
+        {/* <RadioGroup row value={selected} onBlur={selectionBlurHandler}> */}
+        <RadioGroup row value={selected}>
           <FormControlLabel
             value="Yes"
             control={
               <Radio
                 onChange={(event) => {
+                  selectionBlurHandler(event);
                   setSelected(event.target.value);
                   setQname(props.name);
                 }}

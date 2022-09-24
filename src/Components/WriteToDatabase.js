@@ -3,7 +3,7 @@ import { collection, addDoc, Timestamp, query, orderBy, onSnapshot, where, serve
 
 const getFormDefaults = (clientID) => {
     let formData = {}
-    
+
     if (clientID === "") {
         let commentFields = [
             "commentQ1", "commentQ2", "commentQ3", "commentQ4", "commentQ5", "commentQ6", "commentQ7", "commentQ8", "commentQ9", "commentQ10",
@@ -14,7 +14,7 @@ const getFormDefaults = (clientID) => {
             "commentQ43", "commentQ44", "commentQ45", "commentQ46", "commentQ47", "commentQ48", "commentQ49", "commentQ50", "commentQ51",
             "commentQ52", "commentQ53", "commentQ54", "commentQ55", "commentQ56", "commentQ57", "commentQ58", "commentQ59", "commentQ60",
             "commentQ61", "commentQ62", "commentQ63", "commentQ64", "commentQ65", "commentQ66", "commentQ67", "commentQ68", "commentQ69",
-            "commentQ70", "commentQ71", "commentQ72", "commentQ73", "commentQ74", "commentDateOfBirth", "commentCountry", "commentGender",
+            "commentQ70", "commentQ71", "commentQ72", "commentQ73", "commentDateOfBirth", "commentCountry", "commentGender",
             "commentResidence", "commentHousingSituation", "commentEducation", "commentRecentConflict", "commentLanguage", "commentDemographics"
         ];
         let fields = [
@@ -22,14 +22,30 @@ const getFormDefaults = (clientID) => {
             "Q17d", "Q18", "Q19", "Q20", "Q21", "Q22", "Q23", "Q24", "Q25", "Q26", "Q27", "Q28", "Q29", "Q30", "Q31", "Q32", "Q33", "Q34", "Q35",
             "Q36", "Q37", "Q38", "Q39", "Q40", "Q41", "Q42", "Q43", "Q44", "Q45", "Q46", "Q47", "Q48", "Q49", "Q50", "Q51", "Q52", "Q53", "Q54",
             "Q55", "Q56", "Q57", "Q58", "Q59", "Q60", "Q61", "Q62", "Q63", "Q64", "Q65", "Q66", "Q67", "Q68", "Q69", "Q70", "Q71", "Q72", "Q73",
-            "Q74"
+            "Q30a", "Q31a", "Q32a", "Q33a", "Q34a", "Q35a", "Q36a", "Q37a", "Q38a", "Q39a", "Q40a", "Q41a", "Q42a", "Q43a", "Q44a", "Q45a", "Q46a", 
+            "Q47a", "Q48a", "Q49a", "Q50a", "Q51a", "Q52a", "Q53a", "Q54a"
         ]
 
         for (let i = 0; i < commentFields.length; ++i)
             formData[commentFields[i]] = "";
 
         for (let i = 0; i < fields.length; ++i)
-            formData[fields[i]] = 0;
+            if (i < 4)
+                formData[fields[i]] = 0;
+            else if (i < 21)
+                formData[fields[i]] = "No";
+            else if (i < 26)
+                formData[fields[i]] = "Does Not Describe Me";
+            else if (i < 33)
+                formData[fields[i]] = "None";
+            else if (i < 58)
+                formData[fields[i]] = "No";
+            else if (i == 58)
+                formData[fields[i]] = "Does Not Describe Me";
+            else if (i < 77)
+                formData[fields[i]] = 0;
+            else
+                formData[fields[i]] = "No";
 
         formData["DateOfBirth"] = "";
     }

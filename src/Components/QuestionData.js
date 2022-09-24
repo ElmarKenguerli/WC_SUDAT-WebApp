@@ -459,7 +459,7 @@ const sectionChangeReadiness =[{
     },
     {
         name: "Q57",
-        question: "Q57. If I don't change my drug/alcoholuse soon, my problems are going to get worse.",
+        question: "Q57. If I don't change my drug/alcohol use soon, my problems are going to get worse.",
         section: "Stages of Change Readiness and Treatment Eagerness Scale (SOCRATES 8A)",
         subsection: "",
         type: 5
@@ -473,7 +473,7 @@ const sectionChangeReadiness =[{
     },
     {
         name: "Q59",
-        question: "Q59. I was using drugs/alcoholtoo much at one time, but I've managed to change that.",
+        question: "Q59. I was using drugs/alcohol too much at one time, but I've managed to change that.",
         section: "Stages of Change Readiness and Treatment Eagerness Scale (SOCRATES 8A)",
         subsection: "",
         type: 5
@@ -487,7 +487,7 @@ const sectionChangeReadiness =[{
     },
     {
         name: "Q61",
-        question: "Q61. I have a drug/alcoholproblem.",
+        question: "Q61. I have a drug/alcohol problem.",
         section: "Stages of Change Readiness and Treatment Eagerness Scale (SOCRATES 8A)",
         subsection: "",
         type: 5
@@ -550,28 +550,28 @@ const sectionChangeReadiness =[{
     },
     {
         name: "Q70",
-        question: "Q71. There are times when I wonder if I use drugs/alcoholtoo much.",
+        question: "Q70. There are times when I wonder if I use drugs/alcohol too much.",
+        section: "Stages of Change Readiness and Treatment Eagerness Scale (SOCRATES 8A)",
+        subsection: "",
+        type: 5
+    },
+    {
+        name: "Q71",
+        question: "Q71. I am a drug/alcohol addict.",
         section: "Stages of Change Readiness and Treatment Eagerness Scale (SOCRATES 8A)",
         subsection: "",
         type: 5
     },
     {
         name: "Q72",
-        question: "Q72. I am a drug/alcohol addict.",
+        question: "Q72. I am working hard to change my drug/alcohol use.",
         section: "Stages of Change Readiness and Treatment Eagerness Scale (SOCRATES 8A)",
         subsection: "",
         type: 5
     },
     {
         name: "Q73",
-        question: "Q73. I am working hard to change my drug/alcoholuse.",
-        section: "Stages of Change Readiness and Treatment Eagerness Scale (SOCRATES 8A)",
-        subsection: "",
-        type: 5
-    },
-    {
-        name: "Q74",
-        question: "Q74. I have made some changes in my drug/alcoholuse, and I want some help to keep from going back to the way I used before.",
+        question: "Q73. I have made some changes in my drug/alcohol use, and I want some help to keep from going back to the way I used before.",
         section: "Stages of Change Readiness and Treatment Eagerness Scale (SOCRATES 8A)",
         subsection: "",
         type: 5
