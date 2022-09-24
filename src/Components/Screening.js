@@ -467,7 +467,7 @@ function Form(props) {
                 <Countries
                   name="Country"
                   value={formData["Country"]}
-                  updateForm={handleExtraData}
+                  updateForm={(e) => handleExtraData()}
                   onChange={(e) => {
                     handleData(e);
                   }}
@@ -725,7 +725,6 @@ function Form(props) {
             formData={formData}
             updateForm={(e) => handleData(e)}
           />
-
           <RenderSection
             show={showAssessment()}
             sectionQuestions={sectionRisks}
@@ -736,7 +735,7 @@ function Form(props) {
             show={showAssessment()}
             sectionQuestions={sectionTrauma}
             formData={formData}
-            updateForm={handleData}
+            updateForm={(e) => handleData(e)}
           />
           <RenderSection
             show={showAssessment()}
