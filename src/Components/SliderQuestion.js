@@ -1,5 +1,5 @@
 import Slider from '@mui/material/Slider';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import React from 'react';
 import CommentBox from './CommentBox';
 
@@ -56,39 +56,46 @@ function SliderQuestion(props) {
     }
   ]);
 
+  console.log(`props.formData[props.name]: ${props.formData[props.name]} props.name: ${props.name}`)
+  const defaultAnswer = props.formData[props.name];
+  console.log(`defaultAnswer: ${defaultAnswer}`)
   const [questionNumber, setQuestionID] = useState(0);
   const [question, setQuestion] = useState(props.question);
-  const [questionAnswer, setQuestionAnswer] = useState(0);
-
+  const [sliderValue, setSliderValue] = useState(props.formData[props.name]);
+  
+  const [questionAnswer, setQuestionAnswer] = useState(defaultAnswer);
+  //setQuestionAnswer(defaultAnswer)
+  //console.log(`questionAnswer: ${questionAnswer}`)
+  
   const selectionChangeHandler = (event) => {
     setQuestionAnswer(event.target.value);
     props.updateForm(event);
+    setSliderValue(event.target.value)
   };
-  switch (true) {
 
+  switch (true) {
     case props.type === 1:
       return (
         <fieldset>
           <p>{question}</p>
           <Slider
-            defaultValue={0}
             style={{ width: 700, marginLeft: 50 }}
             step={1}
             valueLabelDisplay="auto"
             name={props.name}
-            value={props.formData[props.name]}
+            //value={sliderValue}
+            defaultValue={props.formData[props.name]}
             marks={marks}
             min={0}
             max={4}
             color="secondary"
-            onChange={(e) => selectionChangeHandler(e)}
+            onChange={(e) => { selectionChangeHandler(e); }}
           />
           <CommentBox
             name={`comment${props.name}`}
             updateForm={props.updateForm}
           />
           <div>
-
           </div>
         </fieldset>
       );
@@ -107,6 +114,7 @@ function SliderQuestion(props) {
             value={props.formData[props.name]}
             min={0}
             max={5}
+            //renderTrack={props.formData[props.name]}
             color="secondary"
             onChange={(e) => selectionChangeHandler(e)}
           />

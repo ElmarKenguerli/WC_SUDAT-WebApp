@@ -19,14 +19,13 @@ function BooleanQuestion(props) {
     props.updateForm(event);
   };
 
-  console.log(JSON.stringify(props.formData))
-
   return (
     <fieldset>
       <FormControl>
         <p>{props.question}</p>
         {/* <RadioGroup row value={selected} onClick={selectionBlurHandler}> */}
-        <RadioGroup row value={selected}>
+        {/* <RadioGroup row value={selected}> */}
+        <RadioGroup>
           <FormControlLabel 
             value="Yes"
             control={
