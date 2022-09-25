@@ -50,6 +50,7 @@ const getFormDefaults = (clientID) => {
                 formData[fields[i]] = 0;
 
         formData["DateOfBirth"] = "";
+        formData["DateOfInterview"] = "";
     }
     else {
         const q = query(collection(db, 'Responses'), where('ClientID', "==", clientID))

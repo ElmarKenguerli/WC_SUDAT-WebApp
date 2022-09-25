@@ -153,6 +153,7 @@ function Form(props) {
   const [formData, setFormData] = useReducer(formReducer, getFormDefaults(""));
   const[isOpen, setIsOpen] = useState(false)
   const dv = formData;
+  formData["DateOfInterview"]=getCurrentDate()
 
   const getForm = async () => {
     const tempSnap = await getDoc(doc(db, 'Responses', props.docID))
