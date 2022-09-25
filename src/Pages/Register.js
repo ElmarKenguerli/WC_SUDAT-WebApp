@@ -1,4 +1,4 @@
-import React ,{useState} from 'react'
+import React ,{useState, useEffect} from 'react'
 import {auth} from '../database/firebase'
 import {useNavigate, Link} from 'react-router-dom'
 import {createUserWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
@@ -19,6 +19,7 @@ import {
     FormHelperText,
     selectClasses,
 } from '@mui/material';
+import Grid from '@mui/material/Grid';
 
 function Register() {
 
@@ -31,7 +32,7 @@ function Register() {
     const [error, setError] = useState('')
     const navigate = useNavigate()
     const {setTimeActive} = useAuthValue()
-
+    const { height, width } = useWindowDimensions();
     /*** 
      @function validatePassword() returns true if *password* and *confirm* match and do not match the empty string
      ***/    
@@ -51,7 +52,40 @@ function Register() {
      provided credentials.
      It also renders all the necessary GUI components to the screen. 
      ***/
+
+     /*** 
+     @function getWindowDimensions() Returns the dimensions of the users screen
+     ***/
+     function getWindowDimensions() {
+        const { innerWidth: width, innerHeight: height } = window;
+        return {
+          width,
+          height
+        };
+      }
+      /*** 
+     @function useWindowDimensions() Uses the dimensions of the users screen from getWindowDimensions()
+     ***/
+      function useWindowDimensions() {
+        const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+      
+        useEffect(() => {
+          function handleResize() {
+            setWindowDimensions(getWindowDimensions());
+          }
+      
+          window.addEventListener('resize', handleResize);
+          return () => window.removeEventListener('resize', handleResize);
+        }, []);
+      
+        return windowDimensions;
+      }
+  
+    /*** 
+    @function register() Validates sign up credentials and creates new user account - stored to firebase collection
+    ***/
     const register = e => {
+
         e.preventDefault()
         setError('')
         if(validatePassword()) {
@@ -70,6 +104,7 @@ function Register() {
         setPassword('')
         setConfirmPassword('')
     }
+
     const addUserToCollection = async (e) => {
         e.preventDefault()
         try {
@@ -85,91 +120,117 @@ function Register() {
 
     return (
         <header>
-            <Box 
-                margin="8px" 
-                    
-                sx={{   padding:"20px", bgcolor: 'darkblue', color: "white", border:"1px solid #82d4e4be", borderRadius: "20px"}}
+            {/* Grid container to split screen into 2 columns */}
+            <Grid 
+                container
+                direction="row"
+                justifyContent="center"
+                alignItems="center"
+                columns={{ md: 2 }}
+                spacing={2}
             >
-                <label > 
-                    <img src="logo.jpg"  id="img" style={{marginRight:"50px", float: "left", width: "300px", height: "auto"}}/>
-                    <label className='loginHeader'>
-                        Western Cape Substance Use Disorder Assessment Tool 
-                    </label>    
+                    {/* Left Column : 1*/}
+                    <Grid item xs={1}>
+                        <Box 
+                           
+                            
+                            sx={{    bgcolor: '#2dbddabe', color: "black", border:"1px solid #82d4e4be", height:{height}}}
+                        >
+                            <label> 
+                                
+                                <label className='loginHeader'>
+                                    
+                                    <div>
+                                        
+                                        <img src="logo.jpg"  id="img" style={{ width: "90%", height: "auto", marginTop: "15px", border: "1px solid", borderRadius: "5px"}}/> 
+                                        
+                                    </div>
+                                        <div className = "loginBox">
+                                            {/* Spacing */}
+                                            <label>
+                                                <br></br>  
+                                                Assess your patient's risk of having a substance use disorder <br></br><br></br><br></br>
+                                                Sign in to Get Started
+                                            </label>
+                                        </div>
+                                        
+                                   
+                                </label>    
+                                
+                            </label> 
+                            
+                                
+                        
+                        </Box>
+                    </Grid>
                     
-                </label> 
-            
-            </Box>
-            
-            <br></br>
-            
-            <div className='container mt-5 mb-5 col-10 col-sm-8 col-md-6 col-lg-5'>
-                <div className='text-center mb-5 alert alert-secondary'>
-                    <label htmlFor="" className="h2"> 
-                        Signup
-                    </label>
-                </div>
-                {/* inputs below */}
-                <Box bgcolor = "White" sx = {{padding:10,border: "1px solid grey", borderRadius: "10px" }}>
-                    <div >
-                        {error && 
-                            <div className='auth__error'>
-                                {error}
-                            </div>
-                        }
-                        <form onSubmit={register} name='registration_form'>
-                            <div className="form-group">
-                                <TextField 
-                                    size="small" 
-                                    variant="outlined"
-                                    className="form-control"
-                                    placeholder="Enter your email"
-                                    label="Email"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}
-                                />
-                            </div>
-                            <br></br>  
-                            <div className="form-group">  
-                                <TextField 
-                                    size="small" 
-                                    variant="outlined"
-                                    className="form-control"
-                                    placeholder="Enter your password"
-                                    label="Password"
-                                    type="password"
-                                    value={password}
-                                    onChange={e => setPassword(e.target.value)}
-                                />
-                            </div>
-                            <br></br>  
-                            <div className="form-group">
-                                <TextField 
-                                    size="small" 
-                                    variant="outlined"
-                                    className="form-control"
-                                    placeholder="Retype password"
-                                    label="Confirm Password"
-                                    type="password"
-                                    value={confirmPassword}
-                                    onChange={e => setConfirmPassword(e.target.value)}
-                                />
-                            </div>
-                            <br></br> 
-                            <div className="text-center mt-4">
-                                <Button variant="contained"
-                                        sx={{bgcolor :"darkblue" , color : "white", border: "2px solid #82d4e4be"}} 
-                                        type='submit'>Register</Button>
-                            </div>
-                        </form>
-                        <div className="text-center mt-4">
-                            <span >
-                                Already have an account?  
-                                <Link to='/'>login</Link>
-                            </span>
-                        </div>
-                    </div>
-                </Box>
-            </div>
+                    {/* Right Column : 1*/}
+                    <Grid item xs={1}>
+                        <Grid container justifyContent="center">
+                            <Box bgcolor = "White" sx = {{padding:"80px",margin: "40px",border: "1px solid grey", borderRadius: "3px" , width: "60%",justifyContent:"center"}}>
+                                <div >
+                                    {error && 
+                                        <div className='auth__error'>
+                                            {error}
+                                        </div>
+                                    }
+                                    <form onSubmit={register} name='registration_form'>
+                                        <div className="form-group">
+                                            <TextField 
+                                                size="small" 
+                                                variant="outlined"
+                                                className="form-control"
+                                                placeholder="Enter your email"
+                                                label="Email"
+                                                value={email}
+                                                onChange={e => setEmail(e.target.value)}
+                                            />
+                                        </div>
+                                        <br></br>  
+                                        <div className="form-group">  
+                                            <TextField 
+                                                size="small" 
+                                                variant="outlined"
+                                                className="form-control"
+                                                placeholder="Enter your password"
+                                                label="Password"
+                                                type="password"
+                                                value={password}
+                                                onChange={e => setPassword(e.target.value)}
+                                            />
+                                        </div>
+                                        <br></br>  
+                                        <div className="form-group">
+                                            <TextField 
+                                                size="small" 
+                                                variant="outlined"
+                                                className="form-control"
+                                                placeholder="Retype password"
+                                                label="Confirm Password"
+                                                type="password"
+                                                value={confirmPassword}
+                                                onChange={e => setConfirmPassword(e.target.value)}
+                                            />
+                                        </div>
+                                        <br></br> 
+                                        <div className="text-center mt-4">
+                                            <Button variant="contained"
+                                                    sx={{bgcolor :"darkblue" , color : "white", border: "2px solid #82d4e4be"}} 
+                                                    type='submit'>Register</Button>
+                                        </div>
+                                    </form>
+                                    <div className="text-center mt-4">
+                                        <span >
+                                            Already have an account?  
+                                            <Link to='/'>login</Link>
+                                        </span>
+                                    </div>
+                                </div>
+                            </Box>
+                        </Grid>
+                </Grid>   
+                    
+            </Grid>
         </header>
     )
 }

@@ -230,7 +230,7 @@ const getFormDefaults = (clientID) => {
                 Q71: doc.data().Q71,
                 Q72: doc.data().Q72,
                 Q73: doc.data().Q73,
-                Q74: doc.data().Q74,
+                
             })))
 
         })
