@@ -16,7 +16,8 @@ import {
     OutlinedInput,
     InputLabel,
     Box,
-    Button
+    Button,
+    Grid
 } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
@@ -89,68 +90,72 @@ export function AddUser(){
 
     return (
       <div >
-        <Box bgcolor = "White" sx = {{padding:10,border: "1px solid grey", borderRadius: "10px" }}>
-          <form onSubmit={login} name='login_form'>
-            <div className="form-group">
-              <InputLabel>Email</InputLabel>
-              <OutlinedInput  
-                  required 
-                  sx={{ height:75, fontSize: "30px" }}  
-                  fullWidth
-                  size="normal" 
-                  variant="outlined"
-                  className="form-control"
-                  label="Email"
-                  value={email}
-                  onChange={(e) => {setEmail(e.target.value); setErrorMessage("");}}
-              />
-                   
-            </div>
-            <br></br>
-            <InputLabel>Password</InputLabel>
-              <OutlinedInput  
-                  required 
-                  sx={{ height:75, fontSize: "30px"  }}  
-                  fullWidth
-                  size = "normal"
-                  label="Password"
-                  type={showPassword ? "text" : "password"}
-                  value={password}
-                  onChange={(e)=> setPassword(e.target.value)}
-                  endAdornment={
-                      <InputAdornment>
-                          <IconButton edge="end" onClick={() => setShowPassword(!showPassword)}>
-                              {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon/>}
-                          </IconButton>
-                      </InputAdornment>
-                  }
-              />
-              <br></br><br></br>
-              <div align="center" style={{marginTop:5}}>
-                  
-                  <Button
+        <Grid container justifyContent="center">
+  
+
+          <Box bgcolor = "White" sx = {{padding:"80px",margin: "40px",border: "1px solid grey", borderRadius: "10px" , width: "60%",justifyContent:"center"}}>
+            <form onSubmit={login} name='login_form'>
+              <div className="form-group">
+                <InputLabel>Email</InputLabel>
+                <OutlinedInput  
+                    required 
+                    sx={{ height:75, fontSize: "20px" }}  
+                    fullWidth
+                    size="normal" 
+                    variant="outlined"
+                    className="form-control"
+                    label="Email"
+                    value={email}
+                    onChange={(e) => {setEmail(e.target.value); setErrorMessage("");}}
+                />
                     
-                    variant="contained"
-                    size = "large"
-                    sx={{bgcolor :"darkblue" , color : "White", border: "2px solid #82d4e4be"}}
-                    type = 'submit'
-                    
-                    >
-                    {" "}
-                    Log-in
-                </Button>
-                
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                
-                <div className="text-center mt-4">
-                    <span >
-                        Don't have an account?  
-                        <Link to='/Register'>Register</Link>
-                    </span>
-                </div>
               </div>
-          </form>
-        </Box>   
+              <br></br>
+              <InputLabel>Password</InputLabel>
+                <OutlinedInput  
+                    required 
+                    sx={{ height:75, fontSize: "20px"  }}  
+                    fullWidth
+                    size = "normal"
+                    label="Password"
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e)=> setPassword(e.target.value)}
+                    endAdornment={
+                        <InputAdornment>
+                            <IconButton edge="end" onClick={() => setShowPassword(!showPassword)}>
+                                {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon/>}
+                            </IconButton>
+                        </InputAdornment>
+                    }
+                />
+                <br></br><br></br>
+                <div align="center" style={{marginTop:5}}>
+                    
+                    <Button
+                      
+                      variant="contained"
+                      size = "large"
+                      sx={{bgcolor :"darkblue" , color : "White", border: "2px solid #82d4e4be"}}
+                      type = 'submit'
+                      
+                      >
+                      {" "}
+                      Log-in
+                  </Button>
+                  
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  
+                  <div className="text-center mt-4">
+                      <span >
+                          Don't have an account?  
+                          <Link to='/Register'>Register</Link>
+                      </span>
+                  </div>
+                </div>
+            </form>
+          </Box>   
+        </Grid>
       </div>
     )
               
