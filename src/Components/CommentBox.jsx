@@ -1,7 +1,7 @@
 import React, { useReducer, useState } from 'react'
 import useCollapse from 'react-collapsed';
 import AddCommentTwoToneIcon from '@mui/icons-material/AddCommentTwoTone';
-
+import CloseFullscreenTwoToneIcon from '@mui/icons-material/CloseFullscreenTwoTone';
 const formReducer = (state, event) => {
   return {
     ...state,
@@ -15,7 +15,7 @@ const CommentBox = (props) => {
   return (
     <div className="collapsible">
       <div className="header" {...getToggleProps()}>
-        {isExpanded ? '-' : <AddCommentTwoToneIcon/>}
+        {isExpanded ? <CloseFullscreenTwoToneIcon/> : <AddCommentTwoToneIcon/>}
       </div>
       <div {...getCollapseProps()}>
         <div className="content">

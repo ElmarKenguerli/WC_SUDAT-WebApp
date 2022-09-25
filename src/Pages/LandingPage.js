@@ -59,15 +59,7 @@ export const LandingPage = () => {
         <Box textAlign="center" width="1000" margin="80px" >
           <DataTable/>
           <br></br>
-          {/* <h4>View Report Below</h4> */}
           
-          {/* Embedd pdf on page */}
-          {/* <embed
-            src={PDF}
-            type="application/pdf"
-            height={800}
-            width={700}
-          /> */}
         </Box>
       </div>
   )

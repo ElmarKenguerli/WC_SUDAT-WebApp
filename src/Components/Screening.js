@@ -1,7 +1,6 @@
 //import React components;
 import React, { useReducer, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import AddCommentTwoToneIcon from '@mui/icons-material/AddCommentTwoTone';
 
 //import Pages and Components
 import "../App.css";
@@ -24,7 +23,8 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker'
 //import mui components
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-
+import AddCommentTwoToneIcon from '@mui/icons-material/AddCommentTwoTone';
+import CloseFullscreenTwoToneIcon from '@mui/icons-material/CloseFullscreenTwoTone';
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateMomentUtils from "@date-io/moment";
 import {
@@ -78,7 +78,7 @@ export function Collapsible() {
   return (
     <div className="collapsible">
       <div className="header" {...getToggleProps()}>
-        {isExpanded ? "-" : <AddCommentTwoToneIcon />}
+        {isExpanded ? <CloseFullscreenTwoToneIcon/> : <AddCommentTwoToneIcon />}
       </div>
       <div {...getCollapseProps()}>
         <div className="content">
