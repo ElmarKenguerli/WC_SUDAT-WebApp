@@ -60,8 +60,8 @@ const Login = () => {
                                     </div>
                                         <div className = "loginBox">
                                             {/* Spacing */}
-                                            <br></br><br></br><br></br><br></br><br></br><br></br>    
-                                            Assess your Risk of having a substance use disorder <br></br><br></br><br></br>
+                                            <br></br><br></br><br></br><br></br><br></br><br></br><br></br>    
+                                            Assess your patient's Risk of having a substance use disorder <br></br><br></br><br></br>
                                             Sign in to Get Started
                                         </div>
                                         
