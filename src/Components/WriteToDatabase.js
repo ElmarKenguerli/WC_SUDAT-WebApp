@@ -237,7 +237,7 @@ const getFormDefaults = (clientID) => {
     return formData;
 }
 
-const writeToDatabase = async (e, formData, shouldContinue) => {
+const writeToDatabase = async (e, formData) => {
     e.preventDefault()
 
     try {

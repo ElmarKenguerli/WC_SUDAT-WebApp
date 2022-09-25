@@ -5,7 +5,6 @@ import CommentBox from './CommentBox';
 
 function SliderQuestion(props) {
   const [marks, setMarks] = useState([
-
     {
       value: 0,
       label: 'Never',
@@ -56,21 +55,13 @@ function SliderQuestion(props) {
     }
   ]);
 
-  console.log(`props.formData[props.name]: ${props.formData[props.name]} props.name: ${props.name}`)
   const defaultAnswer = props.formData[props.name];
-  console.log(`defaultAnswer: ${defaultAnswer}`)
   const [questionNumber, setQuestionID] = useState(0);
   const [question, setQuestion] = useState(props.question);
-  const [sliderValue, setSliderValue] = useState(props.formData[props.name]);
-  
-  const [questionAnswer, setQuestionAnswer] = useState(defaultAnswer);
-  //setQuestionAnswer(defaultAnswer)
-  //console.log(`questionAnswer: ${questionAnswer}`)
-  
+  const [questionAnswer, setQuestionAnswer] = useState(0);
+
   const selectionChangeHandler = (event) => {
-    setQuestionAnswer(event.target.value);
     props.updateForm(event);
-    setSliderValue(event.target.value)
   };
 
   switch (true) {
@@ -79,17 +70,16 @@ function SliderQuestion(props) {
         <fieldset>
           <p>{question}</p>
           <Slider
-            
             style={{ width: 700, marginLeft: 50 }}
             step={1}
-            defaultValues={props.defaultValues[props.name]}
             valueLabelDisplay="auto"
-            name={props.name}            
+            name={props.name}
+            value={props.formData[props.name]}
             marks={marks}
             min={0}
             max={4}
             color="secondary"
-            onChange={(e) => selectionChangeHandler}
+            onChange={selectionChangeHandler}
           />
           <CommentBox
             name={`comment${props.name}`}
@@ -105,18 +95,16 @@ function SliderQuestion(props) {
         <fieldset>
           <p>{question}</p>
           <Slider
-            defaultValue={0}
             style={{ width: 700, marginLeft: 50 }}
             step={1}
             valueLabelDisplay="auto"
             name={props.name}
-            marks={marks2}
             value={props.formData[props.name]}
+            marks={marks2}
             min={0}
-            max={5}
-            //renderTrack={props.formData[props.name]}
+            max={4}
             color="secondary"
-            onChange={(e) => selectionChangeHandler(e)}
+            onChange={selectionChangeHandler}
           />
           <CommentBox
             name={`comment${props.name}`}
