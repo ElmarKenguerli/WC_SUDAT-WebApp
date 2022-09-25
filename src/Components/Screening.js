@@ -382,16 +382,6 @@ function Form(props) {
         </label>
       </Box>
       <br />
-      {/* {submitting &&
-        <div>
-          Submitting Form...
-          <ul>
-              {Object.entries(formData).map(([name, value]) => (
-              <li key={name}><strong>{name}</strong>:{value.toString()}</li>
-            ))}
-          </ul>
-        </div>
-      } */}
       <div className=".input-container"></div>
       <div className=".input-container">
         <form onSubmit={handleSubmit}>
@@ -477,7 +467,6 @@ function Form(props) {
                 <p>Gender</p>
                 <Select
                   required
-
                   name="Gender"
                   style={{ width: 300 }}
                   variant="filled"
@@ -506,17 +495,10 @@ function Form(props) {
                   renderInput={(params) => <TextField color="secondary" variant="filled" sx={{ width: 300 }} {...params} />}
                 />
               </LocalizationProvider>
-              {/* <MuiPickersUtilsProvider utils={DateMomentUtils}>
-                  <DatePicker
-                    value={formData["DateOfBirth"]}
-                    name="DateOfBirth"
-                    onChange={(date) => {
-                      handleDateData(date);
-                    }}
-                  />
-                </MuiPickersUtilsProvider> */}
-              <Collapsible />
-
+              <CommentBox 
+                name="DateOfBirth"
+                updateForm={handleData}
+              />
             </fieldset>
             <fieldset>
               <label>
@@ -668,115 +650,6 @@ function Form(props) {
               </label>
             </fieldset>
           </fieldset>
-
-          <fieldset name="screening">
-
-            {/* <fieldset>
-              <p>
-                1. Drink more than a few sips of beer, wine, or any drink
-                containing alcohol?
-              </p>
-              <Slider
-                defaultValue={0}
-                style={{ width: 550, marginLeft: 50 }}
-                step={1}
-                valueLabelDisplay="auto"
-                name="Q1"
-                marks={neverToDaily}
-                min={0}
-                max={4}
-                color="secondary"
-                onChange={(e) => handleData(e)}
-              />
-              <Collapsible />
-            </fieldset>
-            <fieldset>
-              <p>
-                {" "}
-                2.Use any marijuana (weed, oil, wax, or hash by smoking, vaping,
-                dabbing, or in food) or “synthetic marijuana” (like “K2,”
-                “Spice”)?
-              </p>
-              <Slider
-                defaultValue={0}
-                style={{ width: 550, marginLeft: 50 }}
-                step={1}
-                valueLabelDisplay="auto"
-                name="Q2"
-                marks={neverToDaily}
-                min={0}
-                max={4}
-                color="secondary"
-                onChange={(e) => handleData(e)}
-              />
-              <Collapsible />
-            </fieldset>
-            <fieldset>
-              <p>
-                3. Use anything else to get high (like other illegal drugs,
-                prescription or over-the-counter medications, and things that
-                you sniff, huff, vape, or inject)?
-              </p>
-              <Slider
-                defaultValue={0}
-                style={{ width: 550, marginLeft: 50 }}
-                step={1}
-                valueLabelDisplay="auto"
-                name="Q3"
-                marks={neverToDaily}
-                min={0}
-                max={4}
-                color="secondary"
-                onChange={(e) => handleData(e)}
-              />
-              <Collapsible />
-            </fieldset>
-            <fieldset>
-              <p>
-                4. Use any tobacco or nicotine products (for example,
-                cigarettes, e-cigarettes, hookahs or smokeless tobacco)?
-              </p>
-              <Slider
-                style={{ width: 550, marginLeft: 50 }}
-                defaultValue={0}
-                step={1}
-                valueLabelDisplay="auto"
-                marks={neverToDaily}
-                min={0}
-                max={4}
-                color="secondary"
-                name="Q4"
-                onChange={(e) => {
-                  handleData(e);
-                }}
-              />
-              <Collapsible />
-            </fieldset>
-            <fieldset>
-              <p>
-                5. Have you ever ridden in a CAR driven by someone (including
-                yourself) who was “high” or had been using alcohol or drugs?
-              </p>
-              <RadioGroup
-                row
-                name="Q5"
-                onChange={(e) => {
-                  handleData(e);
-                }}
-              > */}
-            {/* <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
-                <FormControlLabel value="No" control={<Radio />} label="No" />
-              </RadioGroup>
-              <Collapsible />
-            </fieldset>*/}
-          </fieldset>
-          {/* {greaterThanZero && (
-            <FollowUpQuestions
-              updateForm={handleExtraData}
-              stepperForward={props.stepperForwardFunction}
-              stepperState={props.stepperState}
-            />
-          )} */}
           <RenderSection
             show={true}
             sectionQuestions={sectionScreening}

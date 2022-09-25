@@ -480,7 +480,7 @@ const sectionChangeReadiness =[{
     },
     {
         name: "Q60",
-        question: "Q60. Sometimes I wonder if my drug/alcoholuse is hurting other people.",
+        question: "Q60. Sometimes I wonder if my drug/alcohol use is hurting other people.",
         section: "Stages of Change Readiness and Treatment Eagerness Scale (SOCRATES 8A)",
         subsection: "",
         type: 5
@@ -494,14 +494,14 @@ const sectionChangeReadiness =[{
     },
     {
         name: "Q62",
-        question: "Q62. I'm not just thinking about changing my drug/alcoholuse, I'm already doing something about it.",
+        question: "Q62. I'm not just thinking about changing my drug/alcohol use, I'm already doing something about it.",
         section: "Stages of Change Readiness and Treatment Eagerness Scale (SOCRATES 8A)",
         subsection: "",
         type: 5
     },
     {
         name: "Q63",
-        question: "Q63. I have already changed my drug/alcoholuse, and I am looking for ways to keep from slipping back to my old pattern.",
+        question: "Q63. I have already changed my drug/alcohol use, and I am looking for ways to keep from slipping back to my old pattern.",
         section: "Stages of Change Readiness and Treatment Eagerness Scale (SOCRATES 8A)",
         subsection: "",
         type: 5
@@ -515,7 +515,7 @@ const sectionChangeReadiness =[{
     },
     {
         name: "Q65",
-        question: "Q65. Sometimes I wonder if I am in control of my drug/alcoholuse.",
+        question: "Q65. Sometimes I wonder if I am in control of my drug/alcohol use.",
         section: "Stages of Change Readiness and Treatment Eagerness Scale (SOCRATES 8A)",
         subsection: "",
         type: 5
@@ -536,7 +536,7 @@ const sectionChangeReadiness =[{
     },
     {
         name: "Q68",
-        question: "Q68. I want help to keep from going back to the drug/alcoholproblems that I had before.",
+        question: "Q68. I want help to keep from going back to the drug/alcohol problems that I had before.",
         section: "Stages of Change Readiness and Treatment Eagerness Scale (SOCRATES 8A)",
         subsection: "",
         type: 5
