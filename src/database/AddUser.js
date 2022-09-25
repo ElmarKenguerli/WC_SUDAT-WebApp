@@ -93,7 +93,7 @@ export function AddUser(){
         <Grid container justifyContent="center">
   
 
-          <Box bgcolor = "White" sx = {{padding:"80px",margin: "40px",border: "1px solid grey", borderRadius: "10px" , width: "60%",justifyContent:"center"}}>
+          <Box bgcolor = "White" sx = {{padding:"80px",margin: "40px",border: "1px solid grey", borderRadius: "3px" , width: "60%",justifyContent:"center"}}>
             <form onSubmit={login} name='login_form'>
               <div className="form-group">
                 <InputLabel>Email</InputLabel>
