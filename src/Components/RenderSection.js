@@ -62,16 +62,17 @@ const RenderSection = (props) => {
               />
             );
         
-          case q.type == 4:
-            return (
-              <CompoundQuestion
-                name={q.name}
-                section={q.section}
-                question={q.question}
-                formData={props.formData}
-                updateForm={props.updateForm}
-              />
-            );
+          // case q.type == 4:
+          //   return (
+          //     <CompoundQuestion
+          //       name={q.name}
+          //       section={q.section}
+          //       question={q.question}
+          //       formData={props.formData}
+          //       updateForm={props.updateForm}
+          //       defaultValues={props.defaultValues}
+          //     />
+          //   );
     
           case q.type == 5:
             return (
@@ -82,6 +83,7 @@ const RenderSection = (props) => {
                 formData={props.formData}
                 updateForm={props.updateForm}
                 type={q.type}
+                defaultValues={props.defaultValues}
               />
             );
             case q.type == 6:

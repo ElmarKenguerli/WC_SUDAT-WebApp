@@ -42,7 +42,7 @@ function CompoundQuestion(props) {
   const [question, setQuestion] = useState(props.question);
   const [questionAnswer, setQuestionAnswer] = useState(0);
   //console.log(questionAnswer);
-  const selectionBlurHandler = (event) => {
+  const selectionChangeHandler = (event) => {
     setQuestionAnswer(event.target.value);
     props.updateForm(event);
   };
@@ -58,7 +58,7 @@ function CompoundQuestion(props) {
             control={
               <Radio
                 onChange={(event) => {
-                  selectionBlurHandler(event);
+                  selectionChangeHandler(event);
                   setSelected(event.target.value);
                   setQname(props.name);
                 }}
@@ -72,6 +72,7 @@ function CompoundQuestion(props) {
             control={
               <Radio
                 onChange={(event) => {
+                  selectionChangeHandler(event);
                   setSelected(event.target.value);
                   setQname(props.name);
                 }}
@@ -82,20 +83,19 @@ function CompoundQuestion(props) {
         </RadioGroup>
         <div>
           <Slider
-            defaultValue={0}
-            style={{ width: 700, marginLeft: 20 }}
+            style={{ width: 700, marginLeft: 50 }}
             step={1}
+            defaultValues={props.defaultValues[props.name]}
             valueLabelDisplay="auto"
+            name={`${props.name}a`}            
             marks={marks}
-            value={props.formData[props.name]}
             min={0}
-            max={4}
+            max={5}
             color="secondary"
-            onChange={(e) => selectionBlurHandler(e)}
-            name={`${props.name}a`}
+            onChange={(e) => selectionChangeHandler}
           />
         </div>
-        <CommentBox name={`comment${Qname}`} updateForm={props.updateForm} />
+        <CommentBox name={`comment${props.name}`} updateForm={props.updateForm} />
       </FormControl>
     </fieldset>
   );
