@@ -12,9 +12,6 @@ export default function TrippleQuestion(props) {
   const [selected, setSelected] = useState("");
 
   const selectionChangeHandler = (event) => {
-    // {if(props.stepperUpdate){
-    //   props.stepperForwardFunction(props.stepperState)
-    // }};
     setSelected(event.target.value);
     props.updateForm(event);
   };
@@ -25,9 +22,9 @@ export default function TrippleQuestion(props) {
     value3: "A lot",
   };
   const labelset1 = {
-    value1: "Does not describe me",
-    value2: "Somewhat describes me",
-    value3: "Describes me",
+    value1: "Does Not Describe Me",
+    value2: "Somewhat Describes Me",
+    value3: "Describes Me",
   };
 
   switch (true) {
@@ -41,7 +38,8 @@ export default function TrippleQuestion(props) {
                 value="Does Not Describe Me"
                 control={
                   <Radio
-                  onChange={(e) => selectionChangeHandler(e)}
+                    onChange={(e) => selectionChangeHandler(e)}
+                    checked={props.formData[props.name] === "Does Not Describe Me"}
                   />
                 }
                 label={labelset1["value1"]}
@@ -51,7 +49,8 @@ export default function TrippleQuestion(props) {
                 value="Somewhat Describes Me"
                 control={
                   <Radio
-                  onChange={(e) => selectionChangeHandler(e)}
+                    onChange={(e) => selectionChangeHandler(e)}
+                    checked={props.formData[props.name] === "Somewhat Describes Me"}
                   />
                 }
                 label={labelset1["value2"]}
@@ -61,7 +60,8 @@ export default function TrippleQuestion(props) {
                 value="Describes me"
                 control={
                   <Radio
-                   onChange={(e) => selectionChangeHandler(e)}
+                    onChange={(e) => selectionChangeHandler(e)}
+                    checked={props.formData[props.name] === "Describes me"}
                   />
                 }
                 label={labelset1["value3"]}
@@ -82,7 +82,8 @@ export default function TrippleQuestion(props) {
                 value="None"
                 control={
                   <Radio
-                  onChange={(e) => selectionChangeHandler(e)}
+                    onChange={(e) => selectionChangeHandler(e)}
+                    checked={props.formData[props.name] === "None"}
                   />
                 }
                 label={labelset2["value1"]}
@@ -92,17 +93,19 @@ export default function TrippleQuestion(props) {
                 value="Some what"
                 control={
                   <Radio
-                  onChange={(e) => selectionChangeHandler(e)}
+                    onChange={(e) => selectionChangeHandler(e)}
+                    checked={props.formData[props.name] === "Some what"}
                   />
                 }
                 label={labelset2["value2"]}
                 name={props.name}
               />
               <FormControlLabel
-                value=" A lot"
+                value="A lot"
                 control={
                   <Radio
-                  onChange={(e) => selectionChangeHandler(e)}
+                    onChange={(e) => selectionChangeHandler(e)}
+                    checked={props.formData[props.name] === "A lot"}
                   />
                 }
                 label={labelset2["value3"]}
