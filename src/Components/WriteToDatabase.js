@@ -22,7 +22,7 @@ const getFormDefaults = (clientID) => {
             "Q17d", "Q18", "Q19", "Q20", "Q21", "Q22", "Q23", "Q24", "Q25", "Q26", "Q27", "Q28", "Q29", "Q30", "Q31", "Q32", "Q33", "Q34", "Q35",
             "Q36", "Q37", "Q38", "Q39", "Q40", "Q41", "Q42", "Q43", "Q44", "Q45", "Q46", "Q47", "Q48", "Q49", "Q50", "Q51", "Q52", "Q53", "Q54",
             "Q55", "Q56", "Q57", "Q58", "Q59", "Q60", "Q61", "Q62", "Q63", "Q64", "Q65", "Q66", "Q67", "Q68", "Q69", "Q70", "Q71", "Q72", "Q73",
-            "Q30a", "Q31a", "Q32a", "Q33a", "Q34a", "Q35a", "Q36a", "Q37a", "Q38a", "Q39a", "Q40a", "Q41a", "Q42a", "Q43a", "Q44a", "Q45a", "Q46a", 
+            "Q30a", "Q31a", "Q32a", "Q33a", "Q34a", "Q35a", "Q36a", "Q37a", "Q38a", "Q39a", "Q40a", "Q41a", "Q42a", "Q43a", "Q44a", "Q45a", "Q46a",
             "Q47a", "Q48a", "Q49a", "Q50a", "Q51a", "Q52a", "Q53a", "Q54a"
         ]
 
@@ -143,7 +143,6 @@ const getFormDefaults = (clientID) => {
                 commentQ71: doc.data().commentQ71,
                 commentQ72: doc.data().commentQ72,
                 commentQ73: doc.data().commentQ73,
-                commentQ74: doc.data().commentQ74,
                 commentDateOfBirth: doc.data().commentDateOfBirth,
                 commentCountry: doc.data().commentCountry,
                 commentGender: doc.data().commentGender,
@@ -241,7 +240,7 @@ const getFormDefaults = (clientID) => {
 
 
 
-const writeToDatabase = async (e, formData, shouldContinue) => {
+const writeToDatabase = async (e, formData) => {
     e.preventDefault()
 
     try {
@@ -339,7 +338,6 @@ const writeToDatabase = async (e, formData, shouldContinue) => {
             Q71: formData["Q71"],
             Q72: formData["Q72"],
             Q73: formData["Q73"],
-            Q74: formData["Q74"],
 
             // Comments
             commentDemographics: formData["commentDemographics"],
@@ -430,7 +428,6 @@ const writeToDatabase = async (e, formData, shouldContinue) => {
             commentQ71: formData["commentQ71"],
             commentQ72: formData["commentQ72"],
             commentQ73: formData["commentQ73"],
-            commentQ74: formData["commentQ74"],
         })
 
     } catch (err) {

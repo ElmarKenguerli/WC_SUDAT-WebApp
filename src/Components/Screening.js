@@ -10,10 +10,13 @@ import SixSliderQuestion from "./SixSliderQuestion";
 import SliderQuestion from "./SliderQuestion";
 import BooleanQuestion from "./BooleanQuestion";
 import FollowUpQuestions from "./FollowUpQuestions";
+import CommentBox from "./CommentBox";
 import RenderSection from "./RenderSection";
 import { writeToDatabase, getFormDefaults } from "./WriteToDatabase";
 import LandingPage from "../Pages/LandingPage";
+
 import { sectionScreening, sectionRisks, sectionTrauma, sectionProtective, sectionFamily, sectionDepression, sectionChangeReadiness } from './QuestionData'
+import ScreeningMessage from "./ScreeningMessage";
 
 //datepicker
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
@@ -45,10 +48,6 @@ import {
 } from "firebase/firestore";
 import { useAuthValue } from "../database/AuthContext";
 
-// export const setGender = (chosenGender) => {
-//   gender = chosenGender;
-// };
-
 export const GetValue = (value, num) => {
   val = value;
 
@@ -76,7 +75,7 @@ export function Collapsible() {
   return (
     <div className="collapsible">
       <div className="header" {...getToggleProps()}>
-        {isExpanded ? <CloseFullscreenTwoToneIcon/> : <AddCommentTwoToneIcon />}
+        {isExpanded ? <CloseFullscreenTwoToneIcon /> : <AddCommentTwoToneIcon />}
       </div>
       <div {...getCollapseProps()}>
         <div className="content">
@@ -187,57 +186,73 @@ function Form(props) {
   let navigate = useNavigate();
 
   const showAssessment = () => {
-    //let ans1 = formData["Q1"] + formData["Q2"] + formData["Q3"] + formData["Q4"];
 
     let count = 0;
 
-    for (let i = 6; i < 11; ++i) {
+    for (let i = 1; i < 11; ++i) {
       if (formData["Q" + String(i)] === "Yes") {
         count++;
       }
+    }
+
+    if(count>=2){
+      props.showAllSteps();
     }
    
     return (count >= 2);
   }
 
+  const isScreeningComplete =()=>{
+    let bool = true;
+    for (let i = 1; i < 11; ++i) {
+      if (formData["Q" + String(i)] === "" ||formData["Q" + String(i)] === undefined) {
+        bool = false
+      }
+    }
+    return bool;
+  }
+
   function getSteps(){
-    let count = 0;
+    let countN = 0;
+    let countQ = 0;
+    if(countQ==0){
+      for(let i = 1; i<13;i++){
+        if(formData["N"+String(i)] === "" || formData[["N"+String(i)] === undefined] ){
+          countN = i-1
+          break;
+        }
+
+        
+
+      }
+      console.log("CountN is: " + countN);
+    }
     for (let i=1; i<70; ++i){
       // console.log("In get steps");
-      if(formData["Q" + String(i)] === undefined){
+      if(formData["Q" + String(i)] === undefined ||(formData["Q" + String(i)] === "")){
+        countQ = i -1;
         break;
       }
-      else if (formData["Q" + String(i)] === ""){
-      count = i;
-      break;
-      }
-      else{
-        count = i;
-      }
     }
-    // console.log("The count is " + count);
-    let steps = 0;
 
-    if(count>0 && count<=10){
-    console.log('Over here');
+    if(countQ<=10 && countQ == 0){
       props.goToStep(3);
-
     }
 
-    else if(count>10 && count<=16){
+    else if(countQ>10 && countQ<=16){
       props.goToStep(4)
     }
-    else if(count>16 && count<=29){
+    else if(countQ>16 && countQ<=29){
       props.goToStep(5)
     }
-    else if(count>29 && count<=42){
+    else if(countQ>29 && countQ<=42){
       props.goToStep(6)
     }
-    else if(count>42 && count<=55){
+    else if(countQ>42 && countQ<=55){
       props.goToStep(7)
     }
 
-    else if(count>55 && count<=75){
+    else if(countQ>55 && countQ<=75){
       props.goToStep(8)
     }
 
@@ -250,15 +265,14 @@ function Form(props) {
     //   props.goToStep(4)
     // }
   
-    return steps;
+    // return steps;
   }
 
   const handleDatabase = (event) => {
-
     let fd = formData;
     formData["email"] = getEmail();
 
-    writeToDatabase(event, fd, getCurrentDate());
+    writeToDatabase(event, fd);
     navigate("../ReportPage", { state: { formData: formData } });
   };
 
@@ -323,10 +337,9 @@ function Form(props) {
 
   function handleDateData(datevalue) {
     setFormData({
-      name: "DateOfBirth",
+      name: "N5",
       value: String(datevalue),
     });
-    //setValueDate(datevalue);
   }
 
   function handleCountry(country) {
@@ -335,7 +348,8 @@ function Form(props) {
       value: country,
     });
   }
-
+  
+  if((!isScreeningComplete()) || showAssessment()){
   return (
     <div className="wrapper">
       <h1 style = {{color: "black"}}>Substance Use Disorder Assessment</h1>
@@ -367,7 +381,9 @@ function Form(props) {
           <input
             type="checkbox"
             value={hasAcceptedTsAndCs}
-            onChange={e => { props.goToStep(0); handleChange(e) }}
+            onChange={e => {if(hasAcceptedTsAndCs===true){
+              props.goToStep(1);
+            }; handleChange(e) }}
           />
           I have read the above to the client being screened, and have obtained
           his/her consent to proceed with the screening process.
@@ -387,16 +403,14 @@ function Form(props) {
                 <h3> Client Name:</h3>
                 <TextField
                   required
-                  value={formData["ClientName"]}
+                  value={formData["N1"]}
                   color="secondary"
                   focused
                   sx={{ width: 300 }}
                   size="big"
-                  name="ClientName"
+                  name="N1"
                   variant="filled"
-                  //value={clientName}
                   onBlur={(e) => {
-                    //setClientName(e.target.value);
                     handleData(e);
                   }}
                 />
@@ -407,12 +421,12 @@ function Form(props) {
                 <h3> Client ID number:</h3>
                 <TextField
                   required
-                  value={formData["ClientID"]}
+                  value={formData["N2"]}
                   color="secondary"
                   focused
                   sx={{ width: 300 }}
                   size="big"
-                  name="ClientID"
+                  name="N2"
                   variant="filled"
                   onBlur={(e) => {
                     handleData(e);
@@ -425,14 +439,13 @@ function Form(props) {
                 <h3>Place of Interview:</h3>
                 <TextField
                   required
-                  value={formData["PlaceOfInterview"]}
+                  value={formData["N3"]}
                   color="secondary"
                   focused
                   sx={{ width: 300 }}
                   size="small"
-                  name="PlaceOfInterview"
+                  name="N3"
                   variant="filled"
-                  //value={placeOfInterview}
                   onBlur={(e) => {
                     handleData(e);
                   }}
@@ -449,7 +462,10 @@ function Form(props) {
                 {getCurrentDate()}
               </label>
             </fieldset>
-            <Collapsible />
+            <CommentBox
+              name="commentInterview"
+              updateForm={handleData}
+            />
           </fieldset>
           <fieldset disabled={!hasAcceptedTsAndCs}>
             <label>
@@ -460,13 +476,11 @@ function Form(props) {
                 <p>Gender</p>
                 <Select
                   required
-
-                  name="Gender"
+                  name="N4"
                   style={{ width: 300 }}
                   variant="filled"
-                  value={formData["Gender"]}
+                  value={formData["N4"]}
                   onChange={(e) => {
-                    //setGender(e.target.value);
                     handleData(e);
                   }}
                 >
@@ -476,7 +490,10 @@ function Form(props) {
                   <MenuItem value={"Other"}>Other</MenuItem>
                 </Select>
                 <FormHelperText>Select your sex</FormHelperText>
-                <Collapsible />
+                <CommentBox
+                  name="commentGender"
+                  updateForm={handleData}
+                />
               </label>
             </fieldset>
             <fieldset>
@@ -484,27 +501,35 @@ function Form(props) {
               <LocalizationProvider dateAdapter={AdapterMoment}>
                 <DesktopDatePicker
                   inputFormat="MM/DD/YYYY"
-                  value={formData["DateOfBirth"]}
+                  value={formData["N5"]}
                   onChange={(date) => { handleDateData(date); }}
                   renderInput={(params) => <TextField color="secondary" variant="filled" sx={{ width: 300 }} {...params} />}
+                
                 />
               </LocalizationProvider>
               
               <Collapsible />
 
+              <CommentBox 
+                name="N6"
+                updateForm={handleData}
+              />
             </fieldset>
             <fieldset>
               <label>
                 <p>Country of Origin</p>
                 <Countries
-                  name="Country"
-                  value={formData["Country"]}
+                  name="N7"
+                  value={formData["N7"]}
                   updateForm={(e) => handleExtraData(e)}
                   onChange={(e) => {
                     handleData(e);
                   }}
                 />
-                <Collapsible />
+                <CommentBox
+                  name="commentCountry"
+                  updateForm={handleData}
+                />
               </label>
             </fieldset>
             <fieldset>
@@ -516,14 +541,17 @@ function Form(props) {
                   sx={{ width: 300 }}
                   focused
                   size="small"
-                  name="Residence"
+                  name="N8"
                   variant="filled"
-                  value={formData["Residence"]}
+                  value={formData["N8"]}
                   onChange={(e) => {
                     handleData(e);
                   }}
                 />
-                <Collapsible />
+                <CommentBox
+                  name="commentResidence"
+                  updateForm={handleData}
+                />
               </label>
             </fieldset>
             <fieldset>
@@ -535,15 +563,17 @@ function Form(props) {
                   sx={{ width: 300 }}
                   focused
                   size="small"
-                  name="Langauge"
+                  name="N9"
                   variant="filled"
-                  value={formData["Langauge"]}
+                  value={formData["N9"]}
                   onBlur={(e) => {
-                    //setPrimaryLanguage(e.target.value);
                     handleData(e);
                   }}
                 />
-                <Collapsible />
+                <CommentBox
+                  name="commentLanguage"
+                  updateForm={handleData}
+                />
               </label>
             </fieldset>
             <fieldset>
@@ -551,10 +581,10 @@ function Form(props) {
                 <p>Current Housing Situation:</p>
                 <Select
                   required
-                  name="HousingSituation"
+                  name="N10"
                   style={{ width: 300 }}
                   variant="filled"
-                  value={formData["HousingSituation"]}
+                  value={formData["N10"]}
                   onChange={(e) => {
                     handleData(e);
                   }}
@@ -582,7 +612,10 @@ function Form(props) {
                   </MenuItem>
                 </Select>
                 <FormHelperText>Select the Most Applicable</FormHelperText>
-                <Collapsible />
+                <CommentBox
+                  name="commentHousingSituation"
+                  updateForm={handleData}
+                />
               </label>
             </fieldset>
             <fieldset>
@@ -590,12 +623,11 @@ function Form(props) {
                 <p>Highest Level of Education</p>
                 <Select
                   required
-                  name="Education"
+                  name="N11"
                   style={{ width: 300 }}
                   variant="filled"
-                  value={formData["Education"]}
+                  value={formData["N11"]}
                   onChange={(e) => {
-                    //setEducation(e.target.value);
                     handleData(e);
                   }}
                 >
@@ -608,7 +640,10 @@ function Form(props) {
                   </MenuItem>
                 </Select>
                 <FormHelperText>Select the Most Applicable</FormHelperText>
-                <Collapsible />
+                <CommentBox
+                  name="commentEducation"
+                  updateForm={handleData}
+                />
               </label>
             </fieldset>
             <fieldset>
@@ -619,10 +654,10 @@ function Form(props) {
                 </p>
                 <Select
                   required
-                  name="RecentConflict"
+                  name="N12"
                   style={{ width: 300 }}
                   variant="filled"
-                  value={formData["RecentConflict"]}
+                  value={formData["N12"]}
                   onChange={(e) => {
                     handleData(e);
                     props.goToStep(1);
@@ -639,7 +674,10 @@ function Form(props) {
                   </MenuItem>
                 </Select>
                 <FormHelperText>Select the Most Applicable</FormHelperText>
-                <Collapsible />
+                <CommentBox
+                  name="commentRecentConflict"
+                  updateForm={handleData}
+                />
               </label>
             </fieldset>
           </fieldset>
@@ -715,6 +753,12 @@ function Form(props) {
       </div>
     </div>
   );
+   }
+   else{
+    return(<ScreeningMessage
+          formData = {formData}
+      />)
+   }
 }
 
 export default Form;

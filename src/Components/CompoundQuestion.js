@@ -40,13 +40,11 @@ function CompoundQuestion(props) {
   const [Qname, setQname] = useState("");
   const [questionNumber, setQuestionID] = useState(0);
   const [question, setQuestion] = useState(props.question);
-  const [questionAnswer, setQuestionAnswer] = useState(0);
-  //console.log(questionAnswer);
+
   const selectionBlurHandler = (event) => {
-    setQuestionAnswer(event.target.value);
     props.updateForm(event);
   };
-  // const[marks,setQuestionID] = useState(0);
+
   return (
     <fieldset>
       <FormControl>
@@ -62,6 +60,7 @@ function CompoundQuestion(props) {
                   setSelected(event.target.value);
                   setQname(props.name);
                 }}
+                checked={props.formData[props.name] === "Yes"}
               />
             }
             label="Yes"
@@ -72,30 +71,35 @@ function CompoundQuestion(props) {
             control={
               <Radio
                 onChange={(event) => {
+                  
+                  selectionBlurHandler(event);
                   setSelected(event.target.value);
                   setQname(props.name);
                 }}
+                checked={props.formData[props.name] === "No"}
               />
             }
             label="No"
+            name={props.name}
           />
         </RadioGroup>
         <div>
           <Slider
-            defaultValue={0}
-            style={{ width: 700, marginLeft: 20 }}
+            style={{ width: 700, marginLeft: 50 }}
             step={1}
+            defaultValues={props.defaultValues[props.name]}
             valueLabelDisplay="auto"
+            name={`${props.name}a`}            
             marks={marks}
-            value={props.formData[props.name]}
+            value={props.formData[`${props.name}a`]}
             min={0}
-            max={4}
+            max={5}
             color="secondary"
-            onChange={(e) => selectionBlurHandler(e)}
+            onChange={selectionBlurHandler}
             name={`${props.name}a`}
           />
         </div>
-        <CommentBox name={`comment${Qname}`} updateForm={props.updateForm} />
+        <CommentBox name={`comment${props.name}`} updateForm={props.updateForm} />
       </FormControl>
     </fieldset>
   );

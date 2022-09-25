@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState} from 'react';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -19,7 +20,22 @@ import Grid from '@mui/material/Grid';
 
 import Typography from '@mui/material/Typography';
 
-const steps = [
+const firstSteps = [
+  {
+    label: "Introduction",
+  },
+  {
+    label: 'Interview Details',
+  },
+  {
+    label: 'Demographics',
+  },
+  {
+    label: 'Preliminary Screening',
+  }
+];
+
+const allSteps = [
   {
     label: "Introduction",
   },
@@ -50,6 +66,8 @@ const steps = [
 ];
 
 export default function VerticalLinearStepper(props) {
+  const[steps,setSteps] = useState(firstSteps);
+
   const [activeStep, setActiveStep] = React.useState(0);
   let docID = ""
   if (props.docID === "")
@@ -64,6 +82,11 @@ export default function VerticalLinearStepper(props) {
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
+
+  const showAllSteps= () =>{
+    console.log("Called")
+    setSteps(allSteps);
+  }
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -97,8 +120,11 @@ export default function VerticalLinearStepper(props) {
       <div className="row">
         <div className="leftnav col-md-2">
           <div style={{position: 'fixed',margin: 25}}>
+           
             <Box sx={{ maxWidth: 400 }}>
               <Stepper activeStep={activeStep} orientation="vertical">
+                
+                
                 {steps.map((step, index) => (
                 <Step key={step.label}>
                   <StepLabel                   
@@ -157,6 +183,8 @@ export default function VerticalLinearStepper(props) {
 
                 </Step>
                 ))}
+
+                
               </Stepper>
             </Box>
           </div>
@@ -171,6 +199,7 @@ export default function VerticalLinearStepper(props) {
                 stepperForwardFunction = {handleNext}
                 docID = {docID}
                 goToStep = {goToStep}
+                showAllSteps = {showAllSteps}
             />
           </>
         </div>
