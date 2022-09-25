@@ -71,7 +71,6 @@ function CompoundQuestion(props) {
             control={
               <Radio
                 onChange={(event) => {
-                  
                   selectionBlurHandler(event);
                   setSelected(event.target.value);
                   setQname(props.name);
@@ -85,11 +84,10 @@ function CompoundQuestion(props) {
         </RadioGroup>
         <div>
           <Slider
-            style={{ width: 700, marginLeft: 50 }}
+            defaultValue={0}
+            style={{ width: 700, marginLeft: 20 }}
             step={1}
-            defaultValues={props.defaultValues[props.name]}
             valueLabelDisplay="auto"
-            name={`${props.name}a`}            
             marks={marks}
             value={props.formData[`${props.name}a`]}
             min={0}
@@ -99,7 +97,7 @@ function CompoundQuestion(props) {
             name={`${props.name}a`}
           />
         </div>
-        <CommentBox name={`comment${props.name}`} updateForm={props.updateForm} />
+        <CommentBox name={`comment${Qname}`} updateForm={props.updateForm} />
       </FormControl>
     </fieldset>
   );

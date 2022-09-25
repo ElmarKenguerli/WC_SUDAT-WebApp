@@ -124,7 +124,7 @@ export default function PersistentDrawerLeft() {
             <h1>&nbsp;&nbsp;&nbsp;ADMIN</h1>
           </div>
           <Typography variant="h6" style={{ position: "absolute", right: "15px", padding: "7px", color : "black" }} noWrap component="div">
-            <AccountCircleOutlinedIcon style={{ fontSize: "40px" }}/> {currentUser.email}
+            <AccountCircleOutlinedIcon style={{ fontSize: "40px", color:"white" }}/> {currentUser.email}
           </Typography>
 
         </Toolbar>
