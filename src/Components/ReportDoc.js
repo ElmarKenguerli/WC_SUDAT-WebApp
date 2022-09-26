@@ -12,6 +12,10 @@ import { useAuthValue } from "../database/AuthContext";
 
 // Create styles
 const styles = StyleSheet.create({
+  image: {
+    width: "100%",
+    height: "auto",
+  },
   title: {
     fontSize: 40,
   },
@@ -44,16 +48,18 @@ function ReportDoc(props) {
       <Document>
         {/*render a single page*/}
         <Page size="A4" style={styles.page}>
-          <View style={styles.section}>
-            <Text style={styles.title}>Summary of Client Data</Text>
-          </View>
+          <Image
+            style={styles.image}
+            src="header.jpg"
+          /> 
+          
 
           {/* Interview Information */}
           <View style={styles.section}>
             <Text style={styles.area}>Interview Information:</Text>
           </View>
           <View style={styles.section}>
-            <Text > {`Interviewer: ${currentUser.email} `}</Text>
+            {/* <Text > {`Interviewer: ${currentUser.email} `}</Text> */}
             <Text > {`Date Of Interview: ${formData["DateOfInterview"]} `}</Text>
             <Text > {`Place Of Interview: ${formData["PlaceOfInterview"]} `}</Text>
           </View>

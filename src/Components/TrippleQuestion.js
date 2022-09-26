@@ -6,7 +6,7 @@ import {
   FormControlLabel,
 } from "@material-ui/core";
 import { render } from "react-dom";
-import CommentBox from './CommentBox';
+import CommentBox from "./CommentBox";
 
 export default function TrippleQuestion(props) {
   const [selected, setSelected] = useState("");
@@ -33,13 +33,15 @@ export default function TrippleQuestion(props) {
         <fieldset>
           <FormControl>
             <p>{props.question}</p>
-            <RadioGroup row value={selected} >
+            <RadioGroup row value={selected}>
               <FormControlLabel
                 value="Does Not Describe Me"
                 control={
                   <Radio
                     onChange={(e) => selectionChangeHandler(e)}
-                    checked={props.formData[props.name] === "Does Not Describe Me"}
+                    checked={
+                      props.formData[props.name] === "Does Not Describe Me"
+                    }
                   />
                 }
                 label={labelset1["value1"]}
@@ -50,7 +52,9 @@ export default function TrippleQuestion(props) {
                 control={
                   <Radio
                     onChange={(e) => selectionChangeHandler(e)}
-                    checked={props.formData[props.name] === "Somewhat Describes Me"}
+                    checked={
+                      props.formData[props.name] === "Somewhat Describes Me"
+                    }
                   />
                 }
                 label={labelset1["value2"]}
@@ -69,6 +73,10 @@ export default function TrippleQuestion(props) {
               />
             </RadioGroup>
           </FormControl>
+          <CommentBox
+            name={`comment${props.name}`}
+            updateForm={props.updateForm}
+          />
         </fieldset>
       );
 
@@ -77,7 +85,7 @@ export default function TrippleQuestion(props) {
         <fieldset>
           <FormControl>
             <p>{props.question}</p>
-            <RadioGroup row value={selected} >
+            <RadioGroup row value={selected}>
               <FormControlLabel
                 value="None"
                 control={
@@ -113,7 +121,10 @@ export default function TrippleQuestion(props) {
               />
             </RadioGroup>
           </FormControl>
-          <CommentBox name={`comment${props.name}`} updateForm={props.updateForm} />
+          <CommentBox
+            name={`comment${props.name}`}
+            updateForm={props.updateForm}
+          />
         </fieldset>
       );
   }

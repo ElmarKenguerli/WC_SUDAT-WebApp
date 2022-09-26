@@ -123,13 +123,9 @@ export default function PersistentDrawerLeft() {
           <img src="logo.jpg" width= "200" height= "auto" id="img" style={{margin:"10px"}}/>
               
           </div>
-          <div className="header-content-inner">
           
-            <h1>&nbsp;&nbsp;&nbsp;WC-SUDAT </h1>
-              
-          </div>
           <Typography variant="h6" style={{ position: "absolute", right: "15px", padding: "7px", color : "black" , textAlign: "right"}} noWrap component="div">
-            <AccountCircleOutlinedIcon style={{ fontSize: "40px", color:"black" }}/> {currentUser.email}
+            <AccountCircleOutlinedIcon style={{ fontSize: "40px", color:"black" }}/> {"currentUser.email"}
             <br></br>
             <Button
                       

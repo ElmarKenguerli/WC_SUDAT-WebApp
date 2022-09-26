@@ -9,7 +9,7 @@ const sectionScreening = [
   {
     name: "Q1",
     question:
-      "Q1. Drink more than a few sips of beer, wine, or any drink containing alcohol?",
+      "1. Drink more than a few sips of beer, wine, or any drink containing alcohol?",
     section: "Substance Use Screen",
     subsection: "",
     type: 1,
@@ -18,7 +18,7 @@ const sectionScreening = [
   {
     name: "Q2",
     question:
-      "Q2. Use any marijuana (weed, oil, wax, or hash by smoking, vaping, dabbing, or in food) or “synthetic marijuana” (like “K2,” “Spice”)?",
+      "2. Use any marijuana (weed, oil, wax, or hash by smoking, vaping, dabbing, or in food) or “synthetic marijuana” (like “K2,” “Spice”)?",
     section: "Substance Use Screen",
     subsection: "",
     type: 1,
@@ -27,7 +27,7 @@ const sectionScreening = [
   {
     name: "Q3",
     question:
-      "Q3. Use anything else to get high (like other illegal drugs, prescription or over-the-counter medications, and things that you sniff, huff, vape, or inject)?",
+      "3. Use anything else to get high (like other illegal drugs, prescription or over-the-counter medications, and things that you sniff, huff, vape, or inject)?",
     section: "Substance UseScreen",
     subsection: "",
     type: 1,
@@ -36,7 +36,7 @@ const sectionScreening = [
   {
     name: "Q4",
     question:
-      "Q4. Use any tobacco or nicotine products (for example, cigarettes, e-cigarettes, hookahs or smokeless tobacco)?",
+      "4. Use any tobacco or nicotine products (for example, cigarettes, e-cigarettes, hookahs or smokeless tobacco)?",
     section: "Substance UseScreen",
     subsection: "",
     type: 1,
@@ -45,7 +45,7 @@ const sectionScreening = [
   {
     name: "Q5",
     question:
-      "Q5. Have you ever ridden in a CAR driven by someone (including yourself) who was “high” or had been using alcohol or drugs?",
+      "5. Have you ever ridden in a CAR driven by someone (including yourself) who was “high” or had been using alcohol or drugs?",
     section: "Substance Use Screen",
     subsection: "",
     type: 0,
@@ -54,7 +54,7 @@ const sectionScreening = [
   {
     name: "Q6",
     question:
-      "Q6. Do you ever use alcohol or drugs to RELAX, feel better about yourself, or fit in?",
+      "6. Do you ever use alcohol or drugs to RELAX, feel better about yourself, or fit in?",
     section: "Substance Use Screen",
     subsection: "Follow-Up Questions for Substance Use Screen",
     type: 0,
@@ -63,7 +63,7 @@ const sectionScreening = [
   {
     name: "Q7",
     question:
-      "Q7. Do you ever use alcohol or drugs while you are by yourself, or ALONE?",
+      "7. Do you ever use alcohol or drugs while you are by yourself, or ALONE?",
     section: "Substance Use Screen",
     subsection: "Follow-Up Questions for Substance Use Screen",
     type: 0,
@@ -71,7 +71,7 @@ const sectionScreening = [
   {
     name: "Q8",
     question:
-      "Q8. Do you ever FORGET things you did while using alcohol or drugs?",
+      "8. Do you ever FORGET things you did while using alcohol or drugs?",
     section: "Substance Use Screen",
     subsection: "Follow-Up Questions for Substance Use Screen",
     type: 0,
@@ -79,7 +79,7 @@ const sectionScreening = [
   {
     name: "Q9",
     question:
-      "Q9. Do your FAMILY or FRIENDS ever tell you that you should cut down on your drinking or drug use?",
+      "9. Do your FAMILY or FRIENDS ever tell you that you should cut down on your drinking or drug use?",
     section: "Substance Use Screen",
     subsection: "Follow-Up Questions for Substance Use Screen",
     type: 0,
@@ -87,7 +87,7 @@ const sectionScreening = [
   {
     name: "Q10",
     question:
-      "Q10. Have you ever got into TROUBLE while you were using alcohol or drugs?",
+      "10. Have you ever gotten into TROUBLE while you were using alcohol or drugs?",
     section: "Substance Use Screen",
     subsection: "Follow-Up Questions for Substance Use Screen",
     type: 0,
@@ -101,7 +101,7 @@ const sectionRisks = [
   },
   {
     name: "Q11",
-    question: "Q11. In the past few weeks, have you wished you were dead?",
+    question: "11. In the past few weeks, have you wished you were dead?",
     section: "Risk of Self Harm",
     subsection: "",
     type: 0,
@@ -109,7 +109,7 @@ const sectionRisks = [
   {
     name: "Q12",
     question:
-      "Q12. In the past few weeks, have you felt that you or your family would be better off if you were dead?",
+      "12. In the past few weeks, have you felt that you or your family wouldbe better off you weredead?",
     section: "Risk of Self Harm",
     subsection: "",
     type: 0,
@@ -117,7 +117,7 @@ const sectionRisks = [
   {
     name: "Q13",
     question:
-      "Q13. In the past week, have you been having thoughts about killing yourself?",
+      "13. In the past week, have you been having thoughts about killing yourself?",
     section: "Risk of Self Harm",
     subsection: "",
     type: 0,
@@ -125,14 +125,14 @@ const sectionRisks = [
   {
     name: "Q14",
     question:
-      "Q14. In the past few weeks have you noticed a significant increase in your substance use?",
+      "14. In the past few weeks have you noticed a significant increase in your substance use?",
     section: "Risk of Self Harm",
     subsection: "",
     type: 0,
   },
   {
     name: "Q14a",
-    question: "Q14a. Did you find yourself in potentially harmful situations?",
+    question: "14a. Did you find yourself in potentially harmful situations?",
     section: "Risk of Self Harm",
     subsection: "If Yes:",
     type: 0,
@@ -140,7 +140,7 @@ const sectionRisks = [
   {
     name: "Q14b",
     question:
-      "Q14b. Did you find yourself engaging in potentially harmful behaviors?",
+      "14b. Did you find yourself engaging in potentially harmful behaviors?",
     section: "Risk of Self Harm",
     subsection: "If Yes:",
     type: 0,
@@ -148,7 +148,7 @@ const sectionRisks = [
   {
     name: "Q15",
     question:
-      "Q15. Have you ever tried to kill yourself? If yes: how, when and why?",
+      "15. Have you ever tried to kill yourself? If yes: how, when and why?",
     section: "Risk of Self Harm",
     subsection: "",
     type: 0,
@@ -156,7 +156,7 @@ const sectionRisks = [
 
   {
     name: "Q16",
-    question: "Q16. Would you say that you able to take care of yourself?",
+    question: "16. Would you say that you able to take care of yourself?",
     section: "Risk of Self Harm",
     subsection: "",
     type: 0,
@@ -171,11 +171,11 @@ const sectionTrauma = [
   {
     name: "Q17",
     question:
-      "Q17. Have you ever in your lifetime experienced anything that has been especially horrific, frightening or traumatic?",
+      "17. Have you ever in your lifetime experienced anything that has been especially horrific, frightening or traumatic?",
     type: 6,
     nameA: "Q17a",
     questionA:
-      "Q17a. In the past 30 days you had nightmares about it or thought about it when you did not want to.",
+      "17a. In the past 30 days you had nightmares about it or thought about it when you did not want to.",
     nameB: "Q17b",
     questionB:
       "Q17b. In the past 30 days you tried not to think about it or went out of your way to avoid situations that remind you of your experience.",
@@ -204,7 +204,7 @@ const sectionDepression = [
   },
   {
     name: "Q19",
-    question: "Q19. I am not an easy person with which to get along.",
+    question: "Q19. I am not an easy person to get along with.",
     section: "Depression and Anxiety",
     subsection: "",
     type: 2,
@@ -239,28 +239,28 @@ const sectionDepression = [
   },
   {
     name: "Q24",
-    question: "Q24. I have trouble sleeping.",
+    question: "Q24. I have trouble sleeping?",
     section: "During the past week, how much trouble have you had with:",
     subsection: "",
     type: 3,
   },
   {
     name: "Q25",
-    question: "Q25. I get tired easily.",
+    question: "Q25. Getting tired easily?",
     section: "During the past week, how much trouble have you had with:",
     subsection: "",
     type: 3,
   },
   {
     name: "Q26",
-    question: "Q26. I often feel depressed or sad.",
+    question: "Q26. Feeling depressed or sad?",
     section: "During the past week, how much trouble have you had with:",
     subsection: "",
     type: 3,
   },
   {
     name: "Q27",
-    question: "Q27. I often feel nervous or anxious.",
+    question: "Q27. Feeling nervous or anxious?",
     section: "During the past week, how much trouble have you had with:",
     subsection: "",
     type: 3,
@@ -268,7 +268,7 @@ const sectionDepression = [
   {
     name: "Q28",
     question:
-      "Q28. I often socialise with others (visit/talk with friends and relatives)?",
+      "Q28. Socialise with others (talk with, visit with friends and relatives)?",
     section: "During the past week, how often did you:",
     subsection: "",
     type: 3,
@@ -276,7 +276,7 @@ const sectionDepression = [
   {
     name: "Q29",
     question:
-      "Q29. I take part in social, religious and recreational activities (sports, meetings, religious meetings & parties)?",
+      "Q29. Take part in social, religious and recreational activities (sports, meetings, religious meetings & parties)?",
     section: "During the past week, how often did you:",
     subsection: "",
     type: 3,
@@ -338,7 +338,7 @@ const sectionFamily = [
   {
     name: "Q36",
     question:
-      "Q36. Growing up, did you ever feel a lack of school connectedness? (Belief held by learners that adults and peers in the school care about their learning as well as about them as individuals)",
+      "Q36. Growing up did you ever feel a lack of school connectedness? (Belief held by learners that adults and peers in the school care about their learning as well as about them as individuals)",
     section: "Family & Community Risk Factors",
     subsection: "School Risk Factors:",
     type: 4,
@@ -386,7 +386,7 @@ const sectionFamily = [
   {
     name: "Q42",
     question:
-      "Q42. Would you say that your community has norms and laws that are favourable toward drug use, firearms, and crime?",
+      "Q42. Would you say that your community have norms and laws that are favourable toward drug use, firearms, and crime?",
     section: "Family & Community Risk Factors",
     subsection: "Community Risk Factors:",
     type: 4,
@@ -402,7 +402,7 @@ const sectionProtective = [
   {
     name: "Q43",
     question:
-      "Q43. Growing up, did you ever feel that your parent/s and/or family were involved with you showing an interest in your well-being?",
+      "Q43. Growing up did you feel that your parent/s or family were involved with youshowing an interest in your well-being?",
     section: "Assessment of Protective Factors for Substance Use Disorders",
     subsection: "Family Protective Factors:",
     type: 4,
@@ -410,7 +410,7 @@ const sectionProtective = [
   {
     name: "Q44",
     question:
-      "Q44. Growing up, did you ever feel that your parent/s and family supported healthy attitudes, behaviors, and a positive living environment?",
+      "Q44. Growing up did you feel that to your parent/s and family supported healthy attitudes, behaviors, and a positive living environment?",
     section: "Assessment of Protective Factors for Substance Use Disorders",
     subsection: "Family Protective Factors:",
     type: 4,
@@ -418,7 +418,7 @@ const sectionProtective = [
   {
     name: "Q45",
     question:
-      "Q45. Growing up, did you ever feel that your parent/s showed disapproval for substance use?",
+      "Q45. Growing up did you feel that your parent/s showed disapproval for substance use?",
     section: "Assessment of Protective Factors for Substance Use Disorders",
     subsection: "Family Protective Factors:",
     type: 4,
@@ -426,7 +426,7 @@ const sectionProtective = [
   {
     name: "Q46",
     question:
-      "Q46. Growing up, did you ever feel that your parent/s helped you to build trusting relationships with others to talk about sensitive issues such as sexual and mental health, substance use, and safety from bullying?",
+      "Q46. Growing up did you feel that your parent/s helpedyou tobuild trusting relationships with othersto talk about sensitive issues such as sexual and mental health, substance use, and safety from bullying?",
     section: "Assessment of Protective Factors for Substance Use Disorders",
     subsection: "Family Protective Factors:",
     type: 4,
@@ -441,7 +441,7 @@ const sectionProtective = [
   },
   {
     name: "Q48",
-    question: "Q48. Do you mostly associate with positive peers and friends?",
+    question: "Q48. Doyou mostly associate withpositive peersand friends?",
     section: "Assessment of Protective Factors for Substance Use Disorders",
     subsection: "Family Protective Factors:",
     type: 4,
@@ -449,7 +449,7 @@ const sectionProtective = [
   {
     name: "Q49",
     question:
-      "Q49. Growing up did you feel a strong sense of school connectedness?(Belief held by students that adults and peers in the school care about their learning as well as about them as individuals)",
+      "Q49. Growing up did you feel a strong senseof school connectedness?(Belief held by students that adults and peers in the school care about their learning as well as about them as individuals)",
     section: "Assessment of Protective Factors for Substance Use Disorders",
     subsection: "School Protective Factors:",
     type: 4,
@@ -663,6 +663,19 @@ const sectionChangeReadiness = [
     type: 5,
   },
 ];
+
+function GetQuestion({ questionNumber }) {
+  const allQuestions = sectionScreening.concat(
+    sectionRisks,
+    sectionTrauma,
+    sectionProtective,
+    sectionDepression,
+    sectionChangeReadiness,
+    sectionFamily
+  );
+  let question = allQuestions.find({ questionNumber })["question"];
+  return question;
+}
 
 export {
   sectionScreening,

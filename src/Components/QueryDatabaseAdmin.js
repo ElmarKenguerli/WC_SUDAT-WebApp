@@ -10,6 +10,7 @@ const queryDatabaseAdmin = (email) => {
     onSnapshot(q, (querySnapshot) => {
         setItems(querySnapshot.docs.map(doc => ({
             id : doc.id,
+            ClientFileNumber: doc.data().ClientFileNumber,
             ClientName: doc.data().ClientName,
             DateOfInterview: doc.data().DateOfInterview,
             ClientID: doc.data().ClientID,

@@ -40,6 +40,7 @@ function CompoundQuestion(props) {
   const [Qname, setQname] = useState("");
   const [questionNumber, setQuestionID] = useState(0);
   const [question, setQuestion] = useState(props.question);
+  const [showSlider, setShowSlider] = useState(false);
 
   const selectionBlurHandler = (event) => {
     props.updateForm(event);
@@ -49,7 +50,6 @@ function CompoundQuestion(props) {
     <fieldset>
       <FormControl>
         <p>{props.question}</p>
-        {/* <RadioGroup row value={selected} onBlur={selectionBlurHandler}> */}
         <RadioGroup row value={selected}>
           <FormControlLabel
             value="Yes"
@@ -59,6 +59,7 @@ function CompoundQuestion(props) {
                   selectionBlurHandler(event);
                   setSelected(event.target.value);
                   setQname(props.name);
+                  setShowSlider(true);
                 }}
                 checked={props.formData[props.name] === "Yes"}
               />
@@ -74,6 +75,7 @@ function CompoundQuestion(props) {
                   selectionBlurHandler(event);
                   setSelected(event.target.value);
                   setQname(props.name);
+                  setShowSlider(false);
                 }}
                 checked={props.formData[props.name] === "No"}
               />
@@ -82,21 +84,26 @@ function CompoundQuestion(props) {
             name={props.name}
           />
         </RadioGroup>
-        <div>
-          <Slider
-            defaultValue={0}
-            style={{ width: 700, marginLeft: 20 }}
-            step={1}
-            valueLabelDisplay="auto"
-            marks={marks}
-            value={props.formData[`${props.name}a`]}
-            min={0}
-            max={5}
-            color="secondary"
-            onChange={selectionBlurHandler}
-            name={`${props.name}a`}
-          />
-        </div>
+        {showSlider && (
+          <div>
+            <fieldset>
+              <small>This influenced your use of substances.</small>
+              <Slider
+                defaultValue={0}
+                style={{ width: 700, marginLeft: 20 }}
+                step={1}
+                valueLabelDisplay="auto"
+                marks={marks}
+                value={props.formData[`${props.name}a`]}
+                min={0}
+                max={5}
+                color="secondary"
+                onChange={selectionBlurHandler}
+                name={`${props.name}a`}
+              />
+            </fieldset>
+          </div>
+        )}
         <CommentBox name={`comment${Qname}`} updateForm={props.updateForm} />
       </FormControl>
     </fieldset>
