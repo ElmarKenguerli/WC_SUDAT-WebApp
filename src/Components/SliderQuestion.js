@@ -102,7 +102,7 @@ function SliderQuestion(props) {
             value={props.formData[props.name]}
             marks={marks2}
             min={0}
-            max={4}
+            max={5}
             color="secondary"
             onChange={selectionChangeHandler}
           />

@@ -9,8 +9,7 @@ import {db} from '../database/firebase'
 import PostAddTwoToneIcon from '@mui/icons-material/PostAddTwoTone';
 import Button from '@material-ui/core/Button';
 import {Box} from '@mui/material';
-import DataGrid from "../Components/DataGrid"
-import StyledTable from "../Components/StyledTable"
+
 import DataTable from "../Components/DataTable"
 
 export const AdminPage = () => {

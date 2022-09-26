@@ -92,7 +92,7 @@ function DataTable() {
         rowsPerPageOptions={[5]}
         sx={{
           boxShadow: 2, border: 2, borderColor: '#57cae1', borderRadius: 2, borderShadow: 3, '& .col--header': {
-            backgroundColor: '#6ec6ff',
+            backgroundColor: '#57cae1',
           },
         }}
         components={{ Toolbar: GridToolbar }}

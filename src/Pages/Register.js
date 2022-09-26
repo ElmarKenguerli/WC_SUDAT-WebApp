@@ -142,7 +142,7 @@ function Register() {
                                     
                                     <div>
                                         
-                                        <img src="logo.jpg"  id="img" style={{ width: "90%", height: "auto", marginTop: "15px", border: "1px solid", borderRadius: "5px"}}/> 
+                                        <img src="logo.jpg"  id="img" style={{ width: "90%", height: "auto", marginTop: "15px", border: "1px solid", borderRadius: "50px"}}/> 
                                         
                                     </div>
                                         <div className = "loginBox">

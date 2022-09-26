@@ -17,12 +17,13 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import PostAddTwoToneIcon from '@mui/icons-material/PostAddTwoTone';
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import ExitToAppTwoToneIcon from '@mui/icons-material/ExitToAppTwoTone';
-import {Link} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { useAuthValue } from "../database/AuthContext"
 import '../App.css';
-
+import {  Button } from '@mui/material';
 let nameOfUser = "";
 
 export const setUsernameCaption = (uname) => {
@@ -88,6 +89,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft() {
+  let navigate = useNavigate();
   const {currentUser} = useAuthValue()
   
   const classes = useStyles();
@@ -106,7 +108,7 @@ export default function PersistentDrawerLeft() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar style={{ background: 'darkblue' }} position="fixed" open={open} >
+      <AppBar style={{ background: '#2dbddabe', color: "black" }} position="fixed" open={open} >
         <Toolbar >
           <IconButton
             color="inherit"
@@ -126,8 +128,21 @@ export default function PersistentDrawerLeft() {
             <h1>&nbsp;&nbsp;&nbsp;WC-SUDAT </h1>
               
           </div>
-          <Typography variant="h6" style={{position: "absolute", right: "15px", color: "black", padding: "7px"}} noWrap component="div">
-          <AccountCircleOutlinedIcon style={{ fontSize: "40px" }}/> {currentUser.email}
+          <Typography variant="h6" style={{ position: "absolute", right: "15px", padding: "7px", color : "black" , textAlign: "right"}} noWrap component="div">
+            <AccountCircleOutlinedIcon style={{ fontSize: "40px", color:"black" }}/> {currentUser.email}
+            <br></br>
+            <Button
+                      
+              variant="contained"
+              size = "small"
+              sx={{color : "White", border: "2px solid #82d4e4be"}}
+              startIcon={<LogoutRoundedIcon style={{ fontSize: "20px" }}/>}  
+              onClick={() => {
+                navigate("/");
+              }}
+              >
+              Log Out
+          </Button>
           </Typography>
           
         </Toolbar>

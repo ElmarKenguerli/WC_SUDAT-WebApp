@@ -46,7 +46,7 @@ const Login = () => {
                         <Box 
                            
                             
-                            sx={{    bgcolor: 'darkblue', color: "white", border:"1px solid #82d4e4be", height:{height}}}
+                            sx={{    bgcolor: '#2dbddabe', color: "black", border:"1px solid #82d4e4be", height:{height}}}
                         >
                             <label> 
                                 
@@ -54,7 +54,7 @@ const Login = () => {
                                     
                                     <div>
                                         {/* Panel Logo */}
-                                        <img src="logo.jpg"  id="img" style={{ width: "90%", height: "auto", marginTop: "15px", border: "1px solid", borderRadius: "5px"}}/> 
+                                        <img src="logo.jpg"  id="img" style={{ width: "90%", height: "auto", marginTop: "15px", border: "1px solid", borderRadius: "50px"}}/> 
                                         
                                     </div>
                                     
