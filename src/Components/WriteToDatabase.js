@@ -253,7 +253,7 @@ const writeToDatabase = async (e, formData) => {
             ClientID: formData["ClientID"],
             PlaceOfInterview: formData["PlaceOfInterview"],
             Interviewer: formData["email"],
-            DateOfInterview: serverTimestamp(),
+            DateOfInterview: formData["DateOfInterview"],
 
             Gender: formData["Gender"],
             DateOfBirth: formData["DateOfBirth"],
