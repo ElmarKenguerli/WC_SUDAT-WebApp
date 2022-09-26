@@ -15,7 +15,9 @@ const getFormDefaults = (clientID) => {
             "commentQ52", "commentQ53", "commentQ54", "commentQ55", "commentQ56", "commentQ57", "commentQ58", "commentQ59", "commentQ60",
             "commentQ61", "commentQ62", "commentQ63", "commentQ64", "commentQ65", "commentQ66", "commentQ67", "commentQ68", "commentQ69",
             "commentQ70", "commentQ71", "commentQ72", "commentQ73", "commentDateOfBirth", "commentCountry", "commentGender",
-            "commentResidence", "commentHousingSituation", "commentEducation", "commentRecentConflict", "commentLanguage", "commentDemographics"
+            "commentResidence", "commentHousingSituation", "commentEducation", "commentRecentConflict", "commentLanguage", "commentDemographics",
+            "ClientName", "ClientID", "PlaceOfInterview", "email", "Gender", "DateOfBirth", "Country", "Residence", "HousingSituation",
+            "Education", "RecentConflict", "Langauge"
         ];
         let fields = [
             "Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12", "Q13", "Q14", "Q15", "Q16", "Q17", "Q17a", "Q17b", "Q17c",
@@ -48,6 +50,7 @@ const getFormDefaults = (clientID) => {
                 formData[fields[i]] = 0;
 
         formData["DateOfBirth"] = "";
+        formData["DateOfInterview"] = "";
     }
     else {
         const q = query(collection(db, 'Responses'), where('ClientID', "==", clientID))
@@ -229,6 +232,7 @@ const getFormDefaults = (clientID) => {
                 Q71: doc.data().Q71,
                 Q72: doc.data().Q72,
                 Q73: doc.data().Q73,
+                
             })))
 
         })
@@ -236,6 +240,8 @@ const getFormDefaults = (clientID) => {
 
     return formData;
 }
+
+
 
 const writeToDatabase = async (e, formData) => {
     e.preventDefault()

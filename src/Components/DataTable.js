@@ -40,7 +40,7 @@ function DataTable() {
       <strong>
         <Button
           variant="contained"
-          sx={{ bgcolor: "#2196f3", color: "White", border: "2px solid #82d4e4be" }}
+          sx={{ bgColor: "#57cae1", color: "White", border: "2px solid #82d4e4be" }}
           size="small"
 
           onClick={() => {
@@ -59,7 +59,7 @@ function DataTable() {
       <strong>
         <Button
           variant="contained"
-          sx={{ bgcolor: "#2196f3", color: "White", border: "2px solid #82d4e4be" }}
+          sx={{ bgcolor: "#57cae1", color: "White", border: "2px solid #82d4e4be" }}
           size="small"
 
           onClick={(e) => {
@@ -91,7 +91,7 @@ function DataTable() {
         pageSize={5}
         rowsPerPageOptions={[5]}
         sx={{
-          boxShadow: 2, border: 2, borderColor: 'primary.light', borderRadius: 2, borderShadow: 3, '& .col--header': {
+          boxShadow: 2, border: 2, borderColor: '#57cae1', borderRadius: 2, borderShadow: 3, '& .col--header': {
             backgroundColor: '#6ec6ff',
           },
         }}

@@ -5,7 +5,7 @@
 
 .wrapper{
   padding: 35px;
-  background-color: #bdd5dabe;
+  background-color: #0973ec36;
 }
 
 .wrapper fieldset {
@@ -61,6 +61,7 @@
 }
 
 .loginBox{
+  
   padding: 20px;
   font-size: 40px;
   

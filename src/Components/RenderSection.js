@@ -23,7 +23,6 @@ const RenderSection = (props) => {
                 question={q.question}
                 formData={props.formData}
                 updateForm={props.updateForm}
-        
               />
             );
           case q.type == 1:
@@ -35,7 +34,6 @@ const RenderSection = (props) => {
                 formData={props.formData}
                 updateForm={props.updateForm}
                 type={q.type}
-                defaultValues={props.defaultValues}
               />
             );
     
@@ -107,8 +105,6 @@ const RenderSection = (props) => {
       });
       return(<><fieldset>{comp}</fieldset></>)
     }
-
-
 };
 
 export default RenderSection;

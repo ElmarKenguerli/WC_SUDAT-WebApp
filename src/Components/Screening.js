@@ -10,11 +10,13 @@ import SixSliderQuestion from "./SixSliderQuestion";
 import SliderQuestion from "./SliderQuestion";
 import BooleanQuestion from "./BooleanQuestion";
 import FollowUpQuestions from "./FollowUpQuestions";
+import CommentBox from "./CommentBox";
 import RenderSection from "./RenderSection";
 import { writeToDatabase, getFormDefaults } from "./WriteToDatabase";
 import LandingPage from "../Pages/LandingPage";
-import CommentBox from './CommentBox';
+
 import { sectionScreening, sectionRisks, sectionTrauma, sectionProtective, sectionFamily, sectionDepression, sectionChangeReadiness } from './QuestionData'
+import ScreeningMessage from "./ScreeningMessage";
 
 //datepicker
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
@@ -32,9 +34,7 @@ import {
   Select,
   FormHelperText,
   MenuItem,
-  Radio,
-  RadioGroup,
-  FormControlLabel,
+  Button
 } from "@material-ui/core";
 import Slider from "@mui/material/Slider";
 
@@ -83,7 +83,7 @@ export function Collapsible() {
           <textarea
             className="commentBox"
             name="Extra-Comment"
-            onBlur={setFormData}
+            onChange={setFormData}
           />
         </div>
       </div>
@@ -151,16 +151,15 @@ const formReducer = (state, event) => {
 function Form(props) {
   const { currentUser } = useAuthValue();
   const [formData, setFormData] = useReducer(formReducer, getFormDefaults(""));
-  const [isOpen, setIsOpen] = useState(false);
-
+  const[isOpen, setIsOpen] = useState(false)
   const dv = formData;
+  formData["DateOfInterview"]=getCurrentDate()
 
   const getForm = async () => {
     const tempSnap = await getDoc(doc(db, 'Responses', props.docID))
 
     if (tempSnap.exists && !isOpen) {
-      setIsOpen(true);
-
+      setIsOpen(true)
       let json = tempSnap.data()
 
       Object.keys(json).forEach((name) => {
@@ -172,13 +171,13 @@ function Form(props) {
       });
     }
     else { }
-  }
-  if (props.docID === "") {
-    //pass
-  }
-  else {
-    getForm()
-  }
+    }
+    if (props.docID === "") {
+      //pass
+    }
+    else {
+      getForm()
+    }
 
   const [submitting, setSubmitting] = useState(false);
   const [hasAcceptedTsAndCs, setHasAcceptedTsAndCs] = useState(false);
@@ -191,53 +190,86 @@ function Form(props) {
 
     let count = 0;
 
-    for (let i = 6; i < 11; ++i) {
+    for (let i = 1; i < 11; ++i) {
       if (formData["Q" + String(i)] === "Yes") {
         count++;
       }
     }
 
+    if(count>=2){
+      props.showAllSteps();
+    }
+   
     return (count >= 2);
   }
 
-  function getSteps() {
-    let count = 0;
-    for (let i = 1; i < 70; ++i) {
-      if (formData["Q" + String(i)] === undefined) {
-        break;
-      }
-      else if (formData["Q" + String(i)] === "") {
-        count = i;
-        break;
-      }
-      else {
-        count = i;
+  const isScreeningComplete =()=>{
+    let bool = true;
+    for (let i = 1; i < 11; ++i) {
+      if (formData["Q" + String(i)] === "" ||formData["Q" + String(i)] === undefined) {
+        bool = false
       }
     }
-    let steps = 0;
+    return bool;
+  }
+  
+  const fields = ["ClientName", "ClientID", "PlaceOfInterview", "email", "Gender", "DateOfBirth", "Country", "Residence", "HousingSituation",
+  "Education", "RecentConflict", "Langauge"];
 
-    if (count > 0 && count <= 10) {
+  function getSteps(){
+    let countN = 0;
+    let countQ = 0;
+    if(countQ==0){
+      for(let i = 1; i<13;i++){
+        if(formData[fields[i]] === "" || formData[[fields[i]] === undefined] ){
+          countN = i-1
+          break;
+        }
+
+        
+
+      }
+      console.log("CountN is: " + countN);
+    }
+    for (let i=1; i<70; ++i){
+      // console.log("In get steps");
+      if(formData["Q" + String(i)] === undefined ||(formData["Q" + String(i)] === "")){
+        countQ = i -1;
+        break;
+      }
+    }
+
+    if(countQ<=10 && countQ == 0){
       props.goToStep(3);
     }
 
-    else if (count > 10 && count <= 16) {
+    else if(countQ>10 && countQ<=16){
       props.goToStep(4)
     }
-    else if (count > 16 && count <= 29) {
+    else if(countQ>16 && countQ<=29){
       props.goToStep(5)
     }
-    else if (count > 29 && count <= 42) {
+    else if(countQ>29 && countQ<=42){
       props.goToStep(6)
     }
-    else if (count > 42 && count <= 55) {
+    else if(countQ>42 && countQ<=55){
       props.goToStep(7)
     }
 
-    else if (count > 55 && count <= 75) {
+    else if(countQ>55 && countQ<=75){
       props.goToStep(8)
     }
 
-    return steps;
+
+    // else if(16<=count <25){
+    //   props.goToStep(3)
+    // }
+
+    // else if(17<=count <28){
+    //   props.goToStep(4)
+    // }
+  
+    // return steps;
   }
 
   const handleDatabase = (event) => {
@@ -320,10 +352,11 @@ function Form(props) {
       value: country,
     });
   }
-
+  
+  if((!isScreeningComplete()) || showAssessment()){
   return (
     <div className="wrapper">
-      <h1>SCREENING</h1>
+      <h1 style = {{color: "black"}}>Substance Use Disorder Assessment</h1>
       <Box
         sx={{
           p: 2,
@@ -352,13 +385,16 @@ function Form(props) {
           <input
             type="checkbox"
             value={hasAcceptedTsAndCs}
-            onChange={e => { props.goToStep(0); handleChange(e) }}
+            onChange={e => {if(hasAcceptedTsAndCs===true){
+              props.goToStep(1);
+            }; handleChange(e) }}
           />
           I have read the above to the client being screened, and have obtained
           his/her consent to proceed with the screening process.
         </label>
       </Box>
       <br />
+      
       <div className=".input-container"></div>
       <div className=".input-container">
         <form onSubmit={handleSubmit}>
@@ -378,7 +414,7 @@ function Form(props) {
                   size="big"
                   name="ClientName"
                   variant="filled"
-                  onBlur={(e) => {
+                  onChange={(e) => {
                     handleData(e);
                   }}
                 />
@@ -396,7 +432,7 @@ function Form(props) {
                   size="big"
                   name="ClientID"
                   variant="filled"
-                  onBlur={(e) => {
+                  onChange={(e) => {
                     handleData(e);
                   }}
                 />
@@ -414,14 +450,14 @@ function Form(props) {
                   size="small"
                   name="PlaceOfInterview"
                   variant="filled"
-                  onBlur={(e) => {
+                  onChange={(e) => {
                     handleData(e);
                   }}
                 />
               </label>
             </fieldset>
             <fieldset>
-              <h3>Interviewer:</h3> {getEmail()}
+              <h3>Interviewer:</h3> {"getEmail()"}
               <label></label>
             </fieldset>
             <fieldset>
@@ -474,8 +510,8 @@ function Form(props) {
                   renderInput={(params) => <TextField color="secondary" variant="filled" sx={{ width: 300 }} {...params} />}
                 />
               </LocalizationProvider>
-              <CommentBox
-                name="commentDateOfBirth"
+              <CommentBox 
+                name="DateOfBirth"
                 updateForm={handleData}
               />
             </fieldset>
@@ -530,7 +566,7 @@ function Form(props) {
                   name="Langauge"
                   variant="filled"
                   value={formData["Langauge"]}
-                  onBlur={(e) => {
+                  onChange={(e) => {
                     handleData(e);
                   }}
                 />
@@ -645,6 +681,7 @@ function Form(props) {
               </label>
             </fieldset>
           </fieldset>
+
           <RenderSection
             show={true}
             sectionQuestions={sectionScreening}
@@ -688,9 +725,14 @@ function Form(props) {
             formData={formData}
             updateForm={(e) => handleData(e)}
           />
-          <button className="btn-square" type="submit" onClick={(e) => handleDatabase(e)}>
-            Submit
-          </button>
+          <Button 
+            variant="contained"
+            onClick={handleDatabase}
+            sx={{bgColor :"green" , color : "white", border: "2px solid #82d4e4be"}} 
+            type='submit'>Submit Assessment Form
+          </Button>
+
+         
         </form>
         <div>
           <br></br>
@@ -706,6 +748,12 @@ function Form(props) {
       </div>
     </div>
   );
+   }
+   else{
+    return(<ScreeningMessage
+          formData = {formData}
+      />)
+   }
 }
 
 export default Form;

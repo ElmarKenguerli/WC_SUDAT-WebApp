@@ -3,7 +3,6 @@ import '../App.css';
 import AddUser from "../database/AddUser"
 // design
 import {Box} from '@mui/material';
-import LoginSharpIcon from '@mui/icons-material/LoginSharp';
 import Grid from '@mui/material/Grid';
 
 function getWindowDimensions() {
@@ -54,16 +53,19 @@ const Login = () => {
                                 <label className='loginHeader'>
                                     
                                     <div>
-                                        
+                                        {/* Panel Logo */}
                                         <img src="logo.jpg"  id="img" style={{ width: "90%", height: "auto", marginTop: "15px", border: "1px solid", borderRadius: "5px"}}/> 
                                         
                                     </div>
-                                        <div className = "loginBox">
-                                            {/* Spacing */}
-                                            <br></br><br></br><br></br><br></br><br></br><br></br><br></br>    
-                                            Assess your patient's Risk of having a substance use disorder <br></br><br></br><br></br>
-                                            Sign in to Get Started
-                                        </div>
+                                    
+                                    <div className = "loginBox">
+                                        {/* Panel Text */}
+                                        <label>
+                                        <br></br>
+                                        Assess your patient's risk of having a substance use disorder <br></br><br></br><br></br>
+                                        Sign in to Get Started
+                                        </label>
+                                    </div>
                                         
                                    
                                 </label>    

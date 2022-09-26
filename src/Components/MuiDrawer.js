@@ -13,7 +13,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import PostAddTwoToneIcon from '@mui/icons-material/PostAddTwoTone';
@@ -126,8 +126,8 @@ export default function PersistentDrawerLeft() {
             <h1>&nbsp;&nbsp;&nbsp;WC-SUDAT </h1>
               
           </div>
-          <Typography variant="h6" style={{position: "absolute", right: "15px", border : "2px groove black", padding: "7px"}} noWrap component="div">
-          Logged in: {currentUser.email}  
+          <Typography variant="h6" style={{position: "absolute", right: "15px", color: "black", padding: "7px"}} noWrap component="div">
+          <AccountCircleOutlinedIcon style={{ fontSize: "40px" }}/> {currentUser.email}
           </Typography>
           
         </Toolbar>
