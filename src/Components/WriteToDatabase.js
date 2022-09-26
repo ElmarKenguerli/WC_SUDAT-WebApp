@@ -35,17 +35,17 @@ const getFormDefaults = (clientID) => {
             else if (i < 21)
                 formData[fields[i]] = "";
             else if (i < 26)
-                formData[fields[i]] = "Does Not Describe Me";
+                formData[fields[i]] = "";
             else if (i < 33)
-                formData[fields[i]] = "None";
+                formData[fields[i]] = "";
             else if (i < 58)
                 formData[fields[i]] = "";
             else if (i == 58)
-                formData[fields[i]] = "Does Not Describe Me";
+                formData[fields[i]] = "";
             else if (i < 77)
                 formData[fields[i]] = 0;
             else
-                formData[fields[i]] = "";
+                formData[fields[i]] = 0;
 
         formData["DateOfBirth"] = "";
     }
@@ -247,7 +247,7 @@ const writeToDatabase = async (e, formData) => {
             ClientID: formData["ClientID"],
             PlaceOfInterview: formData["PlaceOfInterview"],
             Interviewer: formData["email"],
-            DateOfInterview: serverTimestamp(),
+            DateOfInterview: formData["DateOfInterview"],
 
             Gender: formData["Gender"],
             DateOfBirth: formData["DateOfBirth"],
