@@ -8,6 +8,9 @@ import {
 import Slider from "@mui/material/Slider";
 import CommentBox from "./CommentBox";
 
+/**
+ * CompoundQuestion contains a BooleanQuestion and a SliderQuestion
+ */
 function CompoundQuestion(props) {
   const [marks, setMarks] = useState([
     {

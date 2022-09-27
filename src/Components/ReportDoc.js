@@ -10,7 +10,7 @@ import {
   Font
 } from "@react-pdf/renderer";
 import { useAuthValue } from "../database/AuthContext";
-import { GetQuestion} from "./QuestionData"
+import {GetQuestion, allQuestions} from "./QuestionData"
 
 // Create font
 
@@ -66,25 +66,47 @@ const styles = StyleSheet.create({
   
 });
 
-// const getSignificantInformation = (inclusiveMin,inclusiveMax,threshold) =>{
-//   let significantValues = [];
-//       for (let i = inclusiveMin; i <= inclusiveMax; i++) {
-//       if (formData[allQuestions[i].name] === "Yes" || formData[allQuestions[i].name] >= threshold) {
-//         significantValues.push({question:allQuestions[i].question,
-//           answer:formData[allQuestions[i].name],
-//           name:allQuestions[i].name
-//         })
-//       }
-//     }
-//     console.log("The significant number Values are: " + significantValues.length)
-//     return significantValues;
-// }
+const getNumberYes = (inclusiveMin,inclusiveMax,affirmative,formData) =>{
+  let numberYes = 0;
+       for (let i = inclusiveMin; i <= inclusiveMax; i++) {
+       if (formData[allQuestions[i].name] === "Yes") {
+        // significantValues.push({question:allQuestions[i].question,
+        //    answer:formData[allQuestions[i].name],
+        //   name:allQuestions[i].name
+        // })
+        numberYes++;
 
+      }
+      console.log(numberYes);
+      
+    }
+    return numberYes;
+}
+const getSliderTotal = (inclusiveMin,inclusiveMax,formData) =>{
+  let sliderTotal = 0;
+       for (let i = inclusiveMin; i <= inclusiveMax; i++) {
+       if (formData[allQuestions[i].name] >= 1) {
+        // significantValues.push({question:allQuestions[i].question,
+        //    answer:formData[allQuestions[i].name],
+        //   name:allQuestions[i].name
+        // })
+        sliderTotal+= formData[allQuestions[i].name];
+
+      }
+      console.log(sliderTotal);
+    }
+    return sliderTotal;
+}
 // Create Document Component
 const ReportDoc = (props) => {
   const { currentUser } = useAuthValue();
   let formData = props.formData
   console.log({ currentUser })
+  let section1Yes = getNumberYes(1,10,"Yes",formData)
+  let section1Slider = getSliderTotal(1,10,formData)
+
+  console.log("The total Yes are: " + section1Yes);
+  console.log("The total Slider Values are: " + section1Slider);
   
   return (
     <PDFViewer style={styles.viewer}>
@@ -140,7 +162,7 @@ const ReportDoc = (props) => {
           <View style={styles.rows}>
             
               <Text style={styles.colItem}>Individual Risk Factors  </Text> 
-              <Text style={styles.colItem}>0</Text>        
+              <Text style={styles.colItem}>Section 1 Yes: {section1Yes} Section 2 Slider {section1Slider}</Text>        
           </View>
 
           <View style={styles.rows}>

@@ -86,13 +86,6 @@ function DataTable() {
       flex: 1,
     },
     {
-      field: "ClientName",
-      headerClassName: "col--header",
-      headerName: "Client Name",
-      minWidth: 150,
-      flex: 1,
-    },
-    {
       field: "ClientID",
       headerClassName: "col--header",
       headerName: "Client ID",

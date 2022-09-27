@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 import CommentBox from './CommentBox';
 
+/**
+ * Slider question represents with a question with a scale ranking answer
+ */
 function SliderQuestion(props) {
   const [marks, setMarks] = useState([
     {

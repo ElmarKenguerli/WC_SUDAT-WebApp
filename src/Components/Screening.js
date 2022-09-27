@@ -9,8 +9,10 @@ import Countries from "../Components/Countries";
 
 import CommentBox from "./CommentBox";
 import RenderSection from "./RenderSection";
-import { writeToDatabase, getFormDefaults, setFormDefaults } from "./WriteToDatabase";
-import LandingPage from "../Pages/LandingPage";
+import {
+  writeToDatabase,
+  setFormDefaults,
+} from "./WriteToDatabase";
 
 import {
   sectionScreening,
@@ -32,10 +34,6 @@ import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 //import mui components
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import AddCommentTwoToneIcon from "@mui/icons-material/AddCommentTwoTone";
-import CloseFullscreenTwoToneIcon from "@mui/icons-material/CloseFullscreenTwoTone";
-import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
-import DateMomentUtils from "@date-io/moment";
 import { Select, FormHelperText, MenuItem, Button } from "@material-ui/core";
 import Slider from "@mui/material/Slider";
 
@@ -45,6 +43,9 @@ import { db } from "../database/firebase";
 import { getDoc, doc } from "firebase/firestore";
 import { useAuthValue } from "../database/AuthContext";
 
+/**
+ * This function returns a string representing the current date in the f
+ */
 function getCurrentDate(separator = "-") {
   let newDate = new Date();
   let date = newDate.getDate();
@@ -55,83 +56,6 @@ function getCurrentDate(separator = "-") {
     month < 10 ? `0${month}` : `${month}`
   }${separator}${year}`;
 }
-let val = 0;
-
-export function Collapsible() {
-  const [formData, setFormData] = useReducer(formReducer, {});
-  const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
-  return (
-    <div className="collapsible">
-      <div className="header" {...getToggleProps()}>
-        {isExpanded ? (
-          <CloseFullscreenTwoToneIcon />
-        ) : (
-          <AddCommentTwoToneIcon />
-        )}
-      </div>
-      <div {...getCollapseProps()}>
-        <div className="content">
-          <p>Type comment below</p>
-          <textarea
-            className="commentBox"
-            name="Extra-Comment"
-            onChange={setFormData}
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-const neverToDaily = [
-  {
-    value: 0,
-    label: "Never",
-  },
-  {
-    value: 1,
-    label: "Once or Twice",
-  },
-  {
-    value: 2,
-    label: "Monthly",
-  },
-  {
-    value: 3,
-    label: "Weekly",
-  },
-  {
-    value: 4,
-    label: "Daily/Almost Daily",
-  },
-];
-
-const [DisagreetoAgree] = [
-  {
-    value: 0,
-    label: "Strongly Disagree",
-  },
-  {
-    value: 1,
-    label: "Disagree",
-  },
-  {
-    value: 2,
-    label: "Somewhat Disagree",
-  },
-  {
-    value: 3,
-    label: "Slightly Agree",
-  },
-  {
-    value: 4,
-    label: "Agree",
-  },
-  {
-    value: 5,
-    label: "Strongly Agree",
-  },
-];
 
 const formReducer = (state, event) => {
   return {
@@ -140,12 +64,16 @@ const formReducer = (state, event) => {
   };
 };
 
+/**
+ * This function renders the assessment screening form
+ */
 function Form(props) {
   const { currentUser } = useAuthValue();
   const [formData, setFormData] = useReducer(formReducer, setFormDefaults());
   const [isOpen, setIsOpen] = useState(false);
   const dv = formData;
   formData["DateOfInterview"] = getCurrentDate();
+  const [showAnyway, setShowAnyway] = useState(false);
 
   const getForm = async () => {
     const tempSnap = await getDoc(doc(db, "Responses", props.docID));
@@ -176,6 +104,27 @@ function Form(props) {
 
   let navigate = useNavigate();
 
+
+  
+  const showContinue = () => {
+    let count = 0;
+
+    for (let i = 1; i < 11; ++i) {
+      if (formData["Q" + String(i)] === "No") {
+        count++;
+      }
+    }
+
+    if (count >= 4) {
+      console.log(count)
+      return true
+    }
+    else{
+      return false
+    }
+    
+  };
+
   const showAssessment = () => {
     let count = 0;
 
@@ -188,6 +137,14 @@ function Form(props) {
     if (count >= 2) {
       props.showAllSteps();
     }
+    if (showAnyway === false) {
+      return Boolean(count >= 2);
+    }
+
+    if (showAnyway === true) {
+      props.showAllSteps();
+      return true;
+    }
 
     return count >= 2;
   };
@@ -198,7 +155,8 @@ function Form(props) {
       if (
         formData["Q" + String(i)] === "" ||
         formData["Q" + String(i)] === undefined
-      ) {
+      ) 
+      {
         bool = false;
       }
     }
@@ -230,10 +188,8 @@ function Form(props) {
           break;
         }
       }
-      console.log("CountN is: " + countN);
     }
     for (let i = 1; i < 70; ++i) {
-      // console.log("In get steps");
       if (
         formData["Q" + String(i)] === undefined ||
         formData["Q" + String(i)] === ""
@@ -256,18 +212,11 @@ function Form(props) {
     } else if (countQ > 55 && countQ <= 75) {
       props.goToStep(8);
     }
-
-    // else if(16<=count <25){
-    //   props.goToStep(3)
-    // }
-
-    // else if(17<=count <28){
-    //   props.goToStep(4)
-    // }
-
-    // return steps;
   }
 
+  /**
+   * This function writes the contents of formData to the database
+   */
   const handleDatabase = (event) => {
     let fd = formData;
     formData["email"] = getEmail();
@@ -276,11 +225,16 @@ function Form(props) {
     navigate("../ReportPage", { state: { formData: formData } });
   };
 
+  /**
+   * This function returns the email of the logged-in user as a string
+   */
   const getEmail = () => {
     return currentUser.email;
   };
 
-  // Method called when un/checking check box
+  /**
+   * Method called when un/checking check box
+   */
   const handleChange = (event) => {
     setHasAcceptedTsAndCs((current) => !current);
   };
@@ -325,6 +279,9 @@ function Form(props) {
     navigate("/ReportPage");
   };
 
+  /**
+   * This function updates formData with the parsed data
+   */
   const handleData = (event) => {
     setFormData({
       name: event.target.name,
@@ -355,428 +312,419 @@ function Form(props) {
     });
   }
 
-  if (!isScreeningComplete() || showAssessment()) {
-    return (
-      <div className="wrapper">
-        <h1 style={{ color: "black" }}>Substance Use Disorder Assessment</h1>
-        <Box
-          sx={{
-            p: 2,
-            border: "1px black solid",
-            margin: 5,
-            backgroundColor: "#eff4f7fd",
-            borderRadius: "20px",
-          }}
-        >
-          <h3 style={{ textAlign: "justify" }}>
-            Hi, nice to meet you. The following questions are about your
-            experience with using alcohol, tobacco products and other substances
-            across your lifetime and in the past three months. These substances
-            can be smoked, swallowed, snorted, inhaled or injected. Some of the
-            substances listed may be prescribed by a doctor (like amphetamines,
-            sedatives, pain medications). We also want to know more about your
-            mental and emotional health. Lastly, we will be asking you questions
-            about your family history and personal life experiences as it
-            pertains to SUDs. This information will help us to assist you by
-            providing any services and/or treatment that you might need. While
-            we are interested in knowing more about you, please be assured that
-            information provided will be treated as strictly confidential.
-          </h3>
-          <br />
-          <label>
-            <input
-              type="checkbox"
-              value={hasAcceptedTsAndCs}
-              onChange={(e) => {
-                if (hasAcceptedTsAndCs === true) {
-                  props.goToStep(1);
-                }
-                handleChange(e);
-              }}
-            />
-            I have read the above to the client being screened, and have
-            obtained his/her consent to proceed with the screening process.
-          </label>
-        </Box>
+  return (
+    <div className="wrapper">
+      <h1 style={{ color: "black" }}>Substance Use Disorder Assessment</h1>
+      <Box
+        sx={{
+          p: 2,
+          border: "1px black solid",
+          margin: 5,
+          backgroundColor: "#eff4f7fd",
+          borderRadius: "20px",
+        }}
+      >
+        <h3 style={{ textAlign: "justify" }}>
+          Hi, nice to meet you. The following questions are about your
+          experience with using alcohol, tobacco products and other substances
+          across your lifetime and in the past three months. These substances
+          can be smoked, swallowed, snorted, inhaled or injected. Some of the
+          substances listed may be prescribed by a doctor (like amphetamines,
+          sedatives, pain medications). We also want to know more about your
+          mental and emotional health. Lastly, we will be asking you questions
+          about your family history and personal life experiences as it pertains
+          to SUDs. This information will help us to assist you by providing any
+          services and/or treatment that you might need. While we are interested
+          in knowing more about you, please be assured that information provided
+          will be treated as strictly confidential.
+        </h3>
         <br />
+        <label>
+          <input
+            type="checkbox"
+            value={hasAcceptedTsAndCs}
+            onChange={(e) => {
+              if (hasAcceptedTsAndCs === true) {
+                props.goToStep(1);
+              }
+              handleChange(e);
+            }}
+          />
+          I have read the above to the client being screened, and have obtained
+          his/her consent to proceed with the screening process.
+        </label>
+      </Box>
+      <br />
 
-        <div className=".input-container"></div>
-        <div className=".input-container">
-          <form onSubmit={handleSubmit}>
-            <fieldset disabled={!hasAcceptedTsAndCs}>
+      <div className=".input-container"></div>
+      <div className=".input-container">
+        <form onSubmit={handleSubmit}>
+          <fieldset disabled={!hasAcceptedTsAndCs}>
+            <label>
+              <p>Interview Details</p>
+            </label>
+            <fieldset>
               <label>
-                <p>Interview Details</p>
+                <h3> Client File Number:</h3>
+                <TextField
+                  required
+                  value={formData["ClientFileNumber"]}
+                  color="secondary"
+                  focused
+                  sx={{ width: 300 }}
+                  size="big"
+                  name="ClientFileNumber"
+                  variant="filled"
+                  onChange={(e) => {
+                    handleData(e);
+                  }}
+                />
               </label>
-              <fieldset>
-                <label>
-                  <h3> Client File Number:</h3>
-                  <TextField
-                    required
-                    value={formData["ClientFileNumber"]}
-                    color="secondary"
-                    focused
-                    sx={{ width: 300 }}
-                    size="big"
-                    name="ClientFileNumber"
-                    variant="filled"
-                    onChange={(e) => {
-                      handleData(e);
-                    }}
-                  />
-                </label>
-              </fieldset>
-              <fieldset>
-                <label>
-                  <h3> Client Name:</h3>
-                  <TextField
-                    required
-                    value={formData["ClientName"]}
-                    color="secondary"
-                    focused
-                    sx={{ width: 300 }}
-                    size="big"
-                    name="ClientName"
-                    variant="filled"
-                    onChange={(e) => {
-                      handleData(e);
-                    }}
-                  />
-                </label>
-              </fieldset>
-              <fieldset>
-                <label>
-                  <h3> Client ID number:</h3>
-                  <TextField
-                    value={formData["ClientID"]}
-                    color="secondary"
-                    focused
-                    sx={{ width: 300 }}
-                    size="big"
-                    name="ClientID"
-                    variant="filled"
-                    onChange={(e) => {
-                      handleData(e);
-                    }}
-                  />
-                </label>
-              </fieldset>
-              <fieldset>
-                <label>
-                  <h3>Place of Interview:</h3>
-                  <TextField
-                    required
-                    value={formData["PlaceOfInterview"]}
-                    color="secondary"
-                    focused
-                    sx={{ width: 300 }}
-                    size="small"
-                    name="PlaceOfInterview"
-                    variant="filled"
-                    onChange={(e) => {
-                      handleData(e);
-                    }}
-                  />
-                </label>
-              </fieldset>
-              <fieldset>
-                <h3>Interviewer:</h3> {"getEmail()"}
-                <label></label>
-              </fieldset>
-              <fieldset>
-                <label>
-                  <h3>Date of Interview:</h3>
-                  {getCurrentDate()}
-                </label>
-              </fieldset>
-              <CommentBox name="commentInterview" updateForm={handleData} />
             </fieldset>
-            <fieldset disabled={!hasAcceptedTsAndCs}>
+            <fieldset>
               <label>
-                <p>DEMOGRAPHICS</p>
+                <h3> Client Name:</h3>
+                <TextField
+                  required
+                  value={formData["ClientName"]}
+                  color="secondary"
+                  focused
+                  sx={{ width: 300 }}
+                  size="big"
+                  name="ClientName"
+                  variant="filled"
+                  onChange={(e) => {
+                    handleData(e);
+                  }}
+                />
               </label>
-              <fieldset>
-                <label>
-                  <p>Gender</p>
-                  <Select
-                    required
-                    name="Gender"
-                    style={{ width: 300 }}
-                    variant="filled"
-                    value={formData["Gender"]}
-                    onChange={(e) => {
-                      handleData(e);
-                    }}
-                  >
-                    <MenuItem value={""}>--Please Select an Option--</MenuItem>
-                    <MenuItem value={"Female"}>Female</MenuItem>
-                    <MenuItem value={"Male"}>Male</MenuItem>
-                    <MenuItem value={"Other"}>Other</MenuItem>
-                  </Select>
-                  <FormHelperText>Select your sex</FormHelperText>
-                  <CommentBox name="commentGender" updateForm={handleData} />
-                </label>
-              </fieldset>
-              <fieldset>
-                <p>Date Of Birth</p>
-                <LocalizationProvider dateAdapter={AdapterMoment}>
-                  <DesktopDatePicker
-                    inputFormat="MM/DD/YYYY"
-                    value={formData["DateOfBirth"]}
-                    onChange={(date) => {
-                      handleDateData(date);
-                    }}
-                    renderInput={(params) => (
-                      <TextField
-                        color="secondary"
-                        variant="filled"
-                        sx={{ width: 300 }}
-                        {...params}
-                      />
-                    )}
-                  />
-                </LocalizationProvider>
-                <CommentBox name="DateOfBirth" updateForm={handleData} />
-              </fieldset>
-              <fieldset>
-                <label>
-                  <p>Country of Origin</p>
-                  <Countries
-                    name="Country"
-                    value={formData["Country"]}
-                    updateForm={(e) => handleExtraData(e)}
-                    onChange={(e) => {
-                      handleData(e);
-                    }}
-                  />
-                  <CommentBox name="commentCountry" updateForm={handleData} />
-                </label>
-              </fieldset>
-              <fieldset>
-                <label>
-                  <p>Community or Place of Residence:</p>
-                  <TextField
-                    required
-                    color="secondary"
-                    sx={{ width: 300 }}
-                    focused
-                    size="small"
-                    name="Residence"
-                    variant="filled"
-                    value={formData["Residence"]}
-                    onChange={(e) => {
-                      handleData(e);
-                    }}
-                  />
-                  <CommentBox name="commentResidence" updateForm={handleData} />
-                </label>
-              </fieldset>
-              <fieldset>
-                <label>
-                  <p>Primary Language</p>
-                  <Select
-                    required
-                    name="Language"
-                    style={{ width: 300 }}
-                    variant="filled"
-                    value={formData["Language"]}
-                    onChange={(e) => {
-                      handleData(e);
-                    }}
-                  >
-                    <MenuItem value={""}>--Please Select an Option--</MenuItem>
-                    <MenuItem value={"Afrikaans"}>Afrikaans</MenuItem>
-                    <MenuItem value={"English"}>English</MenuItem>
-                    <MenuItem value={"Ndebele"}>Ndebele</MenuItem>
-                    <MenuItem value={"Northern Sotho"}>Northern Sotho</MenuItem>
-                    <MenuItem value={"Southern Sotho"}>Southern Sotho</MenuItem>
-                    <MenuItem value={"Swati"}>Swati</MenuItem>
-                    <MenuItem value={"Tsonga"}>Tsonga</MenuItem>
-                    <MenuItem value={"Tswana"}>Tswana</MenuItem>
-                    <MenuItem value={"Venda"}>Venda</MenuItem>
-                    <MenuItem value={"Xhosa"}>Xhosa</MenuItem>
-                    <MenuItem value={"Zulu"}>Zulu</MenuItem>
-                    <MenuItem value={"Other"}>Other</MenuItem>
-                  </Select>
-                  <FormHelperText>Select your Primary Language</FormHelperText>
-                  <CommentBox name="commentLanguage" updateForm={handleData} />
-                </label>
-              </fieldset>
-              <fieldset>
-                <label>
-                  <p>Current Housing Situation:</p>
-                  <Select
-                    required
-                    name="HousingSituation"
-                    style={{ width: 300 }}
-                    variant="filled"
-                    value={formData["HousingSituation"]}
-                    onChange={(e) => {
-                      handleData(e);
-                    }}
-                  >
-                    <MenuItem value={""}>--Please Select an Option--</MenuItem>
-                    <MenuItem value={"Rent or Own current House or Apartment"}>
-                      Rent or Own current House or Apartment
-                    </MenuItem>
-                    <MenuItem value={"Living with Relatives or Friends"}>
-                      Living with Relatives or Friends
-                    </MenuItem>
-                    <MenuItem value={"Renting a Room or Shared Space"}>
-                      Renting a Room or Shared Space
-                    </MenuItem>
-                    <MenuItem value={"Group Home"}>Group Home</MenuItem>
-                    <MenuItem value={"Shelter"}>Shelter</MenuItem>
-                    <MenuItem value={"Transitional Shelter"}>
-                      Transitional Shelter
-                    </MenuItem>
-                    <MenuItem value={"Outdoors, Homeless or Streets"}>
-                      Outdoors, Homeless or Streets
-                    </MenuItem>
-                    <MenuItem value={"Other (Moving from Place to Place)"}>
-                      Other (Moving from Place to Place)
-                    </MenuItem>
-                  </Select>
-                  <FormHelperText>Select the Most Applicable</FormHelperText>
-                  <CommentBox
-                    name="commentHousingSituation"
-                    updateForm={handleData}
-                  />
-                </label>
-              </fieldset>
-              <fieldset>
-                <label>
-                  <p>Highest Level of Education</p>
-                  <Select
-                    required
-                    name="Education"
-                    style={{ width: 300 }}
-                    variant="filled"
-                    value={formData["Education"]}
-                    onChange={(e) => {
-                      handleData(e);
-                    }}
-                  >
-                    <MenuItem value={""}>--Please Select an Option--</MenuItem>
-                    <MenuItem value={"None"}>None</MenuItem>
-                    <MenuItem value={"Primary"}>Primary</MenuItem>
-                    <MenuItem value={"High-School"}>High-School</MenuItem>
-                    <MenuItem value={"College/University"}>
-                      College/University
-                    </MenuItem>
-                  </Select>
-                  <FormHelperText>Select the Most Applicable</FormHelperText>
-                  <CommentBox name="commentEducation" updateForm={handleData} />
-                </label>
-              </fieldset>
-              <fieldset>
-                <label>
-                  <p>
-                    In Police Holding or Prison or Conflict with the Law in the
-                    past 12 months
-                  </p>
-                  <Select
-                    required
-                    name="RecentConflict"
-                    style={{ width: 300 }}
-                    variant="filled"
-                    value={formData["RecentConflict"]}
-                    onChange={(e) => {
-                      handleData(e);
-                      props.goToStep(1);
-                    }}
-                  >
-                    <MenuItem value={""}>--Please Select an Option--</MenuItem>
-                    <MenuItem value={"Police Holding"}>Police Holding</MenuItem>
-                    <MenuItem value={"Prison"}>Prison</MenuItem>
-                    <MenuItem value={"Conflict with the Law"}>
-                      Conflict with the Law
-                    </MenuItem>
-                    <MenuItem value={"Prefer not to Answer"}>
-                      Prefer not to Answer
-                    </MenuItem>
-                  </Select>
-                  <FormHelperText>Select the Most Applicable</FormHelperText>
-                  <CommentBox
-                    name="commentRecentConflict"
-                    updateForm={handleData}
-                  />
-                </label>
-              </fieldset>
             </fieldset>
+            <fieldset>
+              <label>
+                <h3> Client ID number:</h3>
+                <TextField
+                  value={formData["ClientID"]}
+                  color="secondary"
+                  focused
+                  sx={{ width: 300 }}
+                  size="big"
+                  name="ClientID"
+                  variant="filled"
+                  onChange={(e) => {
+                    handleData(e);
+                  }}
+                />
+              </label>
+            </fieldset>
+            <fieldset>
+              <label>
+                <h3>Place of Interview:</h3>
+                <TextField
+                  required
+                  value={formData["PlaceOfInterview"]}
+                  color="secondary"
+                  focused
+                  sx={{ width: 300 }}
+                  size="small"
+                  name="PlaceOfInterview"
+                  variant="filled"
+                  onChange={(e) => {
+                    handleData(e);
+                  }}
+                />
+              </label>
+            </fieldset>
+            <fieldset>
+              <h3>Interviewer:</h3> {getEmail()}
+              <label></label>
+            </fieldset>
+            <fieldset>
+              <label>
+                <h3>Date of Interview:</h3>
+                {getCurrentDate()}
+              </label>
+            </fieldset>
+            <CommentBox name="commentInterview" updateForm={handleData} />
+          </fieldset>
+          <fieldset disabled={!hasAcceptedTsAndCs}>
+            <label>
+              <p>DEMOGRAPHICS</p>
+            </label>
+            <fieldset>
+              <label>
+                <p>Gender</p>
+                <Select
+                  required
+                  name="Gender"
+                  style={{ width: 300 }}
+                  variant="filled"
+                  value={formData["Gender"]}
+                  onChange={(e) => {
+                    handleData(e);
+                  }}
+                >
+                  <MenuItem value={""}>--Please Select an Option--</MenuItem>
+                  <MenuItem value={"Female"}>Female</MenuItem>
+                  <MenuItem value={"Male"}>Male</MenuItem>
+                  <MenuItem value={"Other"}>Other</MenuItem>
+                </Select>
+                <FormHelperText>Select your sex</FormHelperText>
+                <CommentBox name="commentGender" updateForm={handleData} />
+              </label>
+            </fieldset>
+            <fieldset>
+              <p>Date Of Birth</p>
+              <LocalizationProvider dateAdapter={AdapterMoment}>
+                <DesktopDatePicker
+                  inputFormat="MM/DD/YYYY"
+                  value={formData["DateOfBirth"]}
+                  onChange={(date) => {
+                    handleDateData(date);
+                  }}
+                  renderInput={(params) => (
+                    <TextField
+                      color="secondary"
+                      variant="filled"
+                      sx={{ width: 300 }}
+                      {...params}
+                    />
+                  )}
+                />
+              </LocalizationProvider>
+              <CommentBox name="DateOfBirth" updateForm={handleData} />
+            </fieldset>
+            <fieldset>
+              <label>
+                <p>Country of Origin</p>
+                <Countries
+                  name="Country"
+                  value={formData["Country"]}
+                  updateForm={(e) => handleExtraData(e)}
+                  onChange={(e) => {
+                    handleData(e);
+                  }}
+                />
+                <CommentBox name="commentCountry" updateForm={handleData} />
+              </label>
+            </fieldset>
+            <fieldset>
+              <label>
+                <p>Community or Place of Residence:</p>
+                <TextField
+                  required
+                  color="secondary"
+                  sx={{ width: 300 }}
+                  focused
+                  size="small"
+                  name="Residence"
+                  variant="filled"
+                  value={formData["Residence"]}
+                  onChange={(e) => {
+                    handleData(e);
+                  }}
+                />
+                <CommentBox name="commentResidence" updateForm={handleData} />
+              </label>
+            </fieldset>
+            <fieldset>
+              <label>
+                <p>Primary Language</p>
+                <Select
+                  required
+                  name="Language"
+                  style={{ width: 300 }}
+                  variant="filled"
+                  value={formData["Language"]}
+                  onChange={(e) => {
+                    handleData(e);
+                  }}
+                >
+                  <MenuItem value={""}>--Please Select an Option--</MenuItem>
+                  <MenuItem value={"Afrikaans"}>Afrikaans</MenuItem>
+                  <MenuItem value={"English"}>English</MenuItem>
+                  <MenuItem value={"Ndebele"}>Ndebele</MenuItem>
+                  <MenuItem value={"Northern Sotho"}>Northern Sotho</MenuItem>
+                  <MenuItem value={"Southern Sotho"}>Southern Sotho</MenuItem>
+                  <MenuItem value={"Swati"}>Swati</MenuItem>
+                  <MenuItem value={"Tsonga"}>Tsonga</MenuItem>
+                  <MenuItem value={"Tswana"}>Tswana</MenuItem>
+                  <MenuItem value={"Venda"}>Venda</MenuItem>
+                  <MenuItem value={"Xhosa"}>Xhosa</MenuItem>
+                  <MenuItem value={"Zulu"}>Zulu</MenuItem>
+                  <MenuItem value={"Other"}>Other</MenuItem>
+                </Select>
+                <FormHelperText>Select your Primary Language</FormHelperText>
+                <CommentBox name="commentLanguage" updateForm={handleData} />
+              </label>
+            </fieldset>
+            <fieldset>
+              <label>
+                <p>Current Housing Situation:</p>
+                <Select
+                  required
+                  name="HousingSituation"
+                  style={{ width: 300 }}
+                  variant="filled"
+                  value={formData["HousingSituation"]}
+                  onChange={(e) => {
+                    handleData(e);
+                  }}
+                >
+                  <MenuItem value={""}>--Please Select an Option--</MenuItem>
+                  <MenuItem value={"Rent or Own current House or Apartment"}>
+                    Rent or Own current House or Apartment
+                  </MenuItem>
+                  <MenuItem value={"Living with Relatives or Friends"}>
+                    Living with Relatives or Friends
+                  </MenuItem>
+                  <MenuItem value={"Renting a Room or Shared Space"}>
+                    Renting a Room or Shared Space
+                  </MenuItem>
+                  <MenuItem value={"Group Home"}>Group Home</MenuItem>
+                  <MenuItem value={"Shelter"}>Shelter</MenuItem>
+                  <MenuItem value={"Transitional Shelter"}>
+                    Transitional Shelter
+                  </MenuItem>
+                  <MenuItem value={"Outdoors, Homeless or Streets"}>
+                    Outdoors, Homeless or Streets
+                  </MenuItem>
+                  <MenuItem value={"Other (Moving from Place to Place)"}>
+                    Other (Moving from Place to Place)
+                  </MenuItem>
+                </Select>
+                <FormHelperText>Select the Most Applicable</FormHelperText>
+                <CommentBox
+                  name="commentHousingSituation"
+                  updateForm={handleData}
+                />
+              </label>
+            </fieldset>
+            <fieldset>
+              <label>
+                <p>Highest Level of Education</p>
+                <Select
+                  required
+                  name="Education"
+                  style={{ width: 300 }}
+                  variant="filled"
+                  value={formData["Education"]}
+                  onChange={(e) => {
+                    handleData(e);
+                  }}
+                >
+                  <MenuItem value={""}>--Please Select an Option--</MenuItem>
+                  <MenuItem value={"None"}>None</MenuItem>
+                  <MenuItem value={"Primary"}>Primary</MenuItem>
+                  <MenuItem value={"High-School"}>High-School</MenuItem>
+                  <MenuItem value={"College/University"}>
+                    College/University
+                  </MenuItem>
+                </Select>
+                <FormHelperText>Select the Most Applicable</FormHelperText>
+                <CommentBox name="commentEducation" updateForm={handleData} />
+              </label>
+            </fieldset>
+            <fieldset>
+              <label>
+                <p>
+                  In Police Holding or Prison or Conflict with the Law in the
+                  past 12 months
+                </p>
+                <Select
+                  required
+                  name="RecentConflict"
+                  style={{ width: 300 }}
+                  variant="filled"
+                  value={formData["RecentConflict"]}
+                  onChange={(e) => {
+                    handleData(e);
+                    props.goToStep(1);
+                  }}
+                >
+                  <MenuItem value={""}>--Please Select an Option--</MenuItem>
+                  <MenuItem value={"Police Holding"}>Police Holding</MenuItem>
+                  <MenuItem value={"Prison"}>Prison</MenuItem>
+                  <MenuItem value={"Conflict with the Law"}>
+                    Conflict with the Law
+                  </MenuItem>
+                  <MenuItem value={"Prefer not to Answer"}>
+                    Prefer not to Answer
+                  </MenuItem>
+                </Select>
+                <FormHelperText>Select the Most Applicable</FormHelperText>
+                <CommentBox
+                  name="commentRecentConflict"
+                  updateForm={handleData}
+                />
+              </label>
+            </fieldset>
+          </fieldset>
 
-            <RenderSection
-              show={true}
-              sectionQuestions={sectionScreening}
-              formData={formData}
-              updateForm={(e) => handleData(e)}
-              defaultValues={dv}
-            />
-            <RenderSection
-              show={showAssessment()}
-              sectionQuestions={sectionRisks}
-              formData={formData}
-              updateForm={(e) => handleData(e)}
-            />
-            <RenderSection
-              show={showAssessment()}
-              sectionQuestions={sectionTrauma}
-              formData={formData}
-              updateForm={(e) => handleData(e)}
-            />
-            <RenderSection
-              show={showAssessment()}
-              sectionQuestions={sectionDepression}
-              formData={formData}
-              updateForm={(e) => handleData(e)}
-            />
-            <RenderSection
-              show={showAssessment()}
-              sectionQuestions={sectionFamily}
-              formData={formData}
-              updateForm={(e) => handleData(e)}
-            />
-            <RenderSection
-              show={showAssessment()}
-              sectionQuestions={sectionProtective}
-              formData={formData}
-              updateForm={(e) => handleData(e)}
-            />
-            <RenderSection
-              show={showAssessment()}
-              sectionQuestions={sectionChangeReadiness}
-              formData={formData}
-              updateForm={(e) => handleData(e)}
-            />
-            <Button
-              variant="contained"
-              onClick={handleDatabase}
-              sx={{
-                bgColor: "green",
-                color: "white",
-                border: "2px solid #82d4e4be",
-              }}
-              type="submit"
-            >
-              Submit Assessment Form
-            </Button>
-          </form>
-          <div>
-            <br></br>
-            <h3>Summary: </h3>
-            <ul>
-              {Object.entries(formData).map(([name, value]) => (
-                <li key={name}>
-                  <strong>{name}</strong>:{value.toString()}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+          <RenderSection
+            show={true}
+            sectionQuestions={sectionScreening}
+            formData={formData}
+            updateForm={(e) => handleData(e)}
+            defaultValues={dv}
+          />
+          
+          <ScreeningMessage
+            show={isScreeningComplete()}
+            setShowAnyway={setShowAnyway}
+            showContinue={showContinue()}
+          />
+          <RenderSection
+            show={showAssessment()}
+            sectionQuestions={sectionRisks}
+            formData={formData}
+            updateForm={(e) => handleData(e)}
+          />
+          <RenderSection
+            show={showAssessment()}
+            sectionQuestions={sectionTrauma}
+            formData={formData}
+            updateForm={(e) => handleData(e)}
+          />
+          <RenderSection
+            show={showAssessment()}
+            sectionQuestions={sectionDepression}
+            formData={formData}
+            updateForm={(e) => handleData(e)}
+          />
+          <RenderSection
+            show={showAssessment()}
+            sectionQuestions={sectionFamily}
+            formData={formData}
+            updateForm={(e) => handleData(e)}
+          />
+          <RenderSection
+            show={showAssessment()}
+            sectionQuestions={sectionProtective}
+            formData={formData}
+            updateForm={(e) => handleData(e)}
+          />
+          <RenderSection
+            show={showAssessment()}
+            sectionQuestions={sectionChangeReadiness}
+            formData={formData}
+            updateForm={(e) => handleData(e)}
+          />
+          <Button
+            variant="contained"
+            onClick={handleDatabase}
+            sx={{
+              bgColor: "green",
+              color: "white",
+              border: "2px solid #82d4e4be",
+            }}
+            type="submit"
+          >
+            Submit Assessment Form
+          </Button>
+        </form>
       </div>
-    );
-  } else {
-    return <ScreeningMessage formData={formData} />;
-  }
+    </div>
+  );
 }
 
 export default Form;

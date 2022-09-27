@@ -8,6 +8,9 @@ import {
 import { render } from "react-dom";
 import CommentBox from "./CommentBox";
 
+/**
+ * BooleanQuestion represents a question two possible answers: YES or NO
+ */
 function BooleanQuestion(props) {
   const [selected, setSelected] = useState("");
 

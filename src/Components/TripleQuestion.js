@@ -8,7 +8,7 @@ import {
 import { render } from "react-dom";
 import CommentBox from "./CommentBox";
 
-export default function TrippleQuestion(props) {
+export default function TripleQuestion(props) {
   const [selected, setSelected] = useState("");
 
   const selectionChangeHandler = (event) => {

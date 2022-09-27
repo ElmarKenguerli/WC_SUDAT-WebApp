@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./Header";
-import TrippleQuestion from "./TrippleQuestion";
+import TripleQuestion from "./TripleQuestion";
 import SliderQuestion from "./SliderQuestion";
 import BooleanQuestion from "./BooleanQuestion";
 import CompoundQuestion from './CompoundQuestion';
@@ -39,7 +39,7 @@ const RenderSection = (props) => {
     
           case q.type == 2:
             return (
-              <TrippleQuestion
+              <TripleQuestion
                 name={q.name}
                 section={q.section}
                 question={q.question}
@@ -50,7 +50,7 @@ const RenderSection = (props) => {
             );
           case q.type == 3:
             return (
-              <TrippleQuestion
+              <TripleQuestion
                 name={q.name}
                 section={q.section}
                 question={q.question}
