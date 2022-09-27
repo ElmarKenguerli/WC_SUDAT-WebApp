@@ -81,7 +81,7 @@ function DataTable() {
     {
       field: "ClientFileNumber",
       headerClassName: "col--header",
-      headerName: "ClientFileNumb",
+      headerName: "Client File Number",
       minWidth: 150,
       flex: 1,
     },
@@ -134,11 +134,11 @@ function DataTable() {
         sx={{
           boxShadow: 2,
           border: 2,
-          borderColor: "#57cae1",
+          borderColor: "#70aee0",
           borderRadius: 2,
           borderShadow: 3,
           "& .col--header": {
-            backgroundColor: "#57cae1",
+            backgroundColor: "#70aee0",
           },
         }}
         components={{ Toolbar: GridToolbar }}

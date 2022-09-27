@@ -35,7 +35,7 @@ export const AdminPage = () => {
         <AdminMuiDrawer/>
         <br></br>
         <Box textAlign="center" >
-          <Button 
+        <Button 
             size="large" 
             className='.center'
             style={
@@ -45,7 +45,8 @@ export const AdminPage = () => {
                 fontSize: 25, 
                 border: "2px solid darkblue", 
                 margin:10, 
-                color: "darkblue" 
+                backgroundColor: "#0973ec36",
+                color: "#3949ab"
                 }}  
             startIcon={<PostAddTwoToneIcon style={{ fontSize: "80px" }}/>}  
             onClick={() => {

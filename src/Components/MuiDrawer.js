@@ -108,7 +108,7 @@ export default function PersistentDrawerLeft() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar style={{ background: '#2dbddabe', color: "black" }} position="fixed" open={open} >
+      <AppBar style={{ background: '#70aee0', color: "black" }} position="fixed" open={open} >
         <Toolbar >
           <IconButton
             color="inherit"
@@ -120,7 +120,7 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <div className="header-content-inner">
-          <img src="logo.jpg" width= "200" height= "auto" id="img" style={{margin:"10px"}}/>
+          <img src="6nobgHD.png" width= "230" height= "auto" id="img" style={{margin:"10px"}}/>
               
           </div>
           

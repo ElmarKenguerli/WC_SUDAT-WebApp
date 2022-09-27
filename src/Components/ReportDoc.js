@@ -75,7 +75,7 @@ function ReportDoc(props) {
             <Text > {`Education: ${formData["Education"]} `}</Text>
             <Text > {`Gender: ${formData["Gender"]} `}</Text>
             <Text > {`Housing Situation: ${formData["HousingSituation"]} `}</Text>
-            <Text > {`Language: ${formData["Langauge"]} `}</Text>
+            <Text > {`Language: ${formData["Language"]} `}</Text>
             <Text > {`Recent Conflict: ${formData["RecentConflict"]} `}</Text>
             <Text > {`Residence: ${formData["Residence"]} `}</Text>
           </View>

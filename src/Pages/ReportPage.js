@@ -27,7 +27,8 @@ function ReportPage() {
     }, [])
     return (
         <>
-            <MuiDrawer/>
+            <Box  ><MuiDrawer/></Box>
+            
             <Box textAlign="center" width="1000" margin="20px" >
                 <h2>Thank you for completing the assessment. Please print/download your assessment report</h2>
                 <br></br>

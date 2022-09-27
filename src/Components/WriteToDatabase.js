@@ -291,6 +291,8 @@ const getFormDefaults = async(clientID) => {
             formData["Interviewer"] = q.data().Interviewer;
             formData["Language"] = q.data().Language;
             formData["ClientFileNumber"] = q.data().ClientFileNumber;
+            formData["Residence"] = q.data().Residence;
+            formData["RecentConflict"] = q.data().RecentConflict;
             formData["Q30a"] = q.data().Q30a;
             formData["Q31a"] = q.data().Q31a;
             formData["Q32a"] = q.data().Q32a;

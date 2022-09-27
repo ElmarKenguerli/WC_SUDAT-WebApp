@@ -144,6 +144,7 @@ const mockedData = [
   { name: "SLOVENIA" },
   { name: "SOLOMON ISLANDS" },
   { name: "SOMALIA" },
+  { name: "SOUTH AFRICA" },
   { name: "SRI LANKA" },
   { name: "SUDAN" },
   { name: "SURINAME" },

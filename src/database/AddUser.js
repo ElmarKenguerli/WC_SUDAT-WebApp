@@ -148,8 +148,8 @@ export function AddUser(){
                   
                   <div className="text-center mt-4">
                       <span >
-                          Don't have an account?  
-                          <Link to='/Register'>Register</Link>
+                          Don't have an account?&nbsp;  
+                          <Link to='/Register'> Register</Link>
                       </span>
                   </div>
                 </div>

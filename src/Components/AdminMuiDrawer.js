@@ -109,7 +109,7 @@ export default function PersistentDrawerLeft() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar style={{ background: '#2dbddabe', color: "black" }} position="fixed" open={open} >
+      <AppBar style={{ background: '#70aee0', color: "black" }} position="fixed" open={open} >
         <Toolbar >
           <IconButton
             color="inherit"
@@ -121,10 +121,10 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <div className="header-content-inner">
-          <img src="logo.jpg" width= "200" height= "auto" id="img" style={{margin:"10px"}}/>
+          <img src="6nobgHD.png" width= "230" height= "auto" id="img" style={{margin:"10px"}}/>
           </div>
-          <div className="header-content-inner">
-            <h1>&nbsp;&nbsp;&nbsp;ADMIN</h1>
+          <div className="header-content-inner" sx={{textAlign: "center"}}>
+            <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - ADMIN -</h1>
           </div>
           <Typography variant="h6" style={{ position: "absolute", right: "15px", padding: "7px", color : "black" , textAlign: "right"}} noWrap component="div">
             <AccountCircleOutlinedIcon style={{ fontSize: "40px", color:"black" }}/> {currentUser.email}

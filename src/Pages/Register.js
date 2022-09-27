@@ -131,36 +131,15 @@ function Register() {
             >
                     {/* Left Column : 1*/}
                     <Grid item xs={1}>
-                        <Box 
-                           
-                            
-                            sx={{    bgcolor: '#2dbddabe', color: "black", border:"1px solid #82d4e4be", height:{height}}}
-                        >
-                            <label> 
+                    <Box >     
+                            <label className='loginHeader'>
                                 
-                                <label className='loginHeader'>
-                                    
-                                    <div>
-                                        
-                                        <img src="logo.jpg"  id="img" style={{ width: "90%", height: "auto", marginTop: "15px", border: "1px solid", borderRadius: "50px"}}/> 
-                                        
-                                    </div>
-                                        <div className = "loginBox">
-                                            {/* Spacing */}
-                                            <label>
-                                                <br></br>  
-                                                Assess your patient's risk of having a substance use disorder <br></br><br></br><br></br>
-                                                Sign in to Get Started
-                                            </label>
-                                        </div>
-                                        
-                                   
-                                </label>    
-                                
-                            </label> 
-                            
-                                
-                        
+                                <div >
+                                    {/* Panel Logo */}
+                                    <img src="sky.png"  id="img" style={{ maxWidth: "100%" , height: height}}/>                            
+                                </div>
+
+                            </label>    
                         </Box>
                     </Grid>
                     
@@ -221,7 +200,7 @@ function Register() {
                                     </form>
                                     <div className="text-center mt-4">
                                         <span >
-                                            Already have an account?  
+                                            Already have an account?  &nbsp; 
                                             <Link to='/'>login</Link>
                                         </span>
                                     </div>
