@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
 		flexGrow: 1,
     padding: "5px",
     border: "2px solid grey",
+    backgroundColor: "grey"
 	},
   colItem: {
 		flexGrow: 1,
@@ -76,7 +77,7 @@ const ReportDoc = (props) => {
       {/* Start of the document*/}
       <Document title={`Client Summary_${formData["DateOfInterview"]} `}>
         {/*render a single page*/}
-        <Page wrap size="A4" style={styles.page}>
+        <Page size="A4" style={styles.page}>
           {/* Header */}
           <Image
             style={styles.image}
@@ -121,21 +122,55 @@ const ReportDoc = (props) => {
               <Text style={styles.colHead}>Risk</Text>   
                   
           </View>
-          {/* A Single Row in the table */}
+          {/* A Rows in the table */}
           <View style={styles.rows}>
             
-              <Text style={styles.colItem}>Risks Section</Text> 
-              <Text style={styles.colItem}>Risks Section</Text>        
+              <Text style={styles.colItem}>Individual Risk Factors  </Text> 
+              <Text style={styles.colItem}>0</Text>        
           </View>
-  
-          {/* Footer */}
+
+          <View style={styles.rows}>
+            
+              <Text style={styles.colItem}>Trauma                          </Text> 
+              <Text style={styles.colItem}>0</Text>        
+          </View>
+          <View style={styles.rows}>
+            
+              <Text style={styles.colItem}>Depression and Anxiety</Text> 
+              <Text style={styles.colItem}>0</Text>        
+          </View>
+
+        </Page>
+
+        <Page wrap size="A4" style={styles.page}>
           <View style={styles.section}>
             <Image
               style={styles.image}
               src="footer.jpg"
             /> 
           </View>
+          <View style={styles.rows}>
+            
+              <Text style={styles.colItem}>Family & Community    </Text> 
+              <Text style={styles.colItem}>0</Text>        
+          </View>
+          <View style={styles.rows}>
+            
+              <Text style={styles.colItem}>Protective Factors        </Text> 
+              <Text style={styles.colItem}>0</Text>        
+          </View>
+          <View style={styles.rows}>
+            
+              <Text style={styles.colItem}>Treatment Eagerness   </Text> 
+              <Text style={styles.colItem}>0</Text>        
+          </View>
+          
+          {/* Footer */}
+          
         </Page>
+  
+          
+        
 
         
         
