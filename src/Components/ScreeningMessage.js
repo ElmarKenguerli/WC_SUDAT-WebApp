@@ -1,13 +1,13 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import { useState } from "react";
-
+import {useNavigate} from "react-router-dom";
 function ScreeningMessage(props) {
   const [disappear, setDisappear] = useState(props.show);
   const [show, setShow] = useState(props.showContinue);
   const [pass, setPass] = useState(true);
-  console.log(disappear)
-  console.log(show)
+  let navigate = useNavigate();
+  
   
   if (props.show && props.showContinue && pass) {
     return (
@@ -32,6 +32,16 @@ function ScreeningMessage(props) {
             }}
           >
             Continue Anyway
+          </Button>
+          &nbsp;&nbsp;&nbsp;&nbsp; 
+          <Button
+            variant="contained"
+            onClick={() => {
+              navigate(-1)  
+            }}
+            
+          >
+            Exit Now
           </Button>
         </fieldset>
       </div>
