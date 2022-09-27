@@ -6,10 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "../App.css";
 import useCollapse from "react-collapsed";
 import Countries from "../Components/Countries";
-import SixSliderQuestion from "./SixSliderQuestion";
-import SliderQuestion from "./SliderQuestion";
-import BooleanQuestion from "./BooleanQuestion";
-import FollowUpQuestions from "./FollowUpQuestions";
+
 import CommentBox from "./CommentBox";
 import RenderSection from "./RenderSection";
 import { writeToDatabase, getFormDefaults, setFormDefaults } from "./WriteToDatabase";
@@ -31,6 +28,7 @@ import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
+
 //import mui components
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -47,14 +45,6 @@ import { db } from "../database/firebase";
 import { getDoc, doc } from "firebase/firestore";
 import { useAuthValue } from "../database/AuthContext";
 
-export const GetValue = (value, num) => {
-  val = value;
-
-  if (value === 1) {
-    FollowUpQuestions();
-  }
-};
-
 function getCurrentDate(separator = "-") {
   let newDate = new Date();
   let date = newDate.getDate();
@@ -65,8 +55,6 @@ function getCurrentDate(separator = "-") {
     month < 10 ? `0${month}` : `${month}`
   }${separator}${year}`;
 }
-
-const interviewerName = "Danny Guttmann";
 let val = 0;
 
 export function Collapsible() {

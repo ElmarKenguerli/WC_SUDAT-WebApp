@@ -1,9 +1,7 @@
 import React from "react";
 import BooleanQuestion from "./BooleanQuestion";
 
-
-const BooleanwithFollowUp = (props) => {
-    console.log(props.formData["Q17"]);
+const BooleanWithFollowUp = (props) => {
   if (props.formData["Q17"] === "Yes") {
     return (
       <fieldset>
@@ -58,4 +56,4 @@ const BooleanwithFollowUp = (props) => {
     );
   }
 };
-export default BooleanwithFollowUp;
+export default BooleanWithFollowUp;

@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import {
   Radio,
   FormControl,
@@ -8,13 +8,8 @@ import {
 import { render } from "react-dom";
 import CommentBox from "./CommentBox";
 
-function showFollup(props) {
-  BooleanQuestion(props);
-}
-
 function BooleanQuestion(props) {
   const [selected, setSelected] = useState("");
-  const [Qname, setQname] = useState("");
 
   const selectionBlurHandler = (event) => {
     setSelected(event.target.value);
@@ -53,7 +48,10 @@ function BooleanQuestion(props) {
             name={props.name}
           />
         </RadioGroup>
-        <CommentBox name={`comment${props.name}`} updateForm={props.updateForm} />
+        <CommentBox
+          name={`comment${props.name}`}
+          updateForm={props.updateForm}
+        />
       </FormControl>
     </fieldset>
   );

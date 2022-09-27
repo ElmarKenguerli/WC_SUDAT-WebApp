@@ -4,7 +4,7 @@ import TrippleQuestion from "./TrippleQuestion";
 import SliderQuestion from "./SliderQuestion";
 import BooleanQuestion from "./BooleanQuestion";
 import CompoundQuestion from './CompoundQuestion';
-import BooleanwithFollowUp from './BooleanwithFollowUp';
+import BooleanWithFollowUp from './BooleanWithFollowUp';
 
 const RenderSection = (props) => {
   if(props.show){
@@ -84,7 +84,7 @@ const RenderSection = (props) => {
             );
             case q.type == 6:
               return (
-                <BooleanwithFollowUp
+                <BooleanWithFollowUp
                   name={q.name}
                   nameA = {q.nameA}
                   question = {q.question}

@@ -37,7 +37,6 @@ function CompoundQuestion(props) {
   ]);
 
   const [selected, setSelected] = useState("");
-  const [Qname, setQname] = useState("");
   const [questionNumber, setQuestionID] = useState(0);
   const [question, setQuestion] = useState(props.question);
   const [showSlider, setShowSlider] = useState(false);
@@ -58,7 +57,7 @@ function CompoundQuestion(props) {
                 onChange={(event) => {
                   selectionBlurHandler(event);
                   setSelected(event.target.value);
-                  setQname(props.name);
+                  
                   setShowSlider(true);
                 }}
                 checked={props.formData[props.name] === "Yes"}
@@ -74,7 +73,7 @@ function CompoundQuestion(props) {
                 onChange={(event) => {
                   selectionBlurHandler(event);
                   setSelected(event.target.value);
-                  setQname(props.name);
+                  
                   setShowSlider(false);
                 }}
                 checked={props.formData[props.name] === "No"}
@@ -104,7 +103,7 @@ function CompoundQuestion(props) {
             </fieldset>
           </div>
         )}
-        <CommentBox name={`comment${Qname}`} updateForm={props.updateForm} />
+        <CommentBox name={`comment${props.name}`} updateForm={props.updateForm} />
       </FormControl>
     </fieldset>
   );

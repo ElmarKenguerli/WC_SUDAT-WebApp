@@ -66,6 +66,20 @@ const styles = StyleSheet.create({
   
 });
 
+// const getSignificantInformation = (inclusiveMin,inclusiveMax,threshold) =>{
+//   let significantValues = [];
+//       for (let i = inclusiveMin; i <= inclusiveMax; i++) {
+//       if (formData[allQuestions[i].name] === "Yes" || formData[allQuestions[i].name] >= threshold) {
+//         significantValues.push({question:allQuestions[i].question,
+//           answer:formData[allQuestions[i].name],
+//           name:allQuestions[i].name
+//         })
+//       }
+//     }
+//     console.log("The significant number Values are: " + significantValues.length)
+//     return significantValues;
+// }
+
 // Create Document Component
 const ReportDoc = (props) => {
   const { currentUser } = useAuthValue();
@@ -75,7 +89,7 @@ const ReportDoc = (props) => {
   return (
     <PDFViewer style={styles.viewer}>
       {/* Start of the document*/}
-      <Document title={`Client Summary_${formData["DateOfInterview"]} `}>
+      <Document title={`Client Summary_${formData["DateOfInterview"] }_${formData["File"] } `}>
         {/*render a single page*/}
         <Page size="A4" style={styles.page}>
           {/* Header */}
