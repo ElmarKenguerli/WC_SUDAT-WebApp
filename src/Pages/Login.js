@@ -39,7 +39,7 @@ const Login = () => {
                 justifyContent="center"
                 alignItems="center"
                 columns={{ md: 2 }}
-                spacing={5}
+                spacing={2}
             >
                     {/* Left Column : 1*/}
                     <Grid item xs={1}>
@@ -57,13 +57,9 @@ const Login = () => {
                     
                     {/* Right Column : 1*/}
                     <Grid item xs={1}>
-                        <div >
-                            <div style={{padding:"10px"}}>
-                            
-                            
+                        
                             {AddUser()}
-                            </div>
-                        </div>
+                        
                     </Grid>
                     
                     

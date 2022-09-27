@@ -33,18 +33,10 @@ function ReportPage() {
                 <h2>Thank you for completing the assessment. Please print/download your assessment report</h2>
                 <br></br>
                 <h4>Assessment Report Below</h4>
-                {/* Embedd pdf on page */}
-                {/* <embed
-                    src={PDF}
-                    type="application/pdf"
-                    height={800}
-                    width={800}
-                /> */}
+                
             </Box>
             <Box textAlign="center" width="1000" margin="80px" >
-                <Box textAlign="center" width="1000" margin="20px" >
-                    <ReportDoc formData = {formData}/>
-                </Box>
+                
                 <Button 
                     size="normal" 
                     className='.right'
@@ -64,6 +56,10 @@ function ReportPage() {
                     {" "}
                     Home 
                 </Button>
+                
+                <Box textAlign="center" width="1000" margin="20px" >
+                    <ReportDoc formData = {formData}/>
+                </Box>
             </Box>  
             
             

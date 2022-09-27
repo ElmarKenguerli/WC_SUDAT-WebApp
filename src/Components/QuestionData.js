@@ -664,6 +664,19 @@ const sectionChangeReadiness = [
   },
 ];
 
+export function GetQuestion({ questionNumber }) {
+  const allQuestions = sectionScreening.concat(
+    sectionRisks,
+    sectionTrauma,
+    sectionProtective,
+    sectionDepression,
+    sectionChangeReadiness,
+    sectionFamily
+  );
+  let question = allQuestions.find({ questionNumber })["question"];
+  return question;
+}
+
 export {
   sectionScreening,
   sectionRisks,
