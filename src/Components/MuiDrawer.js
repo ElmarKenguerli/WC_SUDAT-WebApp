@@ -148,7 +148,7 @@ export default function PersistentDrawerLeft() {
             <AccountCircleOutlinedIcon
               style={{ fontSize: "40px", color: "black" }}
             />{" "}
-            {currentUser.email}
+            {"currentUser.email"}
             <br></br>
             <Button
               variant="contained"
