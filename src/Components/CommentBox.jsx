@@ -19,7 +19,7 @@ const CommentBox = (props) => {
         {isExpanded ? (
           <CloseFullscreenTwoToneIcon />
         ) : (
-          <AddCommentTwoToneIcon />
+          <AddCommentTwoToneIcon onCli/>
         )}
       </div>
       <div {...getCollapseProps()}>

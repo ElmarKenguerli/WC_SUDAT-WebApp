@@ -13,36 +13,38 @@ function ScreeningMessage(props) {
     return (
       <div>
         <fieldset>
-          <h1>
-            Based on answers provided to the first 10 questions, the client is not required
-            to complete the rest of the SUD Assessment. To to proceed anyway: click 'Continue Anyway'{" "}
-          </h1>
-          <Button
-            variant="contained"
-            onClick={() => {
-              props.setShowAnyway(true);
-              setDisappear(true);
-              setShow(false);
-              setPass(false)
-            }}
-            sx={{
-              bgColor: "green",
-              color: "white",
-              border: "2px solid #82d4e4be",
-            }}
-          >
-            Continue Anyway
-          </Button>
-          &nbsp;&nbsp;&nbsp;&nbsp; 
-          <Button
-            variant="contained"
-            onClick={() => {
-              navigate(-1)  
-            }}
-            
-          >
-            Exit Now
-          </Button>
+          <fieldset>
+            <p>
+              Based on answers provided to the first 10 questions, the client is not required
+              to complete the rest of the SUD Assessment. To to proceed anyway: click 'Continue Anyway'{" "}
+            </p>
+            <Button
+              variant="contained"
+              onClick={() => {
+                props.setShowAnyway(true);
+                setDisappear(true);
+                setShow(false);
+                setPass(false)
+              }}
+              sx={{
+                bgColor: "green",
+                color: "white",
+                border: "2px solid #82d4e4be",
+              }}
+            >
+              Continue Anyway
+            </Button>
+            &nbsp;&nbsp;&nbsp;&nbsp; 
+            <Button
+              variant="contained"
+              onClick={() => {
+                navigate(-1)  
+              }}
+              
+            >
+              Exit Now
+            </Button>
+          </fieldset>
         </fieldset>
       </div>
     );

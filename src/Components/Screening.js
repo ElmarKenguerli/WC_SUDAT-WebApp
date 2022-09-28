@@ -115,7 +115,7 @@ function Form(props) {
       }
     }
 
-    if (count >= 4) {
+    if (count >= 5) {
       console.log(count)
       return true
     }
@@ -183,7 +183,7 @@ function Form(props) {
     let countQ = 0;
     if (countQ == 0) {
       for (let i = 1; i < 13; i++) {
-        if (formData[fields[i]] === "" || formData[[fields[i]] === undefined]) {
+        if (formData[fields[i]] === "" || formData[[fields[i]] === undefined]|| formData[[fields[i]] == 0]) {
           countN = i - 1;
           break;
         }
@@ -199,18 +199,18 @@ function Form(props) {
       }
     }
 
-    if (countQ <= 10 && countQ == 0) {
-      props.goToStep(3);
-    } else if (countQ > 10 && countQ <= 16) {
+    if (countQ == 10) {
       props.goToStep(4);
-    } else if (countQ > 16 && countQ <= 29) {
+    } else if (countQ == 16) {
       props.goToStep(5);
-    } else if (countQ > 29 && countQ <= 42) {
+    } else if (countQ == 29) {
       props.goToStep(6);
-    } else if (countQ > 42 && countQ <= 55) {
+    } else if (countQ == 42) {
       props.goToStep(7);
-    } else if (countQ > 55 && countQ <= 75) {
+    } else if (countQ == 55) {
       props.goToStep(8);
+    } else if (countQ == 56) {
+      props.goToStep(9);
     }
   }
 
@@ -345,7 +345,7 @@ function Form(props) {
             value={hasAcceptedTsAndCs}
             onChange={(e) => {
               if (hasAcceptedTsAndCs === true) {
-                props.goToStep(1);
+                props.goToStep(2);
               }
               handleChange(e);
             }}
@@ -377,6 +377,7 @@ function Form(props) {
                   variant="filled"
                   onChange={(e) => {
                     handleData(e);
+                    props.goToStep(1);
                   }}
                 />
               </label>
@@ -429,6 +430,7 @@ function Form(props) {
                   name="PlaceOfInterview"
                   variant="filled"
                   onChange={(e) => {
+                    props.goToStep(2);
                     handleData(e);
                   }}
                 />
@@ -638,7 +640,7 @@ function Form(props) {
                   value={formData["RecentConflict"]}
                   onChange={(e) => {
                     handleData(e);
-                    props.goToStep(1);
+                    props.goToStep(3);
                   }}
                 >
                   <MenuItem value={""}>--Please Select an Option--</MenuItem>

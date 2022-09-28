@@ -525,7 +525,7 @@ const sectionChangeReadiness = [
     type: 5,
   },
   {
-    name: "58",
+    name: "Q58",
     question:
       "Q58. I have already started making some changes in my use of drugs/alcohol.",
     section:
@@ -668,10 +668,11 @@ const sectionChangeReadiness = [
 const allQuestions = sectionScreening.concat(
   sectionRisks,
   sectionTrauma,
-  sectionProtective,
   sectionDepression,
+  sectionFamily,
+  sectionProtective,
   sectionChangeReadiness,
-  sectionFamily
+  
 );
 
 function GetQuestion({ questionNumber }) {
