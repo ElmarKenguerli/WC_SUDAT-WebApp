@@ -79,7 +79,9 @@ const styles = StyleSheet.create({
 });
 
 const getNumberYes = (inclusiveMin,inclusiveMax,affirmative,formData) =>{
-
+  /**
+ * This function counts the number of yes for a range [min,max] of questions
+ */
   let numberYes = 0;
        for (let i = inclusiveMin; i <= inclusiveMax; i++) {
         if(i == 21)
@@ -113,6 +115,9 @@ const getNumberYes = (inclusiveMin,inclusiveMax,affirmative,formData) =>{
     return numberYes;
 }
 const getSliderTotal = (inclusiveMin,inclusiveMax,formData) =>{
+    /**
+ * This function counts the sum total of slider values for a subset of the questions for range [min,max]
+ */
   let recTotal =0;
   let ambTotal = 0; 
   let stepsTotal = 0;

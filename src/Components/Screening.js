@@ -126,6 +126,10 @@ function Form(props) {
   };
 
   const showAssessment = () => {
+           /**
+      * This function returns a boolean. The boolean value is true if the answers to the screening part of the assessment
+      * require the client to complete the rest of the SUD Assessment
+      */
     let count = 0;
 
     for (let i = 1; i < 11; ++i) {
@@ -150,6 +154,9 @@ function Form(props) {
   };
 
   const isScreeningComplete = () => {
+        /**
+      * This function returns whether the first 10 questions have been answered
+      */
     let bool = true;
     for (let i = 1; i < 11; ++i) {
       if (
@@ -179,6 +186,10 @@ function Form(props) {
   ];
 
   function getSteps() {
+           /**
+      * This function controls the progress on the stepper. If a value is 0 or blank or undefined than that implies
+      * that theuser has not completed that section, or (with this implementation) the subsequent sections.
+      */
     let countN = 0;
     let countQ = 0;
     if (countQ == 0) {

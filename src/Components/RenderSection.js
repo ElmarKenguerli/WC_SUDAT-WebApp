@@ -7,6 +7,9 @@ import CompoundQuestion from './CompoundQuestion';
 import BooleanWithFollowUp from './BooleanWithFollowUp';
 
 const RenderSection = (props) => {
+         /**
+      * This function renders components based on a prop type.
+      */
   if(props.show){
     let comp = props.sectionQuestions.map((q) => {
       

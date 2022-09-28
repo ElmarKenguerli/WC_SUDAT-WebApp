@@ -676,7 +676,9 @@ const allQuestions = sectionScreening.concat(
 );
 
 function GetQuestion({ questionNumber }) {
-
+         /**
+      * Returns the string question when given a question number
+      */
   let question = allQuestions.find(questionNumber)["question"];
   return question;
 }
